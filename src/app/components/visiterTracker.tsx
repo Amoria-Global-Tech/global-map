@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { api } from '../api/utils/apiService';
 
 // Separate component that uses useSearchParams
 function TrackerCore() {
@@ -13,26 +14,35 @@ function TrackerCore() {
 
   const trackVisitor = useCallback(async (pageUrl: string) => {
     if (isTracking.current) return;
-    
+
     try {
       isTracking.current = true;
-      
-      const response = await fetch('/api/overview', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          page_url: pathname,
-          timestamp: new Date().toISOString(),
-          pathname: pathname,
-          search: searchParams?.toString() || ''
-        }),
-      });
 
-      if (response.ok) {
+      // Get visitor info
+      const visitorData = {
+        pageUrl: pageUrl,
+        referrer: typeof document !== 'undefined' ? document.referrer : null,
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
+        sessionId: typeof window !== 'undefined'
+          ? sessionStorage.getItem('visitor_session_id') || Math.random().toString(36).substring(2, 15)
+          : null,
+        timestamp: new Date().toISOString()
+      };
+
+      // Store session ID
+      if (typeof window !== 'undefined' && !sessionStorage.getItem('visitor_session_id')) {
+        sessionStorage.setItem('visitor_session_id', visitorData.sessionId || '');
+      }
+
+      // Use the centralized API service
+      const response = await api.post('/public/analytics/visitors', visitorData);
+
+      if (response && response.success) {
         trackedPages.current.add(pageUrl);
       }
+      // Silently handle errors
     } catch (error) {
-      console.error('Visitor tracking failed:', error);
+      // Silently fail - visitor tracking should not break the app
     } finally {
       isTracking.current = false;
     }

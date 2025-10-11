@@ -18,10 +18,6 @@ interface Product {
   siteUrl?: string;
 }
 
-interface ApiResponse {
-  products?: Product[];
-}
-
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,26 +35,33 @@ export default function ProductsPage() {
     const fetchProducts = async (): Promise<void> => {
       try {
         setLoading(true);
-        const response: Response | any = await api.get('/admin/content/products');
-        
-        if (!response.data.success) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        setError(null);
+
+        const response = await api.get('/public/products');
+
+        // Check if response is defined and has the success property
+        if (!response || response.data.success === undefined) {
+          throw new Error('Invalid API response - server may be unavailable');
         }
-        
-        const data: Product[] | ApiResponse | any = await response.data;
-        
+
+        if (!response.data.success) {
+          throw new Error(response.error || 'Failed to load products');
+        }
+
         // Handle different API response formats
+        const data = response.data;
         if (Array.isArray(data)) {
           setProducts(data);
-        } else if (Array.isArray(data.data)) {
+        } else if (data && Array.isArray(data.data)) {
           setProducts(data.data);
+        } else if (data && data.products && Array.isArray(data.products)) {
+          setProducts(data.products);
         } else {
           setProducts([]);
         }
       } catch (err: unknown) {
-        console.error('Error fetching products:', err);
         const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
-        setError(`Failed to load products: ${errorMessage}. Please try again later.`);
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -122,7 +125,7 @@ export default function ProductsPage() {
           <section className="hero-section">
             <h1 className="hero-title text-xl font-bold text-white/80">Our Products</h1>
             <p className="hero-description">
-              Cutting-edge technology solutions designed to transform your business 
+              Cutting-edge technology solutions designed to transform your business
               operations and drive digital innovation across all industries.
             </p>
           </section>
@@ -163,25 +166,25 @@ export default function ProductsPage() {
                     position: 'relative'
                   }}>
                     {/* Product Image */}
-                    <div className="product-image" style={{ 
+                    <div className="product-image" style={{
                       margin: '0',
                       overflow: 'hidden',
                       borderRadius: '8px 8px 0 0',
                       flexShrink: 0
                     }}>
-                      <img 
-                        src={product.imageUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="150"%3E%3Crect fill="%23667" width="200" height="150"/%3E%3Ctext fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="16" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image%3C/text%3E%3C/svg%3E'} 
+                      <img
+                        src={product.imageUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="150"%3E%3Crect fill="%23667" width="200" height="150"/%3E%3Ctext fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="16" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image%3C/text%3E%3C/svg%3E'}
                         alt={product.name}
-                        style={{ 
-                          width: '100%', 
-                          height: '140px', 
+                        style={{
+                          width: '100%',
+                          height: '140px',
                           objectFit: 'contain',
                           display: 'block'
                         }}
                         onError={handleImageError}
                       />
                     </div>
-                    
+
                     <div className="product-content" style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -190,11 +193,11 @@ export default function ProductsPage() {
                       gap: '0.75rem',
                       position: 'relative'
                     }}>
-                      <h3 className="product-title" style={{ 
+                      <h3 className="product-title" style={{
                         margin: '0 0 0.5rem 0',
                         position: 'relative'
                       }}>{product.name}</h3>
-                      
+
                       {/* Show description only if available */}
                       {product.isAvailable ? (
                         <p className="product-description" style={{
@@ -206,8 +209,8 @@ export default function ProductsPage() {
                           {product.description}
                         </p>
                       ) : (
-                        <p className="product-description" style={{ 
-                          color: '#fbbf24', 
+                        <p className="product-description" style={{
+                          color: '#fbbf24',
                           fontWeight: '500',
                           fontStyle: 'italic',
                           flex: '1',
@@ -218,9 +221,9 @@ export default function ProductsPage() {
                           Coming Soon
                         </p>
                       )}
-                      
+
                       {/* Button - clickable if available and has siteUrl */}
-                      <button 
+                      <button
                         className="product-price-btn"
                         onClick={() => product.isAvailable && handleExploreClick(product.siteUrl)}
                         disabled={!product.isAvailable}
@@ -244,7 +247,7 @@ export default function ProductsPage() {
             <div className="products-cta-content">
               <h2 className="products-cta-title">Need Custom Solutions?</h2>
               <p className="products-cta-description">
-                Our team of experts can customize any product to meet your specific business 
+                Our team of experts can customize any product to meet your specific business
                 requirements. Get in touch with us for personalized solutions.
               </p>
               <div className="products-cta-buttons">
@@ -258,7 +261,7 @@ export default function ProductsPage() {
 
       {/* Scroll to Top Button - only render after mounted to prevent hydration mismatch */}
       {mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"

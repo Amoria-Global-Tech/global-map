@@ -31,9 +31,6 @@ interface LoadingStage {
   text: string;
 }
 
-interface ApiResponse {
-  products?: Product[];
-}
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -49,12 +46,12 @@ export default function HomePage() {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [stars, setStars] = useState<React.ReactElement[]>([]);
   const [particles, setParticles] = useState<React.ReactElement[]>([]);
-  
+
   // API-related state
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLoading, setProductsLoading] = useState<boolean>(true);
   const [productsError, setProductsError] = useState<string | null>(null);
-  
+
   const trackRef = useRef<HTMLDivElement>(null);
 
   // Loading stages for the preloader - 20% increments
@@ -117,31 +114,38 @@ export default function HomePage() {
     }
   ];
 
-// Fetch products from API
+  // Fetch products from API
   useEffect((): void => {
     const fetchProducts = async (): Promise<void> => {
       try {
         setProductsLoading(true);
-        const response: Response | any = await api.get('/admin/content/products');
-        
-        if (!response.data.success) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        setProductsError(null);
+
+        const response = await api.get('/public/products');
+
+        // Check if response is defined and has the success property
+        if (!response || response.success === undefined) {
+          throw new Error('Invalid API response - server may be unavailable');
         }
-        
-        const data: Product[] | ApiResponse | any = await response.data;
-        
+
+        if (!response.success) {
+          throw new Error(response.error || 'Failed to load products');
+        }
+
         // Handle different API response formats
+        const data = response.data;
         if (Array.isArray(data)) {
           setProducts(data);
-        } else if (Array.isArray(data.data)) {
+        } else if (data && Array.isArray(data.data)) {
           setProducts(data.data);
+        } else if (data && data.products && Array.isArray(data.products)) {
+          setProducts(data.products);
         } else {
           setProducts([]);
         }
       } catch (err: unknown) {
-        console.error('Error fetching products:', err);
         const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
-        setProductsError(`Failed to load products: ${errorMessage}. Please try again later.`);
+        setProductsError(errorMessage);
       } finally {
         setProductsLoading(false);
       }
@@ -168,7 +172,7 @@ export default function HomePage() {
   // Initial client-side mount
   useEffect((): void => {
     setIsClient(true);
-    
+
     const hasShown: string | null = typeof window !== 'undefined' ? sessionStorage.getItem('preloaderShown') : null;
     if (hasShown) {
       setHasShownPreloader(true);
@@ -187,12 +191,12 @@ export default function HomePage() {
     const updateProgress = (): void => {
       if (currentStage < loadingStages.length) {
         const stage: LoadingStage = loadingStages[currentStage];
-        
+
         // Jump directly to the target percentage
         setLoadingProgress(stage.progress);
         setLoadingStatus(stage.status);
         setLoadingText(stage.text);
-        
+
         if (stage.progress === 100) {
           setTimeout((): void => {
             setMounted(true);
@@ -321,7 +325,7 @@ export default function HomePage() {
       if (isDeleting) {
         setTypingText(word.substring(0, charIndex - 1));
         charIndex--;
-        
+
         if (charIndex === 0) {
           isDeleting = false;
           setTimeout(typeWriter, 500);
@@ -330,14 +334,14 @@ export default function HomePage() {
       } else {
         setTypingText(word.substring(0, charIndex + 1));
         charIndex++;
-        
+
         if (charIndex === word.length) {
           isDeleting = true;
           setTimeout(typeWriter, 2000);
           return;
         }
       }
-      
+
       setTimeout(typeWriter, isDeleting ? 100 : 150);
     };
 
@@ -386,7 +390,7 @@ export default function HomePage() {
     }
   };
 
-    // Handle image error - show placeholder
+  // Handle image error - show placeholder
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
     target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23667" width="200" height="200"/%3E%3Ctext fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="16" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -420,13 +424,13 @@ export default function HomePage() {
         <div className="stars">
           {stars}
         </div>
-        
+
         <div className="preloader-content">
           <div className="globe-container">
             {/* Orbit Rings */}
             <div className="orbit-ring orbit-ring-1"></div>
             <div className="orbit-ring orbit-ring-2"></div>
-            
+
             {/* Main Globe */}
             <div className="globe">
               <div className="globe-sphere">
@@ -441,24 +445,24 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Arrow */}
             <div className="arrow-container">
               <div className="arrow"></div>
             </div>
-            
+
             {/* Particles */}
             <div className="particles">
               {particles}
             </div>
           </div>
-          
+
           {/* Loading Information */}
           <div className="loading-info">
             <div className="loading-text">{loadingText}</div>
             <div className="progress-container">
-              <div 
-                className="progress-bar" 
+              <div
+                className="progress-bar"
                 style={{ width: `${loadingProgress}%` }}
               />
             </div>
@@ -492,21 +496,21 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="hero-animated-subtitle">
-              Empowering businesses with cutting-edge solutions that drive digital transformation 
+              Empowering businesses with cutting-edge solutions that drive digital transformation
               and create lasting value in tomorrow&apos;s connected world.
             </p>
           </section>
-          
+
           {/* Action Buttons Section */}
           <section className="action-buttons-section">
             <div className="action-buttons-container">
-              <button 
+              <button
                 className="action-btn member-btn"
                 onClick={() => scrollToElement('services-section')}
               >
                 Explore our services
               </button>
-              <button 
+              <button
                 className="action-btn started-btn"
                 onClick={() => scrollToElement('services-section')}
               >
@@ -546,96 +550,96 @@ export default function HomePage() {
                 </div>
               )}
 
-               {/* Products Grid */}
-            {!productsLoading && !productsError && products.length > 0 && (
-              <div className="products-grid" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                gap: '1.5rem',
-                padding: '1rem 0'
-              }}>
-                {products.map((product: Product) => (
-                  <div key={product.id} className="product-card" style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%',
-                    position: 'relative'
-                  }}>
-                    {/* Product Image */}
-                    <div className="product-image" style={{ 
-                      margin: '0',
-                      overflow: 'hidden',
-                      borderRadius: '8px 8px 0 0',
-                      flexShrink: 0
-                    }}>
-                      <img 
-                        src={product.imageUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="150"%3E%3Crect fill="%23667" width="200" height="150"/%3E%3Ctext fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="16" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image%3C/text%3E%3C/svg%3E'} 
-                        alt={product.name}
-                        style={{ 
-                          width: '100%', 
-                          height: '140px', 
-                          objectFit: 'contain',
-                          display: 'block'
-                        }}
-                        onError={handleImageError}
-                      />
-                    </div>
-                    
-                    <div className="product-content" style={{
+              {/* Products Grid */}
+              {!productsLoading && !productsError && products.length > 0 && (
+                <div className="products-grid" style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                  gap: '1.5rem',
+                  padding: '1rem 0'
+                }}>
+                  {products.map((product: Product) => (
+                    <div key={product.id} className="product-card" style={{
                       display: 'flex',
                       flexDirection: 'column',
-                      flex: '1',
-                      padding: '1.5rem',
-                      gap: '0.75rem',
+                      height: '100%',
                       position: 'relative'
                     }}>
-                      <h3 className="product-title" style={{ 
-                        margin: '0 0 0.5rem 0',
+                      {/* Product Image */}
+                      <div className="product-image" style={{
+                        margin: '0',
+                        overflow: 'hidden',
+                        borderRadius: '8px 8px 0 0',
+                        flexShrink: 0
+                      }}>
+                        <img
+                          src={product.imageUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="150"%3E%3Crect fill="%23667" width="200" height="150"/%3E%3Ctext fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="16" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image%3C/text%3E%3C/svg%3E'}
+                          alt={product.name}
+                          style={{
+                            width: '100%',
+                            height: '140px',
+                            objectFit: 'contain',
+                            display: 'block'
+                          }}
+                          onError={handleImageError}
+                        />
+                      </div>
+
+                      <div className="product-content" style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flex: '1',
+                        padding: '1.5rem',
+                        gap: '0.75rem',
                         position: 'relative'
-                      }}>{product.name}</h3>
-                      
-                      {/* Show description only if available */}
-                      {product.isAvailable ? (
-                        <p className="product-description" style={{
-                          flex: '1',
-                          margin: '0 0 1rem 0',
-                          position: 'relative',
-                          minHeight: '3.5rem'
-                        }}>
-                          {product.description}
-                        </p>
-                      ) : (
-                        <p className="product-description" style={{ 
-                          color: '#fbbf24', 
-                          fontWeight: '500',
-                          fontStyle: 'italic',
-                          flex: '1',
-                          margin: '0 0 1rem 0',
-                          position: 'relative',
-                          minHeight: '3rem'
-                        }}>
-                          Coming Soon
-                        </p>
-                      )}
-                      
-                      {/* Button - clickable if available and has siteUrl */}
-                      <button 
-                        className="product-price-btn"
-                        onClick={() => product.isAvailable && handleExploreClick(product.siteUrl)}
-                        disabled={!product.isAvailable}
-                        style={{
-                          opacity: product.isAvailable ? 1 : 0.6,
-                          cursor: product.isAvailable && product.siteUrl ? 'pointer' : 'not-allowed',
-                          marginTop: 'auto',
-                        }}
-                      >
-                        {product.isAvailable ? 'Explore' : 'Coming Soon'}
-                      </button>
+                      }}>
+                        <h3 className="product-title" style={{
+                          margin: '0 0 0.5rem 0',
+                          position: 'relative'
+                        }}>{product.name}</h3>
+
+                        {/* Show description only if available */}
+                        {product.isAvailable ? (
+                          <p className="product-description" style={{
+                            flex: '1',
+                            margin: '0 0 1rem 0',
+                            position: 'relative',
+                            minHeight: '3.5rem'
+                          }}>
+                            {product.description}
+                          </p>
+                        ) : (
+                          <p className="product-description" style={{
+                            color: '#fbbf24',
+                            fontWeight: '500',
+                            fontStyle: 'italic',
+                            flex: '1',
+                            margin: '0 0 1rem 0',
+                            position: 'relative',
+                            minHeight: '3rem'
+                          }}>
+                            Coming Soon
+                          </p>
+                        )}
+
+                        {/* Button - clickable if available and has siteUrl */}
+                        <button
+                          className="product-price-btn"
+                          onClick={() => product.isAvailable && handleExploreClick(product.siteUrl)}
+                          disabled={!product.isAvailable}
+                          style={{
+                            opacity: product.isAvailable ? 1 : 0.6,
+                            cursor: product.isAvailable && product.siteUrl ? 'pointer' : 'not-allowed',
+                            marginTop: 'auto',
+                          }}
+                        >
+                          {product.isAvailable ? 'Explore' : 'Coming Soon'}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
             </div>
           </section>
 
@@ -645,31 +649,31 @@ export default function HomePage() {
               <div className="partners-track">
                 <div className="single-partner-card">
                   <div className="logo-item">
-                    <img src="/partners/alu-logo.png" alt="ALU"  />
+                    <img src="/partners/alu-logo.png" alt="ALU" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/rwandair-logo.png" alt="RwandAir"  />
+                    <img src="/partners/rwandair-logo.png" alt="RwandAir" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/bk-logo.png" alt="Bank of Kigali"  />
+                    <img src="/partners/bk-logo.png" alt="Bank of Kigali" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/bralirwa-logo.png" alt="Bralirwa"  />
+                    <img src="/partners/bralirwa-logo.png" alt="Bralirwa" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/lemigo-logo.png" alt="Lemigo Hotel"  />
+                    <img src="/partners/lemigo-logo.png" alt="Lemigo Hotel" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/radisson-logo.png" alt="Radisson Blue"  />
+                    <img src="/partners/radisson-logo.png" alt="Radisson Blue" />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/rra-logo.png" alt="RRA"  />
+                    <img src="/partners/rra-logo.png" alt="RRA" />
                   </div>
                   <div className="logo-item">
                     <img src="/partners/moshions-logo.png" alt="Moshions" />
                   </div>
                 </div>
-                
+
                 {/* Duplicate for continuous loop */}
                 <div className="single-partner-card">
                   <div className="logo-item">
@@ -714,14 +718,14 @@ export default function HomePage() {
               {/* Left Navigation Button */}
               <button className="nav-button nav-button-left" onClick={prevSlide}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
 
-              <div 
+              <div
                 ref={trackRef}
                 className="services-track"
-                style={{ 
+                style={{
                   transform: `translateX(-${currentSlide * 304}px)`,
                   transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
                 }}
@@ -750,7 +754,7 @@ export default function HomePage() {
               {/* Right Navigation Button */}
               <button className="nav-button nav-button-right" onClick={nextSlide}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </div>
@@ -771,7 +775,7 @@ export default function HomePage() {
 
       {/* Scroll to Top Button */}
       {isClient && mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"

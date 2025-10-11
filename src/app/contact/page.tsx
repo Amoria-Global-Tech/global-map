@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Chatbot from "../components/Chatbot";
+import { api } from '../api/utils/apiService';
 
 interface ContactFormData {
   name: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
+  subject: string;
   message: string;
 }
 
@@ -16,7 +18,8 @@ export default function ContactUsPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
+    subject: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,24 +42,26 @@ export default function ContactUsPage() {
     setError(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const response = await api.post('/public/contact', {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        subject: formData.subject || 'Contact Form Submission',
+        message: formData.message
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", message: "" });
-      } else {
-        setError(result.message || 'Failed to send message. Please try again.');
+      if (!response || response.success === undefined) {
+        throw new Error('Server unavailable. Please try again later.');
       }
-    } catch {
-      setError('Network error. Please check your connection and try again.');
+
+      if (response.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", phoneNumber: "", subject: "", message: "" });
+      } else {
+        setError(response.error || 'Failed to send message. Please try again.');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -272,17 +277,33 @@ export default function ContactUsPage() {
 
                 {/* Phone Field */}
                 <div className="form-group">
-                  <label htmlFor="phone" className="form-label">
+                  <label htmlFor="phoneNumber" className="form-label">
                     Phone Number <span className="optional-text">(optional)</span>
                   </label>
                   <input
                     type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
                     onChange={handleInputChange}
                     className="form-input"
                     placeholder="Enter your phone number"
+                  />
+                </div>
+
+                {/* Subject Field */}
+                <div className="form-group">
+                  <label htmlFor="subject" className="form-label">
+                    Subject <span className="optional-text">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="form-input"
+                    placeholder="What is this regarding?"
                   />
                 </div>
 

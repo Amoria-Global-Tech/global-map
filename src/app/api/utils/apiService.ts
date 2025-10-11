@@ -2,7 +2,14 @@
 // All frontend requests should go through this single file
 
 // Configuration
-const PUBLIC_API_ENDPOINT_URL = process.env.NEXT_PUBLIC_API_ENDPOINT_URL || 'https://backend.jambolush.com/api'; // Change to your API base URL
+const PUBLIC_API_ENDPOINT_URL = process.env.NEXT_PUBLIC_API_ENDPOINT_URL || 'http://localhost:5000/api'; // Change to your API base URL
+
+// Global session expiry handler - will be set by AuthContext
+let globalSessionExpiredHandler: ((redirectUrl?: string) => void) | null = null;
+
+export const setSessionExpiredHandler = (handler: (redirectUrl?: string) => void) => {
+  globalSessionExpiredHandler = handler;
+};
 
 // Types and Interfaces
 export interface ApiResponse<T = any> {
@@ -75,53 +82,22 @@ class ApiLogger {
   private maxLogs = 1000; // Keep last 1000 logs
 
   log(entry: LogEntry): void {
-    // Add to logs array
+    // All console logging disabled
     this.logs.unshift(entry);
-    
+
     // Keep only max logs
     if (this.logs.length > this.maxLogs) {
       this.logs = this.logs.slice(0, this.maxLogs);
     }
 
-    // Console logging with colors and formatting
-    const color = this.getLogColor(entry.responseStatus);
-    const duration = `${entry.duration}ms`;
-    
-    console.group(`🌐 API ${entry.method} ${entry.endpoint}`);
-    console.log(`%c${entry.method} ${entry.fullUrl}`, `color: ${color}; font-weight: bold`);
-    console.log(`⏱️  Duration: ${duration}`);
-    console.log(`📊 Status: ${entry.responseStatus}`);
-    
-    if (entry.requestData) {
-      console.log('📤 Request Data:', entry.requestData);
-    }
-    
-    if (entry.responseData) {
-      console.log('📥 Response Data:', entry.responseData);
-    }
-    
-    if (entry.error) {
-      console.error('❌ Error:', entry.error);
-    }
-    
-    console.groupEnd();
-
-    // Also store in localStorage for persistence (optional)
+    // Store in localStorage for persistence (optional)
     try {
       const storedLogs = JSON.parse(localStorage.getItem('api_logs') || '[]');
       storedLogs.unshift(entry);
-      localStorage.setItem('api_logs', JSON.stringify(storedLogs.slice(0, 100))); // Keep 100 in storage
+      localStorage.setItem('api_logs', JSON.stringify(storedLogs.slice(0, 100)));
     } catch (e) {
       // Ignore localStorage errors
     }
-  }
-
-  private getLogColor(status: number): string {
-    if (status >= 200 && status < 300) return '#22c55e'; // Green
-    if (status >= 300 && status < 400) return '#f59e0b'; // Yellow
-    if (status >= 400 && status < 500) return '#ef4444'; // Red
-    if (status >= 500) return '#dc2626'; // Dark Red
-    return '#6b7280'; // Gray
   }
 
   getLogs(): LogEntry[] {
@@ -131,7 +107,6 @@ class ApiLogger {
   clearLogs(): void {
     this.logs = [];
     localStorage.removeItem('api_logs');
-    console.log('🗑️  API logs cleared');
   }
 
   getLogsByEndpoint(endpoint: string): LogEntry[] {
@@ -169,7 +144,7 @@ function getDefaultHeaders(): Record<string, string> {
   };
 
   // Add auth token if available
-  const token = localStorage.getItem('authToken') || sessionStorage.getItem('auth_token');
+  const token = localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token');
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
@@ -237,6 +212,19 @@ class ApiConnector {
         status: response.status,
         timestamp,
       };
+
+      // Handle 401 Unauthorized - Session expired
+      // Only trigger session expired modal if user was actually authenticated
+      if (response.status === 401 && globalSessionExpiredHandler) {
+        const hadAuthToken = typeof window !== 'undefined' &&
+          (localStorage.getItem('auth_token') || sessionStorage.getItem('auth_token'));
+
+        // Only show session expired modal if user had auth tokens
+        if (hadAuthToken) {
+          const currentUrl = typeof window !== 'undefined' ? window.location.pathname + window.location.search : undefined;
+          globalSessionExpiredHandler(currentUrl);
+        }
+      }
 
       // Log the request
       logger.log({
@@ -468,4 +456,73 @@ export const api = {
   getErrorLogs: () => logger.getErrorLogs(),
   getLogsByEndpoint: (endpoint: string) => logger.getLogsByEndpoint(endpoint),
 
+
+  getTourCategories: async (): Promise<ApiResponse<{ success: boolean; data: string[] }>> => {
+    const response = await apiConnector.get<string[]>('/tours/categories');
+    return {
+      ...response,
+      data: {
+        success: response.success,
+        data: response.data || []
+      }
+    };
+  },
+
+  searchTours: async (filters?: TourFilters): Promise<ApiResponse<{ success: boolean; data: ToursResponse }>> => {
+    const params: Record<string, string | number> = {};
+    
+    if (filters) {
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== '') {
+          params[key] = value;
+        }
+      });
+    }
+
+    const response = await apiConnector.get<ToursResponse>('/tours/search', params);
+    return {
+      ...response,
+      data: {
+        success: response.success,
+        data: response.data || { tours: [], total: 0, page: 1, limit: 10, totalPages: 0 }
+      }
+    };
+  },
+
+  getTours: async (filters?: TourFilters): Promise<ApiResponse<{ success: boolean; data: ToursResponse }>> => {
+    return api.searchTours(filters);
+  },
+
+  getTour: async (id: string): Promise<ApiResponse<{ success: boolean; data: Tour }>> => {
+    const response = await apiConnector.get<Tour>(`/tours/${id}`);
+    return {
+      ...response,
+      data: {
+        success: response.success,
+        data: response.data || {} as Tour
+      }
+    };
+  },
+
+  getFeaturedTours: async (limit: number = 12): Promise<ApiResponse<{ success: boolean; data: ToursResponse }>> => {
+    const response = await apiConnector.get<ToursResponse>('/tours/featured', { limit });
+    return {
+      ...response,
+      data: {
+        success: response.success,
+        data: response.data || { tours: [], total: 0, page: 1, limit, totalPages: 0 }
+      }
+    };
+  },
+
+  getTourLocations: async (): Promise<ApiResponse<{ success: boolean; data: string[] }>> => {
+    const response = await apiConnector.get<string[]>('/tours/locations');
+    return {
+      ...response,
+      data: {
+        success: response.success,
+        data: response.data || []
+      }
+    };
+  }
 };

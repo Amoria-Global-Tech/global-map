@@ -1,9 +1,60 @@
+'use client';
+
 import Link from "next/link";
+import { useState } from 'react';
+import { api } from '../api/utils/apiService';
 
 const Footer = () => {
-    return (
-        <>
-      
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      setStatus('error');
+      setMessage('Please enter a valid email address');
+      return;
+    }
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await api.post('/public/newsletter/subscribe', { email });
+
+      if (!response || response.success === undefined) {
+        throw new Error('Server unavailable. Please try again later.');
+      }
+
+      if (!response.success) {
+        throw new Error(response.error || 'Failed to subscribe');
+      }
+
+      setStatus('success');
+      setMessage('Thank you for subscribing!');
+      setEmail('');
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 3000);
+    } catch (err: any) {
+      setStatus('error');
+      setMessage(err.message || 'Failed to subscribe. Please try again.');
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 3000);
+    }
+  };
+
+  return (
+    <>
       {/* Footer */}
       <footer className="footer">
         <div className="container">
@@ -19,10 +70,63 @@ const Footer = () => {
             </div>
 
             <div className="footer-column">
+              <h3 className="footer-title">Newsletter</h3>
+              <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Subscribe to get the latest updates and news
+              </p>
+              <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    disabled={status === 'loading'}
+                    style={{
+                      flex: 1,
+                      padding: '0.6rem',
+                      borderRadius: '4px',
+                      border: '1px solid #475569',
+                      backgroundColor: '#1e293b',
+                      color: 'white',
+                      fontSize: '0.9rem',
+                      outline: 'none'
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    style={{
+                      padding: '0.6rem 1.2rem',
+                      borderRadius: '4px',
+                      border: 'none',
+                      backgroundColor: status === 'loading' ? '#64748b' : '#3b82f6',
+                      color: 'white',
+                      fontSize: '0.9rem',
+                      cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                      fontWeight: '500'
+                    }}
+                  >
+                    {status === 'loading' ? 'Sending...' : 'Subscribe'}
+                  </button>
+                </div>
+                {message && (
+                  <p style={{
+                    fontSize: '0.85rem',
+                    color: status === 'success' ? '#22c55e' : '#ef4444',
+                    margin: '0.25rem 0 0 0'
+                  }}>
+                    {message}
+                  </p>
+                )}
+              </form>
+            </div>
+
+            <div className="footer-column">
               <h3 className="footer-title">Our Location</h3>
-              <a 
-                href="https://maps.google.com/?q=Kigali,Rwanda" 
-                target="_blank" 
+              <a
+                href="https://maps.google.com/?q=Kigali,Rwanda"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="footer-location-link"
               >
@@ -52,33 +156,33 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-title">Follow Us On </h3>
               <div className="social-links">
-                <a 
-                  href="https://facebook.com/share/1Ga8spfH7y/?mibextid=wwXIfr" 
-                  target="_blank" 
+                <a
+                  href="https://facebook.com/share/1Ga8spfH7y/?mibextid=wwXIfr"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link facebook"
                 >
                   <i className="bi bi-facebook"></i>
                 </a>
-                <a 
-                  href="https://www.instagram.com/amoria_global_tech/" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/amoria_global_tech/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link instagram"
                 >
                   <i className="bi bi-instagram"></i>
                 </a>
-                <a 
-                  href="https://x.com/amoria32419" 
-                  target="_blank" 
+                <a
+                  href="https://x.com/amoria32419"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link twitter"
                 >
                   <i className="bi bi-twitter-x"></i>
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/amoria-global-tech-8a774736b/" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/amoria-global-tech-8a774736b/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link linkedin"
                 >
@@ -93,7 +197,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-        </>
-    );
+    </>
+  );
 }
 export default Footer;

@@ -4,10 +4,36 @@ import { useState, useEffect } from 'react';
 import Chatbot from '../components/Chatbot';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { api } from '../api/utils/apiService';
+
+// Type definitions
+interface Service {
+  id?: number;
+  name: string;
+  description: string | null;
+  category: string | null;
+  icon: string | null;
+  features: string | null;
+  imageUrl?: string | null;
+  isActive?: boolean;
+}
+
+interface ServiceDisplay {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
 
 export default function ServicesPage() {
- 
-  const services = [
+  const [services, setServices] = useState<ServiceDisplay[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Fallback services in case API fails
+  const fallbackServices: ServiceDisplay[] = [
     {
       title: 'Web Development',
       description: 'Modern, scalable web solutions from landing pages to complex web applications. We build responsive, fast-loading websites that convert visitors into customers.',
@@ -58,8 +84,63 @@ export default function ServicesPage() {
     }
   ];
 
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // Fetch services from API
+  useEffect((): void => {
+    const fetchServices = async (): Promise<void> => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await api.get('/public/services');
+
+        // Check if response is defined
+        if (!response || response.success === undefined) {
+          setServices(fallbackServices);
+          setLoading(false);
+          return;
+        }
+
+        if (!response.success) {
+          setServices(fallbackServices);
+          setLoading(false);
+          return;
+        }
+
+        // Handle API response
+        const data = response.data;
+        let apiServices: Service[] = [];
+
+        if (Array.isArray(data)) {
+          apiServices = data;
+        } else if (data && Array.isArray(data.data)) {
+          apiServices = data.data;
+        } else if (data && data.services && Array.isArray(data.services)) {
+          apiServices = data.services;
+        }
+
+        // Transform API services to display format
+        if (apiServices.length > 0) {
+          const transformedServices: ServiceDisplay[] = apiServices
+            .filter((s: Service) => s.isActive !== false)
+            .map((service: Service) => ({
+              title: service.name,
+              description: service.description || 'No description available',
+              icon: service.icon || '⚙️',
+              features: service.features ? JSON.parse(service.features) : []
+            }));
+          setServices(transformedServices);
+        } else {
+          setServices(fallbackServices);
+        }
+      } catch (err: unknown) {
+        setServices(fallbackServices);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   // Handle mounting to prevent hydration mismatch
   useEffect(() => {
