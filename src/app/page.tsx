@@ -604,56 +604,21 @@ export default function HomePage() {
               <div className="partners-track">
                 <div className="single-partner-card">
                   <div className="logo-item">
-                    <img src="/partners/alu-logo.png" alt="ALU"  />
+                    <img src="/partners/Logo-SVG-01.svg" alt="ALU"  />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/rwandair-logo.png" alt="RwandAir"  />
+                    <img src="/partners/xentripaylogo.svg" alt="RwandAir"  />
                   </div>
-                  <div className="logo-item">
-                    <img src="/partners/bk-logo.png" alt="Bank of Kigali"  />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/bralirwa-logo.png" alt="Bralirwa"  />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/lemigo-logo.png" alt="Lemigo Hotel"  />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/radisson-logo.png" alt="Radisson Blue"  />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/rra-logo.png" alt="RRA"  />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/moshions-logo.png" alt="Moshions" />
-                  </div>
+                 
                 </div>
                 
                 {/* Duplicate for continuous loop */}
                 <div className="single-partner-card">
                   <div className="logo-item">
-                    <img src="/partners/alu-logo.png" alt="ALU" />
+                    <img src="/partners/Logo-SVG-01.svg" alt="ALU"  />
                   </div>
                   <div className="logo-item">
-                    <img src="/partners/rwandair-logo.png" alt="RwandAir" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/bk-logo.png" alt="Bank of Kigali" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/bralirwa-logo.png" alt="Bralirwa" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/lemigo-logo.png" alt="Lemigo Hotel" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/radisson-logo.png" alt="Radisson Blue" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/rra-logo.png" alt="RRA" />
-                  </div>
-                  <div className="logo-item">
-                    <img src="/partners/moshions-logo.png" alt="Moshions" />
+                    <img src="/partners/xentripaylogo.svg" alt="RwandAir"  />
                   </div>
                 </div>
               </div>

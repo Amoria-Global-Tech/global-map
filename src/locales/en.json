@@ -159,8 +159,8 @@
     "team": {
       "moses": {
         "name": "Moses Mirarayi",
-        "role": "Head of Operations",
-        "description": "Operations excellence leader ensuring seamless project delivery and client satisfaction."
+        "role": "Founder & Managing Director",
+        "description": "Vision-driven entrepreneur and business leader. Founder & Managing Director of Amoria Global Tech Ltd, driving innovation across tourism, technology, and hospitality. Skilled in strategic planning, operations, and team leadership. Currently pursuing a Bachelor's in Public Health at Western Governors University."
       },
       "joseph": {
         "name": "Joseph Maranatha",
@@ -176,6 +176,11 @@
         "name": "Jackson Mugwiza",
         "role": "Cybersecurity Analyst",
         "description": "Monitors systems for threats, responds to breaches, and strengthens digital defenses."
+      },
+      "peace": {
+        "name": "Peace Muzirankoni",
+        "role": "Customer Service & Care Expert",
+        "description": "Dedicated to delivering exceptional customer experiences with empathy and professionalism. Ensures client satisfaction through responsive support and effective communication."
       }
     },
     "cta_title": "Ready to Transform Your Business?",
