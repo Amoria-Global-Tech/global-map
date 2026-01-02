@@ -1200,17 +1200,17 @@ body::before {
   }
 
   .navbar-container {
-    padding: 0.5rem 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .navbar-logo {
-    height: 36px;
-    width: 140px;
+    height: 38px;
+    width: 145px;
   }
 
   .navbar-icon-btn {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     font-size: 0.9rem;
   }
 
@@ -1220,8 +1220,8 @@ body::before {
   }
 
   .navbar-mobile-btn {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 
   .dropdown-menu {
@@ -1232,16 +1232,20 @@ body::before {
     padding: 0.45rem 0.6rem;
     font-size: 0.75rem;
   }
+
+  .main-content {
+    margin-top: 62px;
+  }
 }
 
 @media (max-width: 480px) {
   .navbar-container {
-    padding: 0.4rem 0.75rem;
+    padding: 1.25rem 0.75rem;
   }
 
   .navbar-logo {
-    height: 32px;
-    width: 120px;
+    height: 34px;
+    width: 130px;
   }
 
   .navbar-icon-btn .lang-code {
@@ -1259,18 +1263,22 @@ body::before {
   }
 
   .navbar-icon-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
 
   .navbar-mobile-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
 
   .navbar-contact-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .main-content {
+    margin-top: 58px;
   }
 
   .mobile-nav {
