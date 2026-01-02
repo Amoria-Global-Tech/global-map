@@ -1336,7 +1336,7 @@ body::before {
 /* Extra small devices */
 @media (max-width: 360px) {
   .navbar-container {
-    padding: 0.35rem 0.5rem;
+    padding: 1rem 0.5rem;
   }
 
   .navbar-logo {
@@ -1366,6 +1366,10 @@ body::before {
 
   .navbar-actions {
     gap: 0.25rem;
+  }
+
+  .main-content {
+    margin-top: 48px;
   }
 }
 
