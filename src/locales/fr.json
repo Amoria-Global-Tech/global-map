@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "products": "Produits",
+    "news": "Actualités",
+    "contact": "Contact",
+    "blog": "Blog",
+    "donate": "Faire un don"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  },
+  "language": {
+    "select": "Langue",
+    "en": "Anglais",
+    "fr": "Français",
+    "es": "Espagnol",
+    "rw": "Kinyarwanda",
+    "sw": "Swahili"
+  },
+  "home": {
+    "hero_title": "Connectez l'avenir avec l'innovation et la sécurité",
+    "hero_subtitle": "Accompagner les entreprises avec des solutions de pointe qui stimulent la transformation numérique et créent une valeur durable dans le monde connecté de demain.",
+    "typing_word": "Technologie",
+    "cta_explore": "Explorer nos services",
+    "cta_contact": "Contacter les ventes",
+    "products_title": "Nos Produits",
+    "products_subtitle": "Solutions innovantes conçues pour répondre aux besoins de votre entreprise",
+    "products_loading": "Chargement des produits...",
+    "products_error": "Échec du chargement des produits. Veuillez réessayer plus tard.",
+    "products_empty": "Aucun produit disponible pour le moment.",
+    "services_title": "Nos Services",
+    "services_subtitle": "Découvrez des fonctionnalités puissantes conçues pour transformer les opérations de votre entreprise",
+    "services": {
+      "web_dev": {
+        "title": "Développement Web",
+        "description": "Solutions web modernes et évolutives, des pages d'atterrissage aux applications web complexes. Nous construisons des sites web réactifs et rapides qui convertissent les visiteurs en clients.",
+        "features": ["Design responsive", "Intégration e-commerce", "Développement CMS", "Optimisation des performances", "Structure prête pour le SEO"]
+      },
+      "mobile_dev": {
+        "title": "Développement d'Applications Mobiles",
+        "description": "Applications mobiles natives et multiplateformes offrant des expériences utilisateur fluides sur les appareils iOS et Android.",
+        "features": ["Développement iOS", "Développement Android", "Applications multiplateformes", "Déploiement sur les stores", "Design mobile-first"]
+      },
+      "desktop_dev": {
+        "title": "Développement d'Applications Bureau",
+        "description": "Solutions logicielles de bureau robustes pour Windows, macOS et Linux qui rationalisent les opérations commerciales et améliorent la productivité.",
+        "features": ["Compatibilité multiplateforme", "Intégration entreprise", "Fonctionnalité hors ligne", "Optimisation système", "Interfaces conviviales"]
+      },
+      "seo": {
+        "title": "Optimisation SEO",
+        "description": "Stratégies d'optimisation des moteurs de recherche basées sur les données qui améliorent les classements, augmentent le trafic organique et renforcent la visibilité en ligne.",
+        "features": ["SEO technique", "Stratégie de contenu", "Optimisation locale", "Audits de performance", "Suivi analytique"]
+      },
+      "consulting": {
+        "title": "Consultation IT",
+        "description": "Conseils technologiques stratégiques pour aider les entreprises à prendre des décisions éclairées concernant la transformation numérique et la planification de l'infrastructure.",
+        "features": ["Évaluation technologique", "Stratégie numérique", "Planification d'infrastructure", "Optimisation des processus", "Évaluation des risques"]
+      },
+      "custom_software": {
+        "title": "Solutions Logicielles Personnalisées",
+        "description": "Développement logiciel sur mesure adapté aux exigences commerciales uniques, des outils d'automatisation aux systèmes de gestion d'entreprise.",
+        "features": ["Automatisation commerciale", "Intégration système", "Optimisation des flux", "Bases de données personnalisées", "Architecture évolutive"]
+      },
+      "security": {
+        "title": "Cybersécurité",
+        "description": "Solutions de sécurité complètes pour protéger les actifs numériques, prévenir les violations de données et assurer la conformité aux normes de l'industrie.",
+        "features": ["Évaluations de sécurité", "Protection contre les menaces", "Chiffrement des données", "Audits de conformité", "Réponse aux incidents"]
+      },
+      "data_analysis": {
+        "title": "Analyse de Données",
+        "description": "Transformez les données brutes en informations commerciales exploitables grâce à des analyses avancées, des visualisations et des solutions d'intelligence d'affaires.",
+        "features": ["Intelligence d'affaires", "Visualisation des données", "Modélisation prédictive", "Métriques de performance", "Aide à la décision"]
+      }
+    },
+    "loading": {
+      "starting": "Démarrage du système...",
+      "initializing": "INITIALISATION",
+      "loading": "CHARGEMENT",
+      "connecting": "CONNEXION",
+      "syncing": "SYNCHRONISATION",
+      "optimizing": "OPTIMISATION",
+      "complete": "TERMINÉ",
+      "loading_modules": "Chargement des modules principaux...",
+      "establishing": "Établissement des connexions...",
+      "syncing_data": "Synchronisation des données globales...",
+      "optimizing_perf": "Optimisation des performances...",
+      "welcome": "Bienvenue chez Amoria Tech Global!"
+    },
+    "partners_title": "Nos Partenaires",
+    "partners_subtitle": "Approuvé par des organisations leaders dans le monde entier.",
+    "view_all": "Voir tout",
+    "read_more": "Lire la suite"
+  },
+  "about": {
+    "title": "À Propos de Nous",
+    "subtitle": "En savoir plus sur notre mission, notre vision et nos valeurs.",
+    "hero_title": "À Propos d'Amoria Global Tech",
+    "hero_description": "Pionnier de l'avenir technologique grâce à des solutions innovantes, des partenariats stratégiques et un engagement indéfectible envers l'excellence numérique.",
+    "mission_title": "Notre Mission",
+    "mission_text": "Donner aux entreprises et aux individus les moyens d'agir grâce à des solutions technologiques de pointe qui stimulent la transformation numérique, améliorent l'efficacité opérationnelle et créent une valeur durable dans un monde interconnecté.",
+    "vision_title": "Notre Vision",
+    "vision_text": "Être le partenaire technologique de référence en Afrique et au-delà, reconnu pour l'innovation, la fiabilité et l'impact transformateur dans le développement logiciel, le cloud computing et l'infrastructure numérique.",
+    "objectives_title": "Nos Objectifs",
+    "objectives": {
+      "1": "Fournir des solutions logicielles et des services de conseil de classe mondiale",
+      "2": "Favoriser l'inclusion numérique grâce à des plateformes technologiques accessibles",
+      "3": "Établir des partenariats stratégiques avec les leaders de l'industrie",
+      "4": "Innover continuellement dans l'IA, la blockchain et les technologies cloud",
+      "5": "Maintenir une fiabilité de service de 99,9% et la satisfaction client"
+    },
+    "values_title": "Nos Valeurs",
+    "team_title": "Notre Équipe",
+    "team_subtitle": "Rencontrez les professionnels passionnés derrière les solutions innovantes d'Amoria Global Tech",
+    "history_title": "Notre Parcours",
+    "history_subtitle": "Un parcours d'innovation et de croissance.",
+    "culture_title": "Notre Culture et Nos Valeurs",
+    "culture": {
+      "innovation": "L'Innovation d'Abord",
+      "innovation_desc": "Nous adoptons les technologies émergentes et favorisons une culture d'apprentissage et d'expérimentation continus.",
+      "customer": "Centré sur le Client",
+      "customer_desc": "Chaque solution que nous créons est conçue avec le succès et la satisfaction de nos clients comme objectif principal.",
+      "quality": "Excellence Qualité",
+      "quality_desc": "Nous maintenons les normes les plus élevées en matière de qualité de code, de sécurité et de performance dans tous nos produits.",
+      "impact": "Impact Mondial",
+      "impact_desc": "Nos solutions sont conçues pour avoir un impact positif sur les entreprises et les communautés du monde entier."
+    },
+    "timeline": {
+      "2020": {
+        "title": "Notre Fondation",
+        "subtitle": "Excellence Technologique",
+        "description": "Établi en tant que fournisseur leader de solutions technologiques, axé sur le développement logiciel innovant et la transformation numérique."
+      },
+      "2021": {
+        "title": "Expansion des Services",
+        "subtitle": "Solutions Complètes",
+        "description": "Élargissement de nos services pour inclure l'analytique alimentée par l'IA, l'infrastructure cloud et les systèmes de gestion de la sécurité d'entreprise."
+      },
+      "2022": {
+        "title": "Portée Mondiale",
+        "subtitle": "Partenariats Internationaux",
+        "description": "Partenariats stratégiques avec de grandes entreprises à travers l'Afrique, offrant un support multilingue et une disponibilité 24h/24."
+      },
+      "2023": {
+        "title": "Leadership en Innovation",
+        "subtitle": "Technologie de Pointe",
+        "description": "Pionnier des solutions blockchain, des systèmes bancaires mobiles et des plateformes d'automatisation intelligente pour diverses industries."
+      },
+      "2024": {
+        "title": "Vision Future",
+        "subtitle": "Transformation Numérique",
+        "description": "Continuer à mener la révolution numérique avec l'IA avancée, la recherche en informatique quantique et les solutions technologiques durables."
+      }
+    },
+    "team": {
+      "moses": {
+        "name": "Moses Mirarayi",
+        "role": "Directeur des Opérations",
+        "description": "Leader de l'excellence opérationnelle assurant une livraison de projet sans faille et la satisfaction client."
+      },
+      "joseph": {
+        "name": "Joseph Maranatha",
+        "role": "Directeur Technique & Développeur Full-Stack",
+        "description": "Architecte logiciel expert spécialisé dans l'IA, la blockchain, le développement frontend et backend, et les solutions d'infrastructure cloud."
+      },
+      "pacific": {
+        "name": "Pacific Uwitonze",
+        "role": "Designer UI/UX",
+        "description": "Crée des wireframes, des prototypes et des designs haute fidélité axés sur l'expérience utilisateur et la convivialité."
+      },
+      "jackson": {
+        "name": "Jackson Mugwiza",
+        "role": "Analyste en Cybersécurité",
+        "description": "Surveille les systèmes contre les menaces, répond aux violations et renforce les défenses numériques."
+      }
+    },
+    "cta_title": "Prêt à Transformer Votre Entreprise?",
+    "cta_description": "Rejoignez des centaines de clients satisfaits qui font confiance à Amoria Global Tech pour leur parcours de transformation numérique.",
+    "cta_services": "Explorer Nos Services",
+    "cta_products": "Voir Nos Produits"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Des services technologiques professionnels adaptés à vos besoins.",
+    "web_dev": "Développement Web",
+    "web_dev_desc": "Solutions web modernes et évolutives, des pages d'atterrissage aux applications web complexes.",
+    "mobile_dev": "Développement Mobile",
+    "mobile_dev_desc": "Applications mobiles natives et multiplateformes pour iOS et Android.",
+    "desktop_dev": "Applications Bureau",
+    "desktop_dev_desc": "Solutions logicielles robustes pour Windows, macOS et Linux.",
+    "seo": "Optimisation SEO",
+    "seo_desc": "Stratégies SEO basées sur les données pour améliorer le classement et la visibilité.",
+    "consulting": "Consultation IT",
+    "consulting_desc": "Conseil technologique stratégique pour la transformation numérique.",
+    "custom_software": "Logiciel Sur Mesure",
+    "custom_software_desc": "Logiciels personnalisés adaptés aux exigences uniques de votre entreprise.",
+    "security": "Cybersécurité",
+    "security_desc": "Solutions de sécurité complètes pour protéger vos actifs numériques.",
+    "data_analysis": "Analyse de Données",
+    "data_analysis_desc": "Transformez les données brutes en informations exploitables.",
+    "learn_more": "En savoir plus",
+    "get_quote": "Obtenir un devis"
+  },
+  "products": {
+    "title": "Nos Produits",
+    "subtitle": "Découvrez nos solutions innovantes conçues pour transformer votre entreprise.",
+    "visit_now": "Visiter",
+    "explore": "Explorer",
+    "coming_soon": "Bientôt disponible",
+    "available": "Disponible",
+    "per_month": "/mois",
+    "features": "Fonctionnalités",
+    "all_categories": "Tous",
+    "filter_by": "Filtrer par"
+  },
+  "news": {
+    "title": "Actualités et Mises à jour",
+    "subtitle": "Restez informé de nos dernières annonces, perspectives et nouvelles de l'entreprise.",
+    "read_more": "Lire la suite",
+    "published_on": "Publié le",
+    "by_author": "Par",
+    "views": "vues",
+    "share": "Partager",
+    "related": "Articles Connexes",
+    "categories": "Catégories",
+    "all": "Tous",
+    "search_placeholder": "Rechercher des actualités...",
+    "no_results": "Aucune actualité trouvée.",
+    "load_more": "Charger plus"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Prenez contact avec nous. Nous serions ravis de vous entendre.",
+    "form_title": "Envoyez-nous un Message",
+    "name": "Nom Complet",
+    "name_placeholder": "Entrez votre nom",
+    "email": "Adresse Email",
+    "email_placeholder": "Entrez votre email",
+    "phone": "Numéro de Téléphone",
+    "phone_placeholder": "Entrez votre téléphone (optionnel)",
+    "message": "Message",
+    "message_placeholder": "Écrivez votre message ici...",
+    "submit": "Envoyer le Message",
+    "sending": "Envoi en cours...",
+    "success": "Merci ! Votre message a été envoyé avec succès.",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "address": "Adresse",
+    "phone_label": "Téléphone",
+    "email_label": "Email",
+    "working_hours": "Heures d'ouverture",
+    "working_hours_text": "Lundi - Vendredi: 9h00 - 18h00"
+  },
+  "footer": {
+    "useful_links": "Liens Utiles",
+    "location": "Notre Emplacement",
+    "contact_us": "Contactez-nous",
+    "follow_us": "Suivez-nous",
+    "copyright": "Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "menu": "Menu",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "no_data": "Aucune donnée disponible"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Perspectives et Articles",
+    "description": "Explorez nos dernières réflexions sur la technologie, le développement et l'innovation numérique.",
+    "featured": "À la une",
+    "all_posts": "Tous les articles",
+    "min_read": "min de lecture",
+    "by": "Par",
+    "no_posts": "Aucun article trouvé",
+    "check_back": "Revenez plus tard pour du nouveau contenu.",
+    "categories": {
+      "technology": "Technologie",
+      "development": "Développement",
+      "design": "Design",
+      "business": "Business",
+      "tutorials": "Tutoriels"
+    },
+    "cta_title": "Avez-vous un sujet en tête?",
+    "cta_description": "Nous aimerions connaître vos idées. Contactez-nous pour suggérer des sujets ou collaborer sur du contenu.",
+    "cta_button": "Nous contacter"
+  },
+  "donate": {
+    "title": "Faire un don",
+    "badge": "Soutenez notre mission",
+    "hero_title": "Faites la différence aujourd'hui",
+    "hero_description": "Votre contribution nous aide à autonomiser les communautés grâce à la technologie, à former la prochaine génération de développeurs et à stimuler la transformation numérique en Afrique.",
+    "choose_impact": "Choisissez votre niveau d'impact",
+    "select_tier": "Sélectionnez un niveau de don correspondant à votre soutien.",
+    "tiers": {
+      "supporter": {
+        "name": "Supporter",
+        "description": "Soutenez notre mission pour autonomiser les communautés grâce à la technologie.",
+        "benefits": ["Email de remerciement", "Nom sur la page des supporters", "Mises à jour par newsletter"]
+      },
+      "contributor": {
+        "name": "Contributeur",
+        "description": "Aidez-nous à élargir notre portée et à impacter plus de vies.",
+        "benefits": ["Tous les avantages Supporter", "Rapport d'impact trimestriel", "Accès anticipé aux événements"]
+      },
+      "champion": {
+        "name": "Champion",
+        "description": "Soyez un champion de la transformation numérique en Afrique.",
+        "benefits": ["Tous les avantages Contributeur", "Webinaires exclusifs", "Reconnaissance sur le site web", "Certificat d'impact annuel"]
+      },
+      "visionary": {
+        "name": "Visionnaire",
+        "description": "Montrez la voie pour créer un changement technologique durable.",
+        "benefits": ["Tous les avantages Champion", "Mises à jour directes sur les projets", "Opportunité de prise de parole", "Rapport d'impact personnalisé", "Accès VIP aux événements"]
+      }
+    },
+    "most_popular": "Le plus populaire",
+    "donate_btn": "Faire un don",
+    "custom_title": "Montant personnalisé",
+    "custom_description": "Vous souhaitez donner un montant différent? Entrez votre don personnalisé ci-dessous.",
+    "enter_amount": "Entrez le montant",
+    "how_helps_title": "Comment votre don aide",
+    "how_helps": {
+      "training": {
+        "title": "Formation Tech",
+        "description": "Financez des bootcamps de codage et des ateliers pour les développeurs en herbe."
+      },
+      "infrastructure": {
+        "title": "Infrastructure",
+        "description": "Construisez des laboratoires informatiques et des centres d'apprentissage dans les zones défavorisées."
+      },
+      "mentorship": {
+        "title": "Mentorat",
+        "description": "Connectez les étudiants avec des professionnels de l'industrie pour les guider."
+      },
+      "access": {
+        "title": "Accès Numérique",
+        "description": "Fournissez une connectivité internet et des outils numériques aux communautés."
+      }
+    },
+    "trust_title": "Votre confiance compte",
+    "trust_description": "Nous nous engageons à la transparence. Chaque don est suivi et rapporté pour assurer un impact maximum. Vous recevrez des mises à jour régulières sur la façon dont votre contribution fait la différence.",
+    "trust_badges": {
+      "secure": "Paiements sécurisés",
+      "tax": "Déductible d'impôts",
+      "reports": "Rapports réguliers"
+    },
+    "impact_stats": {
+      "students": "Étudiants formés",
+      "projects": "Projets livrés",
+      "communities": "Communautés touchées",
+      "success": "Taux de réussite"
+    },
+    "cta_title": "Des questions?",
+    "cta_description": "Nous sommes là pour vous aider. Contactez-nous pour en savoir plus sur nos programmes et notre impact.",
+    "cta_button": "Nous contacter",
+    "thank_you": "Merci pour votre généreuse donation!"
+  }
+}

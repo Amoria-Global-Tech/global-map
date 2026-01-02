@@ -1,146 +1,329 @@
+'use client';
+
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage, Language, languageNames } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
+
+  const langDropdownRef = useRef<HTMLDivElement>(null);
+  const themeDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setLangDropdownOpen(false);
+      }
+      if (themeDropdownRef.current && !themeDropdownRef.current.contains(event.target as Node)) {
+        setThemeDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const navItems = [
-    { name: 'HOME', href: '/' },
-    { name: 'ABOUT US', href: '/about' },
-    { name: 'SERVICES', href: '/services' },
-    { name: 'PRODUCTS', href: '/products'},
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.about, href: '/about' },
+    { name: t.nav.services, href: '/services' },
+    { name: t.nav.products, href: '/products' },
+    { name: t.nav.news, href: '/news' },
   ];
-  
+
+  const extraLinks = [
+    { name: t.nav.blog, href: '/news', icon: 'bi-journal-text' },
+    { name: t.nav.donate, href: '/donate', icon: 'bi-heart' },
+  ];
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const languages: Language[] = ['en', 'fr', 'es', 'rw', 'sw'];
+
+  const themeOptions = [
+    { value: 'light' as const, label: t.theme.light, icon: 'bi-sun' },
+    { value: 'dark' as const, label: t.theme.dark, icon: 'bi-moon' },
+    { value: 'system' as const, label: t.theme.system, icon: 'bi-laptop' },
+  ];
+
+  const getThemeIcon = () => {
+    if (theme === 'system') return 'bi-laptop';
+    return resolvedTheme === 'dark' ? 'bi-moon-fill' : 'bi-sun-fill';
+  };
+
   return (
     <>
-      {/* Navigation */}
-      <nav className="nav-container">
-        <div className="container">
-          <div className="nav-wrapper">
-            {/* Logo */}
-            <Link href="/" className="logo">
-              <Image 
-                src="/logo.png" 
-                alt="Amoria Tech Global" 
-                width={200}
-                height={200}
-                priority
-              />
+      <nav className="navbar">
+        <div className="navbar-container">
+          {/* Logo */}
+          <Link href="/" className="navbar-logo">
+            <img
+              src="/logo.png"
+              alt="Amoria Tech Global"
+              className="navbar-logo-img"
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="navbar-nav">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`navbar-link ${pathname === item.href ? 'active' : ''}`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right Section: Theme, Language, Extra Links, Contact */}
+          <div className="navbar-actions">
+            {/* Theme Toggle */}
+            <div className="navbar-dropdown" ref={themeDropdownRef}>
+              <button
+                className="navbar-icon-btn"
+                onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
+                aria-label="Toggle theme"
+              >
+                <i className={`bi ${getThemeIcon()}`}></i>
+              </button>
+              {themeDropdownOpen && (
+                <div className="dropdown-menu">
+                  {themeOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      className={`dropdown-item ${theme === option.value ? 'active' : ''}`}
+                      onClick={() => {
+                        setTheme(option.value);
+                        setThemeDropdownOpen(false);
+                      }}
+                    >
+                      <i className={`bi ${option.icon}`}></i>
+                      <span>{option.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Language Selector */}
+            <div className="navbar-dropdown" ref={langDropdownRef}>
+              <button
+                className="navbar-icon-btn lang-btn"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                aria-label="Select language"
+              >
+                <span className="lang-flag">{languageNames[language].flag}</span>
+                <span className="lang-code">{language.toUpperCase()}</span>
+                <i className="bi bi-chevron-down"></i>
+              </button>
+              {langDropdownOpen && (
+                <div className="dropdown-menu">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang}
+                      className={`dropdown-item ${language === lang ? 'active' : ''}`}
+                      onClick={() => {
+                        setLanguage(lang);
+                        setLangDropdownOpen(false);
+                      }}
+                    >
+                      <span className="lang-flag">{languageNames[lang].flag}</span>
+                      <span>{languageNames[lang].name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Divider */}
+            <div className="navbar-divider"></div>
+
+            {/* Extra Links - Desktop */}
+            <div className="navbar-extra-links">
+              {extraLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`navbar-extra-link ${pathname === link.href ? 'active' : ''}`}
+                >
+                  <i className={`bi ${link.icon}`}></i>
+                  <span>{link.name}</span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Contact Button */}
+            <Link
+              href="/contact"
+              className={`navbar-contact-btn ${pathname === '/contact' ? 'active' : ''}`}
+            >
+              <i className="bi bi-envelope"></i>
+              <span>{t.nav.contact}</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="nav-center">
-              <div className="nav-pills">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`nav-pill ${pathname === item.href ? 'active' : ''}`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            {/* Mobile Menu Button */}
+            <button
+              className="navbar-mobile-btn"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              <i className={`bi ${mobileMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+            </button>
+          </div>
+        </div>
+      </nav>
 
-            {/* Contact Us Button & Mobile Menu Button */}
-            <div className="nav-right">
-              {/* Contact Us Button - Desktop */}
-              <Link 
-                href="/contact" 
-                className={`contact-btn ${pathname === '/contact' ? 'active' : ''}`}
+      {/* Mobile Menu */}
+      <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+        <div className="mobile-nav-header">
+          <Link href="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
+            <Image
+              src="/logo.png"
+              alt="Amoria Tech Global"
+              width={120}
+              height={40}
+              priority
+            />
+          </Link>
+          <button
+            className="mobile-nav-close"
+            onClick={toggleMobileMenu}
+            aria-label="Close menu"
+          >
+            <i className="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <div className="mobile-nav-content">
+          {/* Main Navigation */}
+          <div className="mobile-nav-section">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`mobile-nav-link ${pathname === item.href ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
-                <i className="bi bi-envelope"></i>
-                <span>Contact Us</span>
+                {item.name}
               </Link>
+            ))}
+          </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                className="mobile-menu-btn"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
+          {/* Divider */}
+          <div className="mobile-nav-divider"></div>
+
+          {/* Extra Links */}
+          <div className="mobile-nav-section">
+            {extraLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`mobile-nav-link ${pathname === link.href ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
-                ☰
-              </button>
+                <i className={`bi ${link.icon}`}></i>
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className={`mobile-nav-link ${pathname === '/contact' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <i className="bi bi-envelope"></i>
+              {t.nav.contact}
+            </Link>
+          </div>
+
+          {/* Divider */}
+          <div className="mobile-nav-divider"></div>
+
+          {/* Theme & Language */}
+          <div className="mobile-nav-settings">
+            {/* Theme Options */}
+            <div className="mobile-settings-group">
+              <span className="mobile-settings-label">
+                <i className="bi bi-palette"></i>
+                Theme
+              </span>
+              <div className="mobile-settings-options">
+                {themeOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    className={`mobile-setting-btn ${theme === option.value ? 'active' : ''}`}
+                    onClick={() => setTheme(option.value)}
+                  >
+                    <i className={`bi ${option.icon}`}></i>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Enhanced Mobile Menu */}
-            <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
-              <div className="mobile-menu-header">
-                {/* Logo */}
-                <Link href="/" className="logo">
-                  <Image 
-                    src="/logo.png" 
-                    alt="Amoria Tech Global" 
-                    width={200}
-                    height={200}
-                    priority
-                  />
-                </Link>
-                <button
-                  className="mobile-menu-close"
-                  onClick={toggleMobileMenu}
-                  aria-label="Close menu"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="mobile-menu-content">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`mobile-menu-item ${pathname === item.href ? 'active' : ''}`}
-                    onClick={() => setMobileMenuOpen(false)}
+            {/* Language Options */}
+            <div className="mobile-settings-group">
+              <span className="mobile-settings-label">
+                <i className="bi bi-globe"></i>
+                {t.language.select}
+              </span>
+              <div className="mobile-lang-options">
+                {languages.map((lang) => (
+                  <button
+                    key={lang}
+                    className={`mobile-lang-btn ${language === lang ? 'active' : ''}`}
+                    onClick={() => setLanguage(lang)}
                   >
-                    {item.name}
-                  </Link>
+                    <span className="lang-flag">{languageNames[lang].flag}</span>
+                    <span className="lang-code">{lang.toUpperCase()}</span>
+                  </button>
                 ))}
-                
-                {/* Contact Us - Mobile */}
-                <Link
-                  href="/contact"
-                  className={`mobile-menu-item contact-mobile ${pathname === '/contact' ? 'active' : ''}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <i className="bi bi-envelope"></i>
-                  CONTACT US
-                </Link>
-              </div>
-
-              <div className="mobile-menu-footer">
-                <div className="mobile-social-links">
-                  <a href="https://facebook.com/share/1Ga8spfH7y/?mibextid=wwXIfr" className="mobile-social-link" target="_blank" rel="noopener noreferrer">
-                    <i className="bi bi-facebook"></i>
-                  </a>
-                  <a href="https://www.instagram.com/amoria_global_tech/" className="mobile-social-link" target="_blank" rel="noopener noreferrer">
-                    <i className="bi bi-instagram"></i>
-                  </a>
-                  <a href="https://x.com/amoria32419" className="mobile-social-link" target="_blank" rel="noopener noreferrer">
-                    <i className="bi bi-twitter-x"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/amoria-global-tech-8a774736b/" className="mobile-social-link" target="_blank" rel="noopener noreferrer">
-                    <i className="bi bi-linkedin"></i>
-                  </a>
-                </div>
-                <div className="mobile-contact-info">
-                  <p><i className="bi bi-telephone"></i> <a href="tel:+250788437347">+250 788 437 347</a></p>
-                  <p><i className="bi bi-envelope"></i> <a href="mailto:info@amoriaglobal.com">info@amoriaglobal.com</a></p>
-                  <p><i className="bi bi-geo-alt"></i> Kigali, Rwanda</p>
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </nav>
+
+        {/* Mobile Footer */}
+        <div className="mobile-nav-footer">
+          <div className="mobile-nav-social">
+            <a href="https://facebook.com/share/1Ga8spfH7y/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/amoria_global_tech/" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-instagram"></i>
+            </a>
+            <a href="https://x.com/amoria32419" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-twitter-x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/amoria-global-tech-8a774736b/" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-linkedin"></i>
+            </a>
+          </div>
+          <div className="mobile-nav-contact">
+            <a href="tel:+250788437347">
+              <i className="bi bi-telephone"></i>
+              +250 788 437 347
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+      )}
     </>
   );
 }

@@ -1,9 +1,12 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Chatbot from './components/Chatbot';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Type definitions
 interface Product {
@@ -13,7 +16,10 @@ interface Product {
   category: string;
   price?: string | number;
   image_url?: string;
-  is_available: boolean;
+  imageUrl?: string | null;
+  is_available?: boolean;
+  isAvailable?: boolean;
+  siteUrl?: string | null;
 }
 
 interface Service {
@@ -34,6 +40,8 @@ interface ApiResponse {
 }
 
 export default function HomePage() {
+  const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
@@ -57,61 +65,61 @@ export default function HomePage() {
 
   // Loading stages for the preloader - 20% increments
   const loadingStages: LoadingStage[] = [
-    { progress: 20, status: "Loading core modules...", text: "LOADING" },
-    { progress: 40, status: "Establishing connections...", text: "CONNECTING" },
-    { progress: 60, status: "Syncing global data...", text: "SYNCING" },
-    { progress: 80, status: "Optimizing performance...", text: "OPTIMIZING" },
-    { progress: 100, status: "Welcome to Amoria Tech Global!", text: "COMPLETE" }
+    { progress: 20, status: t.home.loading.loading_modules, text: t.home.loading.loading },
+    { progress: 40, status: t.home.loading.establishing, text: t.home.loading.connecting },
+    { progress: 60, status: t.home.loading.syncing_data, text: t.home.loading.syncing },
+    { progress: 80, status: t.home.loading.optimizing_perf, text: t.home.loading.optimizing },
+    { progress: 100, status: t.home.loading.welcome, text: t.home.loading.complete }
   ];
 
   const originalServices: Service[] = [
     {
-      title: 'Web Development',
-      description: 'Modern, scalable web solutions from landing pages to complex web applications. We build responsive, fast-loading websites that convert visitors into customers.',
+      title: t.home.services.web_dev.title,
+      description: t.home.services.web_dev.description,
       icon: '🌐',
-      features: ['Responsive design', 'E-commerce integration', 'CMS development', 'Performance optimization', 'SEO-ready structure']
+      features: t.home.services.web_dev.features
     },
     {
-      title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications that deliver seamless user experiences across iOS and Android devices.',
+      title: t.home.services.mobile_dev.title,
+      description: t.home.services.mobile_dev.description,
       icon: '📱',
-      features: ['iOS development', 'Android development', 'Cross-platform apps', 'App store deployment', 'Mobile-first design']
+      features: t.home.services.mobile_dev.features
     },
     {
-      title: 'Desktop Applications Development',
-      description: 'Robust desktop software solutions for Windows, macOS, and Linux that streamline business operations and enhance productivity.',
+      title: t.home.services.desktop_dev.title,
+      description: t.home.services.desktop_dev.description,
       icon: '💻',
-      features: ['Cross-platform compatibility', 'Enterprise integration', 'Offline functionality', 'System optimization', 'User-friendly interfaces']
+      features: t.home.services.desktop_dev.features
     },
     {
-      title: 'SEO Optimization',
-      description: 'Data-driven search engine optimization strategies that improve rankings, increase organic traffic, and boost online visibility.',
+      title: t.home.services.seo.title,
+      description: t.home.services.seo.description,
       icon: '🚀',
-      features: ['Technical SEO', 'Content strategy', 'Local optimization', 'Performance audits', 'Analytics tracking']
+      features: t.home.services.seo.features
     },
     {
-      title: 'IT Consultation',
-      description: 'Strategic technology guidance to help businesses make informed decisions about digital transformation and infrastructure planning.',
+      title: t.home.services.consulting.title,
+      description: t.home.services.consulting.description,
       icon: '🔧',
-      features: ['Technology assessment', 'Digital strategy', 'Infrastructure planning', 'Process optimization', 'Risk evaluation']
+      features: t.home.services.consulting.features
     },
     {
-      title: 'Custom Software Solutions',
-      description: 'Bespoke software development tailored to unique business requirements, from automation tools to enterprise management systems.',
+      title: t.home.services.custom_software.title,
+      description: t.home.services.custom_software.description,
       icon: '⚙️',
-      features: ['Business automation', 'System integration', 'Workflow optimization', 'Custom databases', 'Scalable architecture']
+      features: t.home.services.custom_software.features
     },
     {
-      title: 'Cyber Security',
-      description: 'Comprehensive security solutions to protect digital assets, prevent data breaches, and ensure compliance with industry standards.',
+      title: t.home.services.security.title,
+      description: t.home.services.security.description,
       icon: '🔒',
-      features: ['Security assessments', 'Threat protection', 'Data encryption', 'Compliance audits', 'Incident response']
+      features: t.home.services.security.features
     },
     {
-      title: 'Data Analysis',
-      description: 'Transform raw data into actionable business insights through advanced analytics, visualization, and business intelligence solutions.',
+      title: t.home.services.data_analysis.title,
+      description: t.home.services.data_analysis.description,
       icon: '📊',
-      features: ['Business intelligence', 'Data visualization', 'Predictive modeling', 'Performance metrics', 'Decision support']
+      features: t.home.services.data_analysis.features
     }
   ];
 
@@ -155,18 +163,6 @@ export default function HomePage() {
     if (product.category === 'Software') return '💻';
     if (product.category === 'Security') return '🔒';
     return '📦'; // Default icon
-  };
-
-  /* Format price display
-  const formatPrice = (price: string | number): string => {
-    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
-    return numericPrice.toLocaleString();
-  }; */
-
-  // Handle image error
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-    target.style.display = 'none';
   };
 
   // Initial client-side mount
@@ -317,7 +313,7 @@ export default function HomePage() {
   useEffect((): (() => void) | void => {
     if (!mounted || !isClient) return;
 
-    const word = 'Technology';
+    const word = t.home.typing_word;
     let charIndex = 0;
     let isDeleting = false;
 
@@ -325,7 +321,7 @@ export default function HomePage() {
       if (isDeleting) {
         setTypingText(word.substring(0, charIndex - 1));
         charIndex--;
-        
+
         if (charIndex === 0) {
           isDeleting = false;
           setTimeout(typeWriter, 500);
@@ -334,20 +330,20 @@ export default function HomePage() {
       } else {
         setTypingText(word.substring(0, charIndex + 1));
         charIndex++;
-        
+
         if (charIndex === word.length) {
           isDeleting = true;
           setTimeout(typeWriter, 2000);
           return;
         }
       }
-      
+
       setTimeout(typeWriter, isDeleting ? 100 : 150);
     };
 
     const timer: NodeJS.Timeout = setTimeout(typeWriter, 1000);
     return (): void => clearTimeout(timer);
-  }, [mounted, isClient]);
+  }, [mounted, isClient, t.home.typing_word]);
 
   // Navigation functions
   const nextSlide = (): void => {
@@ -398,7 +394,7 @@ export default function HomePage() {
         <div className="preloader-container">
           <div className="preloader-content">
             <div className="loading-info">
-              <div className="loading-text">INITIALIZING</div>
+              <div className="loading-text">{t.home.loading.initializing}</div>
             </div>
           </div>
         </div>
@@ -471,37 +467,36 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="main-content">
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
         <div className="container">
           {/* Hero Heading Section */}
           <section className="hero-heading-section">
             <h1 className="hero-animated-title">
-              Connect the Future with Innovation and Secure{' '}
+              {t.home.hero_title}{' '}
               <span className="typing-container">
                 <span className="typing-text">{typingText}</span>
                 <span className="typing-cursor">|</span>
               </span>
             </h1>
             <p className="hero-animated-subtitle">
-              Empowering businesses with cutting-edge solutions that drive digital transformation 
-              and create lasting value in tomorrow&apos;s connected world.
+              {t.home.hero_subtitle}
             </p>
           </section>
           
           {/* Action Buttons Section */}
           <section className="action-buttons-section">
             <div className="action-buttons-container">
-              <button 
+              <button
                 className="action-btn member-btn"
                 onClick={() => scrollToElement('services-section')}
               >
-                Explore our services
+                {t.home.cta_explore}
               </button>
-              <button 
+              <button
                 className="action-btn started-btn"
                 onClick={() => scrollToElement('services-section')}
               >
-                Contact Sales
+                {t.home.cta_contact}
               </button>
             </div>
           </section>
@@ -510,78 +505,94 @@ export default function HomePage() {
           <section className="products-section">
             <div className="container">
               <div className="products-header">
-                <h2 className="products-title">Our Products</h2>
+                <h2 className="products-title">{t.home.products_title}</h2>
                 <p className="products-description">
-                  Innovative solutions designed to meet your business needs
+                  {t.home.products_subtitle}
                 </p>
               </div>
 
               {/* Loading State */}
               {productsLoading && (
                 <div className="products-loading" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: 'white', fontSize: '1.1rem' }}>Loading products...</p>
+                  <p style={{ color: 'white', fontSize: '1.1rem' }}>{t.home.products_loading}</p>
                 </div>
               )}
 
               {/* Error State */}
               {productsError && (
                 <div className="products-error" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: '#ff6b6b', fontSize: '1.1rem' }}>{productsError}</p>
+                  <p style={{ color: '#ff6b6b', fontSize: '1.1rem' }}>{t.home.products_error}</p>
                 </div>
               )}
 
               {/* No Products State */}
               {!productsLoading && !productsError && products.length === 0 && (
                 <div className="no-products" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: 'white', fontSize: '1.1rem' }}>No products available at the moment.</p>
+                  <p style={{ color: 'white', fontSize: '1.1rem' }}>{t.home.products_empty}</p>
                 </div>
               )}
 
               {/* Products Grid */}
               {!productsLoading && !productsError && products.length > 0 && (
                 <div className="products-grid">
-                  {products.map((product: Product) => (
-                    <div key={product.id} className="product-card">
-                      <div className="product-icon">
-                        <span>{getProductIcon(product)}</span>
-                      </div>
-                      
-                      {/* Product Image */}
-                      {product.image_url && (
-                        <div className="product-image" style={{ margin: '1rem 0' }}>
-                          <img 
-                            src={product.image_url} 
-                            alt={product.name}
-                            style={{ 
-                              width: '100%', 
-                              height: '150px', 
-                              objectFit: 'cover', 
-                              borderRadius: '8px' 
-                            }}
-                            onError={handleImageError}
-                          />
+                  {products.map((product: Product) => {
+                    const isAvailable = product.isAvailable ?? product.is_available ?? false;
+                    const productImage = product.imageUrl ?? product.image_url;
+
+                    return (
+                      <div key={product.id} className="product-card">
+                        <div className="product-badge">
+                          {isAvailable ? t.products.available : t.products.coming_soon}
                         </div>
-                      )}
-                      
-                      <div className="product-content">
-                        <h3 className="product-title">{product.name}</h3>
-                        <p className="product-description">
-                          {product.description}
-                        </p>
-                        
-                        <button 
-                          className="product-price-btn"
-                          disabled={!product.is_available}
-                          style={{
-                            opacity: product.is_available ? 1 : 0.6,
-                            cursor: product.is_available ? 'pointer' : 'not-allowed'
-                          }}
-                        >
-                          {product.is_available ? 'Explore' : 'Coming Soon'}
-                        </button>
+
+                        <div className="product-icon">
+                          {productImage ? (
+                            <Image
+                              src={productImage}
+                              alt={product.name}
+                              width={48}
+                              height={48}
+                              style={{ objectFit: 'contain', borderRadius: '8px' }}
+                            />
+                          ) : (
+                            <span>{getProductIcon(product)}</span>
+                          )}
+                        </div>
+
+                        <div className="product-content">
+                          {product.category && (
+                            <span className="product-category">{product.category}</span>
+                          )}
+                          <h3 className="product-title">{product.name}</h3>
+                          <p className="product-description">{product.description}</p>
+
+                          {isAvailable ? (
+                            product.siteUrl ? (
+                              <a
+                                href={product.siteUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="product-btn visit-btn"
+                              >
+                                {t.products.visit_now}
+                                <i className="bi bi-arrow-right"></i>
+                              </a>
+                            ) : (
+                              <button className="product-btn visit-btn">
+                                {t.products.explore}
+                                <i className="bi bi-arrow-right"></i>
+                              </button>
+                            )
+                          ) : (
+                            <button className="product-btn coming-soon-btn" disabled>
+                              {t.products.coming_soon}
+                              <i className="bi bi-clock"></i>
+                            </button>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -652,9 +663,9 @@ export default function HomePage() {
           {/* Services Section */}
           <section className="services-section" id="services-section">
             <div className="services-header">
-              <h2 className="services-title">Our Services</h2>
+              <h2 className="services-title">{t.home.services_title}</h2>
               <p className="services-description">
-                Discover powerful features designed to transform your business operations
+                {t.home.services_subtitle}
               </p>
             </div>
 

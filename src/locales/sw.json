@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "about": "Kuhusu",
+    "services": "Huduma",
+    "products": "Bidhaa",
+    "news": "Habari",
+    "contact": "Wasiliana",
+    "blog": "Blogu",
+    "donate": "Changia"
+  },
+  "theme": {
+    "light": "Mwanga",
+    "dark": "Giza",
+    "system": "Mfumo"
+  },
+  "language": {
+    "select": "Lugha",
+    "en": "Kiingereza",
+    "fr": "Kifaransa",
+    "es": "Kihispania",
+    "rw": "Kinyarwanda",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "hero_title": "Unganisha Mustakabali na Ubunifu na Usalama",
+    "hero_subtitle": "Kuwezesha biashara na suluhu za kisasa zinazoendesha mabadiliko ya kidijitali na kuunda thamani ya kudumu katika ulimwengu uliounganishwa wa kesho.",
+    "typing_word": "Teknolojia",
+    "cta_explore": "Chunguza huduma zetu",
+    "cta_contact": "Wasiliana na Mauzo",
+    "products_title": "Bidhaa Zetu",
+    "products_subtitle": "Suluhu za ubunifu zilizoundwa kukidhi mahitaji ya biashara yako",
+    "products_loading": "Inapakia bidhaa...",
+    "products_error": "Imeshindwa kupakia bidhaa. Tafadhali jaribu tena baadaye.",
+    "products_empty": "Hakuna bidhaa zinazopatikana kwa sasa.",
+    "services_title": "Huduma Zetu",
+    "services_subtitle": "Gundua vipengele vyenye nguvu vilivyoundwa kubadilisha shughuli za biashara yako",
+    "services": {
+      "web_dev": {
+        "title": "Uundaji wa Wavuti",
+        "description": "Suluhu za wavuti za kisasa na zinazoweza kukua, kutoka kurasa za kutua hadi programu za wavuti ngumu. Tunaunda tovuti zinazojibika na kasi zinazobadilisha wageni kuwa wateja.",
+        "features": ["Muundo unaojibika", "Muunganisho wa e-commerce", "Maendeleo ya CMS", "Uboreshaji wa utendaji", "Muundo ulio tayari kwa SEO"]
+      },
+      "mobile_dev": {
+        "title": "Uundaji wa Programu za Simu",
+        "description": "Programu za simu za asili na za majukwaa mengi zinazotoa uzoefu mzuri wa mtumiaji kwenye vifaa vya iOS na Android.",
+        "features": ["Maendeleo ya iOS", "Maendeleo ya Android", "Programu za majukwaa mengi", "Uwekaji kwenye duka", "Muundo wa simu kwanza"]
+      },
+      "desktop_dev": {
+        "title": "Uundaji wa Programu za Kompyuta",
+        "description": "Suluhu za programu za kompyuta imara kwa Windows, macOS na Linux zinazoboresha shughuli za biashara na kuongeza tija.",
+        "features": ["Uoanifu wa majukwaa mengi", "Muunganisho wa biashara", "Utendaji nje ya mtandao", "Uboreshaji wa mfumo", "Kiolesura rafiki"]
+      },
+      "seo": {
+        "title": "Uboreshaji wa SEO",
+        "description": "Mikakati ya uboreshaji wa injini za utaftaji inayotegemea data inayoboresha nafasi, kuongeza trafiki ya asili, na kuongeza uonekano mtandaoni.",
+        "features": ["SEO ya kiufundi", "Mkakati wa maudhui", "Uboreshaji wa ndani", "Ukaguzi wa utendaji", "Ufuatiliaji wa uchambuzi"]
+      },
+      "consulting": {
+        "title": "Ushauri wa IT",
+        "description": "Mwongozo wa kimkakati wa teknolojia kusaidia biashara kufanya maamuzi sahihi kuhusu mabadiliko ya kidijitali na upangaji wa miundombinu.",
+        "features": ["Tathmini ya teknolojia", "Mkakati wa kidijitali", "Upangaji wa miundombinu", "Uboreshaji wa michakato", "Tathmini ya hatari"]
+      },
+      "custom_software": {
+        "title": "Suluhu za Programu Maalum",
+        "description": "Maendeleo ya programu maalum yaliyoundwa kulingana na mahitaji ya kipekee ya biashara, kutoka zana za otomatiki hadi mifumo ya usimamizi wa biashara.",
+        "features": ["Otomatiki ya biashara", "Muunganisho wa mfumo", "Uboreshaji wa mtiririko", "Hifadhidata maalum", "Usanifu unaoweza kukua"]
+      },
+      "security": {
+        "title": "Usalama wa Mtandao",
+        "description": "Suluhu kamili za usalama kulinda mali za kidijitali, kuzuia uvunjaji wa data, na kuhakikisha kufuata viwango vya tasnia.",
+        "features": ["Tathmini za usalama", "Ulinzi dhidi ya vitisho", "Usimbaji wa data", "Ukaguzi wa kufuata", "Jibu la tukio"]
+      },
+      "data_analysis": {
+        "title": "Uchambuzi wa Data",
+        "description": "Badilisha data ghafi kuwa maarifa ya biashara yanayoweza kutumika kupitia uchambuzi wa hali ya juu, taswira, na suluhu za akili ya biashara.",
+        "features": ["Akili ya biashara", "Taswira ya data", "Uundaji wa utabiri", "Vipimo vya utendaji", "Msaada wa maamuzi"]
+      }
+    },
+    "loading": {
+      "starting": "Kuanzisha mfumo...",
+      "initializing": "KUANZISHA",
+      "loading": "KUPAKIA",
+      "connecting": "KUUNGANISHA",
+      "syncing": "KUSAWAZISHA",
+      "optimizing": "KUBORESHA",
+      "complete": "IMEKAMILIKA",
+      "loading_modules": "Kupakia moduli kuu...",
+      "establishing": "Kuanzisha miunganisho...",
+      "syncing_data": "Kusawazisha data ya kimataifa...",
+      "optimizing_perf": "Kuboresha utendaji...",
+      "welcome": "Karibu Amoria Tech Global!"
+    },
+    "partners_title": "Washirika Wetu",
+    "partners_subtitle": "Tunaaminiwa na mashirika yanayoongoza ulimwenguni kote.",
+    "view_all": "Tazama Zote",
+    "read_more": "Soma Zaidi"
+  },
+  "about": {
+    "title": "Kuhusu Sisi",
+    "subtitle": "Jifunze zaidi kuhusu dhamira yetu, maono na maadili.",
+    "hero_title": "Kuhusu Amoria Global Tech",
+    "hero_description": "Kuongoza mustakabali wa teknolojia kupitia suluhu za ubunifu, ushirikiano wa kimkakati, na kujitolea kusimama kwa ubora wa kidijitali.",
+    "mission_title": "Dhamira Yetu",
+    "mission_text": "Kuwezesha biashara na watu binafsi kwa suluhu za teknolojia za kisasa zinazoendesha mabadiliko ya kidijitali, kuboresha ufanisi wa uendeshaji, na kuunda thamani endelevu katika ulimwengu uliounganishwa.",
+    "vision_title": "Maono Yetu",
+    "vision_text": "Kuwa mshirika wa teknolojia anayeongoza Afrika na zaidi, anayetambuliwa kwa ubunifu, kuaminika, na athari ya mabadiliko katika uundaji wa programu, kompyuta ya wingu, na miundombinu ya kidijitali.",
+    "objectives_title": "Malengo Yetu",
+    "objectives": {
+      "1": "Kutoa suluhu za programu na huduma za ushauri za kiwango cha juu duniani",
+      "2": "Kukuza ushirikishwaji wa kidijitali kupitia majukwaa ya teknolojia yanayoweza kupatikana",
+      "3": "Kujenga ushirikiano wa kimkakati na viongozi wa tasnia",
+      "4": "Kuendelea kubuni katika AI, blockchain, na teknolojia za wingu",
+      "5": "Kudumisha 99.9% ya kuaminika kwa huduma na kuridhika kwa wateja"
+    },
+    "values_title": "Maadili Yetu",
+    "team_title": "Timu Yetu",
+    "team_subtitle": "Kutana na wataalamu wenye shauku nyuma ya suluhu za ubunifu za Amoria Global Tech",
+    "history_title": "Safari Yetu",
+    "history_subtitle": "Safari ya ubunifu na ukuaji.",
+    "culture_title": "Utamaduni na Maadili Yetu",
+    "culture": {
+      "innovation": "Ubunifu Kwanza",
+      "innovation_desc": "Tunakubali teknolojia mpya na kukuza utamaduni wa kujifunza na kujaribu mara kwa mara.",
+      "customer": "Kulenga Mteja",
+      "customer_desc": "Kila suluhu tunayounda imeundwa kwa mafanikio na kuridhika kwa wateja wetu kama lengo kuu.",
+      "quality": "Ubora Bora",
+      "quality_desc": "Tunashikilia viwango vya juu zaidi katika ubora wa msimbo, usalama, na utendaji katika bidhaa zetu zote.",
+      "impact": "Athari ya Kimataifa",
+      "impact_desc": "Suluhu zetu zimeundwa kuwa na athari chanya kwa biashara na jamii duniani kote."
+    },
+    "timeline": {
+      "2020": {
+        "title": "Msingi Wetu",
+        "subtitle": "Ubora wa Teknolojia",
+        "description": "Tulianzishwa kama mtoa suluhu za teknolojia anayeongoza, tukilenga uundaji wa programu za ubunifu na mabadiliko ya kidijitali."
+      },
+      "2021": {
+        "title": "Upanuzi wa Huduma",
+        "subtitle": "Suluhu Kamili",
+        "description": "Tulipanua huduma zetu kujumuisha uchambuzi unaotumia AI, miundombinu ya wingu, na mifumo ya usimamizi wa usalama wa biashara."
+      },
+      "2022": {
+        "title": "Kufikia Kimataifa",
+        "subtitle": "Ushirikiano wa Kimataifa",
+        "description": "Tuliunda ushirikiano wa kimkakati na mashirika makubwa kote Afrika, kutoa msaada wa lugha nyingi na upatikanaji wa 24/7."
+      },
+      "2023": {
+        "title": "Uongozi wa Ubunifu",
+        "subtitle": "Teknolojia ya Kisasa",
+        "description": "Tulianzisha suluhu za blockchain, mifumo ya benki ya simu, na majukwaa ya otomatiki ya akili kwa tasnia mbalimbali."
+      },
+      "2024": {
+        "title": "Maono ya Mustakabali",
+        "subtitle": "Mabadiliko ya Kidijitali",
+        "description": "Kuendelea kuongoza mapinduzi ya kidijitali na AI ya hali ya juu, utafiti wa kompyuta ya quantum, na suluhu za teknolojia endelevu."
+      }
+    },
+    "team": {
+      "moses": {
+        "name": "Moses Mirarayi",
+        "role": "Mkurugenzi wa Uendeshaji",
+        "description": "Kiongozi wa ubora wa uendeshaji anayehakikisha utoaji wa miradi bila matatizo na kuridhika kwa wateja."
+      },
+      "joseph": {
+        "name": "Joseph Maranatha",
+        "role": "Mkurugenzi Mkuu wa Teknolojia & Mtengenezaji wa Full-Stack",
+        "description": "Msanifu wa programu mtaalamu anayebobea katika AI, blockchain, uundaji wa frontend na backend, na suluhu za miundombinu ya wingu."
+      },
+      "pacific": {
+        "name": "Pacific Uwitonze",
+        "role": "Mbuni wa UI/UX",
+        "description": "Anaunda wireframes, prototypes, na miundo ya hali ya juu inayolenga uzoefu wa mtumiaji na urahisi wa kutumia."
+      },
+      "jackson": {
+        "name": "Jackson Mugwiza",
+        "role": "Mchambuzi wa Usalama wa Mtandao",
+        "description": "Anafuatilia mifumo dhidi ya vitisho, anajibu uvunjaji, na kuimarisha ulinzi wa kidijitali."
+      }
+    },
+    "cta_title": "Uko Tayari Kubadilisha Biashara Yako?",
+    "cta_description": "Jiunge na mamia ya wateja walioridhika wanaomwamini Amoria Global Tech kwa safari yao ya mabadiliko ya kidijitali.",
+    "cta_services": "Chunguza Huduma Zetu",
+    "cta_products": "Tazama Bidhaa Zetu"
+  },
+  "services": {
+    "title": "Huduma Zetu",
+    "subtitle": "Huduma za teknolojia za kitaalamu zilizoundwa kulingana na mahitaji yako.",
+    "web_dev": "Uundaji wa Wavuti",
+    "web_dev_desc": "Suluhu za wavuti za kisasa na zinazoweza kukua, kutoka kurasa za kutua hadi programu za wavuti ngumu.",
+    "mobile_dev": "Uundaji wa Programu za Simu",
+    "mobile_dev_desc": "Programu za simu za asili na za majukwaa mengi kwa iOS na Android.",
+    "desktop_dev": "Programu za Kompyuta",
+    "desktop_dev_desc": "Suluhu za programu imara kwa Windows, macOS na Linux.",
+    "seo": "Uboreshaji wa SEO",
+    "seo_desc": "Mikakati ya SEO inayotegemea data kuboresha nafasi na uonekano.",
+    "consulting": "Ushauri wa IT",
+    "consulting_desc": "Mwongozo wa teknolojia wa kimkakati kwa mabadiliko ya kidijitali.",
+    "custom_software": "Programu Maalum",
+    "custom_software_desc": "Programu iliyoundwa kulingana na mahitaji ya kipekee ya biashara yako.",
+    "security": "Usalama wa Mtandao",
+    "security_desc": "Suluhu kamili za usalama kulinda mali zako za kidijitali.",
+    "data_analysis": "Uchambuzi wa Data",
+    "data_analysis_desc": "Badilisha data ghafi kuwa maarifa ya biashara yanayoweza kutumika.",
+    "learn_more": "Jifunze Zaidi",
+    "get_quote": "Pata Bei"
+  },
+  "products": {
+    "title": "Bidhaa Zetu",
+    "subtitle": "Gundua suluhu zetu za ubunifu zilizoundwa kubadilisha biashara yako.",
+    "visit_now": "Tembelea Sasa",
+    "explore": "Chunguza",
+    "coming_soon": "Inakuja Hivi Karibuni",
+    "available": "Inapatikana",
+    "per_month": "/mwezi",
+    "features": "Vipengele",
+    "all_categories": "Zote",
+    "filter_by": "Chuja kwa"
+  },
+  "news": {
+    "title": "Habari na Masasisho",
+    "subtitle": "Baki na habari za matangazo yetu ya hivi karibuni, maarifa na habari za kampuni.",
+    "read_more": "Soma Zaidi",
+    "published_on": "Imechapishwa",
+    "by_author": "Na",
+    "views": "maoni",
+    "share": "Shiriki",
+    "related": "Makala Zinazohusiana",
+    "categories": "Kategoria",
+    "all": "Zote",
+    "search_placeholder": "Tafuta habari...",
+    "no_results": "Hakuna habari zilizopatikana.",
+    "load_more": "Pakia Zaidi"
+  },
+  "contact": {
+    "title": "Wasiliana Nasi",
+    "subtitle": "Wasiliana nasi. Tungependa kusikia kutoka kwako.",
+    "form_title": "Tutumie Ujumbe",
+    "name": "Jina Kamili",
+    "name_placeholder": "Ingiza jina lako",
+    "email": "Anwani ya Barua Pepe",
+    "email_placeholder": "Ingiza barua pepe yako",
+    "phone": "Nambari ya Simu",
+    "phone_placeholder": "Ingiza simu yako (hiari)",
+    "message": "Ujumbe",
+    "message_placeholder": "Andika ujumbe wako hapa...",
+    "submit": "Tuma Ujumbe",
+    "sending": "Inatuma...",
+    "success": "Asante! Ujumbe wako umetumwa kwa mafanikio.",
+    "error": "Kuna hitilafu. Tafadhali jaribu tena.",
+    "address": "Anwani",
+    "phone_label": "Simu",
+    "email_label": "Barua Pepe",
+    "working_hours": "Saa za Kazi",
+    "working_hours_text": "Jumatatu - Ijumaa: 9:00 AM - 6:00 PM"
+  },
+  "footer": {
+    "useful_links": "Viungo Muhimu",
+    "location": "Mahali Tulipo",
+    "contact_us": "Wasiliana Nasi",
+    "follow_us": "Tufuate",
+    "copyright": "Haki zote zimehifadhiwa.",
+    "privacy": "Sera ya Faragha",
+    "terms": "Masharti ya Huduma"
+  },
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Kuna hitilafu",
+    "retry": "Jaribu Tena",
+    "close": "Funga",
+    "menu": "Menyu",
+    "back": "Rudi",
+    "next": "Inayofuata",
+    "previous": "Iliyotangulia",
+    "search": "Tafuta",
+    "no_data": "Hakuna data inapatikana"
+  },
+  "blog": {
+    "title": "Blogu",
+    "subtitle": "Maarifa na Makala",
+    "description": "Chunguza mawazo yetu ya hivi karibuni kuhusu teknolojia, maendeleo, na ubunifu wa kidijitali.",
+    "featured": "Iliyoangaziwa",
+    "all_posts": "Makala Zote",
+    "min_read": "dakika za kusoma",
+    "by": "Na",
+    "no_posts": "Hakuna makala zilizopatikana",
+    "check_back": "Rudi baadaye kwa maudhui mapya.",
+    "categories": {
+      "technology": "Teknolojia",
+      "development": "Maendeleo",
+      "design": "Muundo",
+      "business": "Biashara",
+      "tutorials": "Mafunzo"
+    },
+    "cta_title": "Una Mada Akilini?",
+    "cta_description": "Tungependa kusikia mawazo yako. Wasiliana nasi kupendekeza mada au kushirikiana katika maudhui.",
+    "cta_button": "Wasiliana Nasi"
+  },
+  "donate": {
+    "title": "Changia",
+    "badge": "Unga Mkono Dhamira Yetu",
+    "hero_title": "Fanya Tofauti Leo",
+    "hero_description": "Mchango wako unatusaidia kuwezesha jamii kupitia teknolojia, kufunza kizazi kijacho cha wasanidi programu, na kuendesha mabadiliko ya kidijitali kote Afrika.",
+    "choose_impact": "Chagua Kiwango Chako cha Athari",
+    "select_tier": "Chagua kiwango cha mchango kinachofanana na msaada wako.",
+    "tiers": {
+      "supporter": {
+        "name": "Muungaji",
+        "description": "Unga mkono dhamira yetu ya kuwezesha jamii kupitia teknolojia.",
+        "benefits": ["Barua pepe ya shukrani", "Jina kwenye ukurasa wa waunga mkono", "Masasisho ya jarida"]
+      },
+      "contributor": {
+        "name": "Mchangiaji",
+        "description": "Tusaidie kupanua wigo wetu na kuathiri maisha zaidi.",
+        "benefits": ["Faida zote za Muungaji", "Ripoti ya athari ya robo mwaka", "Upatikanaji wa mapema wa matukio"]
+      },
+      "champion": {
+        "name": "Shujaa",
+        "description": "Kuwa shujaa wa mabadiliko ya kidijitali Afrika.",
+        "benefits": ["Faida zote za Mchangiaji", "Semina za wavuti za kipekee", "Utambuzi kwenye tovuti", "Cheti cha athari cha kila mwaka"]
+      },
+      "visionary": {
+        "name": "Mwenye Maono",
+        "description": "Ongoza njia katika kuunda mabadiliko ya teknolojia ya kudumu.",
+        "benefits": ["Faida zote za Shujaa", "Masasisho ya moja kwa moja ya mradi", "Fursa ya kuzungumza", "Ripoti ya athari maalum", "Upatikanaji wa VIP wa matukio"]
+      }
+    },
+    "most_popular": "Maarufu Zaidi",
+    "donate_btn": "Changia",
+    "custom_title": "Kiasi Maalum",
+    "custom_description": "Unataka kutoa kiasi tofauti? Ingiza mchango wako maalum hapa chini.",
+    "enter_amount": "Ingiza kiasi",
+    "how_helps_title": "Jinsi Mchango Wako Unavyosaidia",
+    "how_helps": {
+      "training": {
+        "title": "Mafunzo ya Tech",
+        "description": "Fadhili bootcamp za msimbo na warsha kwa wasanidi wanaotaka."
+      },
+      "infrastructure": {
+        "title": "Miundombinu",
+        "description": "Jenga maabara ya kompyuta na vituo vya kujifunza katika maeneo yaliyopuuzwa."
+      },
+      "mentorship": {
+        "title": "Ushauri",
+        "description": "Unganisha wanafunzi na wataalamu wa tasnia kwa mwongozo."
+      },
+      "access": {
+        "title": "Upatikanaji wa Kidijitali",
+        "description": "Toa muunganisho wa intaneti na zana za kidijitali kwa jamii."
+      }
+    },
+    "trust_title": "Uaminifu Wako Una Umuhimu",
+    "trust_description": "Tumejitolea kwa uwazi. Kila mchango unafuatiliwa na kuripotiwa kuhakikisha athari ya juu. Utapata masasisho ya mara kwa mara kuhusu jinsi mchango wako unavyofanya tofauti.",
+    "trust_badges": {
+      "secure": "Malipo Salama",
+      "tax": "Inakubalika kwa Kodi",
+      "reports": "Ripoti za Mara kwa Mara"
+    },
+    "impact_stats": {
+      "students": "Wanafunzi Waliofunzwa",
+      "projects": "Miradi Iliyotekelezwa",
+      "communities": "Jamii Zilizofikia",
+      "success": "Kiwango cha Mafanikio"
+    },
+    "cta_title": "Una Maswali?",
+    "cta_description": "Tuko hapa kusaidia. Wasiliana nasi kujifunza zaidi kuhusu programu zetu na athari.",
+    "cta_button": "Wasiliana Nasi",
+    "thank_you": "Asante kwa mchango wako wa ukarimu!"
+  }
+}

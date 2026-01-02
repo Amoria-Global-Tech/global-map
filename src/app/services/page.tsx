@@ -1,59 +1,64 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Chatbot from '../components/Chatbot';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ServicesPage() {
- 
+  const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
+
   const services = [
     {
-      title: 'Web Development',
-      description: 'Modern, scalable web solutions from landing pages to complex web applications. We build responsive, fast-loading websites that convert visitors into customers.',
-      icon: '🌐',
+      title: t.services.web_dev,
+      description: t.services.web_dev_desc,
+      icon: 'bi-globe',
       features: ['Responsive design', 'E-commerce integration', 'CMS development', 'Performance optimization', 'SEO-ready structure']
     },
     {
-      title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications that deliver seamless user experiences across iOS and Android devices.',
-      icon: '📱',
+      title: t.services.mobile_dev,
+      description: t.services.mobile_dev_desc,
+      icon: 'bi-phone',
       features: ['iOS development', 'Android development', 'Cross-platform apps', 'App store deployment', 'Mobile-first design']
     },
     {
-      title: 'Desktop Applications Development',
-      description: 'Robust desktop software solutions for Windows, macOS, and Linux that streamline business operations and enhance productivity.',
-      icon: '💻',
+      title: t.services.desktop_dev,
+      description: t.services.desktop_dev_desc,
+      icon: 'bi-laptop',
       features: ['Cross-platform compatibility', 'Enterprise integration', 'Offline functionality', 'System optimization', 'User-friendly interfaces']
     },
     {
-      title: 'SEO Optimization',
-      description: 'Data-driven search engine optimization strategies that improve rankings, increase organic traffic, and boost online visibility.',
-      icon: '🚀',
+      title: t.services.seo,
+      description: t.services.seo_desc,
+      icon: 'bi-graph-up-arrow',
       features: ['Technical SEO', 'Content strategy', 'Local optimization', 'Performance audits', 'Analytics tracking']
     },
     {
-      title: 'IT Consultation',
-      description: 'Strategic technology guidance to help businesses make informed decisions about digital transformation and infrastructure planning.',
-      icon: '🔧',
+      title: t.services.consulting,
+      description: t.services.consulting_desc,
+      icon: 'bi-tools',
       features: ['Technology assessment', 'Digital strategy', 'Infrastructure planning', 'Process optimization', 'Risk evaluation']
     },
     {
-      title: 'Custom Software Solutions',
-      description: 'Bespoke software development tailored to unique business requirements, from automation tools to enterprise management systems.',
-      icon: '⚙️',
+      title: t.services.custom_software,
+      description: t.services.custom_software_desc,
+      icon: 'bi-gear',
       features: ['Business automation', 'System integration', 'Workflow optimization', 'Custom databases', 'Scalable architecture']
     },
     {
-      title: 'Cyber Security',
-      description: 'Comprehensive security solutions to protect digital assets, prevent data breaches, and ensure compliance with industry standards.',
-      icon: '🔒',
+      title: t.services.security,
+      description: t.services.security_desc,
+      icon: 'bi-shield-lock',
       features: ['Security assessments', 'Threat protection', 'Data encryption', 'Compliance audits', 'Incident response']
     },
     {
-      title: 'Data Analysis',
-      description: 'Transform raw data into actionable business insights through advanced analytics, visualization, and business intelligence solutions.',
-      icon: '📊',
+      title: t.services.data_analysis,
+      description: t.services.data_analysis_desc,
+      icon: 'bi-bar-chart-line',
       features: ['Business intelligence', 'Data visualization', 'Predictive modeling', 'Performance metrics', 'Decision support']
     }
   ];
@@ -61,21 +66,15 @@ export default function ServicesPage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Handle mounting to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Show/hide scroll-to-top button
   useEffect(() => {
     if (!mounted) return;
 
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 300);
     };
 
     handleScroll();
@@ -83,86 +82,70 @@ export default function ServicesPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mounted]);
 
-  // Scroll to top function
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Don't render until mounted
   if (!mounted) {
     return <div></div>;
   }
 
   return (
     <>
-     <Navbar />
+      <Navbar />
 
-      {/* Main Content */}
-      <main className="main-content">
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
         <div className="container">
           {/* Hero Section */}
-          <section className="hero-section">
-            <h1 className="hero-title text-xl font-bold text-white/80">Our Services</h1>
-            <p className="hero-description">
-              Comprehensive solutions designed to transform your business operations 
-              and drive growth through innovative technology.
-            </p>
-          </section>
-          {/* Services Grid */}
-          <section className="services-grid-section">
-            <div className="services-grid">
-              {services.map((service, index) => (
-                <div key={index} className="service-detail-card">
-                  <div className="service-detail-header">
-                    <div className="service-detail-icon">
-                      <span>{service.icon}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="service-detail-content">
-                    <h3 className="service-detail-title">{service.title}</h3>
-                    <p className="service-detail-description">{service.description}</p>
-                    
-                    <ul className="service-detail-features">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="service-detail-feature">
-                          <span className="feature-check">✓</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <button className="service-cta-button">
-                      Get Started →
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <section className="page-hero">
+            <h1 className="page-hero-title">{t.services.title}</h1>
+            <p className="page-hero-description">{t.services.subtitle}</p>
           </section>
 
-          {/* Call to Action Section */}
-          <section className="cta-section">
-            <div className="cta-content">
-              <h2 className="cta-title">Ready to Transform Your Business?</h2>
-              <p className="cta-description">
-                Get started with our comprehensive suite of services today and see the difference 
-                advanced technology can make for your business.
-              </p>
-              <div className="cta-buttons">
-                <button className="cta-secondary-btn">Schedule Demo</button>
+          {/* Services Grid */}
+          <section className="services-page-grid">
+            {services.map((service, index) => (
+              <div key={index} className="service-page-card">
+                <div className="service-page-icon">
+                  <i className={`bi ${service.icon}`}></i>
+                </div>
+
+                <div className="service-page-content">
+                  <h3 className="service-page-title">{service.title}</h3>
+                  <p className="service-page-description">{service.description}</p>
+
+                  <ul className="service-page-features">
+                    {service.features.map((feature, i) => (
+                      <li key={i}>
+                        <i className="bi bi-check-circle"></i>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link href="/contact" className="service-page-btn">
+                    {t.services.get_quote}
+                    <i className="bi bi-arrow-right"></i>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
+          </section>
+
+          {/* CTA Section */}
+          <section className="page-cta">
+            <h2 className="page-cta-title">{t.home.hero_title}</h2>
+            <p className="page-cta-description">{t.home.hero_subtitle}</p>
+            <Link href="/contact" className="page-cta-btn">
+              {t.contact.title}
+              <i className="bi bi-arrow-right"></i>
+            </Link>
           </section>
         </div>
       </main>
 
-      {/* Scroll to Top Button */}
       {mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"
@@ -171,10 +154,8 @@ export default function ServicesPage() {
         </button>
       )}
 
-      {/* Chatbot Widget */}
       <Chatbot />
-
-     <Footer />
+      <Footer />
     </>
   );
 }

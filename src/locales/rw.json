@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Ahabanza",
+    "about": "Abo turibo",
+    "services": "Serivisi",
+    "products": "Ibicuruzwa",
+    "news": "Amakuru",
+    "contact": "Twandikire",
+    "blog": "Inyandiko",
+    "donate": "Tanga impano"
+  },
+  "theme": {
+    "light": "Urumuri",
+    "dark": "Umwijima",
+    "system": "Sisitemu"
+  },
+  "language": {
+    "select": "Ururimi",
+    "en": "Icyongereza",
+    "fr": "Igifaransa",
+    "es": "Icyesipanyoli",
+    "rw": "Ikinyarwanda",
+    "sw": "Igiswahili"
+  },
+  "home": {
+    "hero_title": "Huza ejo hazaza n'ikoranabuhanga rishya kandi rifite umutekano",
+    "hero_subtitle": "Duha imbaraga ibigo hamwe n'ibisubizo bigezweho bituma habaho impinduka za digitale kandi bikora agaciro karambye mu isi ihuza ya ejo hazaza.",
+    "typing_word": "Ikoranabuhanga",
+    "cta_explore": "Shakisha serivisi zacu",
+    "cta_contact": "Tuvugishe ku gicuruzwa",
+    "products_title": "Ibicuruzwa Byacu",
+    "products_subtitle": "Ibisubizo bishya byagenewe guhura n'ibyo ubucuruzi bwawe bukeneye",
+    "products_loading": "Gutegura ibicuruzwa...",
+    "products_error": "Byanze gutegura ibicuruzwa. Nyamuneka ongera ugerageze nyuma.",
+    "products_empty": "Nta bicuruzwa birahari muri iki gihe.",
+    "services_title": "Serivisi Zacu",
+    "services_subtitle": "Menya ibintu by'imbaraga byagenwe guhindura ibikorwa by'ubucuruzi bwawe",
+    "services": {
+      "web_dev": {
+        "title": "Guteza Imbere Urubuga",
+        "description": "Ibisubizo bya web bigezweho kandi bikura, kuva ku mpapuro z'itangira kugeza ku mapuroguramu ya web akomeye. Dukora imbuga zisubiza vuba kandi zoroha zihindura abasura abaguzi.",
+        "features": ["Imigenzuro isubiza", "Guhuza e-commerce", "Guteza imbere CMS", "Kunoza imikorere", "Imiterere yiteguye SEO"]
+      },
+      "mobile_dev": {
+        "title": "Guteza Imbere Porogaramu za Telefone",
+        "description": "Porogaramu za telefone zikora ku buryo butandukanye zitanga uburambe bwiza ku bikoresho bya iOS na Android.",
+        "features": ["Guteza imbere iOS", "Guteza imbere Android", "Porogaramu zikora ku buryo butandukanye", "Gushyira kuri stores", "Imigenzuro ya mobile ya mbere"]
+      },
+      "desktop_dev": {
+        "title": "Guteza Imbere Porogaramu za Mudasobwa",
+        "description": "Ibisubizo by'ikoranabuhanga bikomeye kuri Windows, macOS na Linux bituma ibikorwa by'ubucuruzi bikoreshwa neza kandi bitera imbere umusaruro.",
+        "features": ["Kuba ku buryo butandukanye", "Guhuza n'ibigo", "Ibikorwa bidakeneye interineti", "Kunoza sisitemu", "Imigenzuro yoroha"]
+      },
+      "seo": {
+        "title": "Kunoza SEO",
+        "description": "Ingamba za kunoza injin zo gushakisha zishingiye ku mibare zituma urwego ruzamuka, umurongo w'abantu ugwira, kandi kuboneka ku rubuga rwisumbuye.",
+        "features": ["SEO ya tekiniki", "Ingamba z'ibikubiye", "Kunoza kw'ahantu", "Igenzura ry'imikorere", "Gukurikirana isesengura"]
+      },
+      "consulting": {
+        "title": "Ubujyanama bwa IT",
+        "description": "Ubuyobozi bwa tekinoloji bw'ingamba gufasha ibigo gufata ibyemezo byizewe ku mpinduka za digitale no gutegura ibikorwa remezo.",
+        "features": ["Kugenzura tekinoloji", "Ingamba za digitale", "Gutegura ibikorwa remezo", "Kunoza inzira", "Kugenzura ingaruka"]
+      },
+      "custom_software": {
+        "title": "Ibisubizo bya Porogaramu Zihariye",
+        "description": "Guteza imbere porogaramu zihariye zihuje n'ibyo ubucuruzi bukeneye by'umwihariko, kuva ku bikoresho bya automatisation kugeza ku sisitemu zo gucunga ibigo.",
+        "features": ["Automatisation y'ubucuruzi", "Guhuza sisitemu", "Kunoza inzira z'akazi", "Ububiko bw'amakuru bihariye", "Imigenzuro ikura"]
+      },
+      "security": {
+        "title": "Umutekano wa Siyansi",
+        "description": "Ibisubizo by'umutekano byuzuye kurinda umutungo wa digitale, kwirinda amakuru gutakara, no kwemeza amategeko y'inganda.",
+        "features": ["Igenzura ry'umutekano", "Kurinda byago", "Gushyira ibanga ku makuru", "Igenzura ry'amategeko", "Gusubiza ibyabaye"]
+      },
+      "data_analysis": {
+        "title": "Isesengura ry'Amakuru",
+        "description": "Hindura amakuru meza mu bisubizo by'ubucuruzi bishobora gukoreshwa binyuze mu isesengura rigezweho, kwerekana, n'ibisubizo by'ubwenge bw'ubucuruzi.",
+        "features": ["Ubwenge bw'ubucuruzi", "Kwerekana amakuru", "Guteganya ibizaza", "Igipimo cy'imikorere", "Gufasha gufata ibyemezo"]
+      }
+    },
+    "loading": {
+      "starting": "Gutangira sisitemu...",
+      "initializing": "GUTANGIRA",
+      "loading": "GUTEGURA",
+      "connecting": "GUHUZA",
+      "syncing": "GUHUZA AMAKURU",
+      "optimizing": "KUNOZA",
+      "complete": "BYARANGIYE",
+      "loading_modules": "Gutegura modules z'ibanze...",
+      "establishing": "Gushyiraho ubuhuza...",
+      "syncing_data": "Guhuza amakuru y'isi yose...",
+      "optimizing_perf": "Kunoza imikorere...",
+      "welcome": "Murakaza neza kuri Amoria Tech Global!"
+    },
+    "partners_title": "Abafatanyabikorwa Bacu",
+    "partners_subtitle": "Baizezwe n'ibigo bikomeye ku isi hose.",
+    "view_all": "Reba byose",
+    "read_more": "Soma byinshi"
+  },
+  "about": {
+    "title": "Abo Turibo",
+    "subtitle": "Menya byinshi ku ntego, icyerekezo n'indangagaciro byacu.",
+    "hero_title": "Abo Amoria Global Tech",
+    "hero_description": "Gutangira ejo hazaza hya tekinoloji binyuze mu bisubizo bishya, ubufatanye bw'ingamba, n'imyitwarire idahinduka yo kuzuza ibyiza bya digitale.",
+    "mission_title": "Intego Yacu",
+    "mission_text": "Guha ibigo n'abantu imbaraga binyuze mu bisubizo bya tekinoloji bigezweho bituma habaho impinduka za digitale, gutera imbere imikorere, no gushyiraho agaciro guhoraho mu isi ihuza.",
+    "vision_title": "Icyerekezo Cyacu",
+    "vision_text": "Kuba umufatanyabikorwa wa tekinoloji w'ibanze muri Afurika no hanze yayo, uzwi ku bushakashatsi, kwizerwa, n'ingaruka zihinduye mu guteza imbere software, cloud computing, n'ibikorwa remezo bya digitale.",
+    "objectives_title": "Intego Zacu",
+    "objectives": {
+      "1": "Gutanga ibisubizo bya software n'ubujyanama byiza cyane ku isi",
+      "2": "Gushyigikira kuboneka kwa digitale binyuze mu mbuga za tekinoloji ziboneka",
+      "3": "Kubaka ubufatanye bw'ingamba n'abayobozi b'inganda",
+      "4": "Gukomeza gushaka ibishya mu AI, blockchain, na tekinoloji ya cloud",
+      "5": "Kubungabunga 99.9% ubushobozi bwo gutanga serivisi n'ibyishimo by'abakiriya"
+    },
+    "values_title": "Indangagaciro Zacu",
+    "team_title": "Itsinda Ryacu",
+    "team_subtitle": "Menya abantu b'umwete bari inyuma y'ibisubizo bishya bya Amoria Global Tech",
+    "history_title": "Urugendo Rwacu",
+    "history_subtitle": "Urugendo rw'ubushakashatsi n'iterambere.",
+    "culture_title": "Umuco n'Indangagaciro Byacu",
+    "culture": {
+      "innovation": "Ubushakashatsi Bwa Mbere",
+      "innovation_desc": "Twakira tekinoloji nshya kandi dushyigikira umuco wo kwiga no kugerageza uhoraho.",
+      "customer": "Gushyira Abakiriya Imbere",
+      "customer_desc": "Buri gisubizo dukora cyagenwe n'intsinzi n'ibyishimo by'abakiriya bacu nk'intego y'ibanze.",
+      "quality": "Ubwiza Bwiza",
+      "quality_desc": "Tubika amahame yo hejuru mu bwiza bwa kode, umutekano, n'imikorere mu bicuruzwa byacu byose.",
+      "impact": "Ingaruka ku Isi",
+      "impact_desc": "Ibisubizo byacu byagenwe kugira ingaruka nziza ku bigo n'imiryango ku isi hose."
+    },
+    "timeline": {
+      "2020": {
+        "title": "Ishingiro Ryacu",
+        "subtitle": "Ubwiza bwa Tekinoloji",
+        "description": "Yashyizweho nk'umutanga ibisubizo bya tekinoloji w'ibanze, yibanda ku guteza imbere software bishya n'impinduka za digitale."
+      },
+      "2021": {
+        "title": "Kwagura Serivisi",
+        "subtitle": "Ibisubizo Byuzuye",
+        "description": "Twagura serivisi zacu kugira ngo zirimo isesengura rishingiye kuri AI, ibikorwa remezo bya cloud, na sisitemu yo gucunga umutekano w'ibigo."
+      },
+      "2022": {
+        "title": "Kugera ku Isi",
+        "subtitle": "Ubufatanye bw'Amahanga",
+        "description": "Twashyize ubufatanye bw'ingamba n'ibigo bikomeye muri Afurika yose, gutanga ubufasha bw'indimi nyinshi n'ubushobozi bwo gufasha 24/7."
+      },
+      "2023": {
+        "title": "Ubuyobozi mu Bushakashatsi",
+        "subtitle": "Tekinoloji Igezweho",
+        "description": "Twatangiye ibisubizo bya blockchain, sisitemu za banki ya mobile, n'imbuga z'automatisation z'ubwenge ku nganda zitandukanye."
+      },
+      "2024": {
+        "title": "Icyerekezo cy'Ejo Hazaza",
+        "subtitle": "Impinduka za Digitale",
+        "description": "Gukomeza kuyobora impinduka za digitale hamwe na AI igezweho, ubushakashatsi bwa quantum computing, n'ibisubizo bya tekinoloji irambye."
+      }
+    },
+    "team": {
+      "moses": {
+        "name": "Moses Mirarayi",
+        "role": "Umuyobozi w'Ibikorwa",
+        "description": "Umuyobozi w'ubwiza mu mikorere ureba ko imishinga yoherezwa neza n'ibyishimo by'abakiriya."
+      },
+      "joseph": {
+        "name": "Joseph Maranatha",
+        "role": "Umuyobozi Mukuru wa Tekinoloji & Umuhanzi wa Full-Stack",
+        "description": "Umuhanzi wa software w'umuhanga wihugiye mu AI, blockchain, guteza imbere frontend na backend, n'ibisubizo bya cloud infrastructure."
+      },
+      "pacific": {
+        "name": "Pacific Uwitonze",
+        "role": "Umuhanzi wa UI/UX",
+        "description": "Akora wireframes, prototypes, na designs z'ubwiza bwinshi zishingiye ku burambe bw'umukoresha n'ubworozi."
+      },
+      "jackson": {
+        "name": "Jackson Mugwiza",
+        "role": "Umusesengura w'Umutekano wa Siyansi",
+        "description": "Areba sisitemu ku byago, asubiza ibyabaye, kandi ashimangira ibirinda digitale."
+      }
+    },
+    "cta_title": "Witeguye Guhindura Ubucuruzi Bwawe?",
+    "cta_description": "Injira mu bakiriya amagana bishimiye bizera Amoria Global Tech ku rugendo rwabo rwo guhindura digitale.",
+    "cta_services": "Shakisha Serivisi Zacu",
+    "cta_products": "Reba Ibicuruzwa Byacu"
+  },
+  "services": {
+    "title": "Serivisi Zacu",
+    "subtitle": "Serivisi za tekinoloji z'umwuga zihuje n'ibyo ukeneye.",
+    "web_dev": "Guteza imbere Urubuga",
+    "web_dev_desc": "Ibisubizo bya web bigezweho kandi bikura, kuva ku mpapuro z'itangira kugeza ku mapuroguramu ya web akomeye.",
+    "mobile_dev": "Guteza imbere Porogaramu za Telefone",
+    "mobile_dev_desc": "Porogaramu za telefone zikora ku buryo butandukanye kuri iOS na Android.",
+    "desktop_dev": "Porogaramu za Mudasobwa",
+    "desktop_dev_desc": "Ibisubizo by'ikoranabuhanga bikomeye kuri Windows, macOS na Linux.",
+    "seo": "Kunoza SEO",
+    "seo_desc": "Ingamba za SEO zishingiye ku mibare zo kunoza aho ugaragara.",
+    "consulting": "Ubujyanama bwa IT",
+    "consulting_desc": "Ubuyobozi bwa tekinoloji bw'ingamba ku mpinduka za digitale.",
+    "custom_software": "Porogaramu Zihariye",
+    "custom_software_desc": "Porogaramu zihariye zihuje n'ibyo ubucuruzi bwawe bukeneye by'umwihariko.",
+    "security": "Umutekano wa Siyansi",
+    "security_desc": "Ibisubizo by'umutekano byuzuye kurinda umutungo wawe wa digitale.",
+    "data_analysis": "Isesengura ry'Amakuru",
+    "data_analysis_desc": "Hindura amakuru meza mu bisubizo by'ubucuruzi bishobora gukoreshwa.",
+    "learn_more": "Menya byinshi",
+    "get_quote": "Saba igiciro"
+  },
+  "products": {
+    "title": "Ibicuruzwa Byacu",
+    "subtitle": "Menya ibisubizo byacu bishya byagenewe guhindura ubucuruzi bwawe.",
+    "visit_now": "Sura nonaha",
+    "explore": "Shakisha",
+    "coming_soon": "Biraza vuba",
+    "available": "Birahari",
+    "per_month": "/ukwezi",
+    "features": "Ibintu birimo",
+    "all_categories": "Byose",
+    "filter_by": "Shungura ku"
+  },
+  "news": {
+    "title": "Amakuru n'Ivugururwa",
+    "subtitle": "Guma wumva amakuru mashya y'amatangazo, ibitekerezo n'amakuru y'ikigo.",
+    "read_more": "Soma byinshi",
+    "published_on": "Byatanzwe ku",
+    "by_author": "Na",
+    "views": "abarebaga",
+    "share": "Sangiza",
+    "related": "Inyandiko Zijyanye",
+    "categories": "Ibyiciro",
+    "all": "Byose",
+    "search_placeholder": "Shakisha amakuru...",
+    "no_results": "Nta makuru yabonetse.",
+    "load_more": "Shyira ibindi"
+  },
+  "contact": {
+    "title": "Twandikire",
+    "subtitle": "Tuvugishe. Twakwishimira kukumva.",
+    "form_title": "Dutumire Ubutumwa",
+    "name": "Izina Ryuzuye",
+    "name_placeholder": "Andika izina ryawe",
+    "email": "Imeyili",
+    "email_placeholder": "Andika imeyili yawe",
+    "phone": "Telefone",
+    "phone_placeholder": "Andika telefone yawe (ntabwo bikenewe)",
+    "message": "Ubutumwa",
+    "message_placeholder": "Andika ubutumwa bwawe hano...",
+    "submit": "Ohereza Ubutumwa",
+    "sending": "Birimo koherezwa...",
+    "success": "Murakoze! Ubutumwa bwawe bwoherejwe neza.",
+    "error": "Habaye ikibazo. Gerageza nanone.",
+    "address": "Aderesi",
+    "phone_label": "Telefone",
+    "email_label": "Imeyili",
+    "working_hours": "Amasaha y'Akazi",
+    "working_hours_text": "Kuwa Mbere - Kuwa Gatanu: 9:00 - 18:00"
+  },
+  "footer": {
+    "useful_links": "Aho Wakanda",
+    "location": "Aho Duherereye",
+    "contact_us": "Twandikire",
+    "follow_us": "Dukurikire",
+    "copyright": "Uburenganzira bwose bwabitswe.",
+    "privacy": "Politiki y'Ibanga",
+    "terms": "Amategeko y'Ikoreshwa"
+  },
+  "common": {
+    "loading": "Gutegereza...",
+    "error": "Habaye ikibazo",
+    "retry": "Ongera ugerageze",
+    "close": "Funga",
+    "menu": "Ibikubiyemo",
+    "back": "Subira inyuma",
+    "next": "Ibikurikira",
+    "previous": "Ibibanziriza",
+    "search": "Shakisha",
+    "no_data": "Nta makuru ahari"
+  },
+  "blog": {
+    "title": "Inyandiko",
+    "subtitle": "Ibitekerezo n'Inyandiko",
+    "description": "Shakisha ibitekerezo byacu bishya ku ikoranabuhanga, guteza imbere, n'ubushakashatsi bwa digitale.",
+    "featured": "Ibyashyizwe Imbere",
+    "all_posts": "Inyandiko Zose",
+    "min_read": "iminota yo gusoma",
+    "by": "Na",
+    "no_posts": "Nta nyandiko zabonetse",
+    "check_back": "Garuka nyuma kubona ibikubiye bishya.",
+    "categories": {
+      "technology": "Ikoranabuhanga",
+      "development": "Guteza Imbere",
+      "design": "Imigenzuro",
+      "business": "Ubucuruzi",
+      "tutorials": "Amasomo"
+    },
+    "cta_title": "Ufite Insanganyamatsiko?",
+    "cta_description": "Twakwishimira kumva ibitekerezo byawe. Tuvugishe kugira ngo utange insanganyamatsiko cyangwa dufatanye ku bikubiye.",
+    "cta_button": "Twandikire"
+  },
+  "donate": {
+    "title": "Tanga Impano",
+    "badge": "Shyigikira Intego Yacu",
+    "hero_title": "Kora Itandukaniro Uyu Munsi",
+    "hero_description": "Umusanzu wawe udufasha guha imbaraga imiryango binyuze mu ikoranabuhanga, guhugura abagenzuzi bazaza, no gutera imbere impinduka za digitale muri Afurika.",
+    "choose_impact": "Hitamo Urwego rw'Ingaruka Zawe",
+    "select_tier": "Hitamo urwego rw'impano ruhura n'inkunga yawe.",
+    "tiers": {
+      "supporter": {
+        "name": "Umushyigikizi",
+        "description": "Shyigikira intego yacu yo guha imbaraga imiryango binyuze mu ikoranabuhanga.",
+        "benefits": ["Imeyili yo gushimira", "Izina ku rupapuro rw'abashyigikizi", "Amakuru ya newsletter"]
+      },
+      "contributor": {
+        "name": "Umusanzu",
+        "description": "Dufashe kwagura aho tugera no kugira ingaruka ku buzima bwinshi.",
+        "benefits": ["Inyungu zose z'Umushyigikizi", "Raporo y'ingaruka ya buri gihembwe", "Kubona byihuse ibirori"]
+      },
+      "champion": {
+        "name": "Umusinzi",
+        "description": "Ba umusinzi w'impinduka za digitale muri Afurika.",
+        "benefits": ["Inyungu zose z'Umusanzu", "Inama zihariye", "Kwemezwa ku rubuga", "Icyemezo cy'ingaruka cy'umwaka"]
+      },
+      "visionary": {
+        "name": "Umushakashatsi",
+        "description": "Tangira inzira yo gukora impinduka za tekinoloji zirambye.",
+        "benefits": ["Inyungu zose z'Umusinzi", "Amakuru akosorwa ku mishinga", "Amahirwe yo kuvuga", "Raporo y'ingaruka ihariye", "Kujya mu birori nk'umukuru"]
+      }
+    },
+    "most_popular": "Ikunze Cyane",
+    "donate_btn": "Tanga Impano",
+    "custom_title": "Amafaranga Ahawe",
+    "custom_description": "Ushaka gutanga amafaranga atandukanye? Andika impano yawe hano.",
+    "enter_amount": "Andika amafaranga",
+    "how_helps_title": "Uko Impano Yawe Ifasha",
+    "how_helps": {
+      "training": {
+        "title": "Amahugurwa ya Tech",
+        "description": "Kwishyura bootcamps zo kwandika code n'amasomo ku bashaka kuba abagenzuzi."
+      },
+      "infrastructure": {
+        "title": "Ibikorwa Remezo",
+        "description": "Kubaka ama laboratwari ya mudasobwa n'ibigo by'amashuri mu turere tukenye."
+      },
+      "mentorship": {
+        "title": "Ubuyobozi",
+        "description": "Guhuza abanyeshuri n'abahanga mu nganda kugira ngo babayobore."
+      },
+      "access": {
+        "title": "Kubona Digitale",
+        "description": "Gutanga interineti n'ibikoresho bya digitale ku miryango."
+      }
+    },
+    "trust_title": "Kwizerwa Kwawe Ni Ingenzi",
+    "trust_description": "Dushyize mu gaciro ubushishozi. Buri mpano ikurikiranwa kandi igatangwa kugira ngo ingaruka zibe nyinshi. Uzabona amakuru ahoraho ku buryo umusanzu wawe ukora itandukaniro.",
+    "trust_badges": {
+      "secure": "Kwishyura Kwizewe",
+      "tax": "Gukurwa ku Misoro",
+      "reports": "Raporo Zihoraho"
+    },
+    "impact_stats": {
+      "students": "Abanyeshuri Bahugujwe",
+      "projects": "Imishinga Yatanzwe",
+      "communities": "Imiryango Yagezweho",
+      "success": "Igipimo cy'Intsinzi"
+    },
+    "cta_title": "Ufite Ibibazo?",
+    "cta_description": "Turi hano kubafasha. Tuvugishe kugira ngo umenye byinshi ku mushinga wacu n'ingaruka zacu.",
+    "cta_button": "Twandikire",
+    "thank_you": "Murakoze kubera impano yawe y'ubuntu!"
+  }
+}
