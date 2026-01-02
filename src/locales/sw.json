@@ -159,8 +159,8 @@
     "team": {
       "moses": {
         "name": "Moses Mirarayi",
-        "role": "Mkurugenzi wa Uendeshaji",
-        "description": "Kiongozi wa ubora wa uendeshaji anayehakikisha utoaji wa miradi bila matatizo na kuridhika kwa wateja."
+        "role": "Mwanzilishi & Mkurugenzi Mkuu",
+        "description": "Mjasiriamali mwenye maono na kiongozi wa biashara. Mwanzilishi & Mkurugenzi Mkuu wa Amoria Global Tech Ltd, anayeendeleza ubunifu katika utalii, teknolojia, na ukarimu. Mwenye ujuzi katika mipango ya kimkakati, uendeshaji, na uongozi wa timu. Kwa sasa anasomea Shahada ya Kwanza ya Afya ya Umma katika Western Governors University."
       },
       "joseph": {
         "name": "Joseph Maranatha",
@@ -176,6 +176,11 @@
         "name": "Jackson Mugwiza",
         "role": "Mchambuzi wa Usalama wa Mtandao",
         "description": "Anafuatilia mifumo dhidi ya vitisho, anajibu uvunjaji, na kuimarisha ulinzi wa kidijitali."
+      },
+      "peace": {
+        "name": "Peace Muzirankoni",
+        "role": "Mtaalamu wa Huduma kwa Wateja",
+        "description": "Amejitolea kutoa uzoefu wa kipekee kwa wateja kwa huruma na taaluma. Anahakikisha kuridhika kwa wateja kupitia msaada wa haraka na mawasiliano madhubuti."
       }
     },
     "cta_title": "Uko Tayari Kubadilisha Biashara Yako?",

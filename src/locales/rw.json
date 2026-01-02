@@ -159,8 +159,8 @@
     "team": {
       "moses": {
         "name": "Moses Mirarayi",
-        "role": "Umuyobozi w'Ibikorwa",
-        "description": "Umuyobozi w'ubwiza mu mikorere ureba ko imishinga yoherezwa neza n'ibyishimo by'abakiriya."
+        "role": "Umunyamahanga & Umuyobozi Mukuru",
+        "description": "Rwiyemezamirimo ufite icyerekezo n'umuyobozi w'ubucuruzi. Umunyamahanga & Umuyobozi Mukuru wa Amoria Global Tech Ltd, ashyira imbere ibishya mu bukerarugendo, ikoranabuhanga, n'ubukerarugendo. Afite ubumenyi mu gutegura ingamba, imikorere, n'ubuyobozi bw'itsinda. Ubu arimo kwiga impamyabumenyi y'icyiciro cya kabiri mu Buzima Rusange muri Western Governors University."
       },
       "joseph": {
         "name": "Joseph Maranatha",
@@ -176,6 +176,11 @@
         "name": "Jackson Mugwiza",
         "role": "Umusesengura w'Umutekano wa Siyansi",
         "description": "Areba sisitemu ku byago, asubiza ibyabaye, kandi ashimangira ibirinda digitale."
+      },
+      "peace": {
+        "name": "Peace Muzirankoni",
+        "role": "Impuguke mu Serivisi y'Abakiriya",
+        "description": "Yiyemeje gutanga uburambe bwiza ku bakiriya afite impuhwe n'ubuhanga. Areba ko abakiriya banezerewe binyuze mu bufasha bwihuse no gutumanahana neza."
       }
     },
     "cta_title": "Witeguye Guhindura Ubucuruzi Bwawe?",
