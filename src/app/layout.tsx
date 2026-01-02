@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './styles/globals.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import VisitorTracker from './components/visiterTracker';
-
-const inter = Inter({ subsets: ['latin'] })
+import Providers from './components/Providers';
 
 export const metadata: Metadata = {
   title: {
@@ -82,19 +80,14 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#3b82f6" />
-        <link
-          rel="preload"
-          href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <VisitorTracker />
-        <div id="root">
-          {children}
-        </div>
+      <body className="antialiased">
+        <Providers>
+          <VisitorTracker />
+          <div id="root">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   )

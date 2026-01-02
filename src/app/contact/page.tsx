@@ -1,9 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import Chatbot from "../components/Chatbot";
+import { useEffect, useState } from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import Chatbot from '../components/Chatbot';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ContactFormData {
   name: string;
@@ -13,11 +15,14 @@ interface ContactFormData {
 }
 
 export default function ContactUsPage() {
+  const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -51,32 +56,26 @@ export default function ContactUsPage() {
 
       if (result.success) {
         setSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
-        setError(result.message || 'Failed to send message. Please try again.');
+        setError(result.message || t.contact.error);
       }
     } catch {
-      setError('Network error. Please check your connection and try again.');
+      setError(t.contact.error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Handle mounting to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Show/hide scroll-to-top button
   useEffect(() => {
     if (!mounted) return;
 
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 300);
     };
 
     handleScroll();
@@ -84,259 +83,208 @@ export default function ContactUsPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mounted]);
 
-  // Scroll to top function
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Animate timeline items on scroll
-  useEffect(() => {
-    if (!mounted) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Animation logic can be added here if needed
-            // For example: entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    const timelineElements = document.querySelectorAll('.timeline-item');
-    timelineElements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [mounted]);
-
-  // Don't render until mounted to prevent hydration issues
   if (!mounted) {
-    return null;
+    return <div></div>;
   }
-  
+
   if (submitted) {
     return (
-      <div className="main-container contact-success-page">
-        <div className="success-container">
-          <div className="success-card">
-            <div className="success-icon">
-              <i className="bi bi-check-circle"></i>
+      <>
+        <Navbar />
+        <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
+          <div className="container">
+            <div className="contact-success">
+              <div className="success-icon">
+                <i className="bi bi-check-circle"></i>
+              </div>
+              <h2 className="success-title">{t.contact.success.split('!')[0]}!</h2>
+              <p className="success-text">{t.contact.success}</p>
+              <button onClick={() => setSubmitted(false)} className="success-btn">
+                {t.contact.submit}
+                <i className="bi bi-arrow-right"></i>
+              </button>
             </div>
-            <h2 className="success-title">Message Sent!</h2>
-            <p className="success-text">
-              Thank you for reaching out. We&apos;ve received your message and will get back to you within 24 hours.
-            </p>
-            <button
-              onClick={() => setSubmitted(false)}
-              className="success-button"
-            >
-              Send Another Message
-            </button>
           </div>
-        </div>
-      </div>
+        </main>
+        <Footer />
+      </>
     );
   }
 
   return (
     <>
       <Navbar />
-      <div className="main-container contact-page">
-        <div className="contact-container">
-          {/* Header Section */}
-          <div className="contact-header">
-            <h1 className="contact-title">
-              Get In <span className="title-gradient">Touch</span>
-            </h1>
-            <p className="contact-subtitle">
-              Have a question, project idea, or just want to say hello? We&apos;d love to hear from you. 
-              Send us a message and we&apos;ll respond as soon as possible.
-            </p>
-          </div>
 
-          <div className="contact-content">
-            {/* Contact Information */}
-            <div className="contact-info">
-              <div className="info-card">
-                <h2 className="info-title">Contact Information</h2>
-                
-                <div className="info-items">
-                  <div className="info-item">
-                    <div className="info-icon email-icon">
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
+        <div className="container">
+          {/* Hero Section */}
+          <section className="page-hero">
+            <h1 className="page-hero-title">{t.contact.title}</h1>
+            <p className="page-hero-description">{t.contact.subtitle}</p>
+          </section>
+
+          {/* Contact Content */}
+          <section className="contact-section">
+            <div className="contact-grid">
+              {/* Contact Info */}
+              <div className="contact-info-card">
+                <h2 className="contact-info-title">{t.contact.form_title}</h2>
+
+                <div className="contact-info-list">
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
                       <i className="bi bi-envelope"></i>
                     </div>
-                    <div className="info-details">
-                      <h3 className="info-label">Email</h3>
-                      <p className="info-value">info@amoriaglobal.com</p>
+                    <div className="contact-info-details">
+                      <h3>{t.contact.email_label}</h3>
+                      <p>info@amoriaglobal.com</p>
                     </div>
                   </div>
 
-                  <div className="info-item">
-                    <div className="info-icon phone-icon">
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
                       <i className="bi bi-telephone"></i>
                     </div>
-                    <div className="info-details">
-                      <h3 className="info-label">Phone</h3>
-                      <p className="info-value">+250 788 437 347</p>
+                    <div className="contact-info-details">
+                      <h3>{t.contact.phone_label}</h3>
+                      <p>+250 788 437 347</p>
                     </div>
                   </div>
 
-                  <div className="info-item">
-                    <div className="info-icon location-icon">
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
                       <i className="bi bi-geo-alt"></i>
                     </div>
-                    <div className="info-details">
-                      <h3 className="info-label">Office</h3>
-                      <p className="info-value">Kigali, Rwanda</p>
+                    <div className="contact-info-details">
+                      <h3>{t.contact.address}</h3>
+                      <p>Kigali, Rwanda</p>
                     </div>
                   </div>
 
-                  <div className="info-item">
-                    <div className="info-icon time-icon">
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
                       <i className="bi bi-clock"></i>
                     </div>
-                    <div className="info-details">
-                      <h3 className="info-label">Business Hours</h3>
-                      <p className="info-value">Monday - Friday<br />9:00 AM - 6:00 PM EAT</p>
+                    <div className="contact-info-details">
+                      <h3>{t.contact.working_hours}</h3>
+                      <p>{t.contact.working_hours_text}</p>
                     </div>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="contact-stats">
+                  <div className="contact-stat">
+                    <span className="contact-stat-value">24h</span>
+                    <span className="contact-stat-label">Response Time</span>
+                  </div>
+                  <div className="contact-stat">
+                    <span className="contact-stat-value">50+</span>
+                    <span className="contact-stat-label">Happy Clients</span>
                   </div>
                 </div>
               </div>
 
-             
-              {/* Quick Stats */}
-              <div className="stats-grid">
-                <div className="stat-card">
-                  <div className="stat-number response-time">24h</div>
-                  <div className="stat-label">Response Time</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-number clients-count">50+</div>
-                  <div className="stat-label">Happy Clients</div>
-                </div>
-              </div>
-            </div>
+              {/* Contact Form */}
+              <div className="contact-form-card">
+                <h2 className="contact-form-title">{t.contact.form_title}</h2>
 
-            {/* Contact Form */}
-            <div className="contact-form-card">
-              <h2 className="form-title">Send us a Message</h2>
-              
-              {error && (
-                <div className="error-message">
-                  <div className="error-content">
+                {error && (
+                  <div className="contact-error">
                     <i className="bi bi-exclamation-triangle"></i>
                     <p>{error}</p>
                   </div>
-                </div>
-              )}
+                )}
 
-              <form onSubmit={handleSubmit} className="contact-form">
-                {/* Name Field */}
-                <div className="form-group">
-                  <label htmlFor="name" className="form-label">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="form-input"
-                    placeholder="Enter your full name"
-                  />
-                </div>
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name">{t.contact.name} *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder={t.contact.name_placeholder}
+                    />
+                  </div>
 
-                {/* Email Field */}
-                <div className="form-group">
-                  <label htmlFor="email" className="form-label">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="form-input"
-                    placeholder="Enter your email address"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="email">{t.contact.email} *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder={t.contact.email_placeholder}
+                    />
+                  </div>
 
-                {/* Phone Field */}
-                <div className="form-group">
-                  <label htmlFor="phone" className="form-label">
-                    Phone Number <span className="optional-text">(optional)</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="form-input"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">
+                      {t.contact.phone} <span className="optional">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder={t.contact.phone_placeholder}
+                    />
+                  </div>
 
-                {/* Message Field */}
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="form-textarea"
-                    placeholder="Tell us about your project, question, or how we can help you..."
-                  />
-                  <p className="character-count">{formData.message.length} characters</p>
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="message">{t.contact.message} *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      placeholder={t.contact.message_placeholder}
+                    />
+                    <span className="char-count">{formData.message.length} characters</span>
+                  </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                  className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="loading-spinner"></div>
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <i className="bi bi-send"></i>
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
+                    className="contact-submit-btn"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="loading-spinner small"></div>
+                        {t.contact.sending}
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-send"></i>
+                        {t.contact.submit}
+                      </>
+                    )}
+                  </button>
+                </form>
 
-              <div className="form-footer">
-                <p className="privacy-text">
-                  By sending this message, you agree to our privacy policy and terms of service.
+                <p className="contact-privacy">
+                  {t.footer.privacy} & {t.footer.terms}
                 </p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-      </div>
-      
-      {/* Scroll to Top Button */}
+      </main>
+
       {mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"
@@ -345,9 +293,7 @@ export default function ContactUsPage() {
         </button>
       )}
 
-      {/* Chatbot Widget */}
       <Chatbot />
-
       <Footer />
     </>
   );

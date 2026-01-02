@@ -1,8 +1,6 @@
-// api/contact/submit/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import client from "@/app/api/utils/db";
-import { sendContactEmail, sendContactReply} from "../utils/brevo";
-
+import prisma from "@/lib/prisma";
+import { sendContactEmail, sendContactReply } from "../utils/brevo";
 
 // Define types for the contact form data
 interface ContactFormData {
@@ -14,7 +12,6 @@ interface ContactFormData {
 
 // Validation function
 function validateContactData(data: ContactFormData): string | null {
-  // Check required fields
   if (!data.name || data.name.trim().length < 2) {
     return "Name must be at least 2 characters long";
   }
@@ -27,12 +24,10 @@ function validateContactData(data: ContactFormData): string | null {
     return "Message must be at least 10 characters long";
   }
 
-  // Validate phone if provided
   if (data.phone && data.phone.trim() && !isValidPhone(data.phone)) {
     return "Please provide a valid phone number";
   }
 
-  // Check for reasonable length limits
   if (data.name.length > 100) {
     return "Name is too long (max 100 characters)";
   }
@@ -58,7 +53,7 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-// Phone validation (basic)
+// Phone validation
 function isValidPhone(phone: string): boolean {
   const phoneRegex = /^[\+]?[\d\s\-\(\)]{7,20}$/;
   return phoneRegex.test(phone);
@@ -66,114 +61,143 @@ function isValidPhone(phone: string): boolean {
 
 // Sanitize input to prevent XSS
 function sanitizeInput(input: string): string {
-  return input.trim().replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  return input.trim().replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
 }
 
-// Handle POST request for contact form submission
+// GET - Fetch all contacts (admin)
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const resolved = searchParams.get("resolved");
+    const limit = parseInt(searchParams.get("limit") || "50");
+    const offset = parseInt(searchParams.get("offset") || "0");
+
+    const contacts = await prisma.contact.findMany({
+      where: {
+        ...(resolved !== null && { isResolved: resolved === "true" }),
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: limit,
+      skip: offset,
+    });
+
+    const total = await prisma.contact.count({
+      where: {
+        ...(resolved !== null && { isResolved: resolved === "true" }),
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        data: contacts,
+        pagination: {
+          total,
+          limit,
+          offset,
+          hasMore: offset + contacts.length < total,
+        },
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error retrieving contacts:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to fetch contacts" },
+      { status: 500 }
+    );
+  }
+}
+
+// POST - Create a new contact submission
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const body = await req.json();
-    
-    // Validate request body
-    if (!body || typeof body !== 'object') {
-      return NextResponse.json({
-        success: false,
-        message: "Invalid request data"
-      }, { status: 400 });
+
+    if (!body || typeof body !== "object") {
+      return NextResponse.json(
+        { success: false, message: "Invalid request data" },
+        { status: 400 }
+      );
     }
 
     // Extract and sanitize form data
     const formData: ContactFormData = {
-      name: sanitizeInput(body.name || ''),
-      email: sanitizeInput(body.email || ''),
+      name: sanitizeInput(body.name || ""),
+      email: sanitizeInput(body.email || ""),
       phone: body.phone ? sanitizeInput(body.phone) : undefined,
-      message: sanitizeInput(body.message || '')
+      message: sanitizeInput(body.message || ""),
     };
 
     // Validate the data
     const validationError = validateContactData(formData);
     if (validationError) {
-      return NextResponse.json({
-        success: false,
-        message: validationError
-      }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: validationError },
+        { status: 400 }
+      );
     }
 
-    // Check for rate limiting (optional - basic check by IP)
-    //const clientIP = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
-    
-    // Check if the same email sent a message in the last 5 minutes
-    const recentMessageQuery = `
-      SELECT id FROM contact_us
-      WHERE email = $1 AND created_at > NOW() - INTERVAL '5 minutes'
-      LIMIT 1
-    `;
-    
-    const recentMessages = await client.query(recentMessageQuery, [formData.email]);
-    
-    if (recentMessages.rows.length > 0) {
-      return NextResponse.json({
-        success: false,
-        message: "Please wait a few minutes before sending another message"
-      }, { status: 429 });
+    // Check for rate limiting - same email in last 5 minutes
+    const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+    const recentMessage = await prisma.contact.findFirst({
+      where: {
+        email: formData.email,
+        createdAt: { gte: fiveMinutesAgo },
+      },
+    });
+
+    if (recentMessage) {
+      return NextResponse.json(
+        { success: false, message: "Please wait a few minutes before sending another message" },
+        { status: 429 }
+      );
     }
 
-    // Insert the contact message into the database
-    const insertQuery = `
-      INSERT INTO contact_us (name, email, phone_number, message, is_resolved, created_at, updated_at)
-      VALUES ($1, $2, $3, $4, false, NOW(), NOW())
-      RETURNING id, name, email, phone_number, message, is_resolved, created_at
-    `;
+    // Create the contact record
+    const newContact = await prisma.contact.create({
+      data: {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phone || null,
+        message: formData.message,
+        isResolved: false,
+      },
+    });
 
-    const insertParams = [
-      formData.name,
-      formData.email,
-      formData.phone || null,
-      formData.message
-    ];
-
-    const result = await client.query(insertQuery, insertParams);
-    const newMessage = result.rows[0];
-
-    // Log the submission (optional)
     console.log(`New contact message from ${formData.name} (${formData.email}) at ${new Date().toISOString()}`);
 
-    await sendContactReply(formData.email,  formData.name)
-    await sendContactEmail(formData.email, formData.message, formData.name);
-
-    return NextResponse.json({
-      success: true,
-      message: "Thank you for your message! We'll get back to you soon.",
-      data: {
-        id: newMessage.id,
-        createdAt: newMessage.created_at
-      }
-    }, { status: 201 });
-
-  } catch (error) {
-    console.error("Error processing contact form:", error);
-    
-    // Handle specific database errors
-    if (error && typeof error === 'object' && 'code' in error) {
-      if (error.code === '42P01') { // Table doesn't exist
-        return NextResponse.json({
-          success: false,
-          message: "Database configuration error. Please contact support."
-        }, { status: 500 });
-      }
-      
-      if (error.code === '23505') { // Unique constraint violation (if you have unique constraints)
-        return NextResponse.json({
-          success: false,
-          message: "This message appears to be a duplicate. Please try again later."
-        }, { status: 409 });
-      }
+    // Send emails
+    try {
+      await sendContactReply(formData.email, formData.name);
+      await sendContactEmail(formData.email, formData.message, formData.name);
+    } catch (emailError) {
+      console.error("Failed to send email notifications:", emailError);
+      // Don't fail the request if email fails
     }
 
-    return NextResponse.json({
-      success: false,
-      message: "We're experiencing technical difficulties. Please try again later or contact us directly."
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Thank you for your message! We'll get back to you soon.",
+        data: {
+          id: newContact.id,
+          createdAt: newContact.createdAt,
+        },
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Error processing contact form:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "We're experiencing technical difficulties. Please try again later or contact us directly.",
+      },
+      { status: 500 }
+    );
   }
 }
-

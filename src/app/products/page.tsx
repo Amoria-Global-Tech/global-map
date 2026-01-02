@@ -1,51 +1,51 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Chatbot from '../components/Chatbot';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-// Type definitions
 interface Product {
   id: string | number;
   name: string;
   description: string;
   category: string;
-  price?: string | number;
-  image_url?: string;
-  is_available: boolean;
-}
-
-interface ApiResponse {
-  products?: Product[];
+  price?: number | null;
+  imageUrl?: string | null;
+  isAvailable: boolean;
+  siteUrl?: string | null;
 }
 
 export default function ProductsPage() {
+  const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
-  // Handle mounting to prevent hydration mismatch
   useEffect((): void => {
     setMounted(true);
   }, []);
 
-  // Fetch products from API
   useEffect((): void => {
     const fetchProducts = async (): Promise<void> => {
       try {
         setLoading(true);
+        setError(null);
         const response: Response = await fetch('/api/products');
-        
+        const data = await response.json();
+
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(data.message || 'Failed to fetch products');
         }
-        
-        const data: Product[] | ApiResponse = await response.json();
-        
-        // Handle different API response formats
+
         if (Array.isArray(data)) {
           setProducts(data);
         } else if (data && 'products' in data && Array.isArray(data.products)) {
@@ -55,8 +55,8 @@ export default function ProductsPage() {
         }
       } catch (err: unknown) {
         console.error('Error fetching products:', err);
-        const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
-        setError(`Failed to load products: ${errorMessage}. Please try again later.`);
+        const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -65,62 +65,29 @@ export default function ProductsPage() {
     fetchProducts();
   }, []);
 
-  // Show/hide scroll-to-top button - only after component is mounted
   useEffect((): (() => void) | void => {
     if (!mounted) return;
 
     const handleScroll = (): void => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 300);
     };
 
-    // Check initial scroll position
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return (): void => window.removeEventListener('scroll', handleScroll);
   }, [mounted]);
 
-  // Scroll to top function
   const scrollToTop = (): void => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Helper function to get product icon based on category or name
   const getProductIcon = (product: Product): string => {
-    if (product.category === 'Photo & Video') return '🎪';
-    if (product.name.toLowerCase().includes('connect')) return '🎪';
-    return '📦'; // Default icon
+    if (product.category === 'Photo & Video') return 'bi-camera-video';
+    if (product.name.toLowerCase().includes('connect')) return 'bi-link-45deg';
+    if (product.category === 'Software') return 'bi-box';
+    return 'bi-box-seam';
   };
 
-  /* Helper function to generate features based on product data
-  const getProductFeatures = (product: Product): string[] => {
-    if (product.name.toLowerCase().includes('connect')) {
-      return ['Virtual event hosting', 'Global connectivity', 'HD streaming quality', 'Interactive participation'];
-    }
-    return ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']; // Default features
-  };
-  // Format price display
-  const formatPrice = (price: string | number): string => {
-    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
-    return numericPrice.toLocaleString();
-  };
-  */
-  // Handle image error
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>): void => {
-    const target = e.target as HTMLImageElement;
-    target.style.display = 'none';
-  };
-
-  
-
-  // Don't render until mounted
   if (!mounted) {
     return <div></div>;
   }
@@ -128,107 +95,111 @@ export default function ProductsPage() {
   return (
     <>
       <Navbar />
-      {/* Main Content */}
-      <main className="main-content">
+
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
         <div className="container">
           {/* Hero Section */}
-          <section className="hero-section">
-            <h1 className="hero-title text-xl font-bold text-white/80">Our Products</h1>
-            <p className="hero-description">
-              Cutting-edge technology solutions designed to transform your business 
-              operations and drive digital innovation across all industries.
-            </p>
+          <section className="page-hero">
+            <h1 className="page-hero-title">{t.products.title}</h1>
+            <p className="page-hero-description">{t.products.subtitle}</p>
           </section>
 
           {/* Products Grid */}
-          <section className="products-page-grid-section">
+          <section className="products-page-grid">
             {loading && (
-              <div className="loading-container" style={{ textAlign: 'center', padding: '2rem' }}>
-                <p style={{ color: 'white', fontSize: '1.1rem' }}>Loading products...</p>
+              <div className="page-loading">
+                <div className="loading-spinner"></div>
+                <p>{t.common.loading}</p>
               </div>
             )}
 
             {error && (
-              <div className="error-container" style={{ textAlign: 'center', padding: '2rem' }}>
-                <p style={{ color: '#ff6b6b', fontSize: '1.1rem' }}>{error}</p>
+              <div className="page-error">
+                <i className="bi bi-exclamation-circle"></i>
+                <p>{t.common.error}</p>
               </div>
             )}
 
             {!loading && !error && products.length === 0 && (
-              <div className="no-products-container" style={{ textAlign: 'center', padding: '2rem' }}>
-                <p style={{ color: 'white', fontSize: '1.1rem' }}>No products available at the moment.</p>
+              <div className="page-empty">
+                <i className="bi bi-box-seam"></i>
+                <p>{t.common.no_data}</p>
               </div>
             )}
 
-            {/* Products Grid */}
-              {!loading && !error && products.length > 0 && (
-                <div className="products-grid">
-                  {products.map((product: Product) => (
-                    <div key={product.id} className="product-card">
-                      <div className="product-icon">
-                        <span>{getProductIcon(product)}</span>
-                      </div>
-                      
-                      {/* Product Image */}
-                      {product.image_url && (
-                        <div className="product-image" style={{ margin: '1rem 0' }}>
-                          <img 
-                            src={product.image_url} 
-                            alt={product.name}
-                            style={{ 
-                              width: '100%', 
-                              height: '150px', 
-                              objectFit: 'cover', 
-                              borderRadius: '8px' 
-                            }}
-                            onError={handleImageError}
-                          />
-                        </div>
-                      )}
-                      
-                      <div className="product-content">
-                        <h3 className="product-title">{product.name}</h3>
-                        <p className="product-description">
-                          {product.description}
-                        </p>
-                        
-                        <button 
-                          className="product-price-btn"
-                          disabled={!product.is_available}
-                          style={{
-                            opacity: product.is_available ? 1 : 0.6,
-                            cursor: product.is_available ? 'pointer' : 'not-allowed'
-                          }}
-                        >
-                          {product.is_available ? 'Explore' : 'Coming Soon'}
-                        </button>
-                      </div>
+            {!loading && !error && products.length > 0 && (
+              <div className="products-grid">
+                {products.map((product: Product) => (
+                  <div key={product.id} className="product-card">
+                    <div className="product-badge">
+                      {product.isAvailable ? t.products.available : t.products.coming_soon}
                     </div>
-                  ))}
-                </div>
-              )}
+
+                    <div className="product-icon">
+                      {product.imageUrl ? (
+                        <Image
+                          src={product.imageUrl}
+                          alt={product.name}
+                          width={48}
+                          height={48}
+                          style={{ objectFit: 'contain', borderRadius: '8px' }}
+                        />
+                      ) : (
+                        <span><i className={`bi ${getProductIcon(product)}`}></i></span>
+                      )}
+                    </div>
+
+                    <div className="product-content">
+                      {product.category && (
+                        <span className="product-category">{product.category}</span>
+                      )}
+                      <h3 className="product-title">{product.name}</h3>
+                      <p className="product-description">{product.description}</p>
+
+                      {product.isAvailable ? (
+                        product.siteUrl ? (
+                          <a
+                            href={product.siteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="product-btn visit-btn"
+                          >
+                            {t.products.visit_now}
+                            <i className="bi bi-arrow-right"></i>
+                          </a>
+                        ) : (
+                          <button className="product-btn visit-btn">
+                            {t.products.explore}
+                            <i className="bi bi-arrow-right"></i>
+                          </button>
+                        )
+                      ) : (
+                        <button className="product-btn coming-soon-btn" disabled>
+                          {t.products.coming_soon}
+                          <i className="bi bi-clock"></i>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
 
-          {/* Call to Action Section */}
-          <section className="products-cta-section">
-            <div className="products-cta-content">
-              <h2 className="products-cta-title">Need Custom Solutions?</h2>
-              <p className="products-cta-description">
-                Our team of experts can customize any product to meet your specific business 
-                requirements. Get in touch with us for personalized solutions.
-              </p>
-              <div className="products-cta-buttons">
-                <button className="products-cta-primary-btn">Contact Sales</button>
-                <button className="products-cta-secondary-btn">Request Quote</button>
-              </div>
-            </div>
+          {/* CTA Section */}
+          <section className="page-cta">
+            <h2 className="page-cta-title">{t.services.get_quote}</h2>
+            <p className="page-cta-description">{t.home.hero_subtitle}</p>
+            <Link href="/contact" className="page-cta-btn">
+              {t.contact.title}
+              <i className="bi bi-arrow-right"></i>
+            </Link>
           </section>
         </div>
       </main>
 
-      {/* Scroll to Top Button - only render after mounted to prevent hydration mismatch */}
       {mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"
@@ -237,7 +208,6 @@ export default function ProductsPage() {
         </button>
       )}
 
-      {/* Chatbot Widget */}
       <Chatbot />
       <Footer />
     </>

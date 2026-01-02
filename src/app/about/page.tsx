@@ -6,41 +6,45 @@ import Image from 'next/image';
 import Chatbot from '../components/Chatbot';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPage() {
+  const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const timelineItems = [
     {
-      title: "Our Foundation",
-      subtitle: "Technology Excellence",
-      description: "Established as a leading technology solutions provider, focusing on innovative software development and digital transformation.",
+      title: t.about.timeline['2020'].title,
+      subtitle: t.about.timeline['2020'].subtitle,
+      description: t.about.timeline['2020'].description,
       year: "2020"
     },
     {
-      title: "Service Expansion",
-      subtitle: "Comprehensive Solutions",
-      description: "Expanded our services to include AI-powered analytics, cloud infrastructure, and enterprise security management systems.",
+      title: t.about.timeline['2021'].title,
+      subtitle: t.about.timeline['2021'].subtitle,
+      description: t.about.timeline['2021'].description,
       year: "2021"
     },
     {
-      title: "Global Reach",
-      subtitle: "International Partnerships",
-      description: "Formed strategic partnerships with major corporations across Africa, providing multilingual support and 24/7 availability.",
+      title: t.about.timeline['2022'].title,
+      subtitle: t.about.timeline['2022'].subtitle,
+      description: t.about.timeline['2022'].description,
       year: "2022"
     },
     {
-      title: "Innovation Leadership",
-      subtitle: "Cutting-Edge Technology",
-      description: "Pioneered blockchain solutions, mobile banking systems, and smart automation platforms for diverse industries.",
+      title: t.about.timeline['2023'].title,
+      subtitle: t.about.timeline['2023'].subtitle,
+      description: t.about.timeline['2023'].description,
       year: "2023"
     },
     {
-      title: "Future Vision",
-      subtitle: "Digital Transformation",
-      description: "Continuing to lead the digital revolution with advanced AI, quantum computing research, and sustainable technology solutions.",
+      title: t.about.timeline['2024'].title,
+      subtitle: t.about.timeline['2024'].subtitle,
+      description: t.about.timeline['2024'].description,
       year: "2024+"
     }
   ];
@@ -106,118 +110,86 @@ export default function AboutPage() {
     <>
      <Navbar />
       {/* Main Content */}
-      <main className="main-content">
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
         <div className="container">
           {/* Hero Section */}
           <section className="about-hero">
-            <h1 className="about-hero-title">About Amoria Global Tech</h1>
-            <p className="about-hero-description">
-              Pioneering the future of technology through innovative solutions, 
-              strategic partnerships, and unwavering commitment to digital excellence.
-            </p>
+            <h1 className="about-hero-title">{t.about.hero_title}</h1>
+            <p className="about-hero-description">{t.about.hero_description}</p>
           </section>
           {/* Our Team Section */}
           <section className="team-section">
             <div className="team-header">
-              <h2 className="team-title">Our Team</h2>
-              <p className="team-description">
-                Meet the passionate professionals behind Amoria Global Tech&apos;s innovative solutions
-              </p>
+              <h2 className="team-title">{t.about.team_title}</h2>
+              <p className="team-description">{t.about.team_subtitle}</p>
             </div>
 
             <div className="team-grid">
               <div className="team-card">
                 <div className="team-image-container">
-                  <Image 
-                    src="/team/mos.jpg" 
-                    alt="Moses Mirarayi" 
-                    width={120} 
+                  <Image
+                    src="/team/mos.jpg"
+                    alt={t.about.team.moses.name}
+                    width={120}
                     height={120}
                     className="team-image"
                   />
                 </div>
                 <div className="team-info">
-                  <h3 className="team-name">Moses Mirarayi</h3>
-                  <p className="team-title-job">Managing Director</p>
-                  <p className="team-description-text">
-                    Passionate and results driven  in technology and operational excellence. Dedicated to delivering seamless project execution, driving innovation, and ensuring exceptional client satisfaction. Focused on efficiency, quality, and continuous improvement to help organizations unlock the full potential of technology for sustainable growth and long term success.
-                  </p>
+                  <h3 className="team-name">{t.about.team.moses.name}</h3>
+                  <p className="team-title-job">{t.about.team.moses.role}</p>
+                  <p className="team-description-text">{t.about.team.moses.description}</p>
                 </div>
               </div>
 
               <div className="team-card">
                 <div className="team-image-container">
-                  <Image 
-                    src="/team/peace_muzirankoni.jpg" 
-                    alt="Peace Muzirankoni" 
-                    width={120} 
+                  <Image
+                    src="/team/but.jpg"
+                    alt={t.about.team.joseph.name}
+                    width={120}
                     height={120}
                     className="team-image"
                   />
                 </div>
                 <div className="team-info">
-                  <h3 className="team-name">Peace Muzirankoni</h3>
-                  <p className="team-title-job">Customer Service and Relations Officer</p>
-                  <p className="team-description-text">
-                    Manages client inquiries, ensures timely professional responses, maintains customer satisfaction, and supports relationship-building as the primary client contact
-                  </p>
+                  <h3 className="team-name">{t.about.team.joseph.name}</h3>
+                  <p className="team-title-job">{t.about.team.joseph.role}</p>
+                  <p className="team-description-text">{t.about.team.joseph.description}</p>
                 </div>
               </div>
 
               <div className="team-card">
                 <div className="team-image-container">
-                  <Image 
-                    src="/team/but.jpg" 
-                    alt="Joseph Maranatha" 
-                    width={120} 
+                  <Image
+                    src="/team/mub.jpg"
+                    alt={t.about.team.pacific.name}
+                    width={120}
                     height={120}
                     className="team-image"
                   />
                 </div>
                 <div className="team-info">
-                  <h3 className="team-name">Joseph Maranatha</h3>
-                  <p className="team-title-job">Chief Technology Officer & Full-Stack Developer</p>
-                  <p className="team-description-text">
-                    Expert software architect specializing in AI, blockchain, frontend and backend development, and cloud infrastructure solutions.
-                  </p>
+                  <h3 className="team-name">{t.about.team.pacific.name}</h3>
+                  <p className="team-title-job">{t.about.team.pacific.role}</p>
+                  <p className="team-description-text">{t.about.team.pacific.description}</p>
                 </div>
               </div>
 
               <div className="team-card">
                 <div className="team-image-container">
-                  <Image 
-                    src="/team/mub.jpg" 
-                    alt="Pacific Uwitonze" 
-                    width={120} 
+                  <Image
+                    src="/team/jax.jpg"
+                    alt={t.about.team.jackson.name}
+                    width={120}
                     height={120}
                     className="team-image"
                   />
                 </div>
                 <div className="team-info">
-                  <h3 className="team-name">Pacific Uwitonze</h3>
-                  <p className="team-title-job">UI/UX Designer</p>
-                  <p className="team-description-text">
-                    Creates wireframes, prototypes, and high-fidelity designs focused on user experience and usability.
-                  </p>
-                </div>
-              </div>
-
-              <div className="team-card">
-                <div className="team-image-container">
-                  <Image 
-                    src="/team/jax.jpg" 
-                    alt="Jackson Mugwiza" 
-                    width={120} 
-                    height={120}
-                    className="team-image"
-                  />
-                </div>
-                <div className="team-info">
-                  <h3 className="team-name">Jackson Mugwiza</h3>
-                  <p className="team-title-job">Cybersecurity Analyst</p>
-                  <p className="team-description-text">
-                    Monitors systems for threats, responds to breaches, and strengthens digital defenses.
-                  </p>
+                  <h3 className="team-name">{t.about.team.jackson.name}</h3>
+                  <p className="team-title-job">{t.about.team.jackson.role}</p>
+                  <p className="team-description-text">{t.about.team.jackson.description}</p>
                 </div>
               </div>
             </div>
@@ -228,50 +200,42 @@ export default function AboutPage() {
             <div className="values-grid">
               <div className="value-card mission-card">
                 <div className="value-icon">
-                  <span>🎯</span>
+                  <i className="bi bi-bullseye"></i>
                 </div>
-                <h3 className="value-title">Our Mission</h3>
-                <p className="value-description">
-                  To empower businesses and individuals with cutting-edge technology solutions 
-                  that drive digital transformation, enhance operational efficiency, and create 
-                  sustainable value in an interconnected world.
-                </p>
+                <h3 className="value-title">{t.about.mission_title}</h3>
+                <p className="value-description">{t.about.mission_text}</p>
               </div>
 
               <div className="value-card vision-card">
                 <div className="value-icon">
-                  <span>🚀</span>
+                  <i className="bi bi-rocket-takeoff"></i>
                 </div>
-                <h3 className="value-title">Our Vision</h3>
-                <p className="value-description">
-                  To be the leading technology partner in Africa and beyond, recognized for 
-                  innovation, reliability, and transformative impact in software development, 
-                  cloud computing, and digital infrastructure.
-                </p>
+                <h3 className="value-title">{t.about.vision_title}</h3>
+                <p className="value-description">{t.about.vision_text}</p>
               </div>
 
               <div className="value-card objectives-card">
                 <div className="value-icon">
-                  <span>⭐</span>
+                  <i className="bi bi-stars"></i>
                 </div>
-                <h3 className="value-title">Our Objectives</h3>
+                <h3 className="value-title">{t.about.objectives_title}</h3>
                 <ul className="objectives-list">
-                  <li>Deliver world-class software solutions and consulting services</li>
-                  <li>Foster digital inclusion through accessible technology platforms</li>
-                  <li>Build strategic partnerships with industry leaders</li>
-                  <li>Continuously innovate in AI, blockchain, and cloud technologies</li>
-                  <li>Maintain 99.9% service reliability and customer satisfaction</li>
+                  <li>{t.about.objectives['1']}</li>
+                  <li>{t.about.objectives['2']}</li>
+                  <li>{t.about.objectives['3']}</li>
+                  <li>{t.about.objectives['4']}</li>
+                  <li>{t.about.objectives['5']}</li>
                 </ul>
               </div>
             </div>
           </section>
           {/* Animated Timeline */}
           <section className="timeline-section">
-            <h2 className="timeline-title">Our Journey</h2>
+            <h2 className="timeline-title">{t.about.history_title}</h2>
             <div className="timeline-container">
               <div className="timeline-line"></div>
               {timelineItems.map((item, index) => (
-                <div 
+                <div
                   key={index}
                   className={`timeline-item ${visibleItems.includes(index) ? 'visible' : ''}`}
                   data-index={index}
@@ -291,23 +255,23 @@ export default function AboutPage() {
           {/* Team & Culture Section */}
           <section className="culture-section">
             <div className="culture-content">
-              <h2 className="culture-title">Our Culture & Values</h2>
+              <h2 className="culture-title">{t.about.culture_title}</h2>
               <div className="culture-grid">
                 <div className="culture-item">
-                  <h4>Innovation First</h4>
-                  <p>We embrace emerging technologies and foster a culture of continuous learning and experimentation.</p>
+                  <h4>{t.about.culture.innovation}</h4>
+                  <p>{t.about.culture.innovation_desc}</p>
                 </div>
                 <div className="culture-item">
-                  <h4>Customer-Centric</h4>
-                  <p>Every solution we create is designed with our clients&apos; success and satisfaction as the primary focus.</p>
+                  <h4>{t.about.culture.customer}</h4>
+                  <p>{t.about.culture.customer_desc}</p>
                 </div>
                 <div className="culture-item">
-                  <h4>Quality Excellence</h4>
-                  <p>We maintain the highest standards in code quality, security, and performance across all our products.</p>
+                  <h4>{t.about.culture.quality}</h4>
+                  <p>{t.about.culture.quality_desc}</p>
                 </div>
                 <div className="culture-item">
-                  <h4>Global Impact</h4>
-                  <p>Our solutions are designed to make a positive impact on businesses and communities worldwide.</p>
+                  <h4>{t.about.culture.impact}</h4>
+                  <p>{t.about.culture.impact_desc}</p>
                 </div>
               </div>
             </div>
@@ -315,17 +279,14 @@ export default function AboutPage() {
 
           {/* Call to Action */}
           <section className="about-cta">
-            <h2 className="about-cta-title">Ready to Transform Your Business?</h2>
-            <p className="about-cta-description">
-              Join hundreds of satisfied clients who trust Amoria Global Tech 
-              for their digital transformation journey.
-            </p>
+            <h2 className="about-cta-title">{t.about.cta_title}</h2>
+            <p className="about-cta-description">{t.about.cta_description}</p>
             <div className="about-cta-buttons">
               <Link href="/services" className="about-cta-btn primary">
-                Explore Our Services
+                {t.about.cta_services}
               </Link>
               <Link href="/products" className="about-cta-btn secondary">
-                View Our Products
+                {t.about.cta_products}
               </Link>
             </div>
           </section>
@@ -334,7 +295,7 @@ export default function AboutPage() {
 
       {/* Scroll to Top Button */}
       {mounted && showScrollTop && (
-        <button 
+        <button
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"

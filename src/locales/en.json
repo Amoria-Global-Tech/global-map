@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "news": "News",
+    "contact": "Contact",
+    "blog": "Blog",
+    "donate": "Donate"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "rw": "Kinyarwanda",
+    "sw": "Swahili"
+  },
+  "home": {
+    "hero_title": "Connect the Future with Innovation and Secure",
+    "hero_subtitle": "Empowering businesses with cutting-edge solutions that drive digital transformation and create lasting value in tomorrow's connected world.",
+    "typing_word": "Technology",
+    "cta_explore": "Explore our services",
+    "cta_contact": "Contact Sales",
+    "products_title": "Our Products",
+    "products_subtitle": "Innovative solutions designed to meet your business needs",
+    "products_loading": "Loading products...",
+    "products_error": "Failed to load products. Please try again later.",
+    "products_empty": "No products available at the moment.",
+    "services_title": "Our Services",
+    "services_subtitle": "Discover powerful features designed to transform your business operations",
+    "services": {
+      "web_dev": {
+        "title": "Web Development",
+        "description": "Modern, scalable web solutions from landing pages to complex web applications. We build responsive, fast-loading websites that convert visitors into customers.",
+        "features": ["Responsive design", "E-commerce integration", "CMS development", "Performance optimization", "SEO-ready structure"]
+      },
+      "mobile_dev": {
+        "title": "Mobile App Development",
+        "description": "Native and cross-platform mobile applications that deliver seamless user experiences across iOS and Android devices.",
+        "features": ["iOS development", "Android development", "Cross-platform apps", "App store deployment", "Mobile-first design"]
+      },
+      "desktop_dev": {
+        "title": "Desktop Applications Development",
+        "description": "Robust desktop software solutions for Windows, macOS, and Linux that streamline business operations and enhance productivity.",
+        "features": ["Cross-platform compatibility", "Enterprise integration", "Offline functionality", "System optimization", "User-friendly interfaces"]
+      },
+      "seo": {
+        "title": "SEO Optimization",
+        "description": "Data-driven search engine optimization strategies that improve rankings, increase organic traffic, and boost online visibility.",
+        "features": ["Technical SEO", "Content strategy", "Local optimization", "Performance audits", "Analytics tracking"]
+      },
+      "consulting": {
+        "title": "IT Consultation",
+        "description": "Strategic technology guidance to help businesses make informed decisions about digital transformation and infrastructure planning.",
+        "features": ["Technology assessment", "Digital strategy", "Infrastructure planning", "Process optimization", "Risk evaluation"]
+      },
+      "custom_software": {
+        "title": "Custom Software Solutions",
+        "description": "Bespoke software development tailored to unique business requirements, from automation tools to enterprise management systems.",
+        "features": ["Business automation", "System integration", "Workflow optimization", "Custom databases", "Scalable architecture"]
+      },
+      "security": {
+        "title": "Cyber Security",
+        "description": "Comprehensive security solutions to protect digital assets, prevent data breaches, and ensure compliance with industry standards.",
+        "features": ["Security assessments", "Threat protection", "Data encryption", "Compliance audits", "Incident response"]
+      },
+      "data_analysis": {
+        "title": "Data Analysis",
+        "description": "Transform raw data into actionable business insights through advanced analytics, visualization, and business intelligence solutions.",
+        "features": ["Business intelligence", "Data visualization", "Predictive modeling", "Performance metrics", "Decision support"]
+      }
+    },
+    "loading": {
+      "starting": "Starting system...",
+      "initializing": "INITIALIZING",
+      "loading": "LOADING",
+      "connecting": "CONNECTING",
+      "syncing": "SYNCING",
+      "optimizing": "OPTIMIZING",
+      "complete": "COMPLETE",
+      "loading_modules": "Loading core modules...",
+      "establishing": "Establishing connections...",
+      "syncing_data": "Syncing global data...",
+      "optimizing_perf": "Optimizing performance...",
+      "welcome": "Welcome to Amoria Tech Global!"
+    },
+    "partners_title": "Our Partners",
+    "partners_subtitle": "Trusted by leading organizations worldwide.",
+    "view_all": "View All",
+    "read_more": "Read More"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn more about our mission, vision, and values.",
+    "hero_title": "About Amoria Global Tech",
+    "hero_description": "Pioneering the future of technology through innovative solutions, strategic partnerships, and unwavering commitment to digital excellence.",
+    "mission_title": "Our Mission",
+    "mission_text": "To empower businesses and individuals with cutting-edge technology solutions that drive digital transformation, enhance operational efficiency, and create sustainable value in an interconnected world.",
+    "vision_title": "Our Vision",
+    "vision_text": "To be the leading technology partner in Africa and beyond, recognized for innovation, reliability, and transformative impact in software development, cloud computing, and digital infrastructure.",
+    "objectives_title": "Our Objectives",
+    "objectives": {
+      "1": "Deliver world-class software solutions and consulting services",
+      "2": "Foster digital inclusion through accessible technology platforms",
+      "3": "Build strategic partnerships with industry leaders",
+      "4": "Continuously innovate in AI, blockchain, and cloud technologies",
+      "5": "Maintain 99.9% service reliability and customer satisfaction"
+    },
+    "values_title": "Our Values",
+    "team_title": "Our Team",
+    "team_subtitle": "Meet the passionate professionals behind Amoria Global Tech's innovative solutions",
+    "history_title": "Our Journey",
+    "history_subtitle": "A journey of innovation and growth.",
+    "culture_title": "Our Culture & Values",
+    "culture": {
+      "innovation": "Innovation First",
+      "innovation_desc": "We embrace emerging technologies and foster a culture of continuous learning and experimentation.",
+      "customer": "Customer-Centric",
+      "customer_desc": "Every solution we create is designed with our clients' success and satisfaction as the primary focus.",
+      "quality": "Quality Excellence",
+      "quality_desc": "We maintain the highest standards in code quality, security, and performance across all our products.",
+      "impact": "Global Impact",
+      "impact_desc": "Our solutions are designed to make a positive impact on businesses and communities worldwide."
+    },
+    "timeline": {
+      "2020": {
+        "title": "Our Foundation",
+        "subtitle": "Technology Excellence",
+        "description": "Established as a leading technology solutions provider, focusing on innovative software development and digital transformation."
+      },
+      "2021": {
+        "title": "Service Expansion",
+        "subtitle": "Comprehensive Solutions",
+        "description": "Expanded our services to include AI-powered analytics, cloud infrastructure, and enterprise security management systems."
+      },
+      "2022": {
+        "title": "Global Reach",
+        "subtitle": "International Partnerships",
+        "description": "Formed strategic partnerships with major corporations across Africa, providing multilingual support and 24/7 availability."
+      },
+      "2023": {
+        "title": "Innovation Leadership",
+        "subtitle": "Cutting-Edge Technology",
+        "description": "Pioneered blockchain solutions, mobile banking systems, and smart automation platforms for diverse industries."
+      },
+      "2024": {
+        "title": "Future Vision",
+        "subtitle": "Digital Transformation",
+        "description": "Continuing to lead the digital revolution with advanced AI, quantum computing research, and sustainable technology solutions."
+      }
+    },
+    "team": {
+      "moses": {
+        "name": "Moses Mirarayi",
+        "role": "Head of Operations",
+        "description": "Operations excellence leader ensuring seamless project delivery and client satisfaction."
+      },
+      "joseph": {
+        "name": "Joseph Maranatha",
+        "role": "Chief Technology Officer & Full-Stack Developer",
+        "description": "Expert software architect specializing in AI, blockchain, frontend and backend development, and cloud infrastructure solutions."
+      },
+      "pacific": {
+        "name": "Pacific Uwitonze",
+        "role": "UI/UX Designer",
+        "description": "Creates wireframes, prototypes, and high-fidelity designs focused on user experience and usability."
+      },
+      "jackson": {
+        "name": "Jackson Mugwiza",
+        "role": "Cybersecurity Analyst",
+        "description": "Monitors systems for threats, responds to breaches, and strengthens digital defenses."
+      }
+    },
+    "cta_title": "Ready to Transform Your Business?",
+    "cta_description": "Join hundreds of satisfied clients who trust Amoria Global Tech for their digital transformation journey.",
+    "cta_services": "Explore Our Services",
+    "cta_products": "View Our Products"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Professional technology services tailored to your needs.",
+    "web_dev": "Web Development",
+    "web_dev_desc": "Modern, scalable web solutions from landing pages to complex web applications.",
+    "mobile_dev": "Mobile App Development",
+    "mobile_dev_desc": "Native and cross-platform mobile applications for iOS and Android.",
+    "desktop_dev": "Desktop Applications",
+    "desktop_dev_desc": "Robust desktop software solutions for Windows, macOS, and Linux.",
+    "seo": "SEO Optimization",
+    "seo_desc": "Data-driven SEO strategies that improve rankings and visibility.",
+    "consulting": "IT Consultation",
+    "consulting_desc": "Strategic technology guidance for digital transformation.",
+    "custom_software": "Custom Software",
+    "custom_software_desc": "Bespoke software tailored to your unique business requirements.",
+    "security": "Cyber Security",
+    "security_desc": "Comprehensive security solutions to protect your digital assets.",
+    "data_analysis": "Data Analysis",
+    "data_analysis_desc": "Transform raw data into actionable business insights.",
+    "learn_more": "Learn More",
+    "get_quote": "Get a Quote"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our innovative solutions designed to transform your business.",
+    "visit_now": "Visit Now",
+    "explore": "Explore",
+    "coming_soon": "Coming Soon",
+    "available": "Available",
+    "per_month": "/month",
+    "features": "Features",
+    "all_categories": "All",
+    "filter_by": "Filter by"
+  },
+  "news": {
+    "title": "News & Updates",
+    "subtitle": "Stay updated with our latest announcements, insights, and company news.",
+    "read_more": "Read More",
+    "published_on": "Published on",
+    "by_author": "By",
+    "views": "views",
+    "share": "Share",
+    "related": "Related Articles",
+    "categories": "Categories",
+    "all": "All",
+    "search_placeholder": "Search news...",
+    "no_results": "No news found.",
+    "load_more": "Load More"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us. We'd love to hear from you.",
+    "form_title": "Send us a Message",
+    "name": "Full Name",
+    "name_placeholder": "Enter your name",
+    "email": "Email Address",
+    "email_placeholder": "Enter your email",
+    "phone": "Phone Number",
+    "phone_placeholder": "Enter your phone (optional)",
+    "message": "Message",
+    "message_placeholder": "Write your message here...",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! Your message has been sent successfully.",
+    "error": "Something went wrong. Please try again.",
+    "address": "Address",
+    "phone_label": "Phone",
+    "email_label": "Email",
+    "working_hours": "Working Hours",
+    "working_hours_text": "Monday - Friday: 9:00 AM - 6:00 PM"
+  },
+  "footer": {
+    "useful_links": "Useful Links",
+    "location": "Our Location",
+    "contact_us": "Contact Us",
+    "follow_us": "Follow Us",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "close": "Close",
+    "menu": "Menu",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "no_data": "No data available"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights & Articles",
+    "description": "Explore our latest thoughts on technology, development, and digital innovation.",
+    "featured": "Featured",
+    "all_posts": "All Posts",
+    "min_read": "min read",
+    "by": "By",
+    "no_posts": "No posts found",
+    "check_back": "Check back later for new content.",
+    "categories": {
+      "technology": "Technology",
+      "development": "Development",
+      "design": "Design",
+      "business": "Business",
+      "tutorials": "Tutorials"
+    },
+    "cta_title": "Have a Topic in Mind?",
+    "cta_description": "We would love to hear your thoughts. Reach out to suggest topics or collaborate on content.",
+    "cta_button": "Get in Touch"
+  },
+  "donate": {
+    "title": "Donate",
+    "badge": "Support Our Mission",
+    "hero_title": "Make a Difference Today",
+    "hero_description": "Your contribution helps us empower communities through technology, train the next generation of developers, and drive digital transformation across Africa.",
+    "choose_impact": "Choose Your Impact Level",
+    "select_tier": "Select a donation tier that matches your support level.",
+    "tiers": {
+      "supporter": {
+        "name": "Supporter",
+        "description": "Support our mission to empower communities through technology.",
+        "benefits": ["Thank you email", "Name on supporters page", "Newsletter updates"]
+      },
+      "contributor": {
+        "name": "Contributor",
+        "description": "Help us expand our reach and impact more lives.",
+        "benefits": ["All Supporter benefits", "Quarterly impact report", "Early access to events"]
+      },
+      "champion": {
+        "name": "Champion",
+        "description": "Be a champion of digital transformation in Africa.",
+        "benefits": ["All Contributor benefits", "Exclusive webinars", "Recognition on website", "Annual impact certificate"]
+      },
+      "visionary": {
+        "name": "Visionary",
+        "description": "Lead the way in creating lasting technological change.",
+        "benefits": ["All Champion benefits", "Direct project updates", "Speaking opportunity", "Custom impact report", "VIP event access"]
+      }
+    },
+    "most_popular": "Most Popular",
+    "donate_btn": "Donate",
+    "custom_title": "Custom Amount",
+    "custom_description": "Want to give a different amount? Enter your custom donation below.",
+    "enter_amount": "Enter amount",
+    "how_helps_title": "How Your Donation Helps",
+    "how_helps": {
+      "training": {
+        "title": "Tech Training",
+        "description": "Fund coding bootcamps and workshops for aspiring developers."
+      },
+      "infrastructure": {
+        "title": "Infrastructure",
+        "description": "Build computer labs and learning centers in underserved areas."
+      },
+      "mentorship": {
+        "title": "Mentorship",
+        "description": "Connect students with industry professionals for guidance."
+      },
+      "access": {
+        "title": "Digital Access",
+        "description": "Provide internet connectivity and digital tools to communities."
+      }
+    },
+    "trust_title": "Your Trust Matters",
+    "trust_description": "We are committed to transparency. Every donation is tracked and reported to ensure maximum impact. You will receive regular updates on how your contribution is making a difference.",
+    "trust_badges": {
+      "secure": "Secure Payments",
+      "tax": "Tax Deductible",
+      "reports": "Regular Reports"
+    },
+    "impact_stats": {
+      "students": "Students Trained",
+      "projects": "Projects Delivered",
+      "communities": "Communities Reached",
+      "success": "Success Rate"
+    },
+    "cta_title": "Have Questions?",
+    "cta_description": "We are here to help. Reach out to learn more about our programs and impact.",
+    "cta_button": "Contact Us",
+    "thank_you": "Thank you for your generous donation!"
+  }
+}
