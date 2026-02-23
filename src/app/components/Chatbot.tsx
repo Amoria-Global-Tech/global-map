@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react';
 
+const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT_URL || '';
+
 interface Message {
   id: number;
   text: string;
@@ -21,6 +23,7 @@ export default function Chatbot() {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -35,6 +38,27 @@ export default function Chatbot() {
     setIsOpen(!isOpen);
   };
 
+  const sendMessageToAPI = async (message: string): Promise<string> => {
+    try {
+      const res = await fetch(`${API_URL}/chatbot/message`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          appId: 'amoria-home',
+          message,
+          conversationId: conversationId || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.conversationId) {
+        setConversationId(data.conversationId);
+      }
+      return data.response || 'Sorry, I could not process your request. Please try again.';
+    } catch {
+      return 'Sorry, I\'m having trouble connecting. Please try again or contact info@amoriaglobal.com';
+    }
+  };
+
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -46,60 +70,20 @@ export default function Chatbot() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const messageText = inputValue.trim();
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response with delay
-    setTimeout(() => {
-      const botResponse = getBotResponse(inputValue);
-      const botMessage: Message = {
-        id: Date.now() + 1,
-        text: botResponse,
-        sender: 'bot',
-        timestamp: new Date()
-      };
-      
-      setMessages(prev => [...prev, botMessage]);
-      setIsTyping(false);
-    }, 1500);
-  };
+    const botResponse = await sendMessageToAPI(messageText);
+    const botMessage: Message = {
+      id: Date.now() + 1,
+      text: botResponse,
+      sender: 'bot',
+      timestamp: new Date()
+    };
 
-  const getBotResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase();
-    
-    if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      return "Hello! Welcome to Amoria Global Tech. I'm here to help you with information about our services and products.";
-    }
-    
-    if (input.includes('service') || input.includes('what do you do')) {
-      return "We offer Software Publishing, Web Portals, Computer Programming, Computer Consultancy & Facilities Management, TV Programming & Broadcasting Activities, and Memories Storage solutions.";
-    }
-    
-    if (input.includes('product') || input.includes('solution')) {
-      return "Our products include USSD Mobile Banking, Clearing and Payment Solutions, Android Based Agency Banking, Digital Payment Gateway, Security Management System, and Cloud Infrastructure Suite.";
-    }
-    
-    if (input.includes('contact') || input.includes('phone') || input.includes('email')) {
-      return "You can reach us at +250 788 437 347 or email us at info@amoriaglobal.com. We're located in Kigali, Rwanda and available Mon-Fri: 8am - 6pm.";
-    }
-    
-    if (input.includes('price') || input.includes('cost') || input.includes('pricing')) {
-      return "Our pricing varies by solution. We offer Basic plans starting at $15/month, Pro plans at $85/month, and Enterprise solutions at $125/month. Contact us for custom pricing.";
-    }
-    
-    if (input.includes('location') || input.includes('where') || input.includes('address')) {
-      return "We're located in Kigali, Rwanda. We serve clients across Africa and globally through our digital solutions.";
-    }
-    
-    if (input.includes('team') || input.includes('about')) {
-      return "Amoria Global Tech is led by experienced professionals specializing in technology innovation, software development, and digital transformation.";
-    }
-    
-    if (input.includes('help') || input.includes('support')) {
-      return "I can help you with information about our services, products, pricing, contact details, and general inquiries. What would you like to know more about?";
-    }
-    
-    return "Thank you for your question! For detailed information about that topic, please contact our team at +250 788 437 347 or visit our services page. Is there anything else I can help you with?";
+    setMessages(prev => [...prev, botMessage]);
+    setIsTyping(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -172,9 +156,24 @@ export default function Chatbot() {
               <button
                 key={index}
                 className="quick-question-btn"
-                onClick={() => {
-                  setInputValue(question);
-                  setTimeout(() => handleSendMessage(), 100);
+                onClick={async () => {
+                  const userMessage: Message = {
+                    id: Date.now(),
+                    text: question,
+                    sender: 'user',
+                    timestamp: new Date()
+                  };
+                  setMessages(prev => [...prev, userMessage]);
+                  setIsTyping(true);
+                  const botResponse = await sendMessageToAPI(question);
+                  const botMsg: Message = {
+                    id: Date.now() + 1,
+                    text: botResponse,
+                    sender: 'bot',
+                    timestamp: new Date()
+                  };
+                  setMessages(prev => [...prev, botMsg]);
+                  setIsTyping(false);
                 }}
               >
                 {question}

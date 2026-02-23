@@ -232,11 +232,8 @@ model admins {
   createdBy                                              Int?
   admin_audit_logs                                       admin_audit_logs[]
   admin_sessions                                         admin_sessions[]
-  bulk_messages                                          bulk_messages[]
   escalation_cases_escalation_cases_assignedToIdToadmins escalation_cases[] @relation("escalation_cases_assignedToIdToadmins")
   escalation_cases_escalation_cases_createdByIdToadmins  escalation_cases[] @relation("escalation_cases_createdByIdToadmins")
-  message_templates_createdBy                            message_templates[] @relation("message_templates_createdByToadmins")
-  message_templates_updatedBy                            message_templates[] @relation("message_templates_updatedByToadmins")
 
   @@index([email])
   @@index([role])
@@ -1961,7 +1958,6 @@ model users {
   bank_accounts                                                            bank_accounts[]
   bonuses                                                                  bonuses[]
   bookings                                                                 bookings[]
-  bulk_message_recipients                                                  bulk_message_recipients[]
   client_interactions_client_interactions_agentIdTousers                   client_interactions[]       @relation("client_interactions_agentIdTousers")
   client_interactions_client_interactions_clientIdTousers                  client_interactions[]       @relation("client_interactions_clientIdTousers")
   connected_accounts                                                       connected_accounts[]
@@ -2178,109 +2174,4 @@ enum EscalationType {
   FRAUD_ALERT
   TECHNICAL_ISSUE
   OTHER
-}
-
-// ============================================
-// BULK MESSAGING SYSTEM
-// ============================================
-
-model bulk_messages {
-  id              String                     @id @default(cuid())
-  type            BulkMessageType
-  status          BulkMessageStatus          @default(PENDING)
-  subject         String?
-  message         String
-  templateId      String?
-  totalRecipients Int                        @default(0)
-  delivered       Int                        @default(0)
-  failed          Int                        @default(0)
-  pending         Int                        @default(0)
-  scheduledAt     DateTime?
-  sentAt          DateTime?
-  completedAt     DateTime?
-  sentBy          Int
-  metadata        Json?
-  errorSummary    Json?
-  createdAt       DateTime                   @default(now())
-  updatedAt       DateTime                   @updatedAt
-  admins          admins                     @relation(fields: [sentBy], references: [id])
-  recipients      bulk_message_recipients[]
-  template        message_templates?         @relation(fields: [templateId], references: [id])
-
-  @@index([sentBy])
-  @@index([status])
-  @@index([type])
-  @@index([scheduledAt])
-  @@index([createdAt])
-}
-
-model bulk_message_recipients {
-  id            String                     @id @default(cuid())
-  bulkMessageId String
-  userId        Int?
-  name          String?
-  email         String?
-  phone         String?
-  status        BulkMessageRecipientStatus @default(PENDING)
-  sentAt        DateTime?
-  deliveredAt   DateTime?
-  failedAt      DateTime?
-  errorCode     String?
-  errorMessage  String?
-  attempts      Int                        @default(0)
-  createdAt     DateTime                   @default(now())
-  updatedAt     DateTime                   @updatedAt
-  bulkMessage   bulk_messages              @relation(fields: [bulkMessageId], references: [id], onDelete: Cascade)
-  users         users?                     @relation(fields: [userId], references: [id])
-
-  @@index([bulkMessageId])
-  @@index([userId])
-  @@index([status])
-}
-
-model message_templates {
-  id           String          @id @default(cuid())
-  name         String
-  type         BulkMessageType
-  category     String?
-  subject      String?
-  message      String
-  variables    Json?
-  isActive     Boolean         @default(true)
-  usageCount   Int             @default(0)
-  lastUsedAt   DateTime?
-  createdBy    Int
-  updatedBy    Int?
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
-  creator      admins          @relation("message_templates_createdByToadmins", fields: [createdBy], references: [id])
-  updater      admins?         @relation("message_templates_updatedByToadmins", fields: [updatedBy], references: [id])
-  bulkMessages bulk_messages[]
-
-  @@index([type])
-  @@index([isActive])
-  @@index([category])
-}
-
-enum BulkMessageType {
-  SMS
-  EMAIL
-  WHATSAPP
-}
-
-enum BulkMessageStatus {
-  PENDING
-  SCHEDULED
-  IN_PROGRESS
-  COMPLETED
-  FAILED
-  CANCELLED
-}
-
-enum BulkMessageRecipientStatus {
-  PENDING
-  SENT
-  DELIVERED
-  FAILED
-  BOUNCED
 }

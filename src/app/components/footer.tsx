@@ -27,13 +27,13 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-title">{t.footer.location}</h3>
               <a
-                href="https://maps.google.com/?q=Kigali,Rwanda"
+                href="https://maps.google.com/?q=EVA+PLAZA,+KK+84B+St,+Kicukiro,+Kigali,+Rwanda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-location-link"
               >
                 <i className="bi bi-geo-alt-fill"></i>
-                <span>Kigali, Rwanda</span>
+                <span>KK 84B St, EVA PLAZA, Kicukiro, Kigali</span>
               </a>
             </div>
 
