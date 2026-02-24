@@ -162,6 +162,7 @@ export default function ContactUsPage() {
                     <div className="contact-info-details">
                       <h3>{t.contact.address}</h3>
                       <p>KK 84B St, EVA PLAZA Building</p>
+                      <p>Kanombe 3rd Floor, Left Wing</p>
                       <p>Nyarugunga, Kicukiro, Kigali, Rwanda</p>
                       <p style={{ fontSize: '0.85em', opacity: 0.7 }}>Near Rwanda Military Hospital</p>
                     </div>

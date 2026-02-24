@@ -33,7 +33,7 @@ const Footer = () => {
                 className="footer-location-link"
               >
                 <i className="bi bi-geo-alt-fill"></i>
-                <span>KK 84B St, EVA PLAZA, Kicukiro, Kigali</span>
+                <span>KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali</span>
               </a>
             </div>
 
