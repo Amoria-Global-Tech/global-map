@@ -94,7 +94,29 @@
     "partners_title": "Abafatanyabikorwa Bacu",
     "partners_subtitle": "Baizezwe n'ibigo bikomeye ku isi hose.",
     "view_all": "Reba byose",
-    "read_more": "Soma byinshi"
+    "read_more": "Soma byinshi",
+    "testimonials_title": "Icyo Bavuga Ku Bikorwa Byacu",
+    "testimonials_subtitle": "Umva ibyo ibigo twafashije guhinduka binyuze muri tekinoloji bivuga",
+    "testimonials": [
+      {
+        "name": "Joseph Nzaramba",
+        "role": "Umuyobozi Mukuru, Lumina",
+        "text": "Amoria Global Tech yahinduye rwose uko tubona ikoranabuhanga. Itsinda ryabo ryadushakiye urubuga rutasaga gusa n'ibyo twari twiteze ahubwo rwanabirenza. Kwitabira ibintu byose no kwiyemeza ku bwiza ni ikintu utasanga kenshi.",
+        "rating": 5
+      },
+      {
+        "name": "Nkurunziza Amos",
+        "role": "CTO, Tegura Tech",
+        "text": "Kuva ku mushinga kugeza ku gushyiraho, Amoria yatanze ku buri cyiciro. Batahuye neza ibibazo byacu bya tekiniki kandi bashaka ibisubizo bikura nta nkomyi. Ni umufatanyabikorwa wa tekiniki wizerwa.",
+        "rating": 5
+      },
+      {
+        "name": "Muneza Charles",
+        "role": "Uwashtse, Yowehub",
+        "text": "Gukorana na Amoria ni imwe mu myanzuro myiza twafashe. Bahinduye igitekerezo cyacu bakagikora igicuruzwa abakoresha bakunda. Ubuhanga bwabo, ubwihute, n'umuco wo gukora neza birabatandukanya n'abandi twigeze dukorana.",
+        "rating": 5
+      }
+    ]
   },
   "about": {
     "title": "Abo Turibo",
@@ -235,7 +257,15 @@
     "all": "Byose",
     "search_placeholder": "Shakisha amakuru...",
     "no_results": "Nta makuru yabonetse.",
-    "load_more": "Shyira ibindi"
+    "load_more": "Shyira ibindi",
+    "banner_badge": "Ibishya",
+    "banner_title": "Guma imbere n'ikoranabuhanga rishya",
+    "banner_text": "Kubona amakuru yihariye ku bihindagurika, ibicuruzwa bishya n'ubumenyi bw'inzobere zacu.",
+    "banner_subscribe": "Iyandikishe",
+    "banner_explore": "Reba serivisi",
+    "banner_articles": "Inyandiko",
+    "banner_readers": "Abasomyi",
+    "banner_countries": "Ibihugu"
   },
   "contact": {
     "title": "Twandikire",
@@ -262,8 +292,10 @@
   "footer": {
     "useful_links": "Aho Wakanda",
     "location": "Aho Duherereye",
+    "address": "KN 74 St, Makuza Peace Plaza, Kigali",
+    "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Twandikire",
-    "follow_us": "Dukurikire",
+    "follow_us": "Dukurikire Kuri :",
     "copyright": "Uburenganzira bwose bwabitswe.",
     "privacy": "Politiki y'Ibanga",
     "terms": "Amategeko y'Ikoreshwa"

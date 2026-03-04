@@ -31,6 +31,7 @@ export default function NewsPage() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
   const [pagination, setPagination] = useState({
     total: 0,
     limit: 12,
@@ -118,6 +119,26 @@ export default function NewsPage() {
       <Navbar />
 
       <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
+        {/* Announcement Banner */}
+        {showBanner && (
+          <div className="news-announcement-banner">
+            <div className="announcement-content">
+              <span className="announcement-icon"><i className="bi bi-lightning-charge-fill"></i></span>
+              <p>
+                {t.news.banner_text || "Get exclusive updates on innovations, product launches, and insights from our experts."} <span className="announcement-divider">|</span> <strong>{t.news.banner_title || "Stay Ahead with the Latest in Tech"}</strong>
+              </p>
+              <Link href="/contact" className="announcement-cta">{t.contact.title || "Contact Us"}</Link>
+            </div>
+            <button
+              className="announcement-close"
+              onClick={() => setShowBanner(false)}
+              aria-label="Close announcement"
+            >
+              <i className="bi bi-x-lg"></i>
+            </button>
+          </div>
+        )}
+
         <div className="container">
           {/* Hero Section */}
           <section className="page-hero">

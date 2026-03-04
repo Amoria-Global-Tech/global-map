@@ -94,7 +94,29 @@
     "partners_title": "Nos Partenaires",
     "partners_subtitle": "Approuvé par des organisations leaders dans le monde entier.",
     "view_all": "Voir tout",
-    "read_more": "Lire la suite"
+    "read_more": "Lire la suite",
+    "testimonials_title": "Ce Qu'ils Disent De Nous",
+    "testimonials_subtitle": "Découvrez les témoignages des entreprises que nous avons aidées à se transformer grâce à la technologie",
+    "testimonials": [
+      {
+        "name": "Joseph Nzaramba",
+        "role": "PDG, Lumina",
+        "text": "Amoria Global Tech a complètement redéfini notre approche technologique. Leur équipe nous a construit une plateforme qui non seulement a répondu à notre vision, mais l'a poussée encore plus loin. Le souci du détail et l'engagement envers la qualité sont rares à trouver.",
+        "rating": 5
+      },
+      {
+        "name": "Nkurunziza Amos",
+        "role": "CTO, Tegura Tech",
+        "text": "De l'architecture au déploiement, Amoria a livré à chaque étape. Ils ont compris profondément nos défis techniques et ont conçu des solutions qui évoluent sans effort. Un partenaire technologique vraiment fiable.",
+        "rating": 5
+      },
+      {
+        "name": "Muneza Charles",
+        "role": "Fondateur, Yowehub",
+        "text": "S'associer avec Amoria a été l'une des meilleures décisions que nous avons prises. Ils ont transformé notre idée en un produit que les utilisateurs adorent. Leur créativité, rapidité et professionnalisme les distinguent de tous ceux avec qui nous avons travaillé.",
+        "rating": 5
+      }
+    ]
   },
   "about": {
     "title": "À Propos de Nous",
@@ -235,7 +257,15 @@
     "all": "Tous",
     "search_placeholder": "Rechercher des actualités...",
     "no_results": "Aucune actualité trouvée.",
-    "load_more": "Charger plus"
+    "load_more": "Charger plus",
+    "banner_badge": "Nouveautés",
+    "banner_title": "Restez en avance avec les dernières technologies",
+    "banner_text": "Recevez des mises à jour exclusives sur les innovations, les lancements de produits et les perspectives de nos experts.",
+    "banner_subscribe": "S'abonner",
+    "banner_explore": "Explorer les services",
+    "banner_articles": "Articles",
+    "banner_readers": "Lecteurs",
+    "banner_countries": "Pays"
   },
   "contact": {
     "title": "Contactez-nous",
@@ -262,8 +292,10 @@
   "footer": {
     "useful_links": "Liens Utiles",
     "location": "Notre Emplacement",
+    "address": "KN 74 St, Makuza Peace Plaza, Kigali",
+    "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Contactez-nous",
-    "follow_us": "Suivez-nous",
+    "follow_us": "Suivez-nous Sur :",
     "copyright": "Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation"

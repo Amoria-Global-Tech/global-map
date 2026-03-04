@@ -23,7 +23,7 @@
     "sw": "Swahili"
   },
   "home": {
-    "hero_title": "Connect the Future with Innovation and Secure",
+    "hero_title": "Connect to the Future with Innovation and Secure",
     "hero_subtitle": "Empowering businesses with cutting-edge solutions that drive digital transformation and create lasting value in tomorrow's connected world.",
     "typing_word": "Technology",
     "cta_explore": "Explore our services",
@@ -94,7 +94,29 @@
     "partners_title": "Our Partners",
     "partners_subtitle": "Trusted by leading organizations worldwide.",
     "view_all": "View All",
-    "read_more": "Read More"
+    "read_more": "Read More",
+    "testimonials_title": "What They Say About Us",
+    "testimonials_subtitle": "Hear from businesses we've helped transform through technology",
+    "testimonials": [
+      {
+        "name": "Joseph Nzaramba",
+        "role": "CEO, Lumina",
+        "text": "Amoria Global Tech completely redefined how we approach technology. Their team built us a platform that not only met our vision but pushed it further. The attention to detail and commitment to quality is something you rarely find.",
+        "rating": 5
+      },
+      {
+        "name": "Nkurunziza Amos",
+        "role": "CTO, Tegura Tech",
+        "text": "From architecture to deployment, Amoria delivered at every stage. They understood our technical challenges deeply and engineered solutions that scaled effortlessly. A truly reliable tech partner.",
+        "rating": 5
+      },
+      {
+        "name": "Muneza Charles",
+        "role": "Founder, Yowehub",
+        "text": "Partnering with Amoria was one of the best decisions we made. They turned our idea into a product that users love. Their creativity, speed, and professionalism set them apart from anyone else we've worked with.",
+        "rating": 5
+      }
+    ]
   },
   "about": {
     "title": "About Us",
@@ -114,8 +136,8 @@
       "5": "Maintain 99.9% service reliability and customer satisfaction"
     },
     "values_title": "Our Values",
-    "team_title": "Our Team",
-    "team_subtitle": "Meet the passionate professionals behind Amoria Global Tech's innovative solutions",
+    "team_title": "Meet the people behind Amoria Global Tech",
+    "team_subtitle": "Our team of engineers, designers and strategists are united by a passion for building technology that transforms businesses across Africa and beyond.",
     "history_title": "Our Journey",
     "history_subtitle": "A journey of innovation and growth.",
     "culture_title": "Our Culture & Values",
@@ -235,7 +257,15 @@
     "all": "All",
     "search_placeholder": "Search news...",
     "no_results": "No news found.",
-    "load_more": "Load More"
+    "load_more": "Load More",
+    "banner_badge": "What's New",
+    "banner_title": "Stay Ahead with the Latest in Tech",
+    "banner_text": "Get exclusive updates on innovations, product launches, and insights from our experts. Never miss a breakthrough.",
+    "banner_subscribe": "Subscribe Now",
+    "banner_explore": "Explore Services",
+    "banner_articles": "Articles",
+    "banner_readers": "Readers",
+    "banner_countries": "Countries"
   },
   "contact": {
     "title": "Contact Us",
@@ -262,8 +292,10 @@
   "footer": {
     "useful_links": "Useful Links",
     "location": "Our Location",
+    "address": "KN 74 St, Makuza Peace Plaza, Kigali",
+    "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Contact Us",
-    "follow_us": "Follow Us",
+    "follow_us": "Follow Us On :",
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

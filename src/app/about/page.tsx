@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Chatbot from '../components/Chatbot';
@@ -15,6 +15,26 @@ export default function AboutPage() {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const ctaRef = useRef<HTMLElement>(null);
+
+  const handleCtaMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const card = ctaRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  const handleCtaMouseLeave = () => {
+    const card = ctaRef.current;
+    if (!card) return;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  };
 
   const timelineItems = [
     {
@@ -111,16 +131,65 @@ export default function AboutPage() {
      <Navbar />
       {/* Main Content */}
       <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
-        <div className="container">
-          {/* Hero Section */}
-          <section className="about-hero">
+        {/* Hero Bricks - full width outside container */}
+        <div className="about-hero-wrapper">
+          <div className="about-hero-bricks">
+            <div className="brick-row row-1">
+              <div className="bricks-side left">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+              <div className="bricks-center-gap" />
+              <div className="bricks-side right">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+            </div>
+            <div className="brick-row row-2">
+              <div className="bricks-side left">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+              <div className="bricks-center-gap" />
+              <div className="bricks-side right">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+            </div>
+            <div className="brick-row row-3">
+              <div className="bricks-side left">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+              <div className="bricks-center-gap" />
+              <div className="bricks-side right">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+            </div>
+            <div className="brick-row row-4">
+              <div className="bricks-side left">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+              <div className="bricks-center-gap" />
+              <div className="bricks-side right">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+            </div>
+            <div className="brick-row row-5">
+              <div className="bricks-side left">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+              <div className="bricks-center-gap" />
+              <div className="bricks-side right">
+                <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+              </div>
+            </div>
+          </div>
+          <div className="about-hero-content">
             <h1 className="about-hero-title">{t.about.hero_title}</h1>
             <p className="about-hero-description">{t.about.hero_description}</p>
-          </section>
+          </div>
+        </div>
+        <div className="container">
           {/* Our Team Section */}
           <section className="team-section">
             <div className="team-header">
-              <h2 className="team-title">{t.about.team_title}</h2>
+              <h2 className="team-title">Our Team</h2>
               <p className="team-description">{t.about.team_subtitle}</p>
             </div>
 
@@ -216,26 +285,26 @@ export default function AboutPage() {
           <section className="company-values">
             <div className="values-grid">
               <div className="value-card mission-card">
-                <div className="value-icon">
-                  <i className="bi bi-bullseye"></i>
+                <div className="value-header-row">
+                  <i className="bi bi-bullseye value-header-icon"></i>
+                  <h3 className="value-title">{t.about.mission_title}</h3>
                 </div>
-                <h3 className="value-title">{t.about.mission_title}</h3>
                 <p className="value-description">{t.about.mission_text}</p>
               </div>
 
               <div className="value-card vision-card">
-                <div className="value-icon">
-                  <i className="bi bi-rocket-takeoff"></i>
+                <div className="value-header-row">
+                  <i className="bi bi-rocket-takeoff value-header-icon"></i>
+                  <h3 className="value-title">{t.about.vision_title}</h3>
                 </div>
-                <h3 className="value-title">{t.about.vision_title}</h3>
                 <p className="value-description">{t.about.vision_text}</p>
               </div>
 
               <div className="value-card objectives-card">
-                <div className="value-icon">
-                  <i className="bi bi-stars"></i>
+                <div className="value-header-row">
+                  <i className="bi bi-stars value-header-icon"></i>
+                  <h3 className="value-title">{t.about.objectives_title}</h3>
                 </div>
-                <h3 className="value-title">{t.about.objectives_title}</h3>
                 <ul className="objectives-list">
                   <li>{t.about.objectives['1']}</li>
                   <li>{t.about.objectives['2']}</li>
@@ -259,7 +328,7 @@ export default function AboutPage() {
                 >
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <div className="timeline-year">{item.year}</div>
+                    <span className="timeline-year">{item.year}</span>
                     <h4 className="timeline-item-title">{item.title}</h4>
                     <h5 className="timeline-item-subtitle">{item.subtitle}</h5>
                     <p className="timeline-item-description">{item.description}</p>
@@ -295,7 +364,12 @@ export default function AboutPage() {
           </section>
 
           {/* Call to Action */}
-          <section className="about-cta">
+          <section
+            className="about-cta"
+            ref={ctaRef}
+            onMouseMove={handleCtaMouseMove}
+            onMouseLeave={handleCtaMouseLeave}
+          >
             <h2 className="about-cta-title">{t.about.cta_title}</h2>
             <p className="about-cta-description">{t.about.cta_description}</p>
             <div className="about-cta-buttons">

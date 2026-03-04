@@ -35,8 +35,8 @@ interface RelatedNews {
 }
 
 const categoryColors: Record<string, string> = {
-  news: "bg-blue-100 text-blue-800",
-  feature: "bg-purple-100 text-purple-800",
+  news: "bg-green-100 text-green-800",
+  feature: "bg-green-100 text-green-800",
   product: "bg-green-100 text-green-800",
   announcement: "bg-yellow-100 text-yellow-800",
   update: "bg-orange-100 text-orange-800",
@@ -165,7 +165,7 @@ export default function NewsDetailPage({
             </p>
             <Link
               href="/news"
-              className={`inline-flex items-center gap-2 px-6 py-3 ${resolvedTheme === 'light' ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-blue-600 text-white hover:bg-blue-700'} rounded-full transition-colors`}
+              className={`inline-flex items-center gap-2 px-6 py-3 ${resolvedTheme === 'light' ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-green-600 text-white hover:bg-green-700'} rounded-full transition-colors`}
             >
               <i className="bi bi-arrow-left"></i>
               {t.common.back}
@@ -254,7 +254,7 @@ export default function NewsDetailPage({
               {/* Article Content */}
               <article className={`${resolvedTheme === 'light' ? 'bg-white' : 'bg-slate-800'} rounded-2xl p-8 md:p-12 shadow-sm mb-12`}>
                 <div
-                  className={`prose prose-lg max-w-none ${resolvedTheme === 'light' ? 'prose-headings:text-slate-900 prose-p:text-gray-600 prose-a:text-blue-600 prose-strong:text-slate-900' : 'prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 prose-strong:text-white'}`}
+                  className={`prose prose-lg max-w-none ${resolvedTheme === 'light' ? 'prose-headings:text-slate-900 prose-p:text-gray-600 prose-a:text-green-600 prose-strong:text-slate-900' : 'prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-strong:text-white'}`}
                   dangerouslySetInnerHTML={{
                     __html: news.content || "<p>No content available.</p>",
                   }}
@@ -283,19 +283,19 @@ export default function NewsDetailPage({
                   <div className="flex gap-3">
                     <button
                       onClick={() => handleShare("twitter")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-blue-100 hover:text-blue-600' : 'bg-slate-700 hover:bg-blue-900 hover:text-blue-400'} rounded-full transition-colors`}
+                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
                     >
                       <i className="bi bi-twitter-x"></i>
                     </button>
                     <button
                       onClick={() => handleShare("facebook")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-blue-100 hover:text-blue-600' : 'bg-slate-700 hover:bg-blue-900 hover:text-blue-400'} rounded-full transition-colors`}
+                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
                     >
                       <i className="bi bi-facebook"></i>
                     </button>
                     <button
                       onClick={() => handleShare("linkedin")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-blue-100 hover:text-blue-600' : 'bg-slate-700 hover:bg-blue-900 hover:text-blue-400'} rounded-full transition-colors`}
+                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
                     >
                       <i className="bi bi-linkedin"></i>
                     </button>
@@ -355,7 +355,7 @@ export default function NewsDetailPage({
                           <span className={`text-xs ${resolvedTheme === 'light' ? 'text-gray-400' : 'text-gray-500'}`}>
                             {formatDate(item.publishedAt)}
                           </span>
-                          <h4 className={`font-semibold ${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} group-hover:text-blue-600 transition-colors line-clamp-2 mt-1`}>
+                          <h4 className={`font-semibold ${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} group-hover:text-green-600 transition-colors line-clamp-2 mt-1`}>
                             {item.title}
                           </h4>
                         </div>

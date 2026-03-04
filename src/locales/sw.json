@@ -94,7 +94,29 @@
     "partners_title": "Washirika Wetu",
     "partners_subtitle": "Tunaaminiwa na mashirika yanayoongoza ulimwenguni kote.",
     "view_all": "Tazama Zote",
-    "read_more": "Soma Zaidi"
+    "read_more": "Soma Zaidi",
+    "testimonials_title": "Wanachosema Kuhusu Sisi",
+    "testimonials_subtitle": "Sikia kutoka kwa biashara ambazo tumesaidia kubadilisha kupitia teknolojia",
+    "testimonials": [
+      {
+        "name": "Joseph Nzaramba",
+        "role": "Mkurugenzi Mkuu, Lumina",
+        "text": "Amoria Global Tech ilibadilisha kabisa jinsi tunavyoshughulikia teknolojia. Timu yao ilitutengenezea jukwaa ambalo halikukidhi tu maono yetu bali liliyapeleka mbali zaidi. Umakini wa undani na kujitolea kwa ubora ni kitu ambacho ni nadra kupata.",
+        "rating": 5
+      },
+      {
+        "name": "Nkurunziza Amos",
+        "role": "CTO, Tegura Tech",
+        "text": "Kutoka usanifu hadi utekelezaji, Amoria ilitoa katika kila hatua. Walielewa changamoto zetu za kiufundi kwa kina na kubuni suluhisho zinazokua bila shida. Mshirika wa teknolojia unaoaminika kweli.",
+        "rating": 5
+      },
+      {
+        "name": "Muneza Charles",
+        "role": "Mwanzilishi, Yowehub",
+        "text": "Kushirikiana na Amoria ilikuwa moja ya maamuzi bora tuliyofanya. Walibadilisha wazo letu kuwa bidhaa ambayo watumiaji wanaipenda. Ubunifu wao, kasi, na utaalamu vinawatofautisha na mtu yeyote mwingine tuliyefanya naye kazi.",
+        "rating": 5
+      }
+    ]
   },
   "about": {
     "title": "Kuhusu Sisi",
@@ -235,7 +257,15 @@
     "all": "Zote",
     "search_placeholder": "Tafuta habari...",
     "no_results": "Hakuna habari zilizopatikana.",
-    "load_more": "Pakia Zaidi"
+    "load_more": "Pakia Zaidi",
+    "banner_badge": "Mambo Mapya",
+    "banner_title": "Baki mbele na teknolojia ya kisasa",
+    "banner_text": "Pata masasisho ya kipekee kuhusu uvumbuzi, uzinduzi wa bidhaa na maarifa kutoka kwa wataalamu wetu.",
+    "banner_subscribe": "Jiandikishe Sasa",
+    "banner_explore": "Chunguza Huduma",
+    "banner_articles": "Makala",
+    "banner_readers": "Wasomaji",
+    "banner_countries": "Nchi"
   },
   "contact": {
     "title": "Wasiliana Nasi",
@@ -262,8 +292,10 @@
   "footer": {
     "useful_links": "Viungo Muhimu",
     "location": "Mahali Tulipo",
+    "address": "KN 74 St, Makuza Peace Plaza, Kigali",
+    "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Wasiliana Nasi",
-    "follow_us": "Tufuate",
+    "follow_us": "Tufuate Kwenye :",
     "copyright": "Haki zote zimehifadhiwa.",
     "privacy": "Sera ya Faragha",
     "terms": "Masharti ya Huduma"
