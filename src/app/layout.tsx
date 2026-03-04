@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://amoriaglobal.com',
     siteName: 'Amoria Global Tech',
-    title: 'Amoria Global Tech - Connect the Future with Innovation',
+    title: 'Amoria Global Tech - Connect to the Future with Innovation',
     description: 'Empowering businesses with cutting-edge technology solutions that drive digital transformation and create lasting value.',
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Amoria Global Tech - Connect the Future with Innovation',
+    title: 'Amoria Global Tech - Connect to the Future with Innovation',
     description: 'Empowering businesses with cutting-edge technology solutions that drive digital transformation.',
     images: ['/twitter-image.jpg'],
     creator: '@amoriaglobaltech',
@@ -79,7 +79,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#3b82f6" />
+        <meta name="theme-color" content="#2ba268" />
       </head>
       <body className="antialiased">
         <Providers>

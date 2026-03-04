@@ -180,11 +180,11 @@ export default function ContactUsPage() {
                 </div>
 
                 {/* Map */}
-                <div className="contact-map" style={{ marginTop: '1.5rem', borderRadius: '12px', overflow: 'hidden' }}>
+                <div className="contact-map" style={{ marginTop: '0.75rem', borderRadius: '12px', overflow: 'hidden' }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5!2d29.969!3d-1.974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7f0b4f15b5f%3A0x2cf6f9e1a8b5e5a0!2sEVA%20PLAZA!5e0!3m2!1sen!4v1708000000000"
+                    src="https://maps.google.com/maps?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kicukiro,+Kigali,+Rwanda&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     width="100%"
-                    height="250"
+                    height="180"
                     style={{ border: 0, borderRadius: '12px' }}
                     allowFullScreen
                     loading="lazy"

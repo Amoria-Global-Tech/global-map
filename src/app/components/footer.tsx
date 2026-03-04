@@ -10,6 +10,37 @@ const Footer = () => {
 
   return (
     <>
+      {/* Brick Pattern Divider */}
+      <div className="footer-bricks">
+        <div className="brick-row row-1">
+          <div className="bricks-side left">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+          <div className="bricks-center-gap" />
+          <div className="bricks-side right">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+        </div>
+        <div className="brick-row row-2">
+          <div className="bricks-side left">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+          <div className="bricks-center-gap" />
+          <div className="bricks-side right">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+        </div>
+        <div className="brick-row row-3">
+          <div className="bricks-side left">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+          <div className="bricks-center-gap" />
+          <div className="bricks-side right">
+            <div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" /><div className="brick" />
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className={`footer ${resolvedTheme === 'light' ? 'light' : ''}`}>
         <div className="container">
@@ -26,14 +57,26 @@ const Footer = () => {
 
             <div className="footer-column">
               <h3 className="footer-title">{t.footer.location}</h3>
+              <div className="footer-map-wrapper">
+                <iframe
+                  src="https://maps.google.com/maps?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kicukiro,+Kigali,+Rwanda&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="150"
+                  style={{ border: 0, borderRadius: '8px' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Amoria Global Tech Location"
+                />
+              </div>
               <a
-                href="https://maps.google.com/?q=EVA+PLAZA,+KK+84B+St,+Kicukiro,+Kigali,+Rwanda"
+                href="https://maps.google.com/?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kigali,+Rwanda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-location-link"
               >
                 <i className="bi bi-geo-alt-fill"></i>
-                <span>KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali</span>
+                <span>{t.footer.address2}</span>
               </a>
             </div>
 

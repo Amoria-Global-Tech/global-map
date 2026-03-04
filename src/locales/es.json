@@ -94,7 +94,29 @@
     "partners_title": "Nuestros Socios",
     "partners_subtitle": "De confianza por organizaciones líderes en todo el mundo.",
     "view_all": "Ver todo",
-    "read_more": "Leer más"
+    "read_more": "Leer más",
+    "testimonials_title": "Lo Que Dicen De Nosotros",
+    "testimonials_subtitle": "Escucha a las empresas que hemos ayudado a transformar a través de la tecnología",
+    "testimonials": [
+      {
+        "name": "Joseph Nzaramba",
+        "role": "CEO, Lumina",
+        "text": "Amoria Global Tech redefinió completamente cómo abordamos la tecnología. Su equipo nos construyó una plataforma que no solo cumplió nuestra visión, sino que la llevó más lejos. La atención al detalle y el compromiso con la calidad es algo que rara vez se encuentra.",
+        "rating": 5
+      },
+      {
+        "name": "Nkurunziza Amos",
+        "role": "CTO, Tegura Tech",
+        "text": "Desde la arquitectura hasta el despliegue, Amoria cumplió en cada etapa. Comprendieron profundamente nuestros desafíos técnicos y diseñaron soluciones que escalaron sin esfuerzo. Un socio tecnológico verdaderamente confiable.",
+        "rating": 5
+      },
+      {
+        "name": "Muneza Charles",
+        "role": "Fundador, Yowehub",
+        "text": "Asociarnos con Amoria fue una de las mejores decisiones que tomamos. Convirtieron nuestra idea en un producto que los usuarios aman. Su creatividad, velocidad y profesionalismo los distinguen de cualquier otro con quien hemos trabajado.",
+        "rating": 5
+      }
+    ]
   },
   "about": {
     "title": "Sobre Nosotros",
@@ -235,7 +257,15 @@
     "all": "Todos",
     "search_placeholder": "Buscar noticias...",
     "no_results": "No se encontraron noticias.",
-    "load_more": "Cargar más"
+    "load_more": "Cargar más",
+    "banner_badge": "Novedades",
+    "banner_title": "Mantente a la vanguardia con lo último en tecnología",
+    "banner_text": "Obtén actualizaciones exclusivas sobre innovaciones, lanzamientos de productos y conocimientos de nuestros expertos.",
+    "banner_subscribe": "Suscríbete",
+    "banner_explore": "Explorar servicios",
+    "banner_articles": "Artículos",
+    "banner_readers": "Lectores",
+    "banner_countries": "Países"
   },
   "contact": {
     "title": "Contáctanos",
@@ -262,8 +292,10 @@
   "footer": {
     "useful_links": "Enlaces Útiles",
     "location": "Nuestra Ubicación",
+    "address": "KN 74 St, Makuza Peace Plaza, Kigali",
+    "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Contáctanos",
-    "follow_us": "Síguenos",
+    "follow_us": "Síguenos En :",
     "copyright": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio"

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage, Language, languageNames } from "@/contexts/LanguageContext";
@@ -69,11 +68,7 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <Link href="/" className="navbar-logo">
-            <img
-              src="/logo.png"
-              alt="Amoria Tech Global"
-              className="navbar-logo-img"
-            />
+            <img src="/logo1.png" alt="" className="navbar-logo-icon" /><span className="navbar-logo-text">Amoria Global Tech</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -155,14 +150,26 @@ const Navbar = () => {
             {/* Extra Links - Desktop */}
             <div className="navbar-extra-links">
               {extraLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`navbar-extra-link ${pathname === link.href ? 'active' : ''}`}
-                >
-                  <i className={`bi ${link.icon}`}></i>
-                  <span>{link.name}</span>
-                </Link>
+                link.href === '/donate' ? (
+                  <span
+                    key={link.name}
+                    className="navbar-extra-link donate-disabled"
+                    title="Coming soon"
+                  >
+                    <i className={`bi ${link.icon} donate-icon-default`}></i>
+                    <i className="bi bi-slash-circle donate-icon-hover"></i>
+                    <span>{link.name}</span>
+                  </span>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`navbar-extra-link ${pathname === link.href ? 'active' : ''}`}
+                  >
+                    <i className={`bi ${link.icon}`}></i>
+                    <span>{link.name}</span>
+                  </Link>
+                )
               ))}
             </div>
 
@@ -191,13 +198,7 @@ const Navbar = () => {
       <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-nav-header">
           <Link href="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-            <Image
-              src="/logo.png"
-              alt="Amoria Tech Global"
-              width={120}
-              height={40}
-              priority
-            />
+            <img src="/logo1.png" alt="" className="navbar-logo-icon" /><span className="navbar-logo-text">Amoria Global Tech</span>
           </Link>
           <button
             className="mobile-nav-close"
@@ -229,15 +230,27 @@ const Navbar = () => {
           {/* Extra Links */}
           <div className="mobile-nav-section">
             {extraLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`mobile-nav-link ${pathname === link.href ? 'active' : ''}`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <i className={`bi ${link.icon}`}></i>
-                {link.name}
-              </Link>
+              link.href === '/donate' ? (
+                <span
+                  key={link.name}
+                  className="mobile-nav-link donate-disabled"
+                  title="Coming soon"
+                >
+                  <i className={`bi ${link.icon} donate-icon-default`}></i>
+                  <i className="bi bi-slash-circle donate-icon-hover"></i>
+                  {link.name}
+                </span>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`mobile-nav-link ${pathname === link.href ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <i className={`bi ${link.icon}`}></i>
+                  {link.name}
+                </Link>
+              )
             ))}
             <Link
               href="/contact"
