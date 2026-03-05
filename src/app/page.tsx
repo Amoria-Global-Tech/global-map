@@ -45,7 +45,6 @@ export default function HomePage() {
   const { t } = useLanguage();
   const [showBanner, setShowBanner] = useState<boolean>(true);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
-  const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
   const [mounted, setMounted] = useState<boolean>(false);
   const [typingText, setTypingText] = useState<string>('');
   const [loadingProgress, setLoadingProgress] = useState<number>(0);
@@ -646,45 +645,6 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Testimonials Section */}
-          <section className="testimonials-section">
-            <div className="testimonials-header">
-              <h2 className="testimonials-title">{t.home.testimonials_title}</h2>
-              <p className="testimonials-subtitle">{t.home.testimonials_subtitle}</p>
-            </div>
-
-            <div className="testimonials-layout">
-              {/* Left: Names list */}
-              <div className="testimonials-list">
-                {t.home.testimonials.map((testimonial: { name: string; role: string; text: string; rating: number }, index: number) => (
-                  <button
-                    key={index}
-                    className={`testimonial-list-item ${activeTestimonial === index ? 'active' : ''}`}
-                    onClick={() => setActiveTestimonial(index)}
-                  >
-                    <h4 className="testimonial-list-name">{testimonial.name}</h4>
-                    <p className="testimonial-list-role">{testimonial.role}</p>
-                  </button>
-                ))}
-              </div>
-
-              {/* Right: Active quote */}
-              <div className="testimonial-quote-panel">
-                <div className="testimonial-quote-mark">&ldquo;</div>
-                <p className="testimonial-quote-text">
-                  {t.home.testimonials[activeTestimonial]?.text}
-                </p>
-                <div className="testimonial-quote-author">
-                  <span className="testimonial-quote-name">
-                    {t.home.testimonials[activeTestimonial]?.name}
-                  </span>
-                  <span className="testimonial-quote-role">
-                    {t.home.testimonials[activeTestimonial]?.role}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
       </main>
 
