@@ -60,7 +60,7 @@ const Footer = () => {
               <h3 className="footer-title">{t.footer.location}</h3>
               <div className="footer-map-wrapper">
                 <iframe
-                  src="https://maps.google.com/maps?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kicukiro,+Kigali,+Rwanda&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990!2d30.1687772!3d-1.9757676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19db59c4b2591e71%3A0xb0b493858167cb1c!2sEVA%20PLAZA!5e0!3m2!1sen!4v1709000000000"
                   width="100%"
                   height="150"
                   style={{ border: 0, borderRadius: '8px' }}
@@ -71,7 +71,7 @@ const Footer = () => {
                 />
               </div>
               <a
-                href="https://maps.google.com/?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kigali,+Rwanda"
+                href="https://maps.app.goo.gl/MN6UxyVrBE2rt3pD7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-location-link"
@@ -96,6 +96,10 @@ const Footer = () => {
                   <i className="bi bi-clock-fill contact-icon"></i>
                   <span className="contact-text">{t.contact.working_hours_text}</span>
                 </div>
+                <a href="https://appointment.jambolush.com/book/amoria-global" target="_blank" rel="noopener noreferrer" className="contact-item">
+                  <i className="bi bi-calendar-check-fill contact-icon"></i>
+                  <span className="contact-text">Book an Appointment</span>
+                </a>
               </div>
             </div>
 

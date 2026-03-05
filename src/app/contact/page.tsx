@@ -182,7 +182,7 @@ export default function ContactUsPage() {
                 {/* Map */}
                 <div className="contact-map" style={{ marginTop: '0.75rem', borderRadius: '12px', overflow: 'hidden' }}>
                   <iframe
-                    src="https://maps.google.com/maps?q=EVA+PLAZA,+KK+84B+St,+Kanombe,+Kicukiro,+Kigali,+Rwanda&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990!2d30.1687772!3d-1.9757676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19db59c4b2591e71%3A0xb0b493858167cb1c!2sEVA%20PLAZA!5e0!3m2!1sen!4v1709000000000"
                     width="100%"
                     height="180"
                     style={{ border: 0, borderRadius: '12px' }}
@@ -203,6 +203,22 @@ export default function ContactUsPage() {
                     <span className="contact-stat-value">50+</span>
                     <span className="contact-stat-label">Happy Clients</span>
                   </div>
+                </div>
+
+                {/* Book Appointment */}
+                <div className="contact-appointment" style={{ marginTop: '1.5rem', padding: '1.25rem', background: 'var(--accent-bg, #f0f4ff)', borderRadius: '12px', border: '1px solid var(--accent-border, #d0d9f0)' }}>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem' }}>Visit Our Office</h3>
+                  <p style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.75rem' }}>Request an appointment or contact us directly</p>
+                  <a
+                    href="https://appointment.jambolush.com/book/amoria-global"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-submit-btn"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                  >
+                    <i className="bi bi-calendar-check"></i>
+                    Book an Appointment
+                  </a>
                 </div>
               </div>
 
