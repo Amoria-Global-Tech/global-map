@@ -58,7 +58,7 @@ export default function CompliancePage() {
                   alt="Rwanda ICT Chamber"
                   width={140}
                   height={80}
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'contain', filter: 'invert(1) hue-rotate(180deg)' }}
                 />
               </div>
               <div className="compliance-card-body">
@@ -78,7 +78,7 @@ export default function CompliancePage() {
                   alt="Data Protection Office Rwanda"
                   width={180}
                   height={80}
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'contain', filter: 'invert(1) hue-rotate(180deg)' }}
                 />
               </div>
               <div className="compliance-card-body">
@@ -91,33 +91,6 @@ export default function CompliancePage() {
             </div>
           </div>
 
-          {/* Certificates Section */}
-          <div className="certificates-section">
-            <h2>{t.compliance.certificates_title}</h2>
-            <p>{t.compliance.certificates_description}</p>
-            <div className="certificates-grid">
-              <div className="certificate-item">
-                <Image
-                  src="/partners/ict-chamber.png"
-                  alt="Rwanda ICT Chamber Membership Certificate"
-                  width={500}
-                  height={350}
-                  style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-                />
-                <span className="certificate-label">Rwanda ICT Chamber — Silver Member</span>
-              </div>
-              <div className="certificate-item">
-                <Image
-                  src="/partners/data-controller.png"
-                  alt="Data Controller Registration Certificate"
-                  width={400}
-                  height={550}
-                  style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-                />
-                <span className="certificate-label">Data Controller — Certificate of Registration</span>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
 

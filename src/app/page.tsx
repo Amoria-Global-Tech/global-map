@@ -665,7 +665,7 @@ export default function HomePage() {
                     alt="Rwanda ICT Chamber"
                     width={140}
                     height={80}
-                    style={{ objectFit: 'contain' }}
+                    style={{ objectFit: 'contain', filter: 'invert(1) hue-rotate(180deg)' }}
                   />
                 </div>
                 <div className="trust-logo-caption">
@@ -685,7 +685,7 @@ export default function HomePage() {
                     alt="Data Protection Office Rwanda"
                     width={140}
                     height={80}
-                    style={{ objectFit: 'contain' }}
+                    style={{ objectFit: 'contain', filter: 'invert(1) hue-rotate(180deg)' }}
                   />
                 </div>
                 <div className="trust-logo-caption">
