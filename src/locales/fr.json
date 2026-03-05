@@ -7,7 +7,8 @@
     "news": "Actualités",
     "contact": "Contact",
     "blog": "Blog",
-    "donate": "Faire un don"
+    "donate": "Faire un don",
+    "compliance": "Conformité"
   },
   "theme": {
     "light": "Clair",
@@ -116,7 +117,22 @@
         "text": "S'associer avec Amoria a été l'une des meilleures décisions que nous avons prises. Ils ont transformé notre idée en un produit que les utilisateurs adorent. Leur créativité, rapidité et professionnalisme les distinguent de tous ceux avec qui nous avons travaillé.",
         "rating": 5
       }
-    ]
+    ],
+    "trust_title": "Reconnu et approuvé par",
+    "trust_subtitle": "Nous sommes fiers d'être reconnus par les principales institutions du Rwanda pour notre engagement envers l'excellence et la conformité.",
+    "trust_ict_caption": "Membre officiel",
+    "trust_dp_caption": "Engagé aux normes rwandaises de protection des données"
+  },
+  "compliance": {
+    "title": "Conformité et gouvernance",
+    "subtitle": "Notre engagement envers la conformité réglementaire et les normes de l'industrie garantit des solutions technologiques fiables, sécurisées et transparentes.",
+    "ict_title": "Adhésion à la Chambre des TIC du Rwanda",
+    "ict_description": "Amoria Global Tech est un membre fier de la Chambre des TIC du Rwanda, l'organisme du secteur privé qui promeut et défend les entreprises TIC au Rwanda.",
+    "dp_title": "Conformité à la protection des données",
+    "dp_description": "Nous nous engageons à respecter le cadre réglementaire rwandais en matière de protection des données, supervisé par le Bureau de protection des données.",
+    "certificates_title": "Certificats et reconnaissance",
+    "certificates_description": "Voici nos certificats officiels d'adhésion et de conformité.",
+    "no_certificates": "Les certificats seront bientôt téléchargés."
   },
   "about": {
     "title": "À Propos de Nous",
@@ -298,7 +314,8 @@
     "follow_us": "Suivez-nous Sur :",
     "copyright": "Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
-    "terms": "Conditions d'Utilisation"
+    "terms": "Conditions d'Utilisation",
+    "compliance": "Conformité"
   },
   "common": {
     "loading": "Chargement...",

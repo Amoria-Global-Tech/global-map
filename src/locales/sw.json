@@ -7,7 +7,8 @@
     "news": "Habari",
     "contact": "Wasiliana",
     "blog": "Blogu",
-    "donate": "Changia"
+    "donate": "Changia",
+    "compliance": "Uzingatiaji"
   },
   "theme": {
     "light": "Mwanga",
@@ -116,7 +117,22 @@
         "text": "Kushirikiana na Amoria ilikuwa moja ya maamuzi bora tuliyofanya. Walibadilisha wazo letu kuwa bidhaa ambayo watumiaji wanaipenda. Ubunifu wao, kasi, na utaalamu vinawatofautisha na mtu yeyote mwingine tuliyefanya naye kazi.",
         "rating": 5
       }
-    ]
+    ],
+    "trust_title": "Kuaminiwa na kutambuliwa na",
+    "trust_subtitle": "Tunajivunia kutambuliwa na taasisi kuu nchini Rwanda kwa kujitolea kwetu kwa ubora na uzingatiaji.",
+    "trust_ict_caption": "Mwanachama rasmi",
+    "trust_dp_caption": "Kujitolea kwa viwango vya ulinzi wa data vya Rwanda"
+  },
+  "compliance": {
+    "title": "Uzingatiaji na utawala",
+    "subtitle": "Kujitolea kwetu kwa uzingatiaji wa kanuni na viwango vya tasnia kunahakikisha suluhisho za teknolojia zinazotegemewa, salama na wazi.",
+    "ict_title": "Uanachama wa Chumba cha ICT cha Rwanda",
+    "ict_description": "Amoria Global Tech ni mwanachama wa Chumba cha ICT cha Rwanda, chombo cha sekta binafsi kinachokuza na kutetea biashara za ICT nchini Rwanda.",
+    "dp_title": "Uzingatiaji wa ulinzi wa data",
+    "dp_description": "Tumejitolea kuzingatia mfumo wa udhibiti wa ulinzi wa data wa Rwanda, unaosimamiwa na Ofisi ya Ulinzi wa Data.",
+    "certificates_title": "Vyeti na utambuzi",
+    "certificates_description": "Hapa chini ni vyeti vyetu rasmi.",
+    "no_certificates": "Vyeti vitapakiwa hivi karibuni."
   },
   "about": {
     "title": "Kuhusu Sisi",
@@ -298,7 +314,8 @@
     "follow_us": "Tufuate Kwenye :",
     "copyright": "Haki zote zimehifadhiwa.",
     "privacy": "Sera ya Faragha",
-    "terms": "Masharti ya Huduma"
+    "terms": "Masharti ya Huduma",
+    "compliance": "Uzingatiaji"
   },
   "common": {
     "loading": "Inapakia...",

@@ -7,7 +7,8 @@
     "news": "Amakuru",
     "contact": "Twandikire",
     "blog": "Inyandiko",
-    "donate": "Tanga impano"
+    "donate": "Tanga impano",
+    "compliance": "Kwubahiriza amategeko"
   },
   "theme": {
     "light": "Urumuri",
@@ -116,7 +117,22 @@
         "text": "Gukorana na Amoria ni imwe mu myanzuro myiza twafashe. Bahinduye igitekerezo cyacu bakagikora igicuruzwa abakoresha bakunda. Ubuhanga bwabo, ubwihute, n'umuco wo gukora neza birabatandukanya n'abandi twigeze dukorana.",
         "rating": 5
       }
-    ]
+    ],
+    "trust_title": "Bizewe kandi bemezwa na",
+    "trust_subtitle": "Twishimira kuba twemezwa n'ibigo bikuru mu Rwanda kubera kwiyemeza kwacu ku buhanga no kwubahiriza amategeko.",
+    "trust_ict_caption": "Umunyamuryango w'icyemezo",
+    "trust_dp_caption": "Twiyemeje amahame yo kurinda amakuru y'u Rwanda"
+  },
+  "compliance": {
+    "title": "Kwubahiriza amategeko n'imiyoborere",
+    "subtitle": "Kwiyemeza kwacu ku mategeko y'igihugu no ku mahame y'inganda bituma dutanga ibisubizo by'ikoranabuhanga byizewe, bifite umutekano kandi bigaragara.",
+    "ict_title": "Ubuyobozi mu ishyirahamwe ry'ikoranabuhanga mu Rwanda",
+    "ict_description": "Amoria Global Tech ni umunyamuryango w'ishyirahamwe ry'ikoranabuhanga mu Rwanda, urwego rw'abikorera ku giti cyabo rushyigikira ibigo by'ikoranabuhanga mu Rwanda.",
+    "dp_title": "Kwubahiriza amategeko yo kurinda amakuru",
+    "dp_description": "Twiyemeje kwubahiriza amategeko yo kurinda amakuru y'u Rwanda, akurikiranwa n'ikigo cy'igihugu gishinzwe kurinda amakuru.",
+    "certificates_title": "Impamyabumenyi n'ibihembo",
+    "certificates_description": "Dore impamyabumenyi zacu z'icyemezo.",
+    "no_certificates": "Impamyabumenyi zizashyirwa vuba."
   },
   "about": {
     "title": "Abo Turibo",
@@ -298,7 +314,8 @@
     "follow_us": "Dukurikire Kuri :",
     "copyright": "Uburenganzira bwose bwabitswe.",
     "privacy": "Politiki y'Ibanga",
-    "terms": "Amategeko y'Ikoreshwa"
+    "terms": "Amategeko y'Ikoreshwa",
+    "compliance": "Kwubahiriza amategeko"
   },
   "common": {
     "loading": "Gutegereza...",

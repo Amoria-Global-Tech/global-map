@@ -7,7 +7,8 @@
     "news": "Noticias",
     "contact": "Contacto",
     "blog": "Blog",
-    "donate": "Donar"
+    "donate": "Donar",
+    "compliance": "Cumplimiento"
   },
   "theme": {
     "light": "Claro",
@@ -116,7 +117,22 @@
         "text": "Asociarnos con Amoria fue una de las mejores decisiones que tomamos. Convirtieron nuestra idea en un producto que los usuarios aman. Su creatividad, velocidad y profesionalismo los distinguen de cualquier otro con quien hemos trabajado.",
         "rating": 5
       }
-    ]
+    ],
+    "trust_title": "Reconocido y confiado por",
+    "trust_subtitle": "Estamos orgullosos de ser reconocidos por las principales instituciones de Ruanda por nuestro compromiso con la excelencia y el cumplimiento.",
+    "trust_ict_caption": "Miembro oficial",
+    "trust_dp_caption": "Comprometidos con los estándares de protección de datos de Ruanda"
+  },
+  "compliance": {
+    "title": "Cumplimiento y gobernanza",
+    "subtitle": "Nuestro compromiso con el cumplimiento normativo y los estándares de la industria garantiza soluciones tecnológicas confiables, seguras y transparentes.",
+    "ict_title": "Membresía en la Cámara de TIC de Ruanda",
+    "ict_description": "Amoria Global Tech es un orgulloso miembro de la Cámara de TIC de Ruanda, el organismo del sector privado que promueve y defiende las empresas de TIC en Ruanda.",
+    "dp_title": "Cumplimiento de protección de datos",
+    "dp_description": "Estamos comprometidos con el cumplimiento del marco regulatorio de protección de datos de Ruanda, supervisado por la Oficina de Protección de Datos.",
+    "certificates_title": "Certificados y reconocimiento",
+    "certificates_description": "A continuación se presentan nuestros certificados oficiales.",
+    "no_certificates": "Los certificados se cargarán pronto."
   },
   "about": {
     "title": "Sobre Nosotros",
@@ -298,7 +314,8 @@
     "follow_us": "Síguenos En :",
     "copyright": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
-    "terms": "Términos de Servicio"
+    "terms": "Términos de Servicio",
+    "compliance": "Cumplimiento"
   },
   "common": {
     "loading": "Cargando...",

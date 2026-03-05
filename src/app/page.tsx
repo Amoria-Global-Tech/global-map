@@ -526,7 +526,22 @@ export default function HomePage() {
                     const productImage = product.imageUrl ?? product.image_url;
 
                     return (
-                      <div key={product.id} className="product-card">
+                      <div
+                        key={product.id}
+                        className="product-card"
+                        onClick={() => {
+                          if (isAvailable && product.siteUrl) {
+                            window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                          }
+                        }}
+                        role={isAvailable && product.siteUrl ? 'link' : undefined}
+                        tabIndex={isAvailable && product.siteUrl ? 0 : undefined}
+                        onKeyDown={(e) => {
+                          if ((e.key === 'Enter' || e.key === ' ') && isAvailable && product.siteUrl) {
+                            window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                          }
+                        }}
+                      >
                         <div className="product-badge">
                           {isAvailable ? t.products.available : t.products.coming_soon}
                         </div>
@@ -553,27 +568,15 @@ export default function HomePage() {
                           <p className="product-description">{product.description}</p>
 
                           {isAvailable ? (
-                            product.siteUrl ? (
-                              <a
-                                href={product.siteUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="product-btn visit-btn"
-                              >
-                                {t.products.visit_now}
-                                <i className="bi bi-arrow-right"></i>
-                              </a>
-                            ) : (
-                              <button className="product-btn visit-btn">
-                                {t.products.explore}
-                                <i className="bi bi-arrow-right"></i>
-                              </button>
-                            )
+                            <span className="product-btn visit-btn">
+                              {t.products.visit_now}
+                              <i className="bi bi-arrow-right"></i>
+                            </span>
                           ) : (
-                            <button className="product-btn coming-soon-btn" disabled>
+                            <span className="product-btn coming-soon-btn">
                               {t.products.coming_soon}
                               <i className="bi bi-clock"></i>
-                            </button>
+                            </span>
                           )}
                         </div>
                       </div>
@@ -642,6 +645,54 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Trusted & Recognized By Section */}
+          <section className="trust-recognized-section">
+            <h2 className="trust-recognized-title">{t.home.trust_title}</h2>
+            <p className="trust-recognized-subtitle">{t.home.trust_subtitle}</p>
+            <div className="trust-logos-grid">
+              <a
+                href="https://ictchamber.rw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="trust-logo-card"
+              >
+                <div className="trust-logo-img">
+                  <Image
+                    src="/partners/ict-chamber-logo.png"
+                    alt="Rwanda ICT Chamber"
+                    width={140}
+                    height={80}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <div className="trust-logo-caption">
+                  <h3>Rwanda ICT Chamber</h3>
+                  <p>{t.home.trust_ict_caption}</p>
+                </div>
+              </a>
+              <a
+                href="https://www.dataprotection.gov.rw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="trust-logo-card"
+              >
+                <div className="trust-logo-img">
+                  <Image
+                    src="/partners/data-protection-logo.png"
+                    alt="Data Protection Office Rwanda"
+                    width={140}
+                    height={80}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <div className="trust-logo-caption">
+                  <h3>Data Protection Office</h3>
+                  <p>{t.home.trust_dp_caption}</p>
+                </div>
+              </a>
             </div>
           </section>
 

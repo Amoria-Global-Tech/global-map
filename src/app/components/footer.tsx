@@ -52,6 +52,7 @@ const Footer = () => {
                 <li><Link href="/about" className="footer-link">{t.nav.about}</Link></li>
                 <li><Link href="/services" className="footer-link">{t.nav.services}</Link></li>
                 <li><Link href="/products" className="footer-link">{t.nav.products}</Link></li>
+                <li><Link href="/compliance" className="footer-link">{t.footer.compliance}</Link></li>
               </ul>
             </div>
 
