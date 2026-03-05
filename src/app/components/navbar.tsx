@@ -9,22 +9,17 @@ import { useLanguage, Language, languageNames } from "@/contexts/LanguageContext
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
 
   const langDropdownRef = useRef<HTMLDivElement>(null);
-  const themeDropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
         setLangDropdownOpen(false);
-      }
-      if (themeDropdownRef.current && !themeDropdownRef.current.contains(event.target as Node)) {
-        setThemeDropdownOpen(false);
       }
     };
 
@@ -51,17 +46,6 @@ const Navbar = () => {
 
   const languages: Language[] = ['en', 'fr', 'es', 'rw', 'sw'];
 
-  const themeOptions = [
-    { value: 'light' as const, label: t.theme.light, icon: 'bi-sun' },
-    { value: 'dark' as const, label: t.theme.dark, icon: 'bi-moon' },
-    { value: 'system' as const, label: t.theme.system, icon: 'bi-laptop' },
-  ];
-
-  const getThemeIcon = () => {
-    if (theme === 'system') return 'bi-laptop';
-    return resolvedTheme === 'dark' ? 'bi-moon-fill' : 'bi-sun-fill';
-  };
-
   return (
     <>
       <nav className="navbar">
@@ -86,33 +70,15 @@ const Navbar = () => {
 
           {/* Right Section: Theme, Language, Extra Links, Contact */}
           <div className="navbar-actions">
-            {/* Theme Toggle */}
-            <div className="navbar-dropdown" ref={themeDropdownRef}>
-              <button
-                className="navbar-icon-btn"
-                onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
-                aria-label="Toggle theme"
-              >
-                <i className={`bi ${getThemeIcon()}`}></i>
-              </button>
-              {themeDropdownOpen && (
-                <div className="dropdown-menu">
-                  {themeOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      className={`dropdown-item ${theme === option.value ? 'active' : ''}`}
-                      onClick={() => {
-                        setTheme(option.value);
-                        setThemeDropdownOpen(false);
-                      }}
-                    >
-                      <i className={`bi ${option.icon}`}></i>
-                      <span>{option.label}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Theme Toggle (disabled — dark mode only for now) */}
+            <button
+              className="navbar-icon-btn"
+              disabled
+              style={{ opacity: 0.4, cursor: 'not-allowed' }}
+              aria-label="Toggle theme"
+            >
+              <i className="bi bi-moon-fill"></i>
+            </button>
 
             {/* Language Selector */}
             <div className="navbar-dropdown" ref={langDropdownRef}>
@@ -267,22 +233,21 @@ const Navbar = () => {
 
           {/* Theme & Language */}
           <div className="mobile-nav-settings">
-            {/* Theme Options */}
+            {/* Theme Toggle (disabled — dark mode only for now) */}
             <div className="mobile-settings-group">
               <span className="mobile-settings-label">
                 <i className="bi bi-palette"></i>
                 Theme
               </span>
               <div className="mobile-settings-options">
-                {themeOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    className={`mobile-setting-btn ${theme === option.value ? 'active' : ''}`}
-                    onClick={() => setTheme(option.value)}
-                  >
-                    <i className={`bi ${option.icon}`}></i>
-                  </button>
-                ))}
+                <button
+                  className="mobile-setting-btn"
+                  disabled
+                  style={{ opacity: 0.4, cursor: 'not-allowed' }}
+                >
+                  <i className="bi bi-moon-fill"></i>
+                  <span style={{ fontSize: '0.75rem', marginLeft: '0.25rem' }}>Dark</span>
+                </button>
               </div>
             </div>
 

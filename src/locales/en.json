@@ -118,8 +118,8 @@
         "rating": 5
       }
     ],
-    "trust_title": "Trusted & Recognized By",
-    "trust_subtitle": "We are proud to be recognized by leading institutions in Rwanda for our commitment to excellence and compliance.",
+    "trust_title": "Trusted & Recognized",
+    "trust_subtitle": "Backed by Rwanda's leading institutions driving innovation, data protection, and digital transformation across the continent.",
     "trust_ict_caption": "Official Member",
     "trust_dp_caption": "Committed to Rwanda Data Protection Standards"
   },
@@ -127,9 +127,9 @@
     "title": "Compliance & Governance",
     "subtitle": "Our commitment to regulatory compliance and industry standards ensures we deliver trustworthy, secure, and transparent technology solutions.",
     "ict_title": "Rwanda ICT Chamber Membership",
-    "ict_description": "Amoria Global Tech is a proud member of the Rwanda ICT Chamber, the private sector body that promotes and advocates for ICT businesses in Rwanda. Our membership reflects our commitment to contributing to Rwanda's digital economy, collaborating with industry peers, and upholding the highest standards of technology service delivery.",
+    "ict_description": "Amoria Global Tech joins the Rwanda ICT Chamber, the driving force behind Rwanda's growing technology ecosystem. As a member, we collaborate with industry leaders to accelerate innovation, strengthen Rwanda's digital economy, and build world-class technology platforms that connect Africa to global opportunities.",
     "dp_title": "Data Protection Compliance",
-    "dp_description": "We are committed to complying with Rwanda's data protection regulatory framework, as overseen by the Data Protection Office. We implement robust data handling practices, ensure transparency in how we process personal data, and continuously update our systems to meet evolving privacy standards. Protecting our clients' data is not just a legal obligation — it is a core value.",
+    "dp_description": "Amoria Global Tech is registered with Rwanda's Data Protection Office, the authority safeguarding personal data across the nation. As a compliant data controller, we uphold the highest privacy standards, ensuring every product we build protects user trust and meets global data protection expectations.",
     "certificates_title": "Certificates & Recognition",
     "certificates_description": "Below are our official membership and compliance certificates.",
     "no_certificates": "Certificates will be uploaded soon."
@@ -307,11 +307,11 @@
   },
   "footer": {
     "useful_links": "Useful Links",
-    "location": "Our Location",
+    "location": "Location",
     "address": "KN 74 St, Makuza Peace Plaza, Kigali",
     "address2": "KK 84B St, EVA PLAZA, Kanombe 3rd Floor, Left Wing, Kicukiro, Kigali",
     "contact_us": "Contact Us",
-    "follow_us": "Follow Us On :",
+    "follow_us": "Follow Us",
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
