@@ -7,7 +7,8 @@
     "news": "News",
     "contact": "Contact",
     "blog": "Blog",
-    "donate": "Donate"
+    "donate": "Donate",
+    "compliance": "Compliance"
   },
   "theme": {
     "light": "Light",
@@ -116,7 +117,22 @@
         "text": "Partnering with Amoria was one of the best decisions we made. They turned our idea into a product that users love. Their creativity, speed, and professionalism set them apart from anyone else we've worked with.",
         "rating": 5
       }
-    ]
+    ],
+    "trust_title": "Trusted & Recognized By",
+    "trust_subtitle": "We are proud to be recognized by leading institutions in Rwanda for our commitment to excellence and compliance.",
+    "trust_ict_caption": "Official Member",
+    "trust_dp_caption": "Committed to Rwanda Data Protection Standards"
+  },
+  "compliance": {
+    "title": "Compliance & Governance",
+    "subtitle": "Our commitment to regulatory compliance and industry standards ensures we deliver trustworthy, secure, and transparent technology solutions.",
+    "ict_title": "Rwanda ICT Chamber Membership",
+    "ict_description": "Amoria Global Tech is a proud member of the Rwanda ICT Chamber, the private sector body that promotes and advocates for ICT businesses in Rwanda. Our membership reflects our commitment to contributing to Rwanda's digital economy, collaborating with industry peers, and upholding the highest standards of technology service delivery.",
+    "dp_title": "Data Protection Compliance",
+    "dp_description": "We are committed to complying with Rwanda's data protection regulatory framework, as overseen by the Data Protection Office. We implement robust data handling practices, ensure transparency in how we process personal data, and continuously update our systems to meet evolving privacy standards. Protecting our clients' data is not just a legal obligation — it is a core value.",
+    "certificates_title": "Certificates & Recognition",
+    "certificates_description": "Below are our official membership and compliance certificates.",
+    "no_certificates": "Certificates will be uploaded soon."
   },
   "about": {
     "title": "About Us",
@@ -298,7 +314,8 @@
     "follow_us": "Follow Us On :",
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "compliance": "Compliance"
   },
   "common": {
     "loading": "Loading...",

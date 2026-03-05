@@ -147,6 +147,16 @@ export default function NewsPage() {
             <p className="page-hero-description">{t.news.subtitle}</p>
           </section>
 
+          {/* Trust Badges */}
+          <div className="news-trust-badges">
+            <span className="news-trust-badge">
+              <i className="bi bi-shield-check"></i> Rwanda ICT Chamber Member
+            </span>
+            <span className="news-trust-badge">
+              <i className="bi bi-lock-fill"></i> Data Protection Compliant
+            </span>
+          </div>
+
           {/* Category Filter */}
           <section className="news-filter">
             <div className="filter-buttons">
