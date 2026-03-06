@@ -70,14 +70,13 @@ const Navbar = () => {
 
           {/* Right Section: Theme, Language, Extra Links, Contact */}
           <div className="navbar-actions">
-            {/* Theme Toggle (disabled — dark mode only for now) */}
+            {/* Theme Toggle */}
             <button
               className="navbar-icon-btn"
-              disabled
-              style={{ opacity: 0.4, cursor: 'not-allowed' }}
+              onClick={toggleTheme}
               aria-label="Toggle theme"
             >
-              <i className="bi bi-moon-fill"></i>
+              <i className={`bi ${resolvedTheme === 'dark' ? 'bi-sun' : 'bi-moon-fill'}`}></i>
             </button>
 
             {/* Language Selector */}
@@ -233,7 +232,7 @@ const Navbar = () => {
 
           {/* Theme & Language */}
           <div className="mobile-nav-settings">
-            {/* Theme Toggle (disabled — dark mode only for now) */}
+            {/* Theme Toggle */}
             <div className="mobile-settings-group">
               <span className="mobile-settings-label">
                 <i className="bi bi-palette"></i>
@@ -242,11 +241,12 @@ const Navbar = () => {
               <div className="mobile-settings-options">
                 <button
                   className="mobile-setting-btn"
-                  disabled
-                  style={{ opacity: 0.4, cursor: 'not-allowed' }}
+                  onClick={toggleTheme}
                 >
-                  <i className="bi bi-moon-fill"></i>
-                  <span style={{ fontSize: '0.75rem', marginLeft: '0.25rem' }}>Dark</span>
+                  <i className={`bi ${resolvedTheme === 'dark' ? 'bi-sun' : 'bi-moon-fill'}`}></i>
+                  <span style={{ fontSize: '0.75rem', marginLeft: '0.25rem' }}>
+                    {resolvedTheme === 'dark' ? 'Light' : 'Dark'}
+                  </span>
                 </button>
               </div>
             </div>
