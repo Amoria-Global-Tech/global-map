@@ -451,10 +451,6 @@ export default function HomePage() {
           }}
         />
 
-        {/* Giant background text like antimatterai.com */}
-        <h2 className="hero-bg-text" aria-hidden="true">
-          AMORIA GLOBAL TECH
-        </h2>
 
         <div className="hero-content">
           <h1 className="hero-animated-title">
