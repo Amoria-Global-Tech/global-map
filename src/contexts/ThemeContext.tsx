@@ -21,21 +21,31 @@ const defaultContext: ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType>(defaultContext);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    document.documentElement.classList.remove('light');
-    document.documentElement.classList.add('dark');
-    document.documentElement.setAttribute('data-theme', 'dark');
+    const saved = localStorage.getItem('theme') as Theme | null;
+    if (saved === 'light' || saved === 'dark') {
+      setTheme(saved);
+    }
   }, []);
 
+  useEffect(() => {
+    if (!mounted) return;
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme, mounted]);
+
   const toggleTheme = () => {
-    // Disabled for now — dark mode only
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: 'dark', resolvedTheme: 'dark', toggleTheme, mounted }}>
+    <ThemeContext.Provider value={{ theme, resolvedTheme: theme, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   );
