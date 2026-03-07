@@ -84,7 +84,7 @@ export default function CompliancePage() {
               <div className="compliance-card-body">
                 <h2>{t.compliance.dp_title}</h2>
                 <p>{t.compliance.dp_description}</p>
-                <a href="https://www.dataprotection.gov.rw/" target="_blank" rel="noopener noreferrer">
+                <a href="https://dpo.gov.rw/" target="_blank" rel="noopener noreferrer">
                   Visit Data Protection Office <i className="bi bi-arrow-right"></i>
                 </a>
               </div>

@@ -670,7 +670,7 @@ export default function HomePage() {
                 </div>
               </a>
               <a
-                href="https://www.dataprotection.gov.rw/"
+                href="https://dpo.gov.rw/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="trust-logo-card"
