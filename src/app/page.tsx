@@ -495,22 +495,22 @@ export default function HomePage() {
 
               {/* Loading State */}
               {productsLoading && (
-                <div className="products-loading" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: 'white', fontSize: '1.1rem' }}>{t.home.products_loading}</p>
+                <div className="products-loading">
+                  <p>{t.home.products_loading}</p>
                 </div>
               )}
 
               {/* Error State */}
               {productsError && (
-                <div className="products-error" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: '#ff6b6b', fontSize: '1.1rem' }}>{t.home.products_error}</p>
+                <div className="products-error">
+                  <p>{t.home.products_error}</p>
                 </div>
               )}
 
               {/* No Products State */}
               {!productsLoading && !productsError && products.length === 0 && (
-                <div className="no-products" style={{ textAlign: 'center', padding: '2rem' }}>
-                  <p style={{ color: 'white', fontSize: '1.1rem' }}>{t.home.products_empty}</p>
+                <div className="no-products">
+                  <p>{t.home.products_empty}</p>
                 </div>
               )}
 
