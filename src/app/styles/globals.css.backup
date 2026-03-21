@@ -120,14 +120,6 @@ html.light body {
   color: #1f2937;
 }
 
-html.light {
-  --card-bg: rgba(0, 0, 0, 0.02);
-  --card-border: 1px solid rgba(0, 0, 0, 0.08);
-  --card-hover-bg: rgba(0, 0, 0, 0.04);
-  --card-hover-border: rgba(43, 162, 104, 0.4);
-  --card-hover-shadow: 0 12px 24px rgba(43, 162, 104, 0.08);
-}
-
 /* ===== UTILITY CLASSES ===== */
 .container {
   max-width: 1400px;
@@ -701,7 +693,7 @@ html.light {
 }
 
 .navbar-icon-btn .bi-chevron-down {
-  font-size: var(--fs-sm);
+  font-size: 0.9rem;
   opacity: 0.7;
 }
 
@@ -1973,46 +1965,6 @@ html.light {
   color: #dc2626 !important;
 }
 
-/* 404 Page Light Theme */
-.not-found-container {
-  background: inherit;
-}
-
-html.light .not-found-title {
-  color: #1a1a2e;
-}
-
-html.light .not-found-subtitle {
-  color: #374151;
-}
-
-html.light .not-found-description {
-  color: #6b7280;
-}
-
-html.light .not-found-button.secondary {
-  color: #1a1a2e;
-  border-color: rgba(43, 162, 104, 0.4);
-}
-
-html.light .not-found-button.secondary:hover {
-  color: #2ba268;
-}
-
-/* Contact Appointment Light Theme */
-html.light .contact-appointment {
-  background: rgba(0, 0, 0, 0.02);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-html.light .contact-appointment h3 {
-  color: #1a1a2e;
-}
-
-html.light .contact-appointment p {
-  color: #6b7280;
-}
-
 /* ===== ANNOUNCEMENT BANNER ===== */
 .announcement-banner {
   position: fixed;
@@ -2081,7 +2033,7 @@ html.light .contact-appointment p {
   background: rgba(43, 162, 104, 0.15);
   color: #2ba268;
   font-weight: 600;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   border: 1px solid rgba(43, 162, 104, 0.3);
   border-radius: 20px;
   text-decoration: none;
@@ -2100,7 +2052,7 @@ html.light .contact-appointment p {
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.4);
-  font-size: var(--fs-xl);
+  font-size: 1.25rem;
   cursor: pointer;
   padding: 0 0.25rem;
   margin-left: 0.75rem;
@@ -2149,7 +2101,7 @@ html.light .announcement-cta:hover {
 @media (max-width: 768px) {
   .announcement-banner {
     padding: 0.5rem 1rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .announcement-content {
@@ -2158,7 +2110,7 @@ html.light .announcement-cta:hover {
 
   .announcement-cta {
     padding: 0.25rem 0.75rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 }
 
@@ -2170,11 +2122,11 @@ html.light .announcement-cta:hover {
   }
 
   .announcement-content p {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .announcement-cta {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 }
 
@@ -2295,7 +2247,7 @@ html.light .announcement-cta:hover {
 }
 
 .hero-animated-title {
-  font-size: var(--fs-4xl);
+  font-size: 2.2rem;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 0.75rem;
@@ -2304,7 +2256,7 @@ html.light .announcement-cta:hover {
 }
 
 .hero-animated-subtitle {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   max-width: 580px;
   margin: 0 auto 2rem;
@@ -2357,7 +2309,7 @@ html.light .announcement-cta:hover {
   border: none;
   border-radius: 50px;
   font-weight: 700;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 150px;
@@ -2398,7 +2350,7 @@ html.light .announcement-cta:hover {
 }
 
 .hero-title {
-  font-size: var(--fs-xl);
+  font-size: 1.25rem; /* xl */
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 0.5rem;
@@ -2406,7 +2358,7 @@ html.light .announcement-cta:hover {
 }
 
 .hero-description {
-  font-size: var(--fs-md);
+  font-size: 1rem; /* sm */
   color: var(--text-light);
   max-width: 450px;
   margin: 0 auto;
@@ -2426,14 +2378,14 @@ html.light .announcement-cta:hover {
 }
 
 .products-title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-bold);
+  font-size: 2rem;
+  font-weight: 700;
   color: #f1f5f9;
   margin-bottom: 0.75rem;
 }
 
 .products-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
   max-width: 500px;
   margin: 0 auto;
@@ -2443,15 +2395,15 @@ html.light .announcement-cta:hover {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--grid-gap);
+  gap: 1.75rem;
   width: 100%;
 }
 
 .product-card {
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding-lg);
-  border: var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -2462,10 +2414,10 @@ html.light .announcement-cta:hover {
 }
 
 .product-card:hover {
-  background: var(--card-hover-bg);
-  transform: var(--card-hover-lift);
-  border-color: var(--card-hover-border);
-  box-shadow: var(--card-hover-shadow);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-4px);
+  border-color: rgba(43, 162, 104, 0.3);
+  box-shadow: 0 8px 24px rgba(43, 162, 104, 0.12);
 }
 
 .product-card:hover .product-title {
@@ -2497,7 +2449,7 @@ html.light .announcement-cta:hover {
 }
 
 .product-icon span {
-  font-size: var(--fs-lg);
+  font-size: 1.35rem;
 }
 
 .product-content {
@@ -2508,15 +2460,15 @@ html.light .announcement-cta:hover {
 }
 
 .product-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
+  font-size: 1.05rem;
+  font-weight: 600;
   color: #f1f5f9;
   margin-bottom: 0.35rem;
   transition: color 0.3s ease;
 }
 
 .product-category {
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   color: #2ba268;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2530,7 +2482,7 @@ html.light .announcement-cta:hover {
   margin-bottom: 1.25rem;
   flex-grow: 1;
   transition: color 0.3s ease;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .product-pricing {
@@ -2541,13 +2493,13 @@ html.light .announcement-cta:hover {
 }
 
 .product-price {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--secondary-green);
 }
 
 .product-price-label {
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.4);
 }
 
@@ -2562,8 +2514,8 @@ html.light .announcement-cta:hover {
 .product-btn {
   padding: 0.55rem 1.5rem;
   border-radius: 10px;
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-base);
+  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid transparent;
@@ -2599,7 +2551,7 @@ html.light .announcement-cta:hover {
 }
 
 .product-btn i {
-  font-size: var(--fs-lg);
+  font-size: 1rem;
 }
 
 /* Product Buttons Light Theme */
@@ -2633,8 +2585,8 @@ html.light .announcement-cta:hover {
   background: var(--gradient-secondary);
   color: var(--text-white);
   border: none;
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-base);
+  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
@@ -2681,7 +2633,7 @@ html.light .announcement-cta:hover {
     margin-top: 1rem;
     width: 100%;
     padding: 0.875rem 1.5rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 }
 
@@ -2698,16 +2650,16 @@ html.light .announcement-cta:hover {
   }
 
   .product-title {
-    font-size: var(--fs-md);
+    font-size: 1.1rem;
   }
 
   .product-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-price-btn {
     padding: 0.8rem 1.2rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
     margin-top: 1rem;
     width: 100%;
     position: static;
@@ -2717,11 +2669,11 @@ html.light .announcement-cta:hover {
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
   }
   
   .product-page-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
   }
   
   .products-cta-buttons {
@@ -2843,14 +2795,14 @@ html.light .announcement-cta:hover {
 }
 
 .services-title {
-  font-size: var(--fs-lg);
+  font-size: 1.125rem; /* lg */
   font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .services-description {
-  font-size: var(--fs-md);
+  font-size: 1rem; /* sm */
   color: var(--text-light);
   max-width: 450px;
   margin: 0 auto;
@@ -2860,14 +2812,14 @@ html.light .announcement-cta:hover {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--grid-gap);
+  gap: 1.5rem;
   padding: 0 1rem;
 }
 
 .service-card {
   background: linear-gradient(145deg, var(--surface-dark) 0%, var(--surface-medium) 100%);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
   position: relative;
   border: 1px solid #646366;
   box-shadow: var(--shadow-sm);
@@ -2907,7 +2859,7 @@ html.light .announcement-cta:hover {
 }
 
 .service-icon i {
-  font-size: var(--fs-lg);
+  font-size: 1.3rem;
   color: #2ba268;
 }
 
@@ -2917,8 +2869,8 @@ html.light .announcement-cta:hover {
 }
 
 .service-title {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
+  font-size: 1rem;
+  font-weight: 600;
   color: #2ba268;
   margin: 0;
   transition: color 0.3s ease;
@@ -2929,7 +2881,7 @@ html.light .announcement-cta:hover {
   line-height: 1.5;
   margin-bottom: 0.625rem;
   flex-grow: 1;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -2945,7 +2897,7 @@ html.light .announcement-cta:hover {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -2966,14 +2918,14 @@ html.light .announcement-cta:hover {
 }
 
 .testimonials-title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-bold);
+  font-size: 2rem;
+  font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .testimonials-subtitle {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
   max-width: 500px;
   margin: 0 auto;
@@ -3193,8 +3145,8 @@ html.light .announcement-cta:hover {
 }
 
 .pricing-title {
-  font-size: var(--fs-4xl);
-  font-weight: var(--fw-bold);
+  font-size: 3rem;
+  font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
   max-width: 800px;
@@ -3216,8 +3168,8 @@ html.light .announcement-cta:hover {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 40px;
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-base);
+  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
@@ -3268,8 +3220,8 @@ html.light .announcement-cta:hover {
   color: var(--text-white);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-2xl);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
@@ -3278,15 +3230,15 @@ html.light .announcement-cta:hover {
 }
 
 .plan-name {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-semibold);
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--text-white);
   margin-bottom: 0.5rem;
 }
 
 .plan-description {
   color: var(--text-gray);
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .price-container {
@@ -3298,14 +3250,14 @@ html.light .announcement-cta:hover {
 }
 
 .price {
-  font-size: var(--fs-4xl);
-  font-weight: var(--fw-bold);
+  font-size: 3rem;
+  font-weight: 700;
   color: var(--text-white);
 }
 
 .price-period {
   color: var(--text-gray);
-  font-size: var(--fs-base);
+  font-size: 1rem;
 }
 
 .features-list {
@@ -3324,8 +3276,8 @@ html.light .announcement-cta:hover {
 
 .feature-check {
   color: var(--secondary-green);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .cta-button {
@@ -3333,8 +3285,8 @@ html.light .announcement-cta:hover {
   padding: 1rem 2rem;
   border: none;
   border-radius: 50px;
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-base);
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   background: var(--text-white);
@@ -3387,8 +3339,8 @@ html.light .announcement-cta:hover {
 }
 
 .scroll-to-top i {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 @keyframes slideInUp {
@@ -3409,14 +3361,14 @@ html.light .announcement-cta:hover {
 }
 
 .trust-recognized-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .trust-recognized-subtitle {
-  font-size: var(--fs-md);
+  font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.6);
   max-width: 600px;
   margin: 0 auto 2.5rem;
@@ -3483,14 +3435,14 @@ html.light .announcement-cta:hover {
 }
 
 .trust-logo-caption h3 {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.3rem;
 }
 
 .trust-logo-caption p {
-  font-size: var(--fs-base);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.4;
   transition: color 0.3s ease;
@@ -3504,15 +3456,15 @@ html.light .announcement-cta:hover {
 .compliance-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--grid-gap);
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
 .compliance-card {
   padding: 0;
   background: linear-gradient(145deg, var(--surface-dark) 0%, var(--surface-medium) 100%);
-  border: var(--card-border);
-  border-radius: var(--card-radius);
+  border: 1px solid #646366;
+  border-radius: var(--radius-lg);
   transition: all 0.3s ease;
   overflow: hidden;
   display: flex;
@@ -3550,14 +3502,14 @@ html.light .announcement-cta:hover {
 }
 
 .compliance-card h2 {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.75rem;
 }
 
 .compliance-card p {
-  font-size: var(--fs-md);
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   transition: color 0.3s ease;
@@ -3573,8 +3525,8 @@ html.light .announcement-cta:hover {
   gap: 0.5rem;
   color: #2ba268;
   text-decoration: none;
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-md);
+  font-weight: 600;
+  font-size: 1.1rem;
   margin-top: auto;
   padding-top: 1.25rem;
   transition: gap 0.3s ease;
@@ -3594,14 +3546,14 @@ html.light .announcement-cta:hover {
 }
 
 .certificates-section h2 {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .certificates-section p {
-  font-size: var(--fs-md);
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
 }
@@ -3630,8 +3582,8 @@ html.light .announcement-cta:hover {
 }
 
 .certificate-label {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
+  font-size: 1.1rem;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
   padding: 0.25rem 0;
@@ -3653,14 +3605,14 @@ html.light .announcement-cta:hover {
   background: rgba(43, 162, 104, 0.08);
   border: 1px solid rgba(43, 162, 104, 0.2);
   border-radius: 50px;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  font-size: 1rem;
+  font-weight: 500;
   color: rgba(43, 162, 104, 0.9);
   white-space: nowrap;
 }
 
 .news-trust-badge i {
-  font-size: var(--fs-sm);
+  font-size: 1rem;
 }
 
 /* ===== TRUST / COMPLIANCE LIGHT THEME ===== */
@@ -3738,7 +3690,7 @@ html.light .announcement-cta:hover {
   }
 
   .trust-recognized-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .trust-logos-grid {
@@ -3761,11 +3713,11 @@ html.light .announcement-cta:hover {
 
 @media (max-width: 480px) {
   .trust-recognized-title {
-    font-size: var(--fs-xl);
+    font-size: 1.3rem;
   }
 
   .trust-recognized-subtitle {
-    font-size: var(--fs-base);
+    font-size: 1rem;
   }
 
   .trust-logos-grid {
@@ -3786,7 +3738,7 @@ html.light .announcement-cta:hover {
   }
 
   .compliance-card h2 {
-    font-size: var(--fs-xl);
+    font-size: 1.35rem;
   }
 
   .certificates-section {
@@ -3877,12 +3829,13 @@ html.light .announcement-cta:hover {
 }
 
 .footer-title {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-bold);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #2ba268;
   margin-bottom: 1.25rem;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  font-size: 1rem;
 }
 
 .footer-links {
@@ -3898,7 +3851,7 @@ html.light .announcement-cta:hover {
 .footer-link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   transition: all 0.3s ease;
   display: inline-block;
 }
@@ -3929,8 +3882,8 @@ html.light .announcement-cta:hover {
   gap: 0.5rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
+  font-size: 1rem;
+  font-weight: 500;
   transition: all 0.3s ease;
   margin-bottom: 0.5rem;
 }
@@ -3946,7 +3899,7 @@ html.light .announcement-cta:hover {
 
 .footer-location-link i {
   color: #2ba268;
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
 }
 
 .footer-contact {
@@ -3960,7 +3913,7 @@ html.light .announcement-cta:hover {
   align-items: center;
   gap: 0.75rem;
   color: rgba(255, 255, 255, 0.7);
-  font-size: var(--fs-base);
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 0.25rem 0;
@@ -3972,7 +3925,7 @@ html.light .announcement-cta:hover {
 }
 
 .contact-icon {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   width: 20px;
   text-align: center;
   color: #2ba268;
@@ -4015,7 +3968,7 @@ html.light .announcement-cta:hover {
 }
 
 .social-link i {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
 }
@@ -4031,7 +3984,7 @@ html.light .announcement-cta:hover {
 
 .footer-copyright {
   color: rgba(255, 255, 255, 0.5);
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -4120,7 +4073,7 @@ html.light .announcement-cta:hover {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--grid-gap);
+  gap: 2rem;
   margin-bottom: 4rem;
 }
 
@@ -4168,14 +4121,14 @@ html.light .announcement-cta:hover {
 }
 
 .service-detail-icon span {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
 }
 
 /* Removed service-price styles as we don't want to display prices for services */
 
 .service-detail-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-semibold);
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--text-white);
   margin-bottom: 1rem;
   transition: color 0.3s ease;
@@ -4208,8 +4161,8 @@ html.light .announcement-cta:hover {
   padding: 1rem 2rem;
   border: none;
   border-radius: 50px;
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-base);
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   background: #2ba268;
@@ -4236,14 +4189,14 @@ html.light .announcement-cta:hover {
 }
 
 .cta-title {
-  font-size: var(--fs-3xl);
-  font-weight: var(--fw-bold);
+  font-size: 2.5rem;
+  font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
 }
 
 .cta-description {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -4260,8 +4213,8 @@ html.light .announcement-cta:hover {
   padding: 1rem 2rem;
   border: none;
   border-radius: 50px;
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-base);
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 150px;
@@ -4340,7 +4293,7 @@ html.light .announcement-cta:hover {
 }
 
 .product-page-icon span {
-  font-size: var(--fs-xl);
+  font-size: 1.8rem;
 }
 
 .product-page-price {
@@ -4349,12 +4302,12 @@ html.light .announcement-cta:hover {
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   font-weight: 700;
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   box-shadow: var(--shadow-lg);
 }
 
 .product-page-title {
-  font-size: var(--fs-xl);
+  font-size: 1.7rem;
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 1rem;
@@ -4365,7 +4318,7 @@ html.light .announcement-cta:hover {
   color: var(--text-gray);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .product-page-features {
@@ -4380,7 +4333,7 @@ html.light .announcement-cta:hover {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .product-page-buttons {
@@ -4397,7 +4350,7 @@ html.light .announcement-cta:hover {
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   flex: 1;
@@ -4411,7 +4364,7 @@ html.light .announcement-cta:hover {
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   flex: 1;
@@ -4445,14 +4398,14 @@ html.light .announcement-cta:hover {
 }
 
 .products-cta-title {
-  font-size: var(--fs-2xl);
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
 }
 
 .products-cta-description {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -4470,7 +4423,7 @@ html.light .announcement-cta:hover {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 160px;
@@ -4604,7 +4557,7 @@ html.light .announcement-cta:hover {
 
 
 .about-hero-title {
-  font-size: var(--fs-2xl);
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
@@ -4613,7 +4566,7 @@ html.light .announcement-cta:hover {
 }
 
 .about-hero-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.6);
   max-width: 550px;
   margin: 0 auto;
@@ -4635,7 +4588,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-title {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
@@ -4643,7 +4596,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-light);
   max-width: 550px;
   margin: 0 auto;
@@ -4706,7 +4659,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-image-placeholder i {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   color: var(--text-white);
 }
 
@@ -4737,7 +4690,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-name {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 0.2rem;
@@ -4745,7 +4698,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-title-job {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 400;
   margin-bottom: 0;
@@ -4765,14 +4718,14 @@ html.light .announcement-cta:hover {
 .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--grid-gap);
+  gap: 1.5rem;
 }
 
 .value-card {
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding-lg);
-  border: var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -4801,12 +4754,12 @@ html.light .announcement-cta:hover {
 }
 
 .value-header-icon {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   color: #2ba268;
 }
 
 .value-title {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2ba268;
   margin: 0;
@@ -4815,7 +4768,7 @@ html.light .announcement-cta:hover {
 .value-description {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -4835,7 +4788,7 @@ html.light .announcement-cta:hover {
   padding-left: 1.5rem;
   position: relative;
   line-height: 1.5;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -4845,7 +4798,7 @@ html.light .announcement-cta:hover {
   left: 0;
   color: rgba(255, 255, 255, 0.75);
   font-weight: bold;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -4862,7 +4815,7 @@ html.light .announcement-cta:hover {
 
 .timeline-title {
   text-align: center;
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 3rem;
@@ -5004,20 +4957,20 @@ html.light .announcement-cta:hover {
   color: #2ba268;
   padding: 0;
   font-weight: 700;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   letter-spacing: 0.05em;
   margin-bottom: 0.4rem;
 }
 
 .timeline-item-title {
-  font-size: var(--fs-md);
+  font-size: 1.05rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.3rem;
 }
 
 .timeline-item-subtitle {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -5027,7 +4980,7 @@ html.light .announcement-cta:hover {
 .timeline-item-description {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -5191,7 +5144,7 @@ html.light .announcement-cta:hover {
   padding: 0.7rem 1.75rem;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   min-width: 140px;
@@ -5240,7 +5193,7 @@ html.light .announcement-cta:hover {
   background: var(--gradient-primary);
   border: none;
   color: var(--text-white);
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: all 0.3s ease;
@@ -5332,17 +5285,17 @@ html.light .announcement-cta:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-lg);
+  font-size: 1.2rem;
 }
 
 .chatbot-title h4 {
   margin: 0;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .chatbot-status {
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   opacity: 0.9;
 }
 
@@ -5421,12 +5374,12 @@ html.light .announcement-cta:hover {
 
 .message-content p {
   margin: 0;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   line-height: 1.4;
 }
 
 .message-time {
-  font-size: var(--fs-xs);
+  font-size: 1rem;
   opacity: 0.7;
   display: block;
   margin-top: 0.25rem;
@@ -5478,7 +5431,7 @@ html.light .announcement-cta:hover {
 
 .quick-questions p {
   color: var(--text-gray);
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   margin: 0 0 0.5rem 0;
 }
 
@@ -5491,7 +5444,7 @@ html.light .announcement-cta:hover {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: var(--radius-lg);
-  font-size: var(--fs-base);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
@@ -5522,7 +5475,7 @@ html.light .announcement-cta:hover {
   border-radius: var(--radius-2xl);
   padding: 0.75rem 1rem;
   color: var(--text-white);
-  font-size: var(--fs-base);
+  font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
 }
@@ -5574,33 +5527,6 @@ html.light .announcement-cta:hover {
     width: 240px;
     height: 300px;
   }
-
-  /* Tablet grid adjustments */
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .news-grid-container,
-  .blog-grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .values-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .compliance-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Tablet typography scaling */
-  .hero-animated-title {
-    font-size: var(--fs-3xl);
-  }
-
-  .page-hero-title {
-    font-size: var(--fs-2xl);
-  }
 }
 
 @media (max-width: 768px) {
@@ -5633,13 +5559,13 @@ html.light .announcement-cta:hover {
   }
 
   .hero-animated-title {
-    font-size: var(--fs-xl);
+    font-size: 1.75rem;
     line-height: 1.15;
     margin-bottom: 1rem;
   }
 
   .hero-animated-subtitle {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     max-width: 90%;
     margin: 0 auto 1.75rem;
   }
@@ -5654,7 +5580,7 @@ html.light .announcement-cta:hover {
     width: 100%;
     max-width: 260px;
     padding: 0.65rem 1.5rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .products-grid {
@@ -5674,13 +5600,13 @@ html.light .announcement-cta:hover {
     margin-top: 1rem;
     width: 100%;
     padding: 0.875rem 1.5rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .services-title,
   .products-title,
   .pricing-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .services-grid {
@@ -5720,20 +5646,20 @@ html.light .announcement-cta:hover {
   }
 
   .scroll-card-number {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .scroll-card-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .scroll-card-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     line-height: 1.4;
   }
 
   .scroll-card-features-list li {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .page-hero {
@@ -5751,7 +5677,7 @@ html.light .announcement-cta:hover {
   }
 
   .price {
-    font-size: var(--fs-2xl);
+    font-size: 2.5rem;
   }
 
   .footer-content {
@@ -5798,7 +5724,7 @@ html.light .announcement-cta:hover {
   }
 
   .cta-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
   }
 
   .cta-buttons {
@@ -5833,7 +5759,7 @@ html.light .announcement-cta:hover {
   }
 
   .products-cta-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
   }
 
   .products-cta-buttons {
@@ -5848,12 +5774,12 @@ html.light .announcement-cta:hover {
   }
 
   .about-hero-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
     margin-bottom: 0.75rem;
   }
 
   .about-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     max-width: 90%;
     margin: 0 auto;
   }
@@ -5893,7 +5819,7 @@ html.light .announcement-cta:hover {
   }
   
   .team-title {
-    font-size: var(--fs-2xl);
+    font-size: 2.5rem;
   }
   
   .team-grid {
@@ -5943,7 +5869,7 @@ html.light .announcement-cta:hover {
   .chatbot-toggle {
     width: 55px;
     height: 55px;
-    font-size: var(--fs-lg);
+    font-size: 1.3rem;
   }
 
   /* About hero mobile */
@@ -5958,12 +5884,12 @@ html.light .announcement-cta:hover {
   }
 
   .about-hero-title {
-    font-size: var(--fs-xl);
+    font-size: 1.75rem;
     line-height: 1.2;
   }
 
   .about-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     max-width: 95%;
     margin: 0 auto;
   }
@@ -6079,11 +6005,11 @@ html.light .announcement-cta:hover {
   }
 
   .page-hero-title {
-    font-size: var(--fs-lg);
+    font-size: 1.35rem;
   }
 
   .page-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -6128,13 +6054,13 @@ html.light .announcement-cta:hover {
   }
 
   .hero-animated-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
     line-height: 1.2;
     margin-bottom: 0.75rem;
   }
 
   .hero-animated-subtitle {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     max-width: 95%;
     margin: 0 auto 1.5rem;
     line-height: 1.5;
@@ -6148,7 +6074,7 @@ html.light .announcement-cta:hover {
 
   .action-btn {
     padding: 0.6rem 1.25rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
     min-width: auto;
     width: 100%;
     max-width: 240px;
@@ -6160,25 +6086,25 @@ html.light .announcement-cta:hover {
   }
 
   .product-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-category {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-btn {
     padding: 0.5rem 0.75rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-price-btn {
     padding: 0.6rem 1rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .footer {
@@ -6196,7 +6122,7 @@ html.light .announcement-cta:hover {
   }
 
   .footer-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     margin-bottom: 0.75rem;
   }
 
@@ -6234,7 +6160,7 @@ html.light .announcement-cta:hover {
   .footer-location-link {
     justify-content: center;
     text-align: center;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .partners-section {
@@ -6264,7 +6190,7 @@ html.light .announcement-cta:hover {
   }
 
   .scroll-to-top i {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   /* Products Page Mobile */
@@ -6278,12 +6204,12 @@ html.light .announcement-cta:hover {
   }
 
   .product-page-icon span {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .product-page-price {
     padding: 0.5rem 1rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   /* Team Section Mobile */
@@ -6302,11 +6228,11 @@ html.light .announcement-cta:hover {
   }
 
   .team-name {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .team-title-job {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   /* Chatbot Mobile */
@@ -6320,7 +6246,7 @@ html.light .announcement-cta:hover {
   .chatbot-toggle {
     width: 50px;
     height: 50px;
-    font-size: var(--fs-lg);
+    font-size: 1.2rem;
     bottom: 5.5rem;
   }
 
@@ -6331,12 +6257,12 @@ html.light .announcement-cta:hover {
   }
 
   .about-hero-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
     line-height: 1.2;
   }
 
   .about-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -6456,7 +6382,7 @@ textarea:focus {
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
   white-space: nowrap;
@@ -6474,7 +6400,7 @@ textarea:focus {
 }
 
 .contact-btn i {
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 /* Mobile Contact Us Item */
@@ -6612,11 +6538,11 @@ textarea:focus {
 
 .success-icon i {
   color: #22c55e;
-  font-size: var(--fs-xl);
+  font-size: 1.875rem;
 }
 
 .success-title {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
@@ -6662,7 +6588,7 @@ textarea:focus {
 }
 
 .contact-title {
-  font-size: var(--fs-2xl);
+  font-size: 2.25rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1.5rem;
@@ -6676,7 +6602,7 @@ textarea:focus {
 }
 
 .contact-subtitle {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.7);
   max-width: 48rem;
   margin: 0 auto;
@@ -6708,7 +6634,7 @@ textarea:focus {
 }
 
 .info-title, .social-title {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1.5rem;
@@ -6752,7 +6678,7 @@ textarea:focus {
 }
 
 .info-icon i {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
 }
 
 .email-icon i {
@@ -6800,7 +6726,7 @@ textarea:focus {
 }
 
 .stat-number {
-  font-size: var(--fs-xl);
+  font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -6815,21 +6741,21 @@ textarea:focus {
 
 .stat-label {
   color: rgba(255, 255, 255, 0.7);
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 /* Contact Form */
 .contact-form-card {
   background: rgba(33, 32, 37, 0.95);
   backdrop-filter: blur(20px);
-  border: var(--card-border);
+  border: 1px solid rgba(43, 162, 104, 0.2);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding-lg);
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 .form-title {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1.5rem;
@@ -6871,7 +6797,7 @@ textarea:focus {
 .form-label {
   display: block;
   color: rgba(255, 255, 255, 0.8);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -6908,7 +6834,7 @@ textarea:focus {
 
 .character-count {
   color: rgba(255, 255, 255, 0.5);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   margin-top: 0.5rem;
 }
 
@@ -6927,7 +6853,7 @@ textarea:focus {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -6941,7 +6867,7 @@ textarea:focus {
 }
 
 .submit-button i {
-  font-size: var(--fs-md);
+  font-size: 1.125rem;
 }
 
 .loading-spinner {
@@ -6966,7 +6892,7 @@ textarea:focus {
 
 .privacy-text {
   color: rgba(255, 255, 255, 0.6);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -6997,7 +6923,7 @@ textarea:focus {
 }
 
 .scroll-to-top i {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
 }
 
 /* Responsive Design */
@@ -7007,7 +6933,7 @@ textarea:focus {
   }
   
   .contact-title {
-    font-size: var(--fs-3xl);
+    font-size: 3rem;
   }
 }
 
@@ -7017,7 +6943,7 @@ textarea:focus {
   }
   
   .contact-title {
-    font-size: var(--fs-3xl);
+    font-size: 3.75rem;
   }
   
   .contact-content {
@@ -7028,7 +6954,7 @@ textarea:focus {
 
 @media (min-width: 1280px) {
   .contact-title {
-    font-size: var(--fs-4xl);
+    font-size: 4rem;
   }
 }
 
@@ -7149,69 +7075,38 @@ textarea:focus {
   max-width: 500px;
 }
 
-.not-found-icon {
-  font-size: var(--fs-4xl);
-  color: #2ba268;
-  margin-bottom: 1rem;
-}
-
 .not-found-title {
-  font-size: var(--fs-5xl);
-  font-weight: var(--fw-bold);
+  font-size: 6rem;
+  font-weight: bold;
   margin: 0;
-  color: var(--text-white);
-  line-height: var(--lh-tight);
+  color: #333;
 }
 
 .not-found-subtitle {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-semibold);
+  font-size: 2rem;
   margin: 1rem 0;
-  color: var(--text-light);
+  color: #666;
 }
 
 .not-found-description {
-  font-size: var(--fs-md);
-  color: var(--text-gray);
+  font-size: 1.1rem;
+  color: #777;
   margin-bottom: 2rem;
-  line-height: var(--lh-relaxed);
-}
-
-.not-found-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .not-found-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
   padding: 0.75rem 2rem;
-  background: linear-gradient(135deg, #2ba268, #239558);
+  background-color: #0070f3;
   color: white;
   text-decoration: none;
-  border-radius: var(--card-radius);
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-base);
-  transition: all 0.3s ease;
-}
-
-.not-found-button.secondary {
-  background: transparent;
-  border: 1px solid rgba(43, 162, 104, 0.3);
-  color: var(--text-white);
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
 .not-found-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(43, 162, 104, 0.4);
-}
-
-.not-found-button.secondary:hover {
-  background: rgba(43, 162, 104, 0.1);
-  border-color: #2ba268;
+  background-color: #0051cc;
 }
 
 /* ===== INNOVATIVE LANDING PAGE STYLES ===== */
@@ -7406,7 +7301,7 @@ textarea:focus {
 .products-loading p,
 .no-products p {
   color: var(--text-gray);
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
 }
 
 .no-products {
@@ -7415,7 +7310,7 @@ textarea:focus {
 }
 
 .no-products i {
-  font-size: var(--fs-4xl);
+  font-size: 3rem;
   color: var(--text-dark);
   margin-bottom: 1rem;
   display: block;
@@ -7429,7 +7324,7 @@ textarea:focus {
   padding: 0.3rem 0.7rem;
   background: rgba(43, 162, 104, 0.1);
   color: #34c47d;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 1rem;
   text-transform: uppercase;
@@ -7451,14 +7346,14 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-gray);
   margin-bottom: 0.5rem;
 }
 
 .product-features i {
   color: var(--secondary-green);
-  font-size: var(--fs-base);
+  font-size: 1rem;
 }
 
 /* Enhanced Product Button */
@@ -7506,14 +7401,14 @@ textarea:focus {
 }
 
 .cta-content h2 {
-  font-size: var(--fs-3xl);
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
 }
 
 .cta-content p {
-  font-size: var(--fs-lg);
+  font-size: 1.125rem;
   color: var(--text-gray);
   margin-bottom: 2rem;
   max-width: 600px;
@@ -7535,7 +7430,7 @@ textarea:focus {
   padding: 1rem 2rem;
   border-radius: var(--radius-xl);
   font-weight: 600;
-  font-size: var(--fs-base);
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -7585,15 +7480,15 @@ textarea:focus {
   }
 
   .stat-value {
-    font-size: var(--fs-lg);
+    font-size: 1.1rem;
   }
 
   .stat-label {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .cta-content h2 {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .cta-section {
@@ -7610,11 +7505,11 @@ textarea:focus {
   }
 
   .service-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .service-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .service-icon {
@@ -7623,7 +7518,7 @@ textarea:focus {
   }
 
   .service-icon i {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 }
 
@@ -7638,11 +7533,11 @@ textarea:focus {
   }
 
   .stat-value {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .stat-label {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .action-buttons-container {
@@ -7653,7 +7548,7 @@ textarea:focus {
 
   .action-btn {
     justify-content: center;
-    font-size: var(--fs-md);
+    font-size: 1rem;
     padding: 0.6rem 1.25rem;
     min-width: auto;
     max-width: 240px;
@@ -7661,12 +7556,12 @@ textarea:focus {
 
   .products-title,
   .services-title {
-    font-size: var(--fs-lg);
+    font-size: 1.3rem;
   }
 
   .products-description,
   .services-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-card {
@@ -7674,11 +7569,11 @@ textarea:focus {
   }
 
   .product-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .product-icon {
@@ -7687,7 +7582,7 @@ textarea:focus {
   }
 
   .product-icon span {
-    font-size: var(--fs-md);
+    font-size: 1.1rem;
   }
 
   .services-grid {
@@ -7712,7 +7607,7 @@ textarea:focus {
 }
 
 .news-title {
-  font-size: var(--fs-2xl);
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1rem;
@@ -7723,7 +7618,7 @@ textarea:focus {
 }
 
 .news-description {
-  font-size: var(--fs-md);
+  font-size: 1.125rem;
   color: var(--text-gray);
   max-width: 600px;
   margin: 0 auto;
@@ -7737,14 +7632,14 @@ textarea:focus {
 }
 
 .no-news i {
-  font-size: var(--fs-3xl);
+  font-size: 3rem;
   display: block;
   margin-bottom: 1rem;
   opacity: 0.5;
 }
 
 .no-news p {
-  font-size: var(--fs-md);
+  font-size: 1.125rem;
   margin-bottom: 1.5rem;
 }
 
@@ -7783,9 +7678,9 @@ textarea:focus {
 
 .news-card {
   background: linear-gradient(145deg, var(--surface-dark), var(--background-secondary));
-  border-radius: var(--card-radius);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  border: var(--card-border);
+  border: 1px solid var(--border-light);
   transition: all 0.3s ease;
   text-decoration: none;
   display: flex;
@@ -7794,9 +7689,9 @@ textarea:focus {
 }
 
 .news-card:hover {
-  transform: var(--card-hover-lift);
-  border-color: var(--card-hover-border);
-  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-6px);
+  border-color: rgba(43, 162, 104, 0.3);
+  box-shadow: 0 15px 40px rgba(43, 162, 104, 0.15);
 }
 
 .news-card-image {
@@ -7817,7 +7712,7 @@ textarea:focus {
 }
 
 .news-placeholder i {
-  font-size: var(--fs-2xl);
+  font-size: 2.5rem;
   color: var(--primary-blue-light);
   opacity: 0.7;
 }
@@ -7828,7 +7723,7 @@ textarea:focus {
   left: 0.75rem;
   padding: 0.35rem 0.75rem;
   border-radius: 9999px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -7874,7 +7769,7 @@ textarea:focus {
 }
 
 .news-date {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-gray);
   margin-bottom: 0.625rem;
   display: flex;
@@ -7885,7 +7780,7 @@ textarea:focus {
 }
 
 .news-card-title {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 0.5rem;
@@ -7903,7 +7798,7 @@ textarea:focus {
 }
 
 .news-card-excerpt {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   transition: color 0.3s ease;
@@ -7917,7 +7812,7 @@ textarea:focus {
 }
 
 .news-read-more {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: #2ba268;
   display: inline-flex;
@@ -7970,11 +7865,11 @@ textarea:focus {
   }
 
   .news-title {
-    font-size: var(--fs-xl);
+    font-size: 1.75rem;
   }
 
   .news-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     padding: 0 0.5rem;
   }
 
@@ -7991,11 +7886,11 @@ textarea:focus {
   }
 
   .news-card-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .news-card-excerpt {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
@@ -8007,7 +7902,7 @@ textarea:focus {
   }
 
   .news-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .news-card {
@@ -8019,16 +7914,16 @@ textarea:focus {
   }
 
   .news-card-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .news-read-more {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .view-all-btn {
     padding: 0.75rem 1.25rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .news-cta {
@@ -8081,7 +7976,7 @@ textarea:focus {
   background: rgba(43, 162, 104, 0.12);
   border: 1px solid rgba(43, 162, 104, 0.25);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: rgba(43, 162, 104, 0.95);
   letter-spacing: 0.05em;
@@ -8090,7 +7985,7 @@ textarea:focus {
 }
 
 .services-hero-badge .bi {
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 
@@ -8102,7 +7997,7 @@ textarea:focus {
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1rem;
@@ -8111,7 +8006,7 @@ textarea:focus {
 }
 
 .page-hero-title {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 0.75rem;
@@ -8119,7 +8014,7 @@ textarea:focus {
 }
 
 .page-hero-description {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   color: var(--text-light);
   max-width: 600px;
   margin: 0 auto;
@@ -8204,7 +8099,7 @@ textarea:focus {
   background: rgba(43, 162, 104, 0.12);
   border: 1px solid rgba(43, 162, 104, 0.25);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: rgba(43, 162, 104, 0.95);
   letter-spacing: 0.05em;
@@ -8213,7 +8108,7 @@ textarea:focus {
 }
 
 .page-cta-title {
-  font-size: var(--fs-xl);
+  font-size: 1.75rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.75rem;
@@ -8221,7 +8116,7 @@ textarea:focus {
 }
 
 .page-cta-description {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 2rem;
   max-width: 500px;
@@ -8239,7 +8134,7 @@ textarea:focus {
   color: #ffffff;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 12px rgba(43, 162, 104, 0.2);
@@ -8280,14 +8175,14 @@ textarea:focus {
 
 .page-error i,
 .page-empty i {
-  font-size: var(--fs-2xl);
+  font-size: 2.5rem;
   color: var(--text-muted);
   margin-bottom: 1rem;
   display: block;
 }
 
 .page-empty h3 {
-  font-size: var(--fs-md);
+  font-size: 1.125rem;
   color: var(--text-white);
   margin-bottom: 0.5rem;
 }
@@ -8374,7 +8269,7 @@ textarea:focus {
 
 /* Arrow icon (shared) */
 .scroll-card-arrow {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
@@ -8394,7 +8289,7 @@ textarea:focus {
 }
 
 .scroll-card-title {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   margin: 0;
@@ -8402,7 +8297,7 @@ textarea:focus {
 }
 
 .scroll-card-description {
-  font-size: var(--fs-md);
+  font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.55;
   margin-bottom: 0.75rem;
@@ -8418,7 +8313,7 @@ textarea:focus {
 }
 
 .scroll-card-label {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -8433,7 +8328,7 @@ textarea:focus {
 }
 
 .scroll-card-features-list li {
-  font-size: var(--fs-md);
+  font-size: 1.05rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
   padding: 0.2rem 0;
@@ -8444,7 +8339,7 @@ textarea:focus {
 }
 
 .scroll-card-features-list li .bi-check-lg {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.95);
   flex-shrink: 0;
 }
@@ -8453,7 +8348,7 @@ textarea:focus {
 
 /* Inactive: number */
 .scroll-card-number {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -8495,7 +8390,7 @@ textarea:focus {
 /* Inactive: title at bottom */
 .scroll-card-bottom-title {
   margin-top: auto;
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.3;
@@ -8518,7 +8413,7 @@ textarea:focus {
   color: #ffffff;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -8570,7 +8465,7 @@ textarea:focus {
   background: rgba(34, 197, 94, 0.2);
   color: #22c55e;
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -8587,7 +8482,7 @@ textarea:focus {
 }
 
 .product-page-icon i {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   color: #2ba268;
 }
 
@@ -8597,7 +8492,7 @@ textarea:focus {
   background: rgba(43, 162, 104, 0.15);
   color: #34c47d;
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
@@ -8609,14 +8504,14 @@ textarea:focus {
 }
 
 .product-page-title {
-  font-size: var(--fs-md);
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 0.5rem;
 }
 
 .product-page-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-light);
   line-height: 1.6;
   margin-bottom: 1.25rem;
@@ -8631,7 +8526,7 @@ textarea:focus {
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
@@ -8669,7 +8564,7 @@ textarea:focus {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(43, 162, 104, 0.2);
   color: rgba(255, 255, 255, 0.9);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   animation: bannerSlideDown 0.4s ease-out;
 }
 
@@ -8702,7 +8597,7 @@ textarea:focus {
 @media (max-width: 768px) {
   .news-announcement-banner {
     padding: 0.5rem 1rem;
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 }
 
@@ -8731,7 +8626,7 @@ textarea:focus {
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-light);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -8850,7 +8745,7 @@ textarea:focus {
 
 .news-featured-placeholder i,
 .blog-featured-placeholder i {
-  font-size: var(--fs-3xl);
+  font-size: 3rem;
   color: rgba(255, 255, 255, 0.3);
 }
 
@@ -8863,7 +8758,7 @@ textarea:focus {
   background: rgba(255, 255, 255, 0.95);
   color: #0f172a;
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -8889,7 +8784,7 @@ textarea:focus {
   background: rgba(43, 162, 104, 0.15);
   color: #34c47d;
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   text-transform: capitalize;
   backdrop-filter: none;
@@ -8899,13 +8794,13 @@ textarea:focus {
 .news-date,
 .blog-date,
 .blog-read-time {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
 .news-featured-title,
 .blog-featured-title {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 0.75rem;
@@ -8914,7 +8809,7 @@ textarea:focus {
 
 .news-featured-excerpt,
 .blog-featured-excerpt {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-light);
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -8926,7 +8821,7 @@ textarea:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
@@ -8958,7 +8853,7 @@ textarea:focus {
 }
 
 .blog-author-avatar i {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   color: #ffffff;
 }
 
@@ -8968,13 +8863,13 @@ textarea:focus {
 }
 
 .blog-author-name {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-white);
 }
 
 .blog-author-role {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
@@ -8989,7 +8884,7 @@ textarea:focus {
   background: rgba(100, 116, 139, 0.2);
   color: var(--text-light);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 /* News/Blog Cards */
@@ -8997,15 +8892,15 @@ textarea:focus {
 .blog-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--grid-gap);
+  gap: 1.5rem;
 }
 
 .news-card,
 .blog-card {
   background: rgba(33, 32, 37, 0.95);
-  border-radius: var(--card-radius);
+  border-radius: 16px;
   overflow: hidden;
-  border: var(--card-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   text-decoration: none;
   transition: all 0.3s ease;
   min-height: auto;
@@ -9015,9 +8910,9 @@ textarea:focus {
 
 .news-card:hover,
 .blog-card:hover {
-  transform: var(--card-hover-lift);
-  border-color: var(--card-hover-border);
-  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-4px);
+  border-color: rgba(43, 162, 104, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .blog-card:hover .blog-card-title {
@@ -9054,7 +8949,7 @@ textarea:focus {
 
 .news-card-placeholder i,
 .blog-card-placeholder i {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   color: rgba(255, 255, 255, 0.2);
 }
 
@@ -9065,7 +8960,7 @@ textarea:focus {
 
 .news-card-title,
 .blog-card-title {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 0.5rem;
@@ -9079,7 +8974,7 @@ textarea:focus {
 
 .news-card-excerpt,
 .blog-card-excerpt {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-light);
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -9106,7 +9001,7 @@ textarea:focus {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -9145,7 +9040,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
   color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
@@ -9161,7 +9056,7 @@ textarea:focus {
 }
 
 .news-detail-breadcrumb i {
-  font-size: var(--fs-sm);
+  font-size: 0.625rem;
 }
 
 .news-detail-breadcrumb span {
@@ -9180,7 +9075,7 @@ textarea:focus {
 }
 
 .news-detail-title {
-  font-size: var(--fs-2xl);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
   line-height: 1.3;
@@ -9188,7 +9083,7 @@ textarea:focus {
 }
 
 .news-detail-excerpt {
-  font-size: var(--fs-md);
+  font-size: 1.15rem;
   color: var(--text-light);
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -9199,7 +9094,7 @@ textarea:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 1.5rem;
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
   color: var(--text-muted);
 }
 
@@ -9210,7 +9105,7 @@ textarea:focus {
 }
 
 .news-detail-meta-item i {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
 }
 
 /* News Detail Body */
@@ -9251,7 +9146,7 @@ textarea:focus {
 /* Article Content (prose-like styling) */
 .news-detail-content {
   color: var(--text-light);
-  font-size: var(--fs-md);
+  font-size: 1.05rem;
   line-height: 1.8;
 }
 
@@ -9268,10 +9163,10 @@ textarea:focus {
   line-height: 1.3;
 }
 
-.news-detail-content h1 { font-size: var(--fs-xl); }
-.news-detail-content h2 { font-size: var(--fs-xl); }
-.news-detail-content h3 { font-size: var(--fs-lg); }
-.news-detail-content h4 { font-size: var(--fs-md); }
+.news-detail-content h1 { font-size: 1.75rem; }
+.news-detail-content h2 { font-size: 1.5rem; }
+.news-detail-content h3 { font-size: 1.25rem; }
+.news-detail-content h4 { font-size: 1.125rem; }
 
 .news-detail-content p {
   margin-bottom: 1.25em;
@@ -9327,7 +9222,7 @@ textarea:focus {
   padding: 1rem;
   overflow-x: auto;
   margin: 1.5em 0;
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
 }
 
 .news-detail-content code {
@@ -9375,7 +9270,7 @@ textarea:focus {
 }
 
 .news-detail-tags h4 {
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
   margin-bottom: 0.75rem;
@@ -9392,7 +9287,7 @@ textarea:focus {
   background: rgba(100, 116, 139, 0.2);
   color: var(--text-light);
   border-radius: 50px;
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
 }
 
 /* Share Section */
@@ -9403,7 +9298,7 @@ textarea:focus {
 }
 
 .news-detail-share h4 {
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
   margin-bottom: 0.75rem;
@@ -9426,7 +9321,7 @@ textarea:focus {
   color: var(--text-light);
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 .share-btn:hover {
@@ -9448,7 +9343,7 @@ textarea:focus {
   gap: 0.5rem;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: var(--fs-sm);
+  font-size: 0.875rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -9465,7 +9360,7 @@ textarea:focus {
 }
 
 .news-detail-related h3 {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 1.5rem;
@@ -9531,11 +9426,11 @@ textarea:focus {
   }
 
   .news-detail-title {
-    font-size: var(--fs-xl);
+    font-size: 1.5rem;
   }
 
   .news-detail-excerpt {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .news-detail-article {
@@ -9706,7 +9601,7 @@ textarea:focus {
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--grid-gap);
+  gap: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -9717,15 +9612,15 @@ textarea:focus {
 
 .contact-info-card,
 .contact-form-card {
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding);
-  border: var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .contact-info-title,
 .contact-form-title {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.75rem;
@@ -9756,12 +9651,12 @@ textarea:focus {
 }
 
 .contact-info-icon i {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: #ffffff;
 }
 
 .contact-info-details h3 {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 500;
   color: #2ba268;
   margin-bottom: 0.1rem;
@@ -9770,7 +9665,7 @@ textarea:focus {
 }
 
 .contact-info-details p {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
   line-height: 1.5;
@@ -9805,7 +9700,7 @@ textarea:focus {
 
 .contact-stat-value {
   display: block;
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, #2ba268, #2ba268);
   -webkit-background-clip: text;
@@ -9814,7 +9709,7 @@ textarea:focus {
 }
 
 .contact-stat-label {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
 }
@@ -9832,7 +9727,7 @@ textarea:focus {
 }
 
 .form-group label {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 500;
   color: #2ba268;
 }
@@ -9849,7 +9744,7 @@ textarea:focus {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   color: var(--text-white);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -9871,7 +9766,7 @@ textarea:focus {
 }
 
 .char-count {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-muted);
   text-align: right;
 }
@@ -9887,7 +9782,7 @@ textarea:focus {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 0.25rem auto 0;
@@ -9913,12 +9808,12 @@ textarea:focus {
   border: 1px solid rgba(239, 68, 68, 0.3);
   border-radius: 10px;
   color: #f87171;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .contact-privacy {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-muted);
   text-align: center;
   margin-top: 1rem;
@@ -9944,19 +9839,19 @@ textarea:focus {
 }
 
 .contact-success .success-icon i {
-  font-size: var(--fs-2xl);
+  font-size: 2.5rem;
   color: #22c55e;
 }
 
 .contact-success .success-title {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 0.75rem;
 }
 
 .contact-success .success-text {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: var(--text-light);
   margin-bottom: 1.5rem;
 }
@@ -9971,7 +9866,7 @@ textarea:focus {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -9979,64 +9874,6 @@ textarea:focus {
 .contact-success .success-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(43, 162, 104, 0.4);
-}
-
-/* Contact Address Note (removed inline style from TSX) */
-.contact-address-note {
-  font-size: var(--fs-sm);
-  opacity: 0.7;
-}
-
-/* Contact Map (removed inline style from TSX) */
-.contact-map {
-  margin-top: 0.75rem;
-  border-radius: var(--card-radius);
-  overflow: hidden;
-}
-
-/* Contact Appointment (removed inline styles from TSX) */
-.contact-appointment {
-  margin-top: 1.5rem;
-  padding: var(--card-padding);
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
-  border: var(--card-border);
-}
-
-.contact-appointment h3 {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
-  margin-bottom: 0.5rem;
-}
-
-.contact-appointment p {
-  font-size: var(--fs-base);
-  opacity: 0.7;
-  margin-bottom: 0.75rem;
-}
-
-.contact-appointment-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-/* Products Error/Loading states (removed inline styles from TSX) */
-.products-error {
-  text-align: center;
-  padding: 4rem 2rem;
-}
-
-.products-error p {
-  color: #ff6b6b;
-  font-size: var(--fs-md);
-}
-
-/* Mobile Theme Label (removed inline style from TSX) */
-.mobile-theme-label {
-  font-size: var(--fs-xs);
-  margin-left: 0.25rem;
 }
 
 /* ========================================
@@ -10089,20 +9926,20 @@ textarea:focus {
 }
 
 .impact-icon i {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: #ffffff;
 }
 
 .impact-value {
   display: block;
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   color: #2ba268;
   margin-bottom: 0.25rem;
 }
 
 .impact-label {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
 }
@@ -10116,7 +9953,7 @@ textarea:focus {
 }
 
 .section-title {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   font-weight: 700;
   color: #2ba268;
   text-align: center;
@@ -10124,7 +9961,7 @@ textarea:focus {
 }
 
 .section-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
   margin-bottom: 2rem;
@@ -10165,7 +10002,7 @@ textarea:focus {
   background: linear-gradient(135deg, #2ba268, #239558);
   color: #ffffff;
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -10182,19 +10019,19 @@ textarea:focus {
 }
 
 .tier-icon i {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   color: #ffffff;
 }
 
 .tier-name {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.25rem;
 }
 
 .tier-amount {
-  font-size: var(--fs-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, #2ba268, #2ba268);
   -webkit-background-clip: text;
@@ -10204,7 +10041,7 @@ textarea:focus {
 }
 
 .tier-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
   line-height: 1.5;
@@ -10221,7 +10058,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   padding: 0.375rem 0;
   transition: color 0.3s ease;
@@ -10229,7 +10066,7 @@ textarea:focus {
 
 .tier-benefits li i {
   color: #2ba268;
-  font-size: var(--fs-md);
+  font-size: 1rem;
 }
 
 
@@ -10245,7 +10082,7 @@ textarea:focus {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -10272,14 +10109,14 @@ textarea:focus {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .custom-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.5rem;
 }
@@ -10293,7 +10130,7 @@ textarea:focus {
 }
 
 .currency-symbol {
-  font-size: var(--fs-lg);
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-white);
 }
@@ -10305,7 +10142,7 @@ textarea:focus {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   color: var(--text-white);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -10324,7 +10161,7 @@ textarea:focus {
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -10376,19 +10213,19 @@ textarea:focus {
 }
 
 .how-icon i {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: #ffffff;
 }
 
 .how-card h3 {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.5rem;
 }
 
 .how-card p {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   transition: color 0.3s ease;
@@ -10411,14 +10248,14 @@ textarea:focus {
 }
 
 .trust-title {
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2ba268;
   margin-bottom: 0.75rem;
 }
 
 .trust-description {
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.5rem;
   max-width: 600px;
@@ -10441,7 +10278,7 @@ textarea:focus {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50px;
-  font-size: var(--fs-md);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
   cursor: pointer;
@@ -10708,11 +10545,11 @@ textarea:focus {
 
 @media (min-width: 768px) {
   .page-hero-title {
-    font-size: var(--fs-2xl);
+    font-size: 2rem;
   }
 
   .page-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .news-featured,
@@ -10741,7 +10578,7 @@ textarea:focus {
 
 @media (min-width: 1024px) {
   .page-hero-title {
-    font-size: var(--fs-2xl);
+    font-size: 2.25rem;
   }
 
   .products-grid-container {
@@ -10790,15 +10627,15 @@ textarea:focus {
   }
 
   .scroll-card-number {
-    font-size: var(--fs-lg);
+    font-size: 1.25rem;
   }
 
   .scroll-card-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .scroll-card-bottom-title {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .page-hero {
@@ -10807,11 +10644,11 @@ textarea:focus {
   }
 
   .page-hero-title {
-    font-size: var(--fs-lg);
+    font-size: 1.25rem;
   }
 
   .page-hero-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .page-cta {
@@ -10820,15 +10657,15 @@ textarea:focus {
   }
 
   .page-cta-title {
-    font-size: var(--fs-lg);
+    font-size: 1.2rem;
   }
 
   .page-cta-description {
-    font-size: var(--fs-md);
+    font-size: 1rem;
   }
 
   .page-cta-btn {
-    font-size: var(--fs-md);
+    font-size: 1rem;
     padding: 0.75rem 1.5rem;
   }
 

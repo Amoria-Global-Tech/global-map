@@ -34,14 +34,6 @@ interface RelatedNews {
   publishedAt: string | null;
 }
 
-const categoryColors: Record<string, string> = {
-  news: "bg-green-100 text-green-800",
-  feature: "bg-green-100 text-green-800",
-  product: "bg-green-100 text-green-800",
-  announcement: "bg-yellow-100 text-yellow-800",
-  update: "bg-orange-100 text-orange-800",
-};
-
 const categoryIcons: Record<string, string> = {
   news: "bi-newspaper",
   feature: "bi-stars",
@@ -124,21 +116,25 @@ export default function NewsDetailPage({
     window.open(urls[platform], "_blank", "width=600,height=400");
   };
 
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+  };
+
   if (loading) {
     return (
       <>
         <Navbar />
-        <main className={`min-h-screen ${resolvedTheme === 'light' ? 'bg-gray-50' : 'bg-slate-900'}`} style={{ paddingTop: '100px' }}>
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="animate-pulse">
-              <div className={`h-8 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-1/4 mb-6`}></div>
-              <div className={`h-12 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-3/4 mb-4`}></div>
-              <div className={`h-6 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-1/2 mb-8`}></div>
-              <div className={`h-96 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded-2xl mb-8`}></div>
-              <div className="space-y-4">
-                <div className={`h-4 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-full`}></div>
-                <div className={`h-4 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-full`}></div>
-                <div className={`h-4 ${resolvedTheme === 'light' ? 'bg-gray-200' : 'bg-slate-700'} rounded w-3/4`}></div>
+        <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
+          <div className="container">
+            <div className="news-detail-loading">
+              <div className="skeleton-breadcrumb"></div>
+              <div className="skeleton-detail-title"></div>
+              <div className="skeleton-detail-meta"></div>
+              <div className="skeleton-detail-image"></div>
+              <div className="skeleton-detail-content">
+                <div className="skeleton-text"></div>
+                <div className="skeleton-text"></div>
+                <div className="skeleton-text" style={{ width: '75%' }}></div>
               </div>
             </div>
           </div>
@@ -152,24 +148,17 @@ export default function NewsDetailPage({
     return (
       <>
         <Navbar />
-        <main className={`min-h-screen ${resolvedTheme === 'light' ? 'bg-gray-50' : 'bg-slate-900'}`} style={{ paddingTop: '100px' }}>
-          <div className="container mx-auto px-4 text-center py-20">
-            <div className={`w-24 h-24 ${resolvedTheme === 'light' ? 'bg-gray-100' : 'bg-slate-800'} rounded-full flex items-center justify-center mx-auto mb-6`}>
-              <i className={`bi bi-exclamation-triangle text-4xl ${resolvedTheme === 'light' ? 'text-gray-400' : 'text-slate-500'}`}></i>
+        <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
+          <div className="container">
+            <div className="page-empty">
+              <i className="bi bi-exclamation-triangle"></i>
+              <h3>{error || t.news.no_results}</h3>
+              <p>{t.news.subtitle}</p>
+              <Link href="/news" className="load-more-btn">
+                <i className="bi bi-arrow-left"></i>
+                {t.common.back}
+              </Link>
             </div>
-            <h1 className={`text-2xl font-bold ${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} mb-4`}>
-              {error || t.news.no_results}
-            </h1>
-            <p className={`${resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'} mb-8`}>
-              {t.news.subtitle}
-            </p>
-            <Link
-              href="/news"
-              className={`inline-flex items-center gap-2 px-6 py-3 ${resolvedTheme === 'light' ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-green-600 text-white hover:bg-green-700'} rounded-full transition-colors`}
-            >
-              <i className="bi bi-arrow-left"></i>
-              {t.common.back}
-            </Link>
           </div>
         </main>
         <Footer />
@@ -180,81 +169,70 @@ export default function NewsDetailPage({
   return (
     <>
       <Navbar />
-      <main className={`min-h-screen ${resolvedTheme === 'light' ? 'bg-gray-50' : 'bg-slate-900'}`} style={{ paddingTop: '80px' }}>
+      <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
         {/* Hero Section */}
-        <section className={`${resolvedTheme === 'light' ? 'bg-gradient-to-br from-slate-100 via-slate-50 to-white text-slate-900' : 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white'} py-16`}>
-          <div className="container mx-auto px-4 max-w-4xl">
-            {/* Breadcrumb */}
-            <nav className={`flex items-center gap-2 text-sm ${resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'} mb-6`}>
-              <Link href="/" className={`hover:${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} transition-colors`}>{t.nav.home}</Link>
-              <i className="bi bi-chevron-right text-xs"></i>
-              <Link href="/news" className={`hover:${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} transition-colors`}>{t.nav.news}</Link>
-              <i className="bi bi-chevron-right text-xs"></i>
-              <span className={`${resolvedTheme === 'light' ? 'text-gray-700' : 'text-gray-300'} truncate max-w-xs`}>{news.title}</span>
-            </nav>
+        <section className="news-detail-hero">
+          <div className="container">
+            <div className="news-detail-hero-inner">
+              {/* Breadcrumb */}
+              <nav className="news-detail-breadcrumb">
+                <Link href="/">{t.nav.home}</Link>
+                <i className="bi bi-chevron-right"></i>
+                <Link href="/news">{t.nav.news}</Link>
+                <i className="bi bi-chevron-right"></i>
+                <span>{news.title}</span>
+              </nav>
 
-            {/* Category & Date */}
-            <div className="flex items-center gap-4 mb-6">
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${categoryColors[news.category] || "bg-gray-100 text-gray-800"}`}>
-                <i className={`bi ${categoryIcons[news.category]} mr-2`}></i>
-                {news.category.charAt(0).toUpperCase() + news.category.slice(1)}
-              </span>
-              <span className={resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'}>
-                {formatDate(news.publishedAt || news.createdAt)}
-              </span>
-            </div>
+              {/* Category & Date */}
+              <div className="news-detail-meta-top">
+                <span className="news-category">{news.category}</span>
+                <span className="news-date">{formatDate(news.publishedAt || news.createdAt)}</span>
+              </div>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              {news.title}
-            </h1>
+              {/* Title */}
+              <h1 className="news-detail-title">{news.title}</h1>
 
-            {/* Excerpt */}
-            {news.excerpt && (
-              <p className={`text-xl ${resolvedTheme === 'light' ? 'text-gray-600' : 'text-gray-300'} mb-6`}>
-                {news.excerpt}
-              </p>
-            )}
-
-            {/* Meta Info */}
-            <div className={`flex flex-wrap items-center gap-6 text-sm ${resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'}`}>
-              {news.author && (
-                <span className="flex items-center gap-2">
-                  <i className="bi bi-person-circle text-lg"></i>
-                  {news.author}
-                </span>
+              {/* Excerpt */}
+              {news.excerpt && (
+                <p className="news-detail-excerpt">{news.excerpt}</p>
               )}
-              <span className="flex items-center gap-2">
-                <i className="bi bi-eye text-lg"></i>
-                {news.views} {t.news.views}
-              </span>
-              <span className="flex items-center gap-2">
-                <i className="bi bi-clock text-lg"></i>
-                {Math.ceil((news.content?.split(" ").length || 100) / 200)} min read
-              </span>
+
+              {/* Meta Info */}
+              <div className="news-detail-meta">
+                {news.author && (
+                  <span className="news-detail-meta-item">
+                    <i className="bi bi-person-circle"></i>
+                    {news.author}
+                  </span>
+                )}
+                <span className="news-detail-meta-item">
+                  <i className="bi bi-eye"></i>
+                  {news.views} {t.news.views}
+                </span>
+                <span className="news-detail-meta-item">
+                  <i className="bi bi-clock"></i>
+                  {Math.ceil((news.content?.split(" ").length || 100) / 200)} min read
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Content Section */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
+        <section className="news-detail-body">
+          <div className="container">
+            <div className="news-detail-body-inner">
               {/* Featured Image */}
               {news.imageUrl && (
-                <div className="relative -mt-20 mb-10 rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={news.imageUrl}
-                    alt={news.title}
-                    className="w-full h-auto max-h-[500px] object-cover"
-                  />
+                <div className="news-detail-image">
+                  <img src={news.imageUrl} alt={news.title} />
                 </div>
               )}
 
               {/* Article Content */}
-              <article className={`${resolvedTheme === 'light' ? 'bg-white' : 'bg-slate-800'} rounded-2xl p-8 md:p-12 shadow-sm mb-12`}>
+              <article className="news-detail-article">
                 <div
-                  className={`prose prose-lg max-w-none ${resolvedTheme === 'light' ? 'prose-headings:text-slate-900 prose-p:text-gray-600 prose-a:text-green-600 prose-strong:text-slate-900' : 'prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-strong:text-white'}`}
+                  className="news-detail-content"
                   dangerouslySetInnerHTML={{
                     __html: news.content || "<p>No content available.</p>",
                   }}
@@ -262,47 +240,30 @@ export default function NewsDetailPage({
 
                 {/* Tags */}
                 {news.tags.length > 0 && (
-                  <div className={`mt-10 pt-8 border-t ${resolvedTheme === 'light' ? 'border-gray-200' : 'border-slate-700'}`}>
-                    <h4 className={`text-sm font-medium ${resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'} mb-3`}>Tags</h4>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="news-detail-tags">
+                    <h4>Tags</h4>
+                    <div className="news-detail-tags-list">
                       {news.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className={`px-3 py-1 ${resolvedTheme === 'light' ? 'bg-gray-100 text-gray-600' : 'bg-slate-700 text-gray-300'} rounded-full text-sm`}
-                        >
-                          #{tag}
-                        </span>
+                        <span key={index} className="news-detail-tag">#{tag}</span>
                       ))}
                     </div>
                   </div>
                 )}
 
                 {/* Share Buttons */}
-                <div className={`mt-8 pt-8 border-t ${resolvedTheme === 'light' ? 'border-gray-200' : 'border-slate-700'}`}>
-                  <h4 className={`text-sm font-medium ${resolvedTheme === 'light' ? 'text-gray-500' : 'text-gray-400'} mb-3`}>{t.news.share}</h4>
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => handleShare("twitter")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
-                    >
+                <div className="news-detail-share">
+                  <h4>{t.news.share}</h4>
+                  <div className="news-detail-share-buttons">
+                    <button onClick={() => handleShare("twitter")} className="share-btn" title="Share on X">
                       <i className="bi bi-twitter-x"></i>
                     </button>
-                    <button
-                      onClick={() => handleShare("facebook")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
-                    >
+                    <button onClick={() => handleShare("facebook")} className="share-btn" title="Share on Facebook">
                       <i className="bi bi-facebook"></i>
                     </button>
-                    <button
-                      onClick={() => handleShare("linkedin")}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
-                    >
+                    <button onClick={() => handleShare("linkedin")} className="share-btn" title="Share on LinkedIn">
                       <i className="bi bi-linkedin"></i>
                     </button>
-                    <button
-                      onClick={() => navigator.clipboard.writeText(shareUrl)}
-                      className={`p-3 ${resolvedTheme === 'light' ? 'bg-gray-100 hover:bg-green-100 hover:text-green-600' : 'bg-slate-700 hover:bg-green-900 hover:text-green-400'} rounded-full transition-colors`}
-                    >
+                    <button onClick={handleCopyLink} className="share-btn" title="Copy link">
                       <i className="bi bi-link-45deg"></i>
                     </button>
                   </div>
@@ -310,18 +271,12 @@ export default function NewsDetailPage({
               </article>
 
               {/* Navigation */}
-              <div className="flex justify-between items-center mb-12">
-                <button
-                  onClick={() => router.back()}
-                  className={`flex items-center gap-2 ${resolvedTheme === 'light' ? 'text-gray-600 hover:text-slate-900' : 'text-gray-400 hover:text-white'} transition-colors`}
-                >
+              <div className="news-detail-nav">
+                <button onClick={() => router.back()} className="news-detail-nav-link">
                   <i className="bi bi-arrow-left"></i>
                   {t.common.back}
                 </button>
-                <Link
-                  href="/news"
-                  className={`flex items-center gap-2 ${resolvedTheme === 'light' ? 'text-gray-600 hover:text-slate-900' : 'text-gray-400 hover:text-white'} transition-colors`}
-                >
+                <Link href="/news" className="news-detail-nav-link">
                   {t.news.all} {t.nav.news}
                   <i className="bi bi-arrow-right"></i>
                 </Link>
@@ -329,35 +284,26 @@ export default function NewsDetailPage({
 
               {/* Related News */}
               {relatedNews.length > 0 && (
-                <div className="mb-12">
-                  <h3 className={`text-2xl font-bold ${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} mb-6`}>{t.news.related}</h3>
-                  <div className="grid md:grid-cols-3 gap-6">
+                <div className="news-detail-related">
+                  <h3>{t.news.related}</h3>
+                  <div className="news-detail-related-grid">
                     {relatedNews.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`/news/${item.slug}`}
-                        className={`group ${resolvedTheme === 'light' ? 'bg-white' : 'bg-slate-800'} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all`}
-                      >
-                        <div className={`relative h-36 ${resolvedTheme === 'light' ? 'bg-gradient-to-br from-slate-100 to-slate-200' : 'bg-gradient-to-br from-slate-700 to-slate-800'}`}>
+                      <Link key={item.id} href={`/news/${item.slug}`} className="news-card">
+                        <div className="news-card-image">
                           {item.imageUrl ? (
-                            <img
-                              src={item.imageUrl}
-                              alt={item.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
+                            <img src={item.imageUrl} alt={item.title} />
                           ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <i className={`bi ${categoryIcons[item.category]} text-3xl ${resolvedTheme === 'light' ? 'text-slate-300' : 'text-slate-600'}`}></i>
+                            <div className="news-card-placeholder">
+                              <i className={`bi ${categoryIcons[item.category] || 'bi-newspaper'}`}></i>
                             </div>
                           )}
                         </div>
-                        <div className="p-4">
-                          <span className={`text-xs ${resolvedTheme === 'light' ? 'text-gray-400' : 'text-gray-500'}`}>
-                            {formatDate(item.publishedAt)}
-                          </span>
-                          <h4 className={`font-semibold ${resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'} group-hover:text-green-600 transition-colors line-clamp-2 mt-1`}>
-                            {item.title}
-                          </h4>
+                        <div className="news-card-content">
+                          <div className="news-meta">
+                            <span className="news-category">{item.category}</span>
+                            <span className="news-date">{formatDate(item.publishedAt)}</span>
+                          </div>
+                          <h3 className="news-card-title">{item.title}</h3>
                         </div>
                       </Link>
                     ))}

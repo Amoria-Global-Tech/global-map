@@ -244,7 +244,7 @@ const Navbar = () => {
                   onClick={toggleTheme}
                 >
                   <i className={`bi ${resolvedTheme === 'dark' ? 'bi-sun' : 'bi-moon-fill'}`}></i>
-                  <span style={{ fontSize: '0.75rem', marginLeft: '0.25rem' }}>
+                  <span className="mobile-theme-label">
                     {resolvedTheme === 'dark' ? 'Light' : 'Dark'}
                   </span>
                 </button>
