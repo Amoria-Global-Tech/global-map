@@ -1,67 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { adminGet } from "@/lib/admin-api";
 
-// GET - Fetch all products
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
     const available = searchParams.get("available");
 
-    const products = await prisma.product.findMany({
-      where: {
-        ...(category && { category }),
-        ...(available !== null && { isAvailable: available === "true" }),
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    const params = new URLSearchParams();
+    if (category) params.set("category", category);
+    if (available) params.set("available", available);
 
-    return NextResponse.json(products, { status: 200 });
+    const query = params.toString() ? `?${params.toString()}` : "";
+    const response = await adminGet(`/products${query}`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { success: false, message: data.message || "Failed to fetch products" },
+        { status: response.status }
+      );
+    }
+
+    // Admin API wraps in { success, data } — extract the data array
+    return NextResponse.json(data.data || data, { status: 200 });
   } catch (error) {
     console.error("Error retrieving products:", error);
     return NextResponse.json(
       { success: false, message: "Failed to fetch products" },
-      { status: 500 }
-    );
-  }
-}
-
-// POST - Create a new product
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-
-    const { name, description, category, price, imageUrl, isAvailable, siteUrl } = body;
-
-    if (!name) {
-      return NextResponse.json(
-        { success: false, message: "Name is required" },
-        { status: 400 }
-      );
-    }
-
-    const product = await prisma.product.create({
-      data: {
-        name,
-        description: description || null,
-        category: category || null,
-        price: price ? parseFloat(price) : null,
-        imageUrl: imageUrl || null,
-        isAvailable: isAvailable ?? true,
-        siteUrl: siteUrl || null,
-      },
-    });
-
-    return NextResponse.json(
-      { success: true, message: "Product created successfully", data: product },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error("Error creating product:", error);
-    return NextResponse.json(
-      { success: false, message: "Failed to create product" },
       { status: 500 }
     );
   }

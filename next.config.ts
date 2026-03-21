@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: 'ftihjzudufdjjabnpaqv.supabase.co',
         pathname: '/storage/v1/object/public/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'backend.connekyt.com',
+      },
     ],
   },
 };
