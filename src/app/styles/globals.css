@@ -4754,7 +4754,7 @@ html.light .announcement-cta:hover {
 }
 
 .team-description-text {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.5;
   margin-top: 0.5rem;
@@ -6291,17 +6291,29 @@ html.light .announcement-cta:hover {
 
   /* Team Section Mobile */
   .team-grid {
-    gap: 2rem 2.5rem;
+    gap: 2rem 1.5rem;
+    flex-direction: column;
+    align-items: center;
   }
 
   .team-card {
-    width: 130px;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .team-image-container {
+    flex-shrink: 0;
   }
 
   .team-image,
   .team-image-placeholder {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
 
   .team-name {
@@ -6309,7 +6321,11 @@ html.light .announcement-cta:hover {
   }
 
   .team-title-job {
-    font-size: var(--fs-md);
+    font-size: var(--fs-sm);
+  }
+
+  .team-description-text {
+    font-size: 0.75rem;
   }
 
   /* Chatbot Mobile */
