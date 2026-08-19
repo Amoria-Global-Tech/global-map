@@ -8,61 +8,19 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-interface Product {
-  id: string | number;
-  name: string;
-  description: string;
-  category: string;
-  price?: number | null;
-  imageUrl?: string | null;
-  isAvailable: boolean;
-  siteUrl?: string | null;
-}
+import { PRODUCTS, type Product } from '@/data/products';
 
 export default function ProductsPage() {
   const { resolvedTheme } = useTheme();
   const { t } = useLanguage();
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
+  const products: Product[] = PRODUCTS;
+
   useEffect((): void => {
     setMounted(true);
-  }, []);
-
-  useEffect((): void => {
-    const fetchProducts = async (): Promise<void> => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response: Response = await fetch('/api/products');
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.message || 'Failed to fetch products');
-        }
-
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else if (data && 'products' in data && Array.isArray(data.products)) {
-          setProducts(data.products);
-        } else {
-          setProducts([]);
-        }
-      } catch (err: unknown) {
-        console.error('Error fetching products:', err);
-        const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
-        setError(errorMessage);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
   }, []);
 
   useEffect((): (() => void) | void => {
@@ -106,28 +64,12 @@ export default function ProductsPage() {
 
           {/* Products Grid */}
           <section className="products-page-grid">
-            {loading && (
-              <div className="page-loading">
-                <div className="loading-spinner"></div>
-                <p>{t.common.loading}</p>
-              </div>
-            )}
-
-            {error && (
-              <div className="page-error">
-                <i className="bi bi-exclamation-circle"></i>
-                <p>{t.common.error}</p>
-              </div>
-            )}
-
-            {!loading && !error && products.length === 0 && (
+            {products.length === 0 ? (
               <div className="page-empty">
                 <i className="bi bi-box-seam"></i>
                 <p>{t.common.no_data}</p>
               </div>
-            )}
-
-            {!loading && !error && products.length > 0 && (
+            ) : (
               <div className="products-grid">
                 {products.map((product: Product) => (
                   <div key={product.id} className="product-card">
