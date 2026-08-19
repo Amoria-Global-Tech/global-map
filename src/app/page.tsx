@@ -8,20 +8,9 @@ import Footer from './components/footer';
 
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { PRODUCTS, type Product } from '@/data/products';
 
 // Type definitions
-interface Product {
-  id: string | number;
-  name: string;
-  description: string;
-  category: string;
-  price?: string | number;
-  image_url?: string;
-  imageUrl?: string | null;
-  is_available?: boolean;
-  isAvailable?: boolean;
-  siteUrl?: string | null;
-}
 
 interface Service {
   title: string;
@@ -34,10 +23,6 @@ interface LoadingStage {
   progress: number;
   status: string;
   text: string;
-}
-
-interface ApiResponse {
-  products?: Product[];
 }
 
 export default function HomePage() {
@@ -58,10 +43,8 @@ export default function HomePage() {
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
   
-  // API-related state
-  const [products, setProducts] = useState<Product[]>([]);
-  const [productsLoading, setProductsLoading] = useState<boolean>(true);
-  const [productsError, setProductsError] = useState<string | null>(null);
+  // Same static catalogue the products page renders.
+  const products: Product[] = PRODUCTS;
   
   // Loading stages for the preloader - 20% increments
   const loadingStages: LoadingStage[] = [
@@ -123,46 +106,14 @@ export default function HomePage() {
     }
   ];
 
-  // Fetch products from API
-  useEffect((): void => {
-    const fetchProducts = async (): Promise<void> => {
-      try {
-        setProductsLoading(true);
-        const response: Response = await fetch('/api/products');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data: Product[] | ApiResponse = await response.json();
-        
-        // Handle different API response formats
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else if (data && 'products' in data && Array.isArray(data.products)) {
-          setProducts(data.products);
-        } else {
-          setProducts([]);
-        }
-      } catch (err: unknown) {
-        console.error('Error fetching products:', err);
-        const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
-        setProductsError(`Failed to load products: ${errorMessage}. Please try again later.`);
-      } finally {
-        setProductsLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   // Helper function to get product icon based on category or name
+  // Kept identical to the products page so both grids fall back the same way.
   const getProductIcon = (product: Product): string => {
-    if (product.category === 'Photo & Video') return '🎪';
-    if (product.name.toLowerCase().includes('connect')) return '🎪';
-    if (product.category === 'Software') return '💻';
-    if (product.category === 'Security') return '🔒';
-    return '📦'; // Default icon
+    if (product.category === 'Photo & Video') return 'bi-camera-video';
+    if (product.name.toLowerCase().includes('connect')) return 'bi-link-45deg';
+    if (product.category === 'Software') return 'bi-box';
+    return 'bi-box-seam';
   };
 
   // Initial client-side mount
@@ -493,33 +444,19 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* Loading State */}
-              {productsLoading && (
-                <div className="products-loading">
-                  <p>{t.home.products_loading}</p>
-                </div>
-              )}
-
-              {/* Error State */}
-              {productsError && (
-                <div className="products-error">
-                  <p>{t.home.products_error}</p>
-                </div>
-              )}
-
               {/* No Products State */}
-              {!productsLoading && !productsError && products.length === 0 && (
+              {products.length === 0 && (
                 <div className="no-products">
                   <p>{t.home.products_empty}</p>
                 </div>
               )}
 
               {/* Products Grid */}
-              {!productsLoading && !productsError && products.length > 0 && (
+              {products.length > 0 && (
                 <div className="products-grid">
                   {products.map((product: Product) => {
-                    const isAvailable = product.isAvailable ?? product.is_available ?? false;
-                    const productImage = product.imageUrl ?? product.image_url;
+                    const isAvailable = product.isAvailable;
+                    const productImage = product.imageUrl;
 
                     return (
                       <div
@@ -552,7 +489,7 @@ export default function HomePage() {
                               style={{ objectFit: 'contain', borderRadius: '8px' }}
                             />
                           ) : (
-                            <span>{getProductIcon(product)}</span>
+                            <span><i className={`bi ${getProductIcon(product)}`}></i></span>
                           )}
                         </div>
 
