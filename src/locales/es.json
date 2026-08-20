@@ -40,42 +40,90 @@
       "web_dev": {
         "title": "Desarrollo Web",
         "description": "Soluciones web modernas y escalables, desde páginas de aterrizaje hasta aplicaciones web complejas. Construimos sitios web responsivos y rápidos que convierten visitantes en clientes.",
-        "features": ["Diseño responsive", "Integración e-commerce", "Desarrollo CMS", "Optimización de rendimiento", "Estructura lista para SEO"]
+        "features": [
+          "Diseño responsive",
+          "Integración e-commerce",
+          "Desarrollo CMS",
+          "Optimización de rendimiento",
+          "Estructura lista para SEO"
+        ]
       },
       "mobile_dev": {
         "title": "Desarrollo de Aplicaciones Móviles",
         "description": "Aplicaciones móviles nativas y multiplataforma que ofrecen experiencias de usuario fluidas en dispositivos iOS y Android.",
-        "features": ["Desarrollo iOS", "Desarrollo Android", "Apps multiplataforma", "Despliegue en tiendas", "Diseño mobile-first"]
+        "features": [
+          "Desarrollo iOS",
+          "Desarrollo Android",
+          "Apps multiplataforma",
+          "Despliegue en tiendas",
+          "Diseño mobile-first"
+        ]
       },
       "desktop_dev": {
         "title": "Desarrollo de Aplicaciones de Escritorio",
         "description": "Soluciones de software de escritorio robustas para Windows, macOS y Linux que optimizan las operaciones empresariales y mejoran la productividad.",
-        "features": ["Compatibilidad multiplataforma", "Integración empresarial", "Funcionalidad offline", "Optimización del sistema", "Interfaces amigables"]
+        "features": [
+          "Compatibilidad multiplataforma",
+          "Integración empresarial",
+          "Funcionalidad offline",
+          "Optimización del sistema",
+          "Interfaces amigables"
+        ]
       },
       "seo": {
         "title": "Optimización SEO",
         "description": "Estrategias de optimización de motores de búsqueda basadas en datos que mejoran los rankings, aumentan el tráfico orgánico y potencian la visibilidad online.",
-        "features": ["SEO técnico", "Estrategia de contenido", "Optimización local", "Auditorías de rendimiento", "Seguimiento analítico"]
+        "features": [
+          "SEO técnico",
+          "Estrategia de contenido",
+          "Optimización local",
+          "Auditorías de rendimiento",
+          "Seguimiento analítico"
+        ]
       },
       "consulting": {
         "title": "Consultoría IT",
         "description": "Orientación tecnológica estratégica para ayudar a las empresas a tomar decisiones informadas sobre transformación digital y planificación de infraestructura.",
-        "features": ["Evaluación tecnológica", "Estrategia digital", "Planificación de infraestructura", "Optimización de procesos", "Evaluación de riesgos"]
+        "features": [
+          "Evaluación tecnológica",
+          "Estrategia digital",
+          "Planificación de infraestructura",
+          "Optimización de procesos",
+          "Evaluación de riesgos"
+        ]
       },
       "custom_software": {
         "title": "Soluciones de Software Personalizadas",
         "description": "Desarrollo de software a medida adaptado a requisitos empresariales únicos, desde herramientas de automatización hasta sistemas de gestión empresarial.",
-        "features": ["Automatización empresarial", "Integración de sistemas", "Optimización de flujos", "Bases de datos personalizadas", "Arquitectura escalable"]
+        "features": [
+          "Automatización empresarial",
+          "Integración de sistemas",
+          "Optimización de flujos",
+          "Bases de datos personalizadas",
+          "Arquitectura escalable"
+        ]
       },
       "security": {
         "title": "Ciberseguridad",
         "description": "Soluciones de seguridad integrales para proteger activos digitales, prevenir brechas de datos y asegurar el cumplimiento de estándares de la industria.",
-        "features": ["Evaluaciones de seguridad", "Protección contra amenazas", "Cifrado de datos", "Auditorías de cumplimiento", "Respuesta a incidentes"]
+        "features": [
+          "Evaluaciones de seguridad",
+          "Protección contra amenazas",
+          "Cifrado de datos",
+          "Auditorías de cumplimiento",
+          "Respuesta a incidentes"
+        ]
       },
       "data_analysis": {
         "title": "Análisis de Datos",
         "description": "Transforma datos brutos en información empresarial accionable a través de análisis avanzados, visualización y soluciones de inteligencia de negocios.",
-        "features": ["Inteligencia de negocios", "Visualización de datos", "Modelado predictivo", "Métricas de rendimiento", "Soporte a decisiones"]
+        "features": [
+          "Inteligencia de negocios",
+          "Visualización de datos",
+          "Modelado predictivo",
+          "Métricas de rendimiento",
+          "Soporte a decisiones"
+        ]
       }
     },
     "loading": {
@@ -252,6 +300,7 @@
     "title": "Nuestros Productos",
     "subtitle": "Descubre nuestras soluciones innovadoras diseñadas para transformar tu negocio.",
     "visit_now": "Visitar",
+    "discover": "Descubrir",
     "explore": "Explorar",
     "coming_soon": "Próximamente",
     "available": "Disponible",
@@ -361,22 +410,41 @@
       "supporter": {
         "name": "Supporter",
         "description": "Apoya nuestra misión para empoderar comunidades a través de la tecnología.",
-        "benefits": ["Email de agradecimiento", "Nombre en la página de supporters", "Actualizaciones por newsletter"]
+        "benefits": [
+          "Email de agradecimiento",
+          "Nombre en la página de supporters",
+          "Actualizaciones por newsletter"
+        ]
       },
       "contributor": {
         "name": "Contribuidor",
         "description": "Ayúdanos a expandir nuestro alcance e impactar más vidas.",
-        "benefits": ["Todos los beneficios de Supporter", "Informe de impacto trimestral", "Acceso anticipado a eventos"]
+        "benefits": [
+          "Todos los beneficios de Supporter",
+          "Informe de impacto trimestral",
+          "Acceso anticipado a eventos"
+        ]
       },
       "champion": {
         "name": "Campeón",
         "description": "Sé un campeón de la transformación digital en África.",
-        "benefits": ["Todos los beneficios de Contribuidor", "Webinars exclusivos", "Reconocimiento en el sitio web", "Certificado de impacto anual"]
+        "benefits": [
+          "Todos los beneficios de Contribuidor",
+          "Webinars exclusivos",
+          "Reconocimiento en el sitio web",
+          "Certificado de impacto anual"
+        ]
       },
       "visionary": {
         "name": "Visionario",
         "description": "Lidera el camino para crear un cambio tecnológico duradero.",
-        "benefits": ["Todos los beneficios de Campeón", "Actualizaciones directas de proyectos", "Oportunidad de ponencia", "Informe de impacto personalizado", "Acceso VIP a eventos"]
+        "benefits": [
+          "Todos los beneficios de Campeón",
+          "Actualizaciones directas de proyectos",
+          "Oportunidad de ponencia",
+          "Informe de impacto personalizado",
+          "Acceso VIP a eventos"
+        ]
       }
     },
     "most_popular": "Más popular",

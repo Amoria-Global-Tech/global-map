@@ -40,42 +40,90 @@
       "web_dev": {
         "title": "Développement Web",
         "description": "Solutions web modernes et évolutives, des pages d'atterrissage aux applications web complexes. Nous construisons des sites web réactifs et rapides qui convertissent les visiteurs en clients.",
-        "features": ["Design responsive", "Intégration e-commerce", "Développement CMS", "Optimisation des performances", "Structure prête pour le SEO"]
+        "features": [
+          "Design responsive",
+          "Intégration e-commerce",
+          "Développement CMS",
+          "Optimisation des performances",
+          "Structure prête pour le SEO"
+        ]
       },
       "mobile_dev": {
         "title": "Développement d'Applications Mobiles",
         "description": "Applications mobiles natives et multiplateformes offrant des expériences utilisateur fluides sur les appareils iOS et Android.",
-        "features": ["Développement iOS", "Développement Android", "Applications multiplateformes", "Déploiement sur les stores", "Design mobile-first"]
+        "features": [
+          "Développement iOS",
+          "Développement Android",
+          "Applications multiplateformes",
+          "Déploiement sur les stores",
+          "Design mobile-first"
+        ]
       },
       "desktop_dev": {
         "title": "Développement d'Applications Bureau",
         "description": "Solutions logicielles de bureau robustes pour Windows, macOS et Linux qui rationalisent les opérations commerciales et améliorent la productivité.",
-        "features": ["Compatibilité multiplateforme", "Intégration entreprise", "Fonctionnalité hors ligne", "Optimisation système", "Interfaces conviviales"]
+        "features": [
+          "Compatibilité multiplateforme",
+          "Intégration entreprise",
+          "Fonctionnalité hors ligne",
+          "Optimisation système",
+          "Interfaces conviviales"
+        ]
       },
       "seo": {
         "title": "Optimisation SEO",
         "description": "Stratégies d'optimisation des moteurs de recherche basées sur les données qui améliorent les classements, augmentent le trafic organique et renforcent la visibilité en ligne.",
-        "features": ["SEO technique", "Stratégie de contenu", "Optimisation locale", "Audits de performance", "Suivi analytique"]
+        "features": [
+          "SEO technique",
+          "Stratégie de contenu",
+          "Optimisation locale",
+          "Audits de performance",
+          "Suivi analytique"
+        ]
       },
       "consulting": {
         "title": "Consultation IT",
         "description": "Conseils technologiques stratégiques pour aider les entreprises à prendre des décisions éclairées concernant la transformation numérique et la planification de l'infrastructure.",
-        "features": ["Évaluation technologique", "Stratégie numérique", "Planification d'infrastructure", "Optimisation des processus", "Évaluation des risques"]
+        "features": [
+          "Évaluation technologique",
+          "Stratégie numérique",
+          "Planification d'infrastructure",
+          "Optimisation des processus",
+          "Évaluation des risques"
+        ]
       },
       "custom_software": {
         "title": "Solutions Logicielles Personnalisées",
         "description": "Développement logiciel sur mesure adapté aux exigences commerciales uniques, des outils d'automatisation aux systèmes de gestion d'entreprise.",
-        "features": ["Automatisation commerciale", "Intégration système", "Optimisation des flux", "Bases de données personnalisées", "Architecture évolutive"]
+        "features": [
+          "Automatisation commerciale",
+          "Intégration système",
+          "Optimisation des flux",
+          "Bases de données personnalisées",
+          "Architecture évolutive"
+        ]
       },
       "security": {
         "title": "Cybersécurité",
         "description": "Solutions de sécurité complètes pour protéger les actifs numériques, prévenir les violations de données et assurer la conformité aux normes de l'industrie.",
-        "features": ["Évaluations de sécurité", "Protection contre les menaces", "Chiffrement des données", "Audits de conformité", "Réponse aux incidents"]
+        "features": [
+          "Évaluations de sécurité",
+          "Protection contre les menaces",
+          "Chiffrement des données",
+          "Audits de conformité",
+          "Réponse aux incidents"
+        ]
       },
       "data_analysis": {
         "title": "Analyse de Données",
         "description": "Transformez les données brutes en informations commerciales exploitables grâce à des analyses avancées, des visualisations et des solutions d'intelligence d'affaires.",
-        "features": ["Intelligence d'affaires", "Visualisation des données", "Modélisation prédictive", "Métriques de performance", "Aide à la décision"]
+        "features": [
+          "Intelligence d'affaires",
+          "Visualisation des données",
+          "Modélisation prédictive",
+          "Métriques de performance",
+          "Aide à la décision"
+        ]
       }
     },
     "loading": {
@@ -252,6 +300,7 @@
     "title": "Nos Produits",
     "subtitle": "Découvrez nos solutions innovantes conçues pour transformer votre entreprise.",
     "visit_now": "Visiter",
+    "discover": "Découvrir",
     "explore": "Explorer",
     "coming_soon": "Bientôt disponible",
     "available": "Disponible",
@@ -361,22 +410,41 @@
       "supporter": {
         "name": "Supporter",
         "description": "Soutenez notre mission pour autonomiser les communautés grâce à la technologie.",
-        "benefits": ["Email de remerciement", "Nom sur la page des supporters", "Mises à jour par newsletter"]
+        "benefits": [
+          "Email de remerciement",
+          "Nom sur la page des supporters",
+          "Mises à jour par newsletter"
+        ]
       },
       "contributor": {
         "name": "Contributeur",
         "description": "Aidez-nous à élargir notre portée et à impacter plus de vies.",
-        "benefits": ["Tous les avantages Supporter", "Rapport d'impact trimestriel", "Accès anticipé aux événements"]
+        "benefits": [
+          "Tous les avantages Supporter",
+          "Rapport d'impact trimestriel",
+          "Accès anticipé aux événements"
+        ]
       },
       "champion": {
         "name": "Champion",
         "description": "Soyez un champion de la transformation numérique en Afrique.",
-        "benefits": ["Tous les avantages Contributeur", "Webinaires exclusifs", "Reconnaissance sur le site web", "Certificat d'impact annuel"]
+        "benefits": [
+          "Tous les avantages Contributeur",
+          "Webinaires exclusifs",
+          "Reconnaissance sur le site web",
+          "Certificat d'impact annuel"
+        ]
       },
       "visionary": {
         "name": "Visionnaire",
         "description": "Montrez la voie pour créer un changement technologique durable.",
-        "benefits": ["Tous les avantages Champion", "Mises à jour directes sur les projets", "Opportunité de prise de parole", "Rapport d'impact personnalisé", "Accès VIP aux événements"]
+        "benefits": [
+          "Tous les avantages Champion",
+          "Mises à jour directes sur les projets",
+          "Opportunité de prise de parole",
+          "Rapport d'impact personnalisé",
+          "Accès VIP aux événements"
+        ]
       }
     },
     "most_popular": "Le plus populaire",

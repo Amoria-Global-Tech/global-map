@@ -26,9 +26,10 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     id: 5,
-    name: 'Amoria Connekyt',
+    // Shortened from the CMS's "Amoria Connekyt" — the brand stands alone.
+    name: 'Connekyt',
     description:
-      'Connect  Stream  Capture  Grow A digital platform connecting verified photographers and creative professionals with audiences through smart booking tools, livestreaming, secure payments, enhanced visibility, and permanent digital archiving.',
+      'Create the moment. Capture it. Share it live. Keep it forever.',
     category: '',
     price: 0,
     imageUrl: '/connektylogo.png',
@@ -38,10 +39,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'schedule',
     name: 'Schedule',
-    // Drawn from appointment.jambolush.com: the footer's own one-line
-    // description of the product, plus its "how it works" steps.
     description:
-      "An appointment scheduling platform for organizations that value their clients' time. Clients pick a service, choose a time and get confirmed instantly, with no account needed. They can then meet in person, by call, or on WhatsApp.",
+      'Simplify bookings. Save time. Serve clients better with instant scheduling and no account required.',
     category: '',
     price: null,
     // The logo Connekyt used to carry: the CMS had `logo-schedule.png` assigned
@@ -56,7 +55,7 @@ export const PRODUCTS: Product[] = [
     id: 4,
     name: 'JamboLush',
     description:
-      'We connect people to unique tours and flexible spaces for living, working, and creating. Our goal is to make booking simple, safe, and inspiring - so you can focus on experiences, not logistics.',
+      'Book Unique. Stay Inspired. Premium stays, tours and monthly rentals across East Africa.',
     category: '',
     price: 0.99,
     imageUrl:

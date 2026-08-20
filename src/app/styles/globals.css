@@ -10879,7 +10879,7 @@ textarea:focus {
 }
 
 /* ========================================
-   PRODUCTS PAGE — square cards, three per row
+   PRODUCTS — three-up card grid (products page + landing section)
    ======================================== */
 
 /* The section wrapper was capped at 600px, which forced the catalogue into a
@@ -10898,24 +10898,12 @@ textarea:focus {
   align-items: stretch;
 }
 
+/* Cards size to their copy and stretch to match the tallest in the row, rather
+   than being forced square: the descriptions are short one-liners now, and a
+   fixed square left a dead gap between the text and the button. */
 .products-page-grid .product-card,
 .products-section .product-card {
-  aspect-ratio: 1 / 1;
   height: auto;
-  min-height: 0;
-}
-
-/* A square is a fixed box, so long copy has to be clamped deliberately —
-   otherwise `.product-card`'s `overflow: hidden` slices the last line in half.
-   A ~390px card leaves ~214px under the logo and title, which is 7 lines at
-   this line-height; re-tune if the card size changes. */
-.products-page-grid .product-description,
-.products-section .product-description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 7;
-  line-clamp: 7;
-  overflow: hidden;
   min-height: 0;
 }
 
@@ -10930,18 +10918,6 @@ textarea:focus {
   .products-page-grid .products-grid,
   .products-section .products-grid {
     grid-template-columns: 1fr;
-  }
-
-  /* One-up squares get absurdly tall, so let the cards size to content again. */
-  .products-page-grid .product-card,
-  .products-section .product-card {
-    aspect-ratio: auto;
-  }
-
-  .products-page-grid .product-description,
-  .products-section .product-description {
-    -webkit-line-clamp: unset;
-    line-clamp: unset;
   }
 }
 
