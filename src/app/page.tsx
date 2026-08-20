@@ -502,8 +502,7 @@ export default function HomePage() {
 
                           {isAvailable ? (
                             <span className="product-btn visit-btn">
-                              {t.products.visit_now}
-                              <i className="bi bi-arrow-right"></i>
+                              {t.products.discover} {product.name}
                             </span>
                           ) : (
                             <span className="product-btn coming-soon-btn">

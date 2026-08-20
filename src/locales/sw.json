@@ -40,42 +40,90 @@
       "web_dev": {
         "title": "Uundaji wa Wavuti",
         "description": "Suluhu za wavuti za kisasa na zinazoweza kukua, kutoka kurasa za kutua hadi programu za wavuti ngumu. Tunaunda tovuti zinazojibika na kasi zinazobadilisha wageni kuwa wateja.",
-        "features": ["Muundo unaojibika", "Muunganisho wa e-commerce", "Maendeleo ya CMS", "Uboreshaji wa utendaji", "Muundo ulio tayari kwa SEO"]
+        "features": [
+          "Muundo unaojibika",
+          "Muunganisho wa e-commerce",
+          "Maendeleo ya CMS",
+          "Uboreshaji wa utendaji",
+          "Muundo ulio tayari kwa SEO"
+        ]
       },
       "mobile_dev": {
         "title": "Uundaji wa Programu za Simu",
         "description": "Programu za simu za asili na za majukwaa mengi zinazotoa uzoefu mzuri wa mtumiaji kwenye vifaa vya iOS na Android.",
-        "features": ["Maendeleo ya iOS", "Maendeleo ya Android", "Programu za majukwaa mengi", "Uwekaji kwenye duka", "Muundo wa simu kwanza"]
+        "features": [
+          "Maendeleo ya iOS",
+          "Maendeleo ya Android",
+          "Programu za majukwaa mengi",
+          "Uwekaji kwenye duka",
+          "Muundo wa simu kwanza"
+        ]
       },
       "desktop_dev": {
         "title": "Uundaji wa Programu za Kompyuta",
         "description": "Suluhu za programu za kompyuta imara kwa Windows, macOS na Linux zinazoboresha shughuli za biashara na kuongeza tija.",
-        "features": ["Uoanifu wa majukwaa mengi", "Muunganisho wa biashara", "Utendaji nje ya mtandao", "Uboreshaji wa mfumo", "Kiolesura rafiki"]
+        "features": [
+          "Uoanifu wa majukwaa mengi",
+          "Muunganisho wa biashara",
+          "Utendaji nje ya mtandao",
+          "Uboreshaji wa mfumo",
+          "Kiolesura rafiki"
+        ]
       },
       "seo": {
         "title": "Uboreshaji wa SEO",
         "description": "Mikakati ya uboreshaji wa injini za utaftaji inayotegemea data inayoboresha nafasi, kuongeza trafiki ya asili, na kuongeza uonekano mtandaoni.",
-        "features": ["SEO ya kiufundi", "Mkakati wa maudhui", "Uboreshaji wa ndani", "Ukaguzi wa utendaji", "Ufuatiliaji wa uchambuzi"]
+        "features": [
+          "SEO ya kiufundi",
+          "Mkakati wa maudhui",
+          "Uboreshaji wa ndani",
+          "Ukaguzi wa utendaji",
+          "Ufuatiliaji wa uchambuzi"
+        ]
       },
       "consulting": {
         "title": "Ushauri wa IT",
         "description": "Mwongozo wa kimkakati wa teknolojia kusaidia biashara kufanya maamuzi sahihi kuhusu mabadiliko ya kidijitali na upangaji wa miundombinu.",
-        "features": ["Tathmini ya teknolojia", "Mkakati wa kidijitali", "Upangaji wa miundombinu", "Uboreshaji wa michakato", "Tathmini ya hatari"]
+        "features": [
+          "Tathmini ya teknolojia",
+          "Mkakati wa kidijitali",
+          "Upangaji wa miundombinu",
+          "Uboreshaji wa michakato",
+          "Tathmini ya hatari"
+        ]
       },
       "custom_software": {
         "title": "Suluhu za Programu Maalum",
         "description": "Maendeleo ya programu maalum yaliyoundwa kulingana na mahitaji ya kipekee ya biashara, kutoka zana za otomatiki hadi mifumo ya usimamizi wa biashara.",
-        "features": ["Otomatiki ya biashara", "Muunganisho wa mfumo", "Uboreshaji wa mtiririko", "Hifadhidata maalum", "Usanifu unaoweza kukua"]
+        "features": [
+          "Otomatiki ya biashara",
+          "Muunganisho wa mfumo",
+          "Uboreshaji wa mtiririko",
+          "Hifadhidata maalum",
+          "Usanifu unaoweza kukua"
+        ]
       },
       "security": {
         "title": "Usalama wa Mtandao",
         "description": "Suluhu kamili za usalama kulinda mali za kidijitali, kuzuia uvunjaji wa data, na kuhakikisha kufuata viwango vya tasnia.",
-        "features": ["Tathmini za usalama", "Ulinzi dhidi ya vitisho", "Usimbaji wa data", "Ukaguzi wa kufuata", "Jibu la tukio"]
+        "features": [
+          "Tathmini za usalama",
+          "Ulinzi dhidi ya vitisho",
+          "Usimbaji wa data",
+          "Ukaguzi wa kufuata",
+          "Jibu la tukio"
+        ]
       },
       "data_analysis": {
         "title": "Uchambuzi wa Data",
         "description": "Badilisha data ghafi kuwa maarifa ya biashara yanayoweza kutumika kupitia uchambuzi wa hali ya juu, taswira, na suluhu za akili ya biashara.",
-        "features": ["Akili ya biashara", "Taswira ya data", "Uundaji wa utabiri", "Vipimo vya utendaji", "Msaada wa maamuzi"]
+        "features": [
+          "Akili ya biashara",
+          "Taswira ya data",
+          "Uundaji wa utabiri",
+          "Vipimo vya utendaji",
+          "Msaada wa maamuzi"
+        ]
       }
     },
     "loading": {
@@ -252,6 +300,7 @@
     "title": "Bidhaa Zetu",
     "subtitle": "Gundua suluhu zetu za ubunifu zilizoundwa kubadilisha biashara yako.",
     "visit_now": "Tembelea Sasa",
+    "discover": "Gundua",
     "explore": "Chunguza",
     "coming_soon": "Inakuja Hivi Karibuni",
     "available": "Inapatikana",
@@ -361,22 +410,41 @@
       "supporter": {
         "name": "Muungaji",
         "description": "Unga mkono dhamira yetu ya kuwezesha jamii kupitia teknolojia.",
-        "benefits": ["Barua pepe ya shukrani", "Jina kwenye ukurasa wa waunga mkono", "Masasisho ya jarida"]
+        "benefits": [
+          "Barua pepe ya shukrani",
+          "Jina kwenye ukurasa wa waunga mkono",
+          "Masasisho ya jarida"
+        ]
       },
       "contributor": {
         "name": "Mchangiaji",
         "description": "Tusaidie kupanua wigo wetu na kuathiri maisha zaidi.",
-        "benefits": ["Faida zote za Muungaji", "Ripoti ya athari ya robo mwaka", "Upatikanaji wa mapema wa matukio"]
+        "benefits": [
+          "Faida zote za Muungaji",
+          "Ripoti ya athari ya robo mwaka",
+          "Upatikanaji wa mapema wa matukio"
+        ]
       },
       "champion": {
         "name": "Shujaa",
         "description": "Kuwa shujaa wa mabadiliko ya kidijitali Afrika.",
-        "benefits": ["Faida zote za Mchangiaji", "Semina za wavuti za kipekee", "Utambuzi kwenye tovuti", "Cheti cha athari cha kila mwaka"]
+        "benefits": [
+          "Faida zote za Mchangiaji",
+          "Semina za wavuti za kipekee",
+          "Utambuzi kwenye tovuti",
+          "Cheti cha athari cha kila mwaka"
+        ]
       },
       "visionary": {
         "name": "Mwenye Maono",
         "description": "Ongoza njia katika kuunda mabadiliko ya teknolojia ya kudumu.",
-        "benefits": ["Faida zote za Shujaa", "Masasisho ya moja kwa moja ya mradi", "Fursa ya kuzungumza", "Ripoti ya athari maalum", "Upatikanaji wa VIP wa matukio"]
+        "benefits": [
+          "Faida zote za Shujaa",
+          "Masasisho ya moja kwa moja ya mradi",
+          "Fursa ya kuzungumza",
+          "Ripoti ya athari maalum",
+          "Upatikanaji wa VIP wa matukio"
+        ]
       }
     },
     "most_popular": "Maarufu Zaidi",

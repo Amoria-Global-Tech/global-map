@@ -40,42 +40,90 @@
       "web_dev": {
         "title": "Web Development",
         "description": "Modern, scalable web solutions from landing pages to complex web applications. We build responsive, fast-loading websites that convert visitors into customers.",
-        "features": ["Responsive design", "E-commerce integration", "CMS development", "Performance optimization", "SEO-ready structure"]
+        "features": [
+          "Responsive design",
+          "E-commerce integration",
+          "CMS development",
+          "Performance optimization",
+          "SEO-ready structure"
+        ]
       },
       "mobile_dev": {
         "title": "Mobile App Development",
         "description": "Native and cross-platform mobile applications that deliver seamless user experiences across iOS and Android devices.",
-        "features": ["iOS development", "Android development", "Cross-platform apps", "App store deployment", "Mobile-first design"]
+        "features": [
+          "iOS development",
+          "Android development",
+          "Cross-platform apps",
+          "App store deployment",
+          "Mobile-first design"
+        ]
       },
       "desktop_dev": {
         "title": "Desktop Applications Development",
         "description": "Robust desktop software solutions for Windows, macOS, and Linux that streamline business operations and enhance productivity.",
-        "features": ["Cross-platform compatibility", "Enterprise integration", "Offline functionality", "System optimization", "User-friendly interfaces"]
+        "features": [
+          "Cross-platform compatibility",
+          "Enterprise integration",
+          "Offline functionality",
+          "System optimization",
+          "User-friendly interfaces"
+        ]
       },
       "seo": {
         "title": "SEO Optimization",
         "description": "Data-driven search engine optimization strategies that improve rankings, increase organic traffic, and boost online visibility.",
-        "features": ["Technical SEO", "Content strategy", "Local optimization", "Performance audits", "Analytics tracking"]
+        "features": [
+          "Technical SEO",
+          "Content strategy",
+          "Local optimization",
+          "Performance audits",
+          "Analytics tracking"
+        ]
       },
       "consulting": {
         "title": "IT Consultation",
         "description": "Strategic technology guidance to help businesses make informed decisions about digital transformation and infrastructure planning.",
-        "features": ["Technology assessment", "Digital strategy", "Infrastructure planning", "Process optimization", "Risk evaluation"]
+        "features": [
+          "Technology assessment",
+          "Digital strategy",
+          "Infrastructure planning",
+          "Process optimization",
+          "Risk evaluation"
+        ]
       },
       "custom_software": {
         "title": "Custom Software Solutions",
         "description": "Bespoke software development tailored to unique business requirements, from automation tools to enterprise management systems.",
-        "features": ["Business automation", "System integration", "Workflow optimization", "Custom databases", "Scalable architecture"]
+        "features": [
+          "Business automation",
+          "System integration",
+          "Workflow optimization",
+          "Custom databases",
+          "Scalable architecture"
+        ]
       },
       "security": {
         "title": "Cyber Security",
         "description": "Comprehensive security solutions to protect digital assets, prevent data breaches, and ensure compliance with industry standards.",
-        "features": ["Security assessments", "Threat protection", "Data encryption", "Compliance audits", "Incident response"]
+        "features": [
+          "Security assessments",
+          "Threat protection",
+          "Data encryption",
+          "Compliance audits",
+          "Incident response"
+        ]
       },
       "data_analysis": {
         "title": "Data Analysis",
         "description": "Transform raw data into actionable business insights through advanced analytics, visualization, and business intelligence solutions.",
-        "features": ["Business intelligence", "Data visualization", "Predictive modeling", "Performance metrics", "Decision support"]
+        "features": [
+          "Business intelligence",
+          "Data visualization",
+          "Predictive modeling",
+          "Performance metrics",
+          "Decision support"
+        ]
       }
     },
     "loading": {
@@ -252,6 +300,7 @@
     "title": "Our Products",
     "subtitle": "Discover our innovative solutions designed to transform your business.",
     "visit_now": "Visit Now",
+    "discover": "Discover",
     "explore": "Explore",
     "coming_soon": "Coming Soon",
     "available": "Available",
@@ -361,22 +410,41 @@
       "supporter": {
         "name": "Supporter",
         "description": "Support our mission to empower communities through technology.",
-        "benefits": ["Thank you email", "Name on supporters page", "Newsletter updates"]
+        "benefits": [
+          "Thank you email",
+          "Name on supporters page",
+          "Newsletter updates"
+        ]
       },
       "contributor": {
         "name": "Contributor",
         "description": "Help us expand our reach and impact more lives.",
-        "benefits": ["All Supporter benefits", "Quarterly impact report", "Early access to events"]
+        "benefits": [
+          "All Supporter benefits",
+          "Quarterly impact report",
+          "Early access to events"
+        ]
       },
       "champion": {
         "name": "Champion",
         "description": "Be a champion of digital transformation in Africa.",
-        "benefits": ["All Contributor benefits", "Exclusive webinars", "Recognition on website", "Annual impact certificate"]
+        "benefits": [
+          "All Contributor benefits",
+          "Exclusive webinars",
+          "Recognition on website",
+          "Annual impact certificate"
+        ]
       },
       "visionary": {
         "name": "Visionary",
         "description": "Lead the way in creating lasting technological change.",
-        "benefits": ["All Champion benefits", "Direct project updates", "Speaking opportunity", "Custom impact report", "VIP event access"]
+        "benefits": [
+          "All Champion benefits",
+          "Direct project updates",
+          "Speaking opportunity",
+          "Custom impact report",
+          "VIP event access"
+        ]
       }
     },
     "most_popular": "Most Popular",

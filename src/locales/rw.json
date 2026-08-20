@@ -40,42 +40,90 @@
       "web_dev": {
         "title": "Guteza Imbere Urubuga",
         "description": "Ibisubizo bya web bigezweho kandi bikura, kuva ku mpapuro z'itangira kugeza ku mapuroguramu ya web akomeye. Dukora imbuga zisubiza vuba kandi zoroha zihindura abasura abaguzi.",
-        "features": ["Imigenzuro isubiza", "Guhuza e-commerce", "Guteza imbere CMS", "Kunoza imikorere", "Imiterere yiteguye SEO"]
+        "features": [
+          "Imigenzuro isubiza",
+          "Guhuza e-commerce",
+          "Guteza imbere CMS",
+          "Kunoza imikorere",
+          "Imiterere yiteguye SEO"
+        ]
       },
       "mobile_dev": {
         "title": "Guteza Imbere Porogaramu za Telefone",
         "description": "Porogaramu za telefone zikora ku buryo butandukanye zitanga uburambe bwiza ku bikoresho bya iOS na Android.",
-        "features": ["Guteza imbere iOS", "Guteza imbere Android", "Porogaramu zikora ku buryo butandukanye", "Gushyira kuri stores", "Imigenzuro ya mobile ya mbere"]
+        "features": [
+          "Guteza imbere iOS",
+          "Guteza imbere Android",
+          "Porogaramu zikora ku buryo butandukanye",
+          "Gushyira kuri stores",
+          "Imigenzuro ya mobile ya mbere"
+        ]
       },
       "desktop_dev": {
         "title": "Guteza Imbere Porogaramu za Mudasobwa",
         "description": "Ibisubizo by'ikoranabuhanga bikomeye kuri Windows, macOS na Linux bituma ibikorwa by'ubucuruzi bikoreshwa neza kandi bitera imbere umusaruro.",
-        "features": ["Kuba ku buryo butandukanye", "Guhuza n'ibigo", "Ibikorwa bidakeneye interineti", "Kunoza sisitemu", "Imigenzuro yoroha"]
+        "features": [
+          "Kuba ku buryo butandukanye",
+          "Guhuza n'ibigo",
+          "Ibikorwa bidakeneye interineti",
+          "Kunoza sisitemu",
+          "Imigenzuro yoroha"
+        ]
       },
       "seo": {
         "title": "Kunoza SEO",
         "description": "Ingamba za kunoza injin zo gushakisha zishingiye ku mibare zituma urwego ruzamuka, umurongo w'abantu ugwira, kandi kuboneka ku rubuga rwisumbuye.",
-        "features": ["SEO ya tekiniki", "Ingamba z'ibikubiye", "Kunoza kw'ahantu", "Igenzura ry'imikorere", "Gukurikirana isesengura"]
+        "features": [
+          "SEO ya tekiniki",
+          "Ingamba z'ibikubiye",
+          "Kunoza kw'ahantu",
+          "Igenzura ry'imikorere",
+          "Gukurikirana isesengura"
+        ]
       },
       "consulting": {
         "title": "Ubujyanama bwa IT",
         "description": "Ubuyobozi bwa tekinoloji bw'ingamba gufasha ibigo gufata ibyemezo byizewe ku mpinduka za digitale no gutegura ibikorwa remezo.",
-        "features": ["Kugenzura tekinoloji", "Ingamba za digitale", "Gutegura ibikorwa remezo", "Kunoza inzira", "Kugenzura ingaruka"]
+        "features": [
+          "Kugenzura tekinoloji",
+          "Ingamba za digitale",
+          "Gutegura ibikorwa remezo",
+          "Kunoza inzira",
+          "Kugenzura ingaruka"
+        ]
       },
       "custom_software": {
         "title": "Ibisubizo bya Porogaramu Zihariye",
         "description": "Guteza imbere porogaramu zihariye zihuje n'ibyo ubucuruzi bukeneye by'umwihariko, kuva ku bikoresho bya automatisation kugeza ku sisitemu zo gucunga ibigo.",
-        "features": ["Automatisation y'ubucuruzi", "Guhuza sisitemu", "Kunoza inzira z'akazi", "Ububiko bw'amakuru bihariye", "Imigenzuro ikura"]
+        "features": [
+          "Automatisation y'ubucuruzi",
+          "Guhuza sisitemu",
+          "Kunoza inzira z'akazi",
+          "Ububiko bw'amakuru bihariye",
+          "Imigenzuro ikura"
+        ]
       },
       "security": {
         "title": "Umutekano wa Siyansi",
         "description": "Ibisubizo by'umutekano byuzuye kurinda umutungo wa digitale, kwirinda amakuru gutakara, no kwemeza amategeko y'inganda.",
-        "features": ["Igenzura ry'umutekano", "Kurinda byago", "Gushyira ibanga ku makuru", "Igenzura ry'amategeko", "Gusubiza ibyabaye"]
+        "features": [
+          "Igenzura ry'umutekano",
+          "Kurinda byago",
+          "Gushyira ibanga ku makuru",
+          "Igenzura ry'amategeko",
+          "Gusubiza ibyabaye"
+        ]
       },
       "data_analysis": {
         "title": "Isesengura ry'Amakuru",
         "description": "Hindura amakuru meza mu bisubizo by'ubucuruzi bishobora gukoreshwa binyuze mu isesengura rigezweho, kwerekana, n'ibisubizo by'ubwenge bw'ubucuruzi.",
-        "features": ["Ubwenge bw'ubucuruzi", "Kwerekana amakuru", "Guteganya ibizaza", "Igipimo cy'imikorere", "Gufasha gufata ibyemezo"]
+        "features": [
+          "Ubwenge bw'ubucuruzi",
+          "Kwerekana amakuru",
+          "Guteganya ibizaza",
+          "Igipimo cy'imikorere",
+          "Gufasha gufata ibyemezo"
+        ]
       }
     },
     "loading": {
@@ -252,6 +300,7 @@
     "title": "Ibicuruzwa Byacu",
     "subtitle": "Menya ibisubizo byacu bishya byagenewe guhindura ubucuruzi bwawe.",
     "visit_now": "Sura nonaha",
+    "discover": "Menya",
     "explore": "Shakisha",
     "coming_soon": "Biraza vuba",
     "available": "Birahari",
@@ -361,22 +410,41 @@
       "supporter": {
         "name": "Umushyigikizi",
         "description": "Shyigikira intego yacu yo guha imbaraga imiryango binyuze mu ikoranabuhanga.",
-        "benefits": ["Imeyili yo gushimira", "Izina ku rupapuro rw'abashyigikizi", "Amakuru ya newsletter"]
+        "benefits": [
+          "Imeyili yo gushimira",
+          "Izina ku rupapuro rw'abashyigikizi",
+          "Amakuru ya newsletter"
+        ]
       },
       "contributor": {
         "name": "Umusanzu",
         "description": "Dufashe kwagura aho tugera no kugira ingaruka ku buzima bwinshi.",
-        "benefits": ["Inyungu zose z'Umushyigikizi", "Raporo y'ingaruka ya buri gihembwe", "Kubona byihuse ibirori"]
+        "benefits": [
+          "Inyungu zose z'Umushyigikizi",
+          "Raporo y'ingaruka ya buri gihembwe",
+          "Kubona byihuse ibirori"
+        ]
       },
       "champion": {
         "name": "Umusinzi",
         "description": "Ba umusinzi w'impinduka za digitale muri Afurika.",
-        "benefits": ["Inyungu zose z'Umusanzu", "Inama zihariye", "Kwemezwa ku rubuga", "Icyemezo cy'ingaruka cy'umwaka"]
+        "benefits": [
+          "Inyungu zose z'Umusanzu",
+          "Inama zihariye",
+          "Kwemezwa ku rubuga",
+          "Icyemezo cy'ingaruka cy'umwaka"
+        ]
       },
       "visionary": {
         "name": "Umushakashatsi",
         "description": "Tangira inzira yo gukora impinduka za tekinoloji zirambye.",
-        "benefits": ["Inyungu zose z'Umusinzi", "Amakuru akosorwa ku mishinga", "Amahirwe yo kuvuga", "Raporo y'ingaruka ihariye", "Kujya mu birori nk'umukuru"]
+        "benefits": [
+          "Inyungu zose z'Umusinzi",
+          "Amakuru akosorwa ku mishinga",
+          "Amahirwe yo kuvuga",
+          "Raporo y'ingaruka ihariye",
+          "Kujya mu birori nk'umukuru"
+        ]
       }
     },
     "most_popular": "Ikunze Cyane",

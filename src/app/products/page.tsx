@@ -106,13 +106,11 @@ export default function ProductsPage() {
                             rel="noopener noreferrer"
                             className="product-btn visit-btn"
                           >
-                            {t.products.visit_now}
-                            <i className="bi bi-arrow-right"></i>
+                            {t.products.discover} {product.name}
                           </a>
                         ) : (
                           <button className="product-btn visit-btn">
                             {t.products.explore}
-                            <i className="bi bi-arrow-right"></i>
                           </button>
                         )
                       ) : (
