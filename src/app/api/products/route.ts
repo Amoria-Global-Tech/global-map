@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { adminGet } from "@/lib/admin-api";
+import { PRODUCTS } from "@/data/products";
 
 export async function GET(request: NextRequest) {
   try {
@@ -16,19 +17,13 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
 
     if (!response.ok) {
-      return NextResponse.json(
-        { success: false, message: data.message || "Failed to fetch products" },
-        { status: response.status }
-      );
+      return NextResponse.json(PRODUCTS, { status: 200 });
     }
 
     // Admin API wraps in { success, data } — extract the data array
     return NextResponse.json(data.data || data, { status: 200 });
   } catch (error) {
-    console.error("Error retrieving products:", error);
-    return NextResponse.json(
-      { success: false, message: "Failed to fetch products" },
-      { status: 500 }
-    );
+    console.error("Error retrieving products from admin API, returning static fallback:", error);
+    return NextResponse.json(PRODUCTS, { status: 200 });
   }
 }

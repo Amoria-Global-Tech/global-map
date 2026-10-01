@@ -19,12 +19,6 @@ interface Service {
   features: string[];
 }
 
-interface LoadingStage {
-  progress: number;
-  status: string;
-  text: string;
-}
-
 export default function HomePage() {
   const { resolvedTheme } = useTheme();
   const { t } = useLanguage();
@@ -32,28 +26,11 @@ export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
   const [typingText, setTypingText] = useState<string>('');
-  const [loadingProgress, setLoadingProgress] = useState<number>(0);
-  const [loadingStatus, setLoadingStatus] = useState<string>('Starting system...');
-  const [loadingText, setLoadingText] = useState<string>('INITIALIZING');
-  const [preloaderReady, setPreloaderReady] = useState<boolean>(false);
-  const [hasShownPreloader, setHasShownPreloader] = useState<boolean>(false);
-  const [isClient, setIsClient] = useState<boolean>(false);
-  const [stars, setStars] = useState<React.ReactElement[]>([]);
-  const [particles, setParticles] = useState<React.ReactElement[]>([]);
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
   
   // Same static catalogue the products page renders.
   const products: Product[] = PRODUCTS;
-  
-  // Loading stages for the preloader - 20% increments
-  const loadingStages: LoadingStage[] = [
-    { progress: 20, status: t.home.loading.loading_modules, text: t.home.loading.loading },
-    { progress: 40, status: t.home.loading.establishing, text: t.home.loading.connecting },
-    { progress: 60, status: t.home.loading.syncing_data, text: t.home.loading.syncing },
-    { progress: 80, status: t.home.loading.optimizing_perf, text: t.home.loading.optimizing },
-    { progress: 100, status: t.home.loading.welcome, text: t.home.loading.complete }
-  ];
 
   const originalServices: Service[] = [
     {
@@ -111,114 +88,31 @@ export default function HomePage() {
   // Kept identical to the products page so both grids fall back the same way.
   const getProductIcon = (product: Product): string => {
     if (product.category === 'Photo & Video') return 'bi-camera-video';
-    if (product.name.toLowerCase().includes('connect')) return 'bi-link-45deg';
+    if (product.name.toLowerCase().includes('connect') || product.name.toLowerCase().includes('connekyt')) return 'bi-link-45deg';
+    if (product.name.toLowerCase().includes('schedule')) return 'bi-calendar-check';
     if (product.category === 'Software') return 'bi-box';
     return 'bi-box-seam';
   };
 
   // Initial client-side mount
   useEffect((): void => {
-    setIsClient(true);
-    
-    const hasShown: string | null = typeof window !== 'undefined' ? sessionStorage.getItem('preloaderShown') : null;
-    if (hasShown) {
-      setHasShownPreloader(true);
-      setMounted(true);
-    } else {
-      setPreloaderReady(true);
-    }
+    setMounted(true);
   }, []);
-
-  // Preloader animation logic - only runs if not shown before
-  useEffect((): (() => void) | void => {
-    if (!preloaderReady || hasShownPreloader || !isClient) return;
-
-    let currentStage = 0;
-
-    const updateProgress = (): void => {
-      if (currentStage < loadingStages.length) {
-        const stage: LoadingStage = loadingStages[currentStage];
-        
-        // Jump directly to the target percentage
-        setLoadingProgress(stage.progress);
-        setLoadingStatus(stage.status);
-        setLoadingText(stage.text);
-        
-        if (stage.progress === 100) {
-          setTimeout((): void => {
-            setMounted(true);
-            if (typeof window !== 'undefined') {
-              sessionStorage.setItem('preloaderShown', 'true');
-            }
-          }, 1000);
-        } else {
-          currentStage++;
-          setTimeout(updateProgress, 1200); // Pause for 1.2 seconds between stages
-        }
-      }
-    };
-
-    const timer: NodeJS.Timeout = setTimeout(updateProgress, 1000);
-    return (): void => clearTimeout(timer);
-  }, [preloaderReady, hasShownPreloader, isClient, loadingStages]);
-
-  // Create stars and particles after hydration to avoid hydration issues
-  useEffect((): void => {
-    if (!preloaderReady || hasShownPreloader || !isClient) return;
-
-    const starsArray: React.ReactElement[] = [];
-    for (let i = 0; i < 100; i++) {
-      starsArray.push(
-        <div
-          key={i}
-          className="star"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 3 + 1}px`,
-            height: `${Math.random() * 3 + 1}px`,
-            animationDelay: `${Math.random() * 3}s`
-          }}
-        />
-      );
-    }
-    setStars(starsArray);
-
-    // Create particles
-    const particlesArray: React.ReactElement[] = [];
-    for (let i = 0; i < 8; i++) {
-      particlesArray.push(
-        <div
-          key={i}
-          className="particle"
-          style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 4}s`,
-            animationDuration: `${Math.random() * 3 + 2}s`
-          }}
-        />
-      );
-    }
-    setParticles(particlesArray);
-  }, [preloaderReady, hasShownPreloader, isClient]);
 
   // Show/hide scroll-to-top button (only after mount)
   useEffect((): (() => void) | void => {
-    if (!mounted || !isClient) return;
+    if (!mounted) return;
 
     const handleScroll = (): void => {
       if (typeof window !== 'undefined') {
-        if (window.scrollY > 300) {
-          setShowScrollTop(true);
-        } else {
-          setShowScrollTop(false);
-        }
+        setShowScrollTop(window.scrollY > 300);
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return (): void => window.removeEventListener('scroll', handleScroll);
-  }, [mounted, isClient]);
+  }, [mounted]);
 
   // Scroll to top function
   const scrollToTop = (): void => {
@@ -232,7 +126,7 @@ export default function HomePage() {
 
   // Fixed typing animation using React state instead of DOM manipulation
   useEffect((): (() => void) | void => {
-    if (!mounted || !isClient) return;
+    if (!mounted) return;
 
     const word = t.home.typing_word;
     let charIndex = 0;
@@ -264,7 +158,7 @@ export default function HomePage() {
 
     const timer: NodeJS.Timeout = setTimeout(typeWriter, 1000);
     return (): void => clearTimeout(timer);
-  }, [mounted, isClient, t.home.typing_word]);
+  }, [mounted, t.home.typing_word]);
 
   // Cursor spotlight effect for hero section
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>): void => {
@@ -287,79 +181,8 @@ export default function HomePage() {
     }
   };
 
-  // Globe Preloader Component - only show when ready and not mounted and hasn't been shown before
-  if (!mounted && !hasShownPreloader && isClient) {
-    // Show minimal loading state until preloader is ready
-    if (!preloaderReady) {
-      return (
-        <div className="preloader-container">
-          <div className="preloader-content">
-            <div className="loading-info">
-              <div className="loading-text">{t.home.loading.initializing}</div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="preloader-container">
-        {/* Animated Stars Background */}
-        <div className="stars">
-          {stars}
-        </div>
-        
-        <div className="preloader-content">
-          <div className="globe-container">
-            {/* Orbit Rings */}
-            <div className="orbit-ring orbit-ring-1"></div>
-            <div className="orbit-ring orbit-ring-2"></div>
-            
-            {/* Main Globe */}
-            <div className="globe">
-              <div className="globe-sphere">
-                {/* Grid Lines */}
-                <div className="grid-lines">
-                  <div className="latitude-line latitude-1"></div>
-                  <div className="latitude-line latitude-2"></div>
-                  <div className="latitude-line latitude-3"></div>
-                  <div className="longitude-line longitude-1"></div>
-                  <div className="longitude-line longitude-2"></div>
-                  <div className="longitude-line longitude-3"></div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Arrow */}
-            <div className="arrow-container">
-              <div className="arrow"></div>
-            </div>
-            
-            {/* Particles */}
-            <div className="particles">
-              {particles}
-            </div>
-          </div>
-          
-          {/* Loading Information */}
-          <div className="loading-info">
-            <div className="loading-text">{loadingText}</div>
-            <div className="progress-container">
-              <div 
-                className="progress-bar" 
-                style={{ width: `${loadingProgress}%` }}
-              />
-            </div>
-            <div className="percentage">{Math.round(loadingProgress)}%</div>
-            <div className="status-text">{loadingStatus}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   // Don't render main content until client-side mounted
-  if (!isClient) {
+  if (!mounted) {
     return <div></div>;
   }
 
@@ -632,7 +455,7 @@ export default function HomePage() {
       </main>
 
       {/* Scroll to Top Button */}
-      {isClient && mounted && showScrollTop && (
+      {mounted && showScrollTop && (
         <button 
           className="scroll-to-top"
           onClick={scrollToTop}

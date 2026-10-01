@@ -43,11 +43,7 @@ export const PRODUCTS: Product[] = [
       'Simplify bookings. Save time. Serve clients better with instant scheduling and no account required.',
     category: '',
     price: null,
-    // The logo Connekyt used to carry: the CMS had `logo-schedule.png` assigned
-    // to it. Signed Supabase URL — the token runs to 2126, but it dies early if
-    // that bucket's signing key is rotated.
-    imageUrl:
-      'https://zxqlfpvozfgcrsbcaqxz.supabase.co/storage/v1/object/sign/app-releases/logos/logo-schedule.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zY2ZmYzhmOC05MzBkLTRiZjgtYTMwNy1jOWZiZTE4ZmM2ZGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhcHAtcmVsZWFzZXMvbG9nb3MvbG9nby1zY2hlZHVsZS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg2NzAzOTYyLCJleHAiOjQ5NDAzMDM5NjJ9.YgUVymw4ZuSSqaKVF_XniR3izr3UyuxZrWQ0vXUjeWk',
+    imageUrl: '/schedule-logo.png',
     isAvailable: true,
     siteUrl: 'https://appointment.jambolush.com/',
   },
@@ -58,8 +54,7 @@ export const PRODUCTS: Product[] = [
       'Book Unique. Stay Inspired. Premium stays, tours and monthly rentals across East Africa.',
     category: '',
     price: 0.99,
-    imageUrl:
-      'https://ftihjzudufdjjabnpaqv.supabase.co/storage/v1/object/public/faxon-bucket/products/1759218944024-product-jambolush-1759218943459.jpg',
+    imageUrl: '/jambolush-logo.jpg',
     isAvailable: true,
     siteUrl: 'https://jambolush.com',
   },

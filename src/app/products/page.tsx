@@ -41,7 +41,8 @@ export default function ProductsPage() {
 
   const getProductIcon = (product: Product): string => {
     if (product.category === 'Photo & Video') return 'bi-camera-video';
-    if (product.name.toLowerCase().includes('connect')) return 'bi-link-45deg';
+    if (product.name.toLowerCase().includes('connect') || product.name.toLowerCase().includes('connekyt')) return 'bi-link-45deg';
+    if (product.name.toLowerCase().includes('schedule')) return 'bi-calendar-check';
     if (product.category === 'Software') return 'bi-box';
     return 'bi-box-seam';
   };
@@ -72,7 +73,22 @@ export default function ProductsPage() {
             ) : (
               <div className="products-grid">
                 {products.map((product: Product) => (
-                  <div key={product.id} className="product-card">
+                  <div
+                    key={product.id}
+                    className="product-card"
+                    onClick={() => {
+                      if (product.isAvailable && product.siteUrl) {
+                        window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
+                    role={product.isAvailable && product.siteUrl ? 'link' : undefined}
+                    tabIndex={product.isAvailable && product.siteUrl ? 0 : undefined}
+                    onKeyDown={(e) => {
+                      if ((e.key === 'Enter' || e.key === ' ') && product.isAvailable && product.siteUrl) {
+                        window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
+                  >
                     <div className="product-badge">
                       {product.isAvailable ? t.products.available : t.products.coming_soon}
                     </div>
@@ -105,6 +121,7 @@ export default function ProductsPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="product-btn visit-btn"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             {t.products.discover} {product.name}
                           </a>
