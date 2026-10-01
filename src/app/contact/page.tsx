@@ -87,9 +87,7 @@ export default function ContactUsPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (!mounted) {
-    return <div></div>;
-  }
+
 
   if (submitted) {
     return (

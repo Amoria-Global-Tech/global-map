@@ -121,10 +121,7 @@ export default function AboutPage() {
     return () => observer.disconnect();
   }, [mounted]);
 
-  // Don't render until mounted to prevent hydration issues
-  if (!mounted) {
-    return <div></div>;
-  }
+
 
   return (
     <>

@@ -143,9 +143,7 @@ export default function ServicesPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (!mounted) {
-    return <div></div>;
-  }
+
 
   return (
     <>

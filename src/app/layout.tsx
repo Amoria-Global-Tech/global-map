@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
-import { Poppins, Cormorant_Garamond } from 'next/font/google'
+import { Inter, Cormorant_Garamond } from 'next/font/google'
 import './styles/globals.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import VisitorTracker from './components/visiterTracker';
 import Providers from './components/Providers';
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  style: ['normal', 'italic'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-inter',
 });
 
 const cormorant = Cormorant_Garamond({
@@ -89,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${poppins.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -97,7 +96,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#2ba268" />
       </head>
-      <body className={`antialiased ${poppins.className}`} suppressHydrationWarning>
+      <body className={`antialiased ${inter.className}`} suppressHydrationWarning>
         <Providers>
           <VisitorTracker />
           <div id="root">
