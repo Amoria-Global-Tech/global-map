@@ -47,9 +47,6 @@ export default function ProductsPage() {
     return 'bi-box-seam';
   };
 
-  if (!mounted) {
-    return <div></div>;
-  }
 
   return (
     <>

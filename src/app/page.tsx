@@ -181,10 +181,6 @@ export default function HomePage() {
     }
   };
 
-  // Don't render main content until client-side mounted
-  if (!mounted) {
-    return <div></div>;
-  }
 
   return (
     <>
