@@ -37,17 +37,6 @@ export const PRODUCTS: Product[] = [
     siteUrl: 'https://connekyt.com/',
   },
   {
-    id: 'schedule',
-    name: 'Schedule',
-    description:
-      'Simplify bookings. Save time. Serve clients better with instant scheduling and no account required.',
-    category: '',
-    price: null,
-    imageUrl: '/schedule-logo.png',
-    isAvailable: true,
-    siteUrl: 'https://appointment.jambolush.com/',
-  },
-  {
     id: 4,
     name: 'JamboLush',
     description:
@@ -57,5 +46,16 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/jambolush-logo.jpg',
     isAvailable: true,
     siteUrl: 'https://jambolush.com',
+  },
+  {
+    id: 'schedule',
+    name: 'Schedule',
+    description:
+      'Simplify bookings. Save time. Serve clients better with instant scheduling and no account required.',
+    category: '',
+    price: null,
+    imageUrl: '/schedule-logo.png',
+    isAvailable: true,
+    siteUrl: 'https://appointment.jambolush.com/',
   },
 ];

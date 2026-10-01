@@ -1,29 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { adminGet } from "@/lib/admin-api";
+import { NextResponse } from "next/server";
 import { PRODUCTS } from "@/data/products";
 
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const category = searchParams.get("category");
-    const available = searchParams.get("available");
-
-    const params = new URLSearchParams();
-    if (category) params.set("category", category);
-    if (available) params.set("available", available);
-
-    const query = params.toString() ? `?${params.toString()}` : "";
-    const response = await adminGet(`/products${query}`);
-    const data = await response.json();
-
-    if (!response.ok) {
-      return NextResponse.json(PRODUCTS, { status: 200 });
-    }
-
-    // Admin API wraps in { success, data } — extract the data array
-    return NextResponse.json(data.data || data, { status: 200 });
-  } catch (error) {
-    console.error("Error retrieving products from admin API, returning static fallback:", error);
-    return NextResponse.json(PRODUCTS, { status: 200 });
-  }
+export async function GET() {
+  return NextResponse.json(PRODUCTS, { status: 200 });
 }
