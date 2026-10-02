@@ -208,22 +208,6 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="team-card">
-                <div className="team-image-container">
-                  <Image
-                    src="/team/but.jpg"
-                    alt={t.about.team.joseph.name}
-                    width={120}
-                    height={120}
-                    className="team-image"
-                  />
-                </div>
-                <div className="team-info">
-                  <h3 className="team-name">{t.about.team.joseph.name}</h3>
-                  <p className="team-title-job">{t.about.team.joseph.role}</p>
-                  <p className="team-description-text">{t.about.team.joseph.description}</p>
-                </div>
-              </div>
 
               <div className="team-card">
                 <div className="team-image-container">
