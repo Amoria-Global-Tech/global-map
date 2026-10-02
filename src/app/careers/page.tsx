@@ -7,14 +7,16 @@ import Chatbot from '../components/Chatbot';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const EMAIL_ADDRESS = 'info@amoriaglobal.com';
-const EMAIL_SUBJECT = 'Job Application - Amoria Global Tech';
+const EMAIL_SUBJECT = 'Job Application — Amoria Global Tech';
 const EMAIL_BODY = `Dear Amoria Global Tech Team,
 
 I am writing to express my interest in joining your team. Please find attached my CV/Resume for your review.
 
 Full Name: 
 Position / Role of Interest: 
-Portfolio / LinkedIn / GitHub: 
+Links (GitHub, Portfolio, LinkedIn): 
+Key Technologies: 
+Available Start Date: 
 
 Thank you,
 `;
@@ -176,56 +178,111 @@ export default function CareersPage() {
       <Navbar />
 
       <main className={`main-content ${resolvedTheme === 'light' ? 'light' : ''}`}>
-        {/* Careers Hero Section */}
-        <section className="careers-hero-section">
+        {/* Careers Hero (Reference: rides.rw/careers) */}
+        <section className="careers-hero">
           <div className="container">
             <div className="careers-hero-content">
               <span className="page-hero-badge">
                 <i className="bi bi-briefcase-fill"></i> Careers at Amoria
               </span>
-              <h1 className="page-hero-title">
-                Build the Future of Technology With Us
-              </h1>
-              <p className="page-hero-description">
-                We are always looking for passionate engineers, designers, and innovators to join our team. Send us your CV directly via email and let&apos;s build impactful solutions together.
+              <h1 className="type-display">Join Our Team</h1>
+              <p className="careers-hero-desc">
+                At Amoria Global Tech, we&apos;re a team of passionate people working together to build meaningful solutions and create opportunities for a better future.
               </p>
-              <div className="careers-hero-actions">
-                <button
-                  type="button"
-                  onClick={handlePrimaryClick}
-                  className="careers-email-main-btn"
-                >
-                  {activeClientInfo ? (
-                    <>
-                      <i className={`bi ${activeClientInfo.icon}`}></i>
-                      <span>Send Us Your CV via {activeClientInfo.name}</span>
-                      <i className="bi bi-box-arrow-up-right"></i>
-                    </>
-                  ) : (
-                    <>
-                      <i className="bi bi-envelope-arrow-up-fill"></i>
-                      <span>Send Us Your CV</span>
-                      <i className="bi bi-arrow-right"></i>
-                    </>
-                  )}
-                </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Apply Poster Section (Reference: rides.rw/careers) */}
+        <section className="careers-poster-section">
+          <div className="container">
+            <div className="careers-apply-poster">
+              {/* Top Details */}
+              <div className="careers-apply-top">
+                <h2 className="careers-apply-title">Send us your CV</h2>
+                <p className="careers-apply-desc">
+                  Applications for this program are by email. Send your CV with a short paragraph telling us what you want to build and why Amoria Global Tech.
+                </p>
               </div>
 
-              {activeClientInfo && (
-                <div className="careers-pref-active-bar" style={{ marginTop: '1.25rem' }}>
-                  <span>
-                    Current preference: <strong>{activeClientInfo.name}</strong>
-                  </span>
-                  <span>&bull;</span>
+              {/* Bottom Details + Action */}
+              <div className="careers-apply-bottom">
+                <div className="careers-include-wrap">
+                  <p className="careers-include-label">Please include</p>
+                  <ul className="careers-include-list">
+                    <li>
+                      <span className="bullet-dot" aria-hidden="true"></span>
+                      <span>Your CV as a PDF</span>
+                    </li>
+                    <li>
+                      <span className="bullet-dot" aria-hidden="true"></span>
+                      <span>A short paragraph on why you want to join</span>
+                    </li>
+                    <li>
+                      <span className="bullet-dot" aria-hidden="true"></span>
+                      <span>Links to your GitHub, portfolio, or a project you are proud of</span>
+                    </li>
+                    <li>
+                      <span className="bullet-dot" aria-hidden="true"></span>
+                      <span>The technologies you work with most</span>
+                    </li>
+                    <li>
+                      <span className="bullet-dot" aria-hidden="true"></span>
+                      <span>When you could start</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="careers-apply-action-side">
                   <button
                     type="button"
-                    onClick={handleClearPreference}
-                    className="careers-change-pref-btn"
+                    onClick={handlePrimaryClick}
+                    className="careers-apply-button"
                   >
-                    Change preference
+                    <span>
+                      {activeClientInfo
+                        ? `Send us your CV via ${activeClientInfo.name}`
+                        : 'Send us your CV'}
+                    </span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="careers-apply-icon"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 6h16v12H4z"></path>
+                      <path d="m4 7 8 6 8-6"></path>
+                    </svg>
                   </button>
+
+                  {activeClientInfo ? (
+                    <div className="careers-pref-note">
+                      <span>Preferred: {activeClientInfo.name}</span>
+                      <span>&bull;</span>
+                      <button
+                        type="button"
+                        onClick={handleClearPreference}
+                        className="careers-pref-link"
+                      >
+                        Change
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="careers-pref-note">
+                      <a
+                        href={`mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`}
+                        className="careers-pref-email"
+                      >
+                        {EMAIL_ADDRESS}
+                      </a>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </section>
