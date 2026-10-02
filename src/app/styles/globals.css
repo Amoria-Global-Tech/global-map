@@ -11000,8 +11000,12 @@ textarea:focus {
 
 /* ===== CAREERS PAGE STYLES ===== */
 .careers-hero-section {
-  padding: 4rem 1rem 2rem;
+  padding: 8rem 1.5rem 10rem;
   text-align: center;
+  min-height: calc(80vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .careers-hero-content {

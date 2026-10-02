@@ -193,43 +193,6 @@ export default function CareersPage() {
                 <button
                   type="button"
                   onClick={handlePrimaryClick}
-                  className="action-btn member-btn"
-                >
-                  {activeClientInfo ? (
-                    <>
-                      <i className={`bi ${activeClientInfo.icon} me-2`}></i>
-                      Send Us Your CV via {activeClientInfo.name}
-                    </>
-                  ) : (
-                    <>
-                      <i className="bi bi-envelope-fill me-2"></i>
-                      Send Us Your CV
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="container">
-          {/* Direct Email Application Card */}
-          <section className="careers-form-section" id="apply">
-            <div className="careers-email-card">
-              <div className="careers-form-header">
-                <span className="careers-badge">
-                  <i className="bi bi-send-fill"></i> Direct Email Application
-                </span>
-                <h2 className="careers-form-title">Send Your CV to Our Team</h2>
-                <p className="careers-form-subtitle">
-                  Choose your preferred email service (Gmail, Outlook, Yahoo, or default mail app) to compose directly with your CV attached to <strong>{EMAIL_ADDRESS}</strong>.
-                </p>
-              </div>
-
-              <div className="careers-email-action-box">
-                <button
-                  type="button"
-                  onClick={handlePrimaryClick}
                   className="careers-email-main-btn"
                 >
                   {activeClientInfo ? (
@@ -241,76 +204,31 @@ export default function CareersPage() {
                   ) : (
                     <>
                       <i className="bi bi-envelope-arrow-up-fill"></i>
-                      <span>Send Us Your CV via Email</span>
+                      <span>Send Us Your CV</span>
                       <i className="bi bi-arrow-right"></i>
                     </>
                   )}
                 </button>
+              </div>
 
-                {activeClientInfo && (
-                  <div className="careers-pref-active-bar">
-                    <span>
-                      Current preference: <strong>{activeClientInfo.name}</strong>
-                    </span>
-                    <span>&bull;</span>
-                    <button
-                      type="button"
-                      onClick={handleClearPreference}
-                      className="careers-change-pref-btn"
-                    >
-                      Change preference
-                    </button>
-                  </div>
-                )}
-
-                <div className="careers-copy-email-bar">
-                  <span className="careers-email-label">Recruitment Inbox:</span>
-                  <span className="careers-email-text">{EMAIL_ADDRESS}</span>
+              {activeClientInfo && (
+                <div className="careers-pref-active-bar" style={{ marginTop: '1.25rem' }}>
+                  <span>
+                    Current preference: <strong>{activeClientInfo.name}</strong>
+                  </span>
+                  <span>&bull;</span>
                   <button
                     type="button"
-                    onClick={handleCopyEmail}
-                    className="careers-copy-btn"
-                    aria-label="Copy recruitment email address"
+                    onClick={handleClearPreference}
+                    className="careers-change-pref-btn"
                   >
-                    {copied ? (
-                      <>
-                        <i className="bi bi-check2"></i> Copied!
-                      </>
-                    ) : (
-                      <>
-                        <i className="bi bi-clipboard"></i> Copy Email
-                      </>
-                    )}
+                    Change preference
                   </button>
                 </div>
-              </div>
-
-              <div className="careers-email-guidelines">
-                <h4 className="careers-guidelines-title">
-                  <i className="bi bi-info-circle-fill"></i> What to include in your email:
-                </h4>
-                <ul className="careers-guidelines-list">
-                  <li>
-                    <i className="bi bi-file-earmark-pdf-fill"></i>
-                    <span><strong>Your CV or Resume</strong> (PDF or Word format)</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-person-badge-fill"></i>
-                    <span><strong>Target Role or Expertise</strong> (e.g. Full-Stack, Mobile, UI/UX, Cloud, etc.)</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-link-45deg"></i>
-                    <span><strong>Links to Your Work</strong> (GitHub, Portfolio, LinkedIn, or live projects)</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chat-left-text-fill"></i>
-                    <span><strong>A Brief Introduction</strong> telling us what you love to build</span>
-                  </li>
-                </ul>
-              </div>
+              )}
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </main>
 
       {/* Email Preferences Modal */}
