@@ -6,61 +6,17 @@ import Footer from '../components/footer';
 import Chatbot from '../components/Chatbot';
 import { useTheme } from '@/contexts/ThemeContext';
 
-const OPEN_POSITIONS = [
-  {
-    id: 'fullstack',
-    title: 'Full-Stack Software Engineer',
-    department: 'Engineering',
-    type: 'Full-Time / Hybrid',
-    location: 'Kigali, Rwanda (EVA PLAZA)',
-    description: 'Build robust, scalable web and API platforms using Next.js, Node.js, TypeScript, PostgreSQL, and cloud infrastructure.',
-    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'TypeScript', 'APIs']
-  },
-  {
-    id: 'mobile',
-    title: 'Mobile Application Developer',
-    department: 'Mobile Engineering',
-    type: 'Full-Time',
-    location: 'Kigali, Rwanda',
-    description: 'Design and develop smooth, high-performance mobile applications for Android and iOS using modern cross-platform frameworks.',
-    tags: ['Flutter', 'React Native', 'Mobile UI', 'REST APIs']
-  },
-  {
-    id: 'uiux',
-    title: 'UI/UX & Product Designer',
-    department: 'Design',
-    type: 'Full-Time / Flexible',
-    location: 'Kigali, Rwanda',
-    description: 'Craft intuitive, accessible, and world-class digital experiences, design systems, wireframes, and interactive prototypes.',
-    tags: ['Figma', 'Design Systems', 'User Research', 'Prototyping']
-  },
-  {
-    id: 'devops',
-    title: 'Cloud & DevOps Engineer',
-    department: 'Infrastructure',
-    type: 'Full-Time',
-    location: 'Kigali, Rwanda',
-    description: 'Architect, monitor, and automate resilient CI/CD pipelines, containerized environments, and cloud infrastructure.',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Security']
-  },
-  {
-    id: 'cybersecurity',
-    title: 'Cybersecurity Analyst',
-    department: 'Security & Operations',
-    type: 'Full-Time',
-    location: 'Kigali, Rwanda',
-    description: 'Protect vital infrastructure, audit web services, implement compliance controls, and mitigate emerging digital threats.',
-    tags: ['Network Security', 'Pen Testing', 'DPO Compliance', 'Auditing']
-  },
-  {
-    id: 'open',
-    title: 'Open / Spontaneous Application',
-    department: 'All Departments',
-    type: 'Full-Time / Internship',
-    location: 'Kigali, Rwanda / Remote',
-    description: "Don't see your exact role listed? If you have passion, curiosity, and drive, send us your CV and tell us how you can make an impact.",
-    tags: ['Innovation', 'Self-Starter', 'Problem Solving']
-  }
+const ROLE_OPTIONS = [
+  'Full-Stack Software Engineer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Mobile Application Developer',
+  'UI/UX & Product Designer',
+  'Cloud & DevOps Engineer',
+  'Cybersecurity Analyst',
+  'QA / Software Tester',
+  'Project & Product Management',
+  'Spontaneous / Open Application',
 ];
 
 export default function CareersPage() {
@@ -69,7 +25,7 @@ export default function CareersPage() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [position, setPosition] = useState(OPEN_POSITIONS[0].title);
+  const [position, setPosition] = useState(ROLE_OPTIONS[0]);
   const [experience, setExperience] = useState('Mid-Level (3-5 years)');
   const [portfolio, setPortfolio] = useState('');
   const [coverLetter, setCoverLetter] = useState('');
@@ -82,14 +38,6 @@ export default function CareersPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
-
-  // Handle position select from card
-  const handleSelectRole = (roleTitle: string) => {
-    setPosition(roleTitle);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -197,11 +145,8 @@ export default function CareersPage() {
                 We are building transformative digital platforms across East Africa and beyond. If you are passionate about software excellence, design, and impactful innovation, join our mission.
               </p>
               <div className="careers-hero-actions">
-                <a href="#open-roles" className="action-btn member-btn">
-                  Explore Open Roles
-                </a>
-                <a href="#application-form" className="action-btn started-btn">
-                  Send Your CV Directly
+                <a href="#application-form" className="action-btn member-btn">
+                  Submit Your CV Directly <i className="bi bi-arrow-down-short"></i>
                 </a>
               </div>
             </div>
@@ -209,92 +154,6 @@ export default function CareersPage() {
         </section>
 
         <div className="container">
-          {/* Why Join Us */}
-          <section className="careers-values-section">
-            <div className="section-header-centered">
-              <h2 className="section-title">Why Join Amoria Global Tech?</h2>
-              <p className="section-description">
-                Experience an environment designed for autonomy, growth, and continuous technical mastery.
-              </p>
-            </div>
-
-            <div className="careers-values-grid">
-              <div className="careers-value-card">
-                <div className="careers-value-icon">
-                  <i className="bi bi-cpu-fill"></i>
-                </div>
-                <h3>Modern Technology Stack</h3>
-                <p>Work with Next.js, TypeScript, cloud services, modern mobile frameworks, and scalable distributed architectures.</p>
-              </div>
-
-              <div className="careers-value-card">
-                <div className="careers-value-icon">
-                  <i className="bi bi-globe-americas"></i>
-                </div>
-                <h3>Real-World Regional Impact</h3>
-                <p>Build software solutions that power enterprise businesses, tourism, payments, and digital transformation across emerging markets.</p>
-              </div>
-
-              <div className="careers-value-card">
-                <div className="careers-value-icon">
-                  <i className="bi bi-rocket-takeoff-fill"></i>
-                </div>
-                <h3>Accelerated Career Growth</h3>
-                <p>Ownership from day one, mentorship from senior engineers, and resources to expand your expertise.</p>
-              </div>
-
-              <div className="careers-value-card">
-                <div className="careers-value-icon">
-                  <i className="bi bi-people-fill"></i>
-                </div>
-                <h3>Collaborative Culture</h3>
-                <p>A supportive, transparent culture where your ideas are valued and celebrated every day.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Open Roles Section */}
-          <section className="careers-roles-section" id="open-roles">
-            <div className="section-header-centered">
-              <h2 className="section-title">Open Positions</h2>
-              <p className="section-description">
-                Find the role that fits your passion. Click any position to pre-fill the application form.
-              </p>
-            </div>
-
-            <div className="careers-roles-grid">
-              {OPEN_POSITIONS.map((role) => (
-                <div
-                  key={role.id}
-                  className={`careers-role-card ${position === role.title ? 'active' : ''}`}
-                  onClick={() => handleSelectRole(role.title)}
-                >
-                  <div className="careers-role-top">
-                    <span className="careers-role-dept">{role.department}</span>
-                    <span className="careers-role-type">{role.type}</span>
-                  </div>
-                  <h3 className="careers-role-title">{role.title}</h3>
-                  <p className="careers-role-desc">{role.description}</p>
-                  
-                  <div className="careers-role-tags">
-                    {role.tags.map((tag, idx) => (
-                      <span key={idx} className="careers-tag">{tag}</span>
-                    ))}
-                  </div>
-
-                  <div className="careers-role-footer">
-                    <span className="careers-location">
-                      <i className="bi bi-geo-alt"></i> {role.location}
-                    </span>
-                    <span className="careers-apply-action">
-                      Apply Now <i className="bi bi-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
           {/* Application Form Section */}
           <section className="careers-form-section" id="application-form" ref={formRef}>
             <div className="careers-form-card">
@@ -394,9 +253,9 @@ export default function CareersPage() {
                         value={position}
                         onChange={(e) => setPosition(e.target.value)}
                       >
-                        {OPEN_POSITIONS.map((r) => (
-                          <option key={r.id} value={r.title}>
-                            {r.title} ({r.department})
+                        {ROLE_OPTIONS.map((role) => (
+                          <option key={role} value={role}>
+                            {role}
                           </option>
                         ))}
                       </select>
