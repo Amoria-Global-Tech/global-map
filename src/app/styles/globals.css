@@ -11206,7 +11206,8 @@ textarea:focus {
   padding: 3rem 0 5rem;
 }
 
-.careers-form-card {
+.careers-form-card,
+.careers-email-card {
   max-width: 800px;
   margin: 0 auto;
   background: rgba(26, 25, 30, 0.95);
@@ -11214,6 +11215,142 @@ textarea:focus {
   border-radius: 20px;
   padding: 3rem 2.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.careers-email-card {
+  text-align: center;
+}
+
+.careers-email-action-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
+}
+
+.careers-email-main-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.15rem 2.5rem;
+  background: linear-gradient(135deg, #2ba268, #239558);
+  color: #ffffff !important;
+  font-family: var(--font-family-base);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  border-radius: 50px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(43, 162, 104, 0.35);
+}
+
+.careers-email-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(43, 162, 104, 0.5);
+  background: linear-gradient(135deg, #34c47d, #2ba268);
+  color: #ffffff !important;
+}
+
+.careers-email-main-btn i:first-child {
+  font-size: 1.35rem;
+}
+
+.careers-copy-email-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.careers-email-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.careers-email-text {
+  font-family: monospace;
+  font-weight: var(--fw-semibold);
+  color: #2ba268;
+}
+
+.careers-copy-btn {
+  background: rgba(43, 162, 104, 0.15);
+  border: 1px solid rgba(43, 162, 104, 0.3);
+  color: #2ba268;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.careers-copy-btn:hover {
+  background: #2ba268;
+  color: #ffffff;
+}
+
+.careers-email-guidelines {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.75rem 2rem;
+  margin-top: 1rem;
+}
+
+.careers-guidelines-title {
+  font-family: var(--font-family-base);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.careers-guidelines-title i {
+  color: #2ba268;
+}
+
+.careers-guidelines-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+}
+
+.careers-guidelines-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.careers-guidelines-list li i {
+  color: #2ba268;
+  font-size: 1.1rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.careers-guidelines-list li strong {
+  color: #ffffff;
 }
 
 .careers-form-header {
@@ -11531,10 +11668,38 @@ textarea:focus {
   color: #64748b;
 }
 
-.main-content.light .careers-form-card {
+.main-content.light .careers-form-card,
+.main-content.light .careers-email-card {
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.main-content.light .careers-copy-email-bar {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #334155;
+}
+
+.main-content.light .careers-email-label {
+  color: #64748b;
+}
+
+.main-content.light .careers-email-guidelines {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.main-content.light .careers-guidelines-title {
+  color: #0f172a;
+}
+
+.main-content.light .careers-guidelines-list li {
+  color: #475569;
+}
+
+.main-content.light .careers-guidelines-list li strong {
+  color: #0f172a;
 }
 
 .main-content.light .form-select option {
@@ -11575,7 +11740,24 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .careers-form-card {
+  .careers-form-card,
+  .careers-email-card {
     padding: 2rem 1.25rem;
+  }
+
+  .careers-guidelines-list {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-email-main-btn {
+    width: 100%;
+    font-size: var(--fs-md);
+    padding: 1rem 1.5rem;
+  }
+
+  .careers-copy-email-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 12px;
   }
 }

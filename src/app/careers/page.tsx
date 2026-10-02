@@ -1,128 +1,38 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Chatbot from '../components/Chatbot';
 import { useTheme } from '@/contexts/ThemeContext';
 
-const ROLE_OPTIONS = [
-  'Full-Stack Software Engineer',
-  'Frontend Developer',
-  'Backend Developer',
-  'Mobile Application Developer',
-  'UI/UX & Product Designer',
-  'Cloud & DevOps Engineer',
-  'Cybersecurity Analyst',
-  'QA / Software Tester',
-  'Project & Product Management',
-  'Spontaneous / Open Application',
-];
+const EMAIL_ADDRESS = 'info@amoriaglobal.com';
+const EMAIL_SUBJECT = 'Job Application - Amoria Global Tech';
+const EMAIL_BODY = `Dear Amoria Global Tech Team,
+
+I am writing to express my interest in joining your team. Please find attached my CV/Resume for your review.
+
+Full Name: 
+Position / Role of Interest: 
+Portfolio / LinkedIn / GitHub: 
+
+Thank you,
+`;
+
+const MAILTO_LINK = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`;
 
 export default function CareersPage() {
   const { resolvedTheme } = useTheme();
+  const [copied, setCopied] = useState(false);
 
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [position, setPosition] = useState(ROLE_OPTIONS[0]);
-  const [experience, setExperience] = useState('Mid-Level (3-5 years)');
-  const [portfolio, setPortfolio] = useState('');
-  const [coverLetter, setCoverLetter] = useState('');
-  const [cvFile, setCvFile] = useState<File | null>(null);
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      validateAndSetFile(e.target.files[0]);
-    }
-  };
-
-  const validateAndSetFile = (file: File) => {
-    const allowed = ['.pdf', '.doc', '.docx'];
-    const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
-    if (!allowed.includes(ext)) {
-      setErrorMessage('Please select a valid document (PDF, DOC, or DOCX).');
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      setErrorMessage('File size must be under 10MB.');
-      return;
-    }
-    setErrorMessage(null);
-    setCvFile(file);
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      validateAndSetFile(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMessage(null);
-
-    if (!cvFile) {
-      setErrorMessage('Please attach your CV/Resume before submitting.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
+  const handleCopyEmail = async () => {
     try {
-      const formData = new FormData();
-      formData.append('fullName', fullName);
-      formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('position', position);
-      formData.append('experience', experience);
-      formData.append('portfolio', portfolio);
-      formData.append('coverLetter', coverLetter);
-      formData.append('cv', cvFile);
-
-      const res = await fetch('/api/careers', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setSubmitted(true);
-        // Reset form
-        setFullName('');
-        setEmail('');
-        setPhone('');
-        setPortfolio('');
-        setCoverLetter('');
-        setCvFile(null);
-      } else {
-        setErrorMessage(data.message || 'Failed to submit application. Please try again or email info@amoriaglobal.com.');
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setErrorMessage('A network error occurred. Please try again or email info@amoriaglobal.com.');
-    } finally {
-      setIsSubmitting(false);
+      await navigator.clipboard.writeText(EMAIL_ADDRESS);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
     }
   };
 
@@ -142,11 +52,11 @@ export default function CareersPage() {
                 Build the Future of Technology With Us
               </h1>
               <p className="page-hero-description">
-                We are building transformative digital platforms across East Africa and beyond. If you are passionate about software excellence, design, and impactful innovation, join our mission.
+                We are always looking for passionate engineers, designers, and innovators to join our team. Send us your CV directly via email and let&apos;s build impactful solutions together.
               </p>
               <div className="careers-hero-actions">
-                <a href="#application-form" className="action-btn member-btn">
-                  Submit Your CV Directly <i className="bi bi-arrow-down-short"></i>
+                <a href={MAILTO_LINK} className="action-btn member-btn">
+                  <i className="bi bi-envelope-fill me-2"></i> Send Us Your CV
                 </a>
               </div>
             </div>
@@ -154,247 +64,71 @@ export default function CareersPage() {
         </section>
 
         <div className="container">
-          {/* Application Form Section */}
-          <section className="careers-form-section" id="application-form" ref={formRef}>
-            <div className="careers-form-card">
+          {/* Direct Email Application Card */}
+          <section className="careers-form-section" id="apply">
+            <div className="careers-email-card">
               <div className="careers-form-header">
                 <span className="careers-badge">
-                  <i className="bi bi-send-fill"></i> Direct Application
+                  <i className="bi bi-send-fill"></i> Direct Email Application
                 </span>
                 <h2 className="careers-form-title">Send Your CV to Our Team</h2>
                 <p className="careers-form-subtitle">
-                  Applications and CVs are automatically dispatched directly to our HR team at <strong>info@amoriaglobal.com</strong>.
+                  We review applications directly. Click the button below to open your email client with your CV and details, or send your email directly to <strong>{EMAIL_ADDRESS}</strong>.
                 </p>
               </div>
 
-              {submitted ? (
-                <div className="careers-success-state">
-                  <div className="careers-success-icon">
-                    <i className="bi bi-check2-circle"></i>
-                  </div>
-                  <h3>Application Submitted Successfully!</h3>
-                  <p>
-                    Thank you for your interest in Amoria Global Tech. Your application and CV have been securely delivered to <strong>info@amoriaglobal.com</strong>.
-                  </p>
-                  <p className="careers-success-subtext">
-                    Our hiring team will carefully review your credentials and contact you directly if there is a match with our current or upcoming openings.
-                  </p>
+              <div className="careers-email-action-box">
+                <a href={MAILTO_LINK} className="careers-email-main-btn">
+                  <i className="bi bi-envelope-arrow-up-fill"></i>
+                  <span>Send Us Your CV via Email</span>
+                  <i className="bi bi-arrow-right"></i>
+                </a>
+
+                <div className="careers-copy-email-bar">
+                  <span className="careers-email-label">Recruitment Inbox:</span>
+                  <span className="careers-email-text">{EMAIL_ADDRESS}</span>
                   <button
-                    className="action-btn member-btn"
-                    onClick={() => setSubmitted(false)}
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="careers-copy-btn"
+                    aria-label="Copy recruitment email address"
                   >
-                    Submit Another Application
+                    {copied ? (
+                      <>
+                        <i className="bi bi-check2"></i> Copied!
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-clipboard"></i> Copy Email
+                      </>
+                    )}
                   </button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="careers-form">
-                  {errorMessage && (
-                    <div className="careers-error-banner">
-                      <i className="bi bi-exclamation-triangle-fill"></i>
-                      <span>{errorMessage}</span>
-                    </div>
-                  )}
+              </div>
 
-                  <div className="careers-form-row">
-                    <div className="form-group">
-                      <label htmlFor="fullName" className="form-label">
-                        Full Name <span className="required-star">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="fullName"
-                        required
-                        className="form-input"
-                        placeholder="e.g. Jean Bosco Mugisha"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="email" className="form-label">
-                        Email Address <span className="required-star">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        required
-                        className="form-input"
-                        placeholder="e.g. name@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="careers-form-row">
-                    <div className="form-group">
-                      <label htmlFor="phone" className="form-label">
-                        Phone Number <span className="required-star">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        required
-                        className="form-input"
-                        placeholder="e.g. +250 788 123 456"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="position" className="form-label">
-                        Position / Role <span className="required-star">*</span>
-                      </label>
-                      <select
-                        id="position"
-                        className="form-input form-select"
-                        value={position}
-                        onChange={(e) => setPosition(e.target.value)}
-                      >
-                        {ROLE_OPTIONS.map((role) => (
-                          <option key={role} value={role}>
-                            {role}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="careers-form-row">
-                    <div className="form-group">
-                      <label htmlFor="experience" className="form-label">
-                        Experience Level <span className="required-star">*</span>
-                      </label>
-                      <select
-                        id="experience"
-                        className="form-input form-select"
-                        value={experience}
-                        onChange={(e) => setExperience(e.target.value)}
-                      >
-                        <option value="Intern / Student">Intern / Student</option>
-                        <option value="Entry-Level (0 - 1 year)">Entry-Level (0 - 1 year)</option>
-                        <option value="Junior (1 - 2 years)">Junior (1 - 2 years)</option>
-                        <option value="Mid-Level (3 - 5 years)">Mid-Level (3 - 5 years)</option>
-                        <option value="Senior (5+ years)">Senior (5+ years)</option>
-                        <option value="Lead / Principal">Lead / Principal</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="portfolio" className="form-label">
-                        Portfolio, LinkedIn, or GitHub <span className="optional-text">(Optional)</span>
-                      </label>
-                      <input
-                        type="url"
-                        id="portfolio"
-                        className="form-input"
-                        placeholder="https://linkedin.com/in/... or github.com/..."
-                        value={portfolio}
-                        onChange={(e) => setPortfolio(e.target.value)}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="coverLetter" className="form-label">
-                      Brief Note / Why Amoria? <span className="optional-text">(Optional)</span>
-                    </label>
-                    <textarea
-                      id="coverLetter"
-                      className="form-textarea"
-                      rows={3}
-                      placeholder="Tell us briefly about yourself, what you love to build, and what drives you..."
-                      value={coverLetter}
-                      onChange={(e) => setCoverLetter(e.target.value)}
-                    />
-                  </div>
-
-                  {/* CV Upload Dropzone */}
-                  <div className="form-group">
-                    <label className="form-label">
-                      CV / Resume Attachment <span className="required-star">*</span>
-                    </label>
-
-                    <div
-                      className={`careers-dropzone ${isDragging ? 'dragging' : ''} ${cvFile ? 'has-file' : ''}`}
-                      onDragOver={handleDragOver}
-                      onDragLeave={handleDragLeave}
-                      onDrop={handleDrop}
-                      onClick={() => fileInputRef.current?.click()}
-                    >
-                      <input
-                        type="file"
-                        ref={fileInputRef}
-                        onChange={handleFileChange}
-                        accept=".pdf,.doc,.docx"
-                        style={{ display: 'none' }}
-                      />
-
-                      {cvFile ? (
-                        <div className="careers-file-info">
-                          <i className="bi bi-file-earmark-pdf-fill file-icon"></i>
-                          <div className="file-details">
-                            <span className="file-name">{cvFile.name}</span>
-                            <span className="file-size">
-                              {(cvFile.size / 1024 / 1024).toFixed(2)} MB &bull; Ready to send
-                            </span>
-                          </div>
-                          <button
-                            type="button"
-                            className="file-remove-btn"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCvFile(null);
-                              if (fileInputRef.current) fileInputRef.current.value = '';
-                            }}
-                          >
-                            <i className="bi bi-x-circle-fill"></i> Remove
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="dropzone-prompt">
-                          <i className="bi bi-cloud-arrow-up-fill dropzone-icon"></i>
-                          <p className="dropzone-main">
-                            Drag &amp; drop your CV here, or <span>browse file</span>
-                          </p>
-                          <p className="dropzone-sub">
-                            Accepted formats: PDF, DOC, DOCX &bull; Max size: 10MB
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="careers-form-actions">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="careers-submit-btn"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                          Submitting &amp; Sending CV...
-                        </>
-                      ) : (
-                        <>
-                          Submit Application <i className="bi bi-arrow-right"></i>
-                        </>
-                      )}
-                    </button>
-
-                    <p className="careers-direct-email-note">
-                      Prefer direct email? You can also email your CV and portfolio to{' '}
-                      <a href="mailto:info@amoriaglobal.com?subject=Job%20Application%20at%20Amoria">
-                        info@amoriaglobal.com
-                      </a>
-                    </p>
-                  </div>
-                </form>
-              )}
+              <div className="careers-email-guidelines">
+                <h4 className="careers-guidelines-title">
+                  <i className="bi bi-info-circle-fill"></i> What to include in your email:
+                </h4>
+                <ul className="careers-guidelines-list">
+                  <li>
+                    <i className="bi bi-file-earmark-pdf-fill"></i>
+                    <span><strong>Your CV or Resume</strong> (PDF or Word format)</span>
+                  </li>
+                  <li>
+                    <i className="bi bi-person-badge-fill"></i>
+                    <span><strong>Target Role or Expertise</strong> (e.g. Full-Stack, Mobile, UI/UX, Cloud, etc.)</span>
+                  </li>
+                  <li>
+                    <i className="bi bi-link-45deg"></i>
+                    <span><strong>Links to Your Work</strong> (GitHub, Portfolio, LinkedIn, or live projects)</span>
+                  </li>
+                  <li>
+                    <i className="bi bi-chat-left-text-fill"></i>
+                    <span><strong>A Brief Introduction</strong> telling us what you love to build</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         </div>
