@@ -32,11 +32,11 @@ const Navbar = () => {
     { name: t.nav.about, href: '/about' },
     { name: t.nav.services, href: '/services' },
     { name: t.nav.products, href: '/products' },
-    { name: t.nav.news, href: '/news' },
+    { name: t.nav.careers, href: '/careers' },
   ];
 
   const extraLinks = [
-    { name: t.nav.blog, href: '/news', icon: 'bi-journal-text' },
+    { name: t.nav.blog, href: '/blog', icon: 'bi-journal-text' },
     { name: t.nav.donate, href: '/donate', icon: 'bi-heart' },
   ];
 
