@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Chatbot from '../components/Chatbot';
@@ -19,11 +19,142 @@ Portfolio / LinkedIn / GitHub:
 Thank you,
 `;
 
-const MAILTO_LINK = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`;
+export type EmailClientKey = 'gmail' | 'outlook' | 'yahoo' | 'default';
+
+export interface EmailClientOption {
+  key: EmailClientKey;
+  name: string;
+  subtitle: string;
+  icon: string;
+  iconColor: string;
+  getUrl: () => string;
+  isExternal: boolean;
+}
+
+const EMAIL_CLIENTS: EmailClientOption[] = [
+  {
+    key: 'gmail',
+    name: 'Gmail',
+    subtitle: 'Open directly in Gmail web composer',
+    icon: 'bi-google',
+    iconColor: '#ea4335',
+    getUrl: () =>
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL_ADDRESS)}&su=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`,
+    isExternal: true,
+  },
+  {
+    key: 'outlook',
+    name: 'Outlook / Office 365',
+    subtitle: 'Open in Outlook.com web composer',
+    icon: 'bi-microsoft',
+    iconColor: '#0078d4',
+    getUrl: () =>
+      `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(EMAIL_ADDRESS)}&subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`,
+    isExternal: true,
+  },
+  {
+    key: 'yahoo',
+    name: 'Yahoo Mail',
+    subtitle: 'Open in Yahoo Mail web composer',
+    icon: 'bi-envelope-at-fill',
+    iconColor: '#7b16ff',
+    getUrl: () =>
+      `https://compose.mail.yahoo.com/?to=${encodeURIComponent(EMAIL_ADDRESS)}&subj=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`,
+    isExternal: true,
+  },
+  {
+    key: 'default',
+    name: 'Default Mail App',
+    subtitle: 'Apple Mail, Windows Mail, Thunderbird',
+    icon: 'bi-laptop',
+    iconColor: '#2ba268',
+    getUrl: () =>
+      `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`,
+    isExternal: false,
+  },
+];
+
+const PREF_STORAGE_KEY = 'amoria_email_client_pref';
 
 export default function CareersPage() {
   const { resolvedTheme } = useTheme();
+  const [preferredClient, setPreferredClient] = useState<EmailClientKey | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [rememberPreference, setRememberPreference] = useState(true);
   const [copied, setCopied] = useState(false);
+
+  // Load saved preference from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(PREF_STORAGE_KEY) as EmailClientKey | null;
+      if (saved && EMAIL_CLIENTS.some((c) => c.key === saved)) {
+        setPreferredClient(saved);
+      }
+    } catch {
+      // Ignore errors in environments where localStorage is restricted
+    }
+  }, []);
+
+  // Handle body scroll locking and Escape key when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setIsModalOpen(false);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isModalOpen]);
+
+  const handleLaunchClient = (clientKey: EmailClientKey) => {
+    const client = EMAIL_CLIENTS.find((c) => c.key === clientKey);
+    if (!client) return;
+
+    if (rememberPreference) {
+      try {
+        localStorage.setItem(PREF_STORAGE_KEY, clientKey);
+        setPreferredClient(clientKey);
+      } catch {
+        // Ignore
+      }
+    }
+
+    setIsModalOpen(false);
+
+    const url = client.getUrl();
+    if (client.isExternal) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = url;
+    }
+  };
+
+  const handlePrimaryClick = () => {
+    if (preferredClient) {
+      handleLaunchClient(preferredClient);
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleClearPreference = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      localStorage.removeItem(PREF_STORAGE_KEY);
+    } catch {
+      // Ignore
+    }
+    setPreferredClient(null);
+    setIsModalOpen(true);
+  };
 
   const handleCopyEmail = async () => {
     try {
@@ -35,6 +166,10 @@ export default function CareersPage() {
       setTimeout(() => setCopied(false), 2500);
     }
   };
+
+  const activeClientInfo = preferredClient
+    ? EMAIL_CLIENTS.find((c) => c.key === preferredClient)
+    : null;
 
   return (
     <>
@@ -55,9 +190,23 @@ export default function CareersPage() {
                 We are always looking for passionate engineers, designers, and innovators to join our team. Send us your CV directly via email and let&apos;s build impactful solutions together.
               </p>
               <div className="careers-hero-actions">
-                <a href={MAILTO_LINK} className="action-btn member-btn">
-                  <i className="bi bi-envelope-fill me-2"></i> Send Us Your CV
-                </a>
+                <button
+                  type="button"
+                  onClick={handlePrimaryClick}
+                  className="action-btn member-btn"
+                >
+                  {activeClientInfo ? (
+                    <>
+                      <i className={`bi ${activeClientInfo.icon} me-2`}></i>
+                      Send Us Your CV via {activeClientInfo.name}
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-envelope-fill me-2"></i>
+                      Send Us Your CV
+                    </>
+                  )}
+                </button>
               </div>
             </div>
           </div>
@@ -73,16 +222,46 @@ export default function CareersPage() {
                 </span>
                 <h2 className="careers-form-title">Send Your CV to Our Team</h2>
                 <p className="careers-form-subtitle">
-                  We review applications directly. Click the button below to open your email client with your CV and details, or send your email directly to <strong>{EMAIL_ADDRESS}</strong>.
+                  Choose your preferred email service (Gmail, Outlook, Yahoo, or default mail app) to compose directly with your CV attached to <strong>{EMAIL_ADDRESS}</strong>.
                 </p>
               </div>
 
               <div className="careers-email-action-box">
-                <a href={MAILTO_LINK} className="careers-email-main-btn">
-                  <i className="bi bi-envelope-arrow-up-fill"></i>
-                  <span>Send Us Your CV via Email</span>
-                  <i className="bi bi-arrow-right"></i>
-                </a>
+                <button
+                  type="button"
+                  onClick={handlePrimaryClick}
+                  className="careers-email-main-btn"
+                >
+                  {activeClientInfo ? (
+                    <>
+                      <i className={`bi ${activeClientInfo.icon}`}></i>
+                      <span>Send Us Your CV via {activeClientInfo.name}</span>
+                      <i className="bi bi-box-arrow-up-right"></i>
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-envelope-arrow-up-fill"></i>
+                      <span>Send Us Your CV via Email</span>
+                      <i className="bi bi-arrow-right"></i>
+                    </>
+                  )}
+                </button>
+
+                {activeClientInfo && (
+                  <div className="careers-pref-active-bar">
+                    <span>
+                      Current preference: <strong>{activeClientInfo.name}</strong>
+                    </span>
+                    <span>&bull;</span>
+                    <button
+                      type="button"
+                      onClick={handleClearPreference}
+                      className="careers-change-pref-btn"
+                    >
+                      Change preference
+                    </button>
+                  </div>
+                )}
 
                 <div className="careers-copy-email-bar">
                   <span className="careers-email-label">Recruitment Inbox:</span>
@@ -133,6 +312,118 @@ export default function CareersPage() {
           </section>
         </div>
       </main>
+
+      {/* Email Preferences Modal */}
+      {isModalOpen && (
+        <div
+          className="email-pref-backdrop"
+          onClick={() => setIsModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="email-pref-title"
+        >
+          <div
+            className="email-pref-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="email-pref-header">
+              <div>
+                <span className="careers-badge">
+                  <i className="bi bi-sliders"></i> Email Preferences
+                </span>
+                <h3 id="email-pref-title" className="email-pref-title">
+                  Choose How to Send Your CV
+                </h3>
+                <p className="email-pref-subtitle">
+                  Select your preferred email client to compose to {EMAIL_ADDRESS}
+                </p>
+              </div>
+              <button
+                type="button"
+                className="email-pref-close-btn"
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close dialog"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
+
+            <div className="email-pref-body">
+              {EMAIL_CLIENTS.map((client) => {
+                const isCurrent = preferredClient === client.key;
+                return (
+                  <button
+                    key={client.key}
+                    type="button"
+                    className={`email-client-btn ${isCurrent ? 'active' : ''}`}
+                    onClick={() => handleLaunchClient(client.key)}
+                  >
+                    <div
+                      className="email-client-icon-wrap"
+                      style={{ color: client.iconColor }}
+                    >
+                      <i className={`bi ${client.icon}`}></i>
+                    </div>
+                    <div className="email-client-details">
+                      <span className="email-client-name">
+                        {client.name}
+                        {isCurrent && (
+                          <span className="email-client-badge">Current</span>
+                        )}
+                      </span>
+                      <span className="email-client-sub">{client.subtitle}</span>
+                    </div>
+                    <i className="bi bi-arrow-right email-client-arrow"></i>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="email-pref-footer">
+              <label className="email-pref-remember">
+                <input
+                  type="checkbox"
+                  checked={rememberPreference}
+                  onChange={(e) => setRememberPreference(e.target.checked)}
+                />
+                <span>Remember this preference for next time</span>
+              </label>
+
+              <div className="email-pref-footer-actions">
+                {preferredClient ? (
+                  <button
+                    type="button"
+                    onClick={handleClearPreference}
+                    className="email-pref-reset-btn"
+                  >
+                    Reset saved preference
+                  </button>
+                ) : (
+                  <span style={{ fontSize: 'var(--fs-xs)', color: 'rgba(255, 255, 255, 0.45)' }}>
+                    You can change your preference anytime
+                  </span>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="careers-copy-btn"
+                >
+                  {copied ? (
+                    <>
+                      <i className="bi bi-check2"></i> Copied {EMAIL_ADDRESS}
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-clipboard"></i> Copy Email
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
       <Chatbot />
