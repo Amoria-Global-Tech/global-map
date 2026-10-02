@@ -143,7 +143,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-bottom">
-            <p className="footer-copyright">© 2025 Amoria Global Tech. {t.footer.copyright}</p>
+            <p className="footer-copyright" suppressHydrationWarning>© {new Date().getFullYear()} Amoria Global Tech. {t.footer.copyright}</p>
           </div>
         </div>
       </footer>
